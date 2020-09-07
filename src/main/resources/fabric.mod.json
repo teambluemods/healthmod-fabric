@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "healthmod",
+  "version": "${version}",
+  "name": "HealthMod",
+  "description": "A mod which adds health related items.",
+  "authors": [
+    "xf8b"
+  ],
+  "contact": {
+    "website": "todo add curseforge link",
+    "repo": "https://github.com/xf8b/HealthMod"
+  },
+  "license": "GPL-3.0",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.xf8b.healthmod.HealthMod"
+    ],
+    "client": [
+      "io.github.xf8b.healthmod.client.HealthModClient"
+    ]
+  },
+  "mixins": [
+    "healthmod.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "1.16.2",
+    "fabric": "*",
+    "fabricloader": ">=0.9.3+build.207"
+  }
+}
