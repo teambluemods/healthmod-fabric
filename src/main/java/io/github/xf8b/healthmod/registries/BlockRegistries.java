@@ -17,15 +17,22 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod.client;
+package io.github.xf8b.healthmod.registries;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import io.github.xf8b.healthmod.HealthMod;
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
-@Environment(EnvType.CLIENT)
-public class HealthModClient implements ClientModInitializer {
-    @Override
-    public void onInitializeClient() {
+public class BlockRegistries {
+    private static Block register(String id, Block block) {
+        Registry.register(
+                Registry.ITEM,
+                new Identifier(HealthMod.MOD_ID, id),
+                new BlockItem(block, new Item.Settings().group(HealthMod.ITEM_GROUP))
+        );
+        return Registry.register(Registry.BLOCK, new Identifier(HealthMod.MOD_ID, id), block);
     }
 }

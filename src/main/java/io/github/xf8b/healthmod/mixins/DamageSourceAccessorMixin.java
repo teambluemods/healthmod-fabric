@@ -17,15 +17,16 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod.client;
+package io.github.xf8b.healthmod.mixins;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraft.entity.damage.DamageSource;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Invoker;
 
-@Environment(EnvType.CLIENT)
-public class HealthModClient implements ClientModInitializer {
-    @Override
-    public void onInitializeClient() {
+@Mixin(DamageSource.class)
+public interface DamageSourceAccessorMixin {
+    @Invoker("<init>")
+    static DamageSource newDamageSource(String name) {
+        throw new UnsupportedOperationException();
     }
 }

@@ -17,23 +17,22 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod;
+package io.github.xf8b.healthmod.registries;
 
-import io.github.xf8b.healthmod.registries.ItemRegistries;
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import io.github.xf8b.healthmod.HealthMod;
+import io.github.xf8b.healthmod.statuseffects.WoundInfectionStatusEffect;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
-public class HealthMod implements ModInitializer {
-    public static final String MOD_ID = "healthmod";
-    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
-            new Identifier(MOD_ID, "all"),
-            () -> new ItemStack(ItemRegistries.BAND_AID)
+public class StatusEffectRegistries {
+    public static final StatusEffect WOUND_INFECTION = register(
+            "wound_infection",
+            new WoundInfectionStatusEffect(StatusEffectType.HARMFUL, 0x00FF00)
     );
 
-    @Override
-    public void onInitialize() {
+    private static StatusEffect register(String id, StatusEffect statusEffect) {
+        return Registry.register(Registry.STATUS_EFFECT, new Identifier(HealthMod.MOD_ID, id), statusEffect);
     }
 }

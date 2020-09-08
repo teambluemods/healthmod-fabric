@@ -17,15 +17,23 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod.client;
+package io.github.xf8b.healthmod.registries;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import io.github.xf8b.healthmod.HealthMod;
+import io.github.xf8b.healthmod.items.BandAidItem;
+import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
+import net.minecraft.util.registry.Registry;
 
-@Environment(EnvType.CLIENT)
-public class HealthModClient implements ClientModInitializer {
-    @Override
-    public void onInitializeClient() {
+public class ItemRegistries {
+    public static final Item BAND_AID = register("band_aid", new BandAidItem(new Item.Settings()
+            .group(HealthMod.ITEM_GROUP)
+            .maxCount(16)
+            .maxDamage(2)
+            .rarity(Rarity.UNCOMMON)));
+
+    private static Item register(String id, Item item) {
+        return Registry.register(Registry.ITEM, new Identifier(HealthMod.MOD_ID, id), item);
     }
 }

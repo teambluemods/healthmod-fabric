@@ -7,6 +7,9 @@
   "authors": [
     "xf8b"
   ],
+  "contributors": [
+    "Secnyt"
+  ],
   "contact": {
     "website": "https://www.curseforge.com/minecraft/mc-mods/healthmod",
     "repo": "https://github.com/xf8b/HealthMod"
@@ -20,6 +23,9 @@
     ],
     "client": [
       "io.github.xf8b.healthmod.client.HealthModClient"
+    ],
+    "rrp:pregen": [
+      "io.github.xf8b.healthmod.HealthModRRPPregenEntrypoint"
     ]
   },
   "mixins": [
