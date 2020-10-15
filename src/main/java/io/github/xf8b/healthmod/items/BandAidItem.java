@@ -50,6 +50,9 @@ public class BandAidItem extends Item {
                     case 3:
                         user.addStatusEffect(new StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 15 * 20, 0));
                         break;
+                    default:
+                        throw new IllegalStateException("bruh");
+                        break;
                 }
             } else {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0));
