@@ -5,9 +5,9 @@
   "name": "HealthMod",
   "description": "A mod which adds health related items.",
   "authors": [
-    "xf8b"
-  ],
-  "contributors": [
+    "xf8b",
+    "AG6",
+    "LoneWolf",
     "Secnyt"
   ],
   "contact": {
@@ -34,6 +34,6 @@
   "depends": {
     "minecraft": "1.16.2",
     "fabric": "*",
-    "fabricloader": ">=0.9.3+build.207"
+    "fabricloader": ">0.10.1+build.209"
   }
 }
