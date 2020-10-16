@@ -5,14 +5,11 @@
   "name": "HealthMod",
   "description": "A mod which adds health related items.",
   "authors": [
-    "xf8b",
-    "AG6",
-    "LoneWolf",
-    "Secnyt"
+    "Blue Minecraft Team"
   ],
   "contact": {
     "website": "https://www.curseforge.com/minecraft/mc-mods/healthmod",
-    "repo": "https://github.com/xf8b/HealthMod"
+    "repo": "https://github.com/blueminecraftteam/HealthMod"
   },
   "license": "GPL-3.0",
   "icon": "icon.png",
