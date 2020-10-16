@@ -5,9 +5,9 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ fabric/1.16.2 ]
+    branches: [ development/fabric/1.16.2 ]
   pull_request:
-    branches: [ fabric/1.16.2 ]
+    branches: [ development/fabric/1.16.2 ]
 
 jobs:
   build:
