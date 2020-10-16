@@ -49,7 +49,7 @@ processResources {
 license {
     header = rootProject.file("LICENSE_HEADER.txt")
     ext {
-        name = "xf8b"
+        name = "Blue Minecraft Team"
         years = "2020"
         projectName = project.projectName
     }
