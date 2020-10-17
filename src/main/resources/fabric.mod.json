@@ -29,7 +29,7 @@
     "healthmod.mixins.json"
   ],
   "depends": {
-    "minecraft": "1.16.2",
+    "minecraft": "1.16.x",
     "fabric": "*",
     "fabricloader": ">0.10.1+build.209"
   }
