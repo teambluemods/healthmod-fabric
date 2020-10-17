@@ -40,8 +40,8 @@ import static com.github.blueminecraftteam.healthmod.HealthMod.MOD_ID;
 import static net.devtech.arrp.api.RuntimeResourcePack.id;
 
 public class HealthModRRPPregenEntrypoint implements RRPPreGenEntrypoint {
-    private static final Logger LOGGER = LogManager.getLogger();
     public static final RuntimeResourcePack RESOURCE_PACK = RuntimeResourcePack.create(MOD_ID + ":resources");
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public void pregen() {
@@ -65,21 +65,21 @@ public class HealthModRRPPregenEntrypoint implements RRPPreGenEntrypoint {
                 StatusEffect statusEffect = (StatusEffect) field.get(null);
                 String translationKey = statusEffect.getTranslationKey();
                 //lang.status is broken so /shrug
-                lang.translate(translationKey, getFormattedName(translationKey, "effect"));
+                lang.translate(translationKey, this.getFormattedName(translationKey, "effect"));
             } catch (IllegalAccessException exception) {
-                LOGGER.error("[" + WordUtils
-                        .capitalizeFully(MOD_ID) + "] An exception happened while generating the lang file!", exception);
+                LOGGER.error("[" + WordUtils.capitalizeFully(MOD_ID) + "] An exception happened while generating the lang file!", exception);
             }
         }
-        lang.translate("text." + HealthMod.MOD_ID + ".band_aid.1", "Gives you regeneration for 15 seconds.");
-        lang.translate("text." + HealthMod.MOD_ID + ".band_aid.2", "Only has 2 uses.");
-        lang.translate("text." + HealthMod.MOD_ID + ".band_aid.3", "After the first use, you have a 25% chance of getting an infection.");
+        lang.translate("text." + MOD_ID + ".band_aid.1", "Gives you regeneration for 15 seconds.");
+        lang.translate("text." + MOD_ID + ".band_aid.2", "Only has 2 uses.");
+        lang.translate("text." + MOD_ID + ".band_aid.3", "After the first use, you have a 25% chance of getting an infection.");
         lang.translate("death.attack.wound_infection", "%1$s died from a wound infection");
         RESOURCE_PACK.addLang(id(MOD_ID, "en_us"), lang);
         RRPCallback.EVENT.register(resourcePacks -> resourcePacks.add(RESOURCE_PACK));
     }
 
     private String getFormattedName(String translationKey, String type) {
-        return WordUtils.capitalizeFully(translationKey.replace(type + "." + MOD_ID + ".", "").replace("_", " "));
+        return WordUtils.capitalizeFully(translationKey.replace(type + "." + MOD_ID + ".", "")
+                .replace("_", " "));
     }
 }

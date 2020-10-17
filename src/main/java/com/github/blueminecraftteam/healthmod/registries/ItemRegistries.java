@@ -22,7 +22,6 @@ package com.github.blueminecraftteam.healthmod.registries;
 import com.github.blueminecraftteam.healthmod.HealthMod;
 import com.github.blueminecraftteam.healthmod.items.BandAidItem;
 import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
@@ -34,6 +33,6 @@ public class ItemRegistries {
             .rarity(Rarity.UNCOMMON)));
 
     private static Item register(String id, Item item) {
-        return Registry.register(Registry.ITEM, new Identifier(HealthMod.MOD_ID, id), item);
+        return Registry.register(Registry.ITEM, HealthMod.modIdentifier(id), item);
     }
 }

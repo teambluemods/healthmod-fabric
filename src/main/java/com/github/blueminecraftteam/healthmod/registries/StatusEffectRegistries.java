@@ -23,7 +23,6 @@ import com.github.blueminecraftteam.healthmod.HealthMod;
 import com.github.blueminecraftteam.healthmod.statuseffects.WoundInfectionStatusEffect;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class StatusEffectRegistries {
@@ -33,6 +32,6 @@ public class StatusEffectRegistries {
     );
 
     private static StatusEffect register(String id, StatusEffect statusEffect) {
-        return Registry.register(Registry.STATUS_EFFECT, new Identifier(HealthMod.MOD_ID, id), statusEffect);
+        return Registry.register(Registry.STATUS_EFFECT, HealthMod.modIdentifier(id), statusEffect);
     }
 }

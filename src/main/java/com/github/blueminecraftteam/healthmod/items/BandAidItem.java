@@ -56,6 +56,7 @@ public class BandAidItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
             ItemStack itemStack = user.getStackInHand(hand);
+
             if (itemStack.getDamage() == 1) {
                 switch (ThreadLocalRandom.current().nextInt(4)) {
                     case 0:
@@ -72,8 +73,10 @@ public class BandAidItem extends Item {
             } else {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0));
             }
-            itemStack.damage(1, user, (playerEntity) -> playerEntity.sendToolBreakStatus(hand));
+
+            itemStack.damage(1, user, playerEntity -> playerEntity.sendToolBreakStatus(hand));
         }
+
         return super.use(world, user, hand);
     }
 }

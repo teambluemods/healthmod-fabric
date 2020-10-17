@@ -33,6 +33,10 @@ public class HealthMod implements ModInitializer {
             () -> new ItemStack(ItemRegistries.BAND_AID)
     );
 
+    public static Identifier modIdentifier(String path) {
+        return new Identifier(MOD_ID, path);
+    }
+
     @Override
     public void onInitialize() {
     }

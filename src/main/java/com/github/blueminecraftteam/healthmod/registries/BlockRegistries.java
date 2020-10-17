@@ -23,16 +23,15 @@ import com.github.blueminecraftteam.healthmod.HealthMod;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class BlockRegistries {
     private static Block register(String id, Block block) {
         Registry.register(
                 Registry.ITEM,
-                new Identifier(HealthMod.MOD_ID, id),
+                HealthMod.modIdentifier(id),
                 new BlockItem(block, new Item.Settings().group(HealthMod.ITEM_GROUP))
         );
-        return Registry.register(Registry.BLOCK, new Identifier(HealthMod.MOD_ID, id), block);
+        return Registry.register(Registry.BLOCK, HealthMod.modIdentifier(id), block);
     }
 }

@@ -21,22 +21,26 @@ package com.github.blueminecraftteam.healthmod.statuseffects;
 
 import com.github.blueminecraftteam.healthmod.mixins.DamageSourceAccessorMixin;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
 
 public class WoundInfectionStatusEffect extends StatusEffect {
+    private static final DamageSource WOUND_INFECTION_DAMAGE_SOURCE = DamageSourceAccessorMixin.newDamageSource("wound_infection");
+
     public WoundInfectionStatusEffect(StatusEffectType type, int color) {
         super(type, color);
     }
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        entity.damage(DamageSourceAccessorMixin.newDamageSource("wound_infection"), 2.5F);
+        entity.damage(WOUND_INFECTION_DAMAGE_SOURCE, 2.5F);
     }
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         int k = 25 >> amplifier;
+
         if (k > 0) {
             return duration % k == 0;
         } else {
