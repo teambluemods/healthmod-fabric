@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 xf8b.
+ * Copyright (c) 2020 Blue Minecraft Team.
  *
  * This file is part of HealthMod.
  *
@@ -17,7 +17,7 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod.client;
+package com.github.blueminecraftteam.healthmod.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;

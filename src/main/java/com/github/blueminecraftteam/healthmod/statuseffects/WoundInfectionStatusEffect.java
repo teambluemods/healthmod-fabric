@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 xf8b.
+ * Copyright (c) 2020 Blue Minecraft Team.
  *
  * This file is part of HealthMod.
  *
@@ -17,9 +17,9 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod.statuseffects;
+package com.github.blueminecraftteam.healthmod.statuseffects;
 
-import io.github.xf8b.healthmod.mixins.DamageSourceAccessorMixin;
+import com.github.blueminecraftteam.healthmod.mixins.DamageSourceAccessorMixin;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;

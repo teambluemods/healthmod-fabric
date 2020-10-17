@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 xf8b.
+ * Copyright (c) 2020 Blue Minecraft Team.
  *
  * This file is part of HealthMod.
  *
@@ -17,10 +17,10 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod;
+package com.github.blueminecraftteam.healthmod;
 
-import io.github.xf8b.healthmod.registries.ItemRegistries;
-import io.github.xf8b.healthmod.registries.StatusEffectRegistries;
+import com.github.blueminecraftteam.healthmod.registries.ItemRegistries;
+import com.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries;
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RRPPreGenEntrypoint;
 import net.devtech.arrp.api.RuntimeResourcePack;
@@ -36,7 +36,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 
-import static io.github.xf8b.healthmod.HealthMod.MOD_ID;
+import static com.github.blueminecraftteam.healthmod.HealthMod.MOD_ID;
 import static net.devtech.arrp.api.RuntimeResourcePack.id;
 
 public class HealthModRRPPregenEntrypoint implements RRPPreGenEntrypoint {
@@ -67,9 +67,13 @@ public class HealthModRRPPregenEntrypoint implements RRPPreGenEntrypoint {
                 //lang.status is broken so /shrug
                 lang.translate(translationKey, getFormattedName(translationKey, "effect"));
             } catch (IllegalAccessException exception) {
-                LOGGER.error("[" + WordUtils.capitalizeFully(MOD_ID) + "] An exception happened while generating the lang file!", exception);
+                LOGGER.error("[" + WordUtils
+                        .capitalizeFully(MOD_ID) + "] An exception happened while generating the lang file!", exception);
             }
         }
+        lang.translate("text." + HealthMod.MOD_ID + ".band_aid.1", "Gives you regeneration for 15 seconds.");
+        lang.translate("text." + HealthMod.MOD_ID + ".band_aid.2", "Only has 2 uses.");
+        lang.translate("text." + HealthMod.MOD_ID + ".band_aid.3", "After the first use, you have a 25% chance of getting an infection.");
         lang.translate("death.attack.wound_infection", "%1$s died from a wound infection");
         RESOURCE_PACK.addLang(id(MOD_ID, "en_us"), lang);
         RRPCallback.EVENT.register(resourcePacks -> resourcePacks.add(RESOURCE_PACK));

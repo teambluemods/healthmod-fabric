@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 xf8b.
+ * Copyright (c) 2020 Blue Minecraft Team.
  *
  * This file is part of HealthMod.
  *
@@ -17,23 +17,16 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod;
+package com.github.blueminecraftteam.healthmod.mixins;
 
-import io.github.xf8b.healthmod.registries.ItemRegistries;
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
+import net.minecraft.entity.damage.DamageSource;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Invoker;
 
-public class HealthMod implements ModInitializer {
-    public static final String MOD_ID = "healthmod";
-    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
-            new Identifier(MOD_ID, "all"),
-            () -> new ItemStack(ItemRegistries.BAND_AID)
-    );
-
-    @Override
-    public void onInitialize() {
+@Mixin(DamageSource.class)
+public interface DamageSourceAccessorMixin {
+    @Invoker("<init>")
+    static DamageSource newDamageSource(String name) {
+        throw new UnsupportedOperationException();
     }
 }

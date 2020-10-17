@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 xf8b.
+ * Copyright (c) 2020 Blue Minecraft Team.
  *
  * This file is part of HealthMod.
  *
@@ -17,23 +17,23 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod.registries;
+package com.github.blueminecraftteam.healthmod;
 
-import io.github.xf8b.healthmod.HealthMod;
-import io.github.xf8b.healthmod.items.BandAidItem;
-import net.minecraft.item.Item;
+import com.github.blueminecraftteam.healthmod.registries.ItemRegistries;
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
-import net.minecraft.util.registry.Registry;
 
-public class ItemRegistries {
-    public static final Item BAND_AID = register("band_aid", new BandAidItem(new Item.Settings()
-            .group(HealthMod.ITEM_GROUP)
-            .maxCount(16)
-            .maxDamage(2)
-            .rarity(Rarity.UNCOMMON)));
+public class HealthMod implements ModInitializer {
+    public static final String MOD_ID = "healthmod";
+    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
+            new Identifier(MOD_ID, "all"),
+            () -> new ItemStack(ItemRegistries.BAND_AID)
+    );
 
-    private static Item register(String id, Item item) {
-        return Registry.register(Registry.ITEM, new Identifier(HealthMod.MOD_ID, id), item);
+    @Override
+    public void onInitialize() {
     }
 }

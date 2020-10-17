@@ -4,7 +4,7 @@
   "package": "io.github.xf8b.healthmod.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "DamageSourceAccessorMixin"
+    "com.github.blueminecraftteam.healthmod.mixins.DamageSourceAccessorMixin"
   ],
   "client": [],
   "server": [],

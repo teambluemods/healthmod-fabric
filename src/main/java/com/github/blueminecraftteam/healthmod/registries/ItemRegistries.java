@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 xf8b.
+ * Copyright (c) 2020 Blue Minecraft Team.
  *
  * This file is part of HealthMod.
  *
@@ -17,22 +17,23 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.healthmod.registries;
+package com.github.blueminecraftteam.healthmod.registries;
 
-import io.github.xf8b.healthmod.HealthMod;
-import io.github.xf8b.healthmod.statuseffects.WoundInfectionStatusEffect;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectType;
+import com.github.blueminecraftteam.healthmod.HealthMod;
+import com.github.blueminecraftteam.healthmod.items.BandAidItem;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
-public class StatusEffectRegistries {
-    public static final StatusEffect WOUND_INFECTION = register(
-            "wound_infection",
-            new WoundInfectionStatusEffect(StatusEffectType.HARMFUL, 0x00FF00)
-    );
+public class ItemRegistries {
+    public static final Item BAND_AID = register("band_aid", new BandAidItem(new Item.Settings()
+            .group(HealthMod.ITEM_GROUP)
+            .maxCount(16)
+            .maxDamage(2)
+            .rarity(Rarity.UNCOMMON)));
 
-    private static StatusEffect register(String id, StatusEffect statusEffect) {
-        return Registry.register(Registry.STATUS_EFFECT, new Identifier(HealthMod.MOD_ID, id), statusEffect);
+    private static Item register(String id, Item item) {
+        return Registry.register(Registry.ITEM, new Identifier(HealthMod.MOD_ID, id), item);
     }
 }
