@@ -59,7 +59,6 @@ class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
         return ActionResult.SUCCESS
     }
 
-
     override fun onStateReplaced(
         state: BlockState,
         world: World,
@@ -69,6 +68,7 @@ class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
     ) {
         if (state.block != newState.block) {
             val blockEntity = world.getBlockEntity(pos)
+
             if (blockEntity is BandAidBoxBlockEntity) {
                 ItemScatterer.spawn(world, pos, blockEntity)
                 // update comparators

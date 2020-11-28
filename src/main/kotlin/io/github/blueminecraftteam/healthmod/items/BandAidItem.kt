@@ -48,17 +48,17 @@ class BandAidItem(settings: Settings) : Item(settings) {
         if (!world.isClient) {
             val itemStack = user.getStackInHand(hand)
 
-            if (itemStack.damage == 1) {
-                when (ThreadLocalRandom.current().nextInt(4)) {
-                    0, 1, 2 -> user.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0))
-                    3 -> user.addStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 15 * 20, 0))
-                    else -> throw IllegalStateException("bruh")
+            if (user.maxHealth != user.health) {
+                // 1 in 4 chance to have it not apply correct
+                if (ThreadLocalRandom.current().nextInt(0, 3) == 0) {
+                    user.addStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 15 * 20, 0))
+                    user.sendMessage(TranslatableText("text.healthmod.band_aid.failed_apply"), true)
+                } else {
+                    user.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0))
                 }
-            } else {
-                user.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0))
-            }
 
-            itemStack.damage(1, user) { it.sendToolBreakStatus(hand) }
+                itemStack.damage(1, user) { it.sendToolBreakStatus(hand) }
+            }
         }
 
         return super.use(world, user, hand)

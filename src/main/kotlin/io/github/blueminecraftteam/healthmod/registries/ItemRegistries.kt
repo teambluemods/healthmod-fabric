@@ -35,7 +35,7 @@ object ItemRegistries : ModRegistry<Item> {
             Item.Settings()
                 .group(HealthMod.ITEM_GROUP)
                 .maxCount(16)
-                .maxDamage(2)
+                .maxDamage(1)
                 .rarity(Rarity.UNCOMMON)
         )
     )

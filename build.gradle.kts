@@ -53,7 +53,7 @@ dependencies {
     modRuntime("user11681:noauth:+")
 
     // yes
-    modImplementation("io.github.prospector:modmenu:${property("modmenu_version")}")
+    modImplementation("io.github.prospector:modmenu:${property("mod_menu_version")}")
 
     // config
     modApi("me.shedaniel.cloth:config-2:${property("cloth_config_version")}") {

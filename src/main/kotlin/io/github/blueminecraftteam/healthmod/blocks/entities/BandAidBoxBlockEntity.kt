@@ -22,6 +22,7 @@ package io.github.blueminecraftteam.healthmod.blocks.entities
 import io.github.blueminecraftteam.healthmod.client.gui.screen.BandAidBoxScreenHandler
 import io.github.blueminecraftteam.healthmod.inventories.ImplementedInventory
 import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
+import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -48,13 +49,19 @@ class BandAidBoxBlockEntity :
     override fun fromTag(state: BlockState, tag: CompoundTag) {
         super.fromTag(state, tag)
 
+        if (!tag.contains("initial")) {
+            for (i in 0 until 6) {
+                this.items[i] = ItemRegistries.BAND_AID.defaultStack
+            }
+        }
+
         Inventories.fromTag(tag, this.items)
     }
 
     override fun toTag(tag: CompoundTag): CompoundTag {
         Inventories.toTag(tag, this.items)
 
-        return super.toTag(tag)
+        return super.toTag(tag).apply { putBoolean("initial", false) }
     }
 
     override fun markDirty() {}

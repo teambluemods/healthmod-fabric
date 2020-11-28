@@ -81,8 +81,8 @@ interface ImplementedInventory : Inventory {
 
     /**
      * Replaces the current stack in an inventory slot with the provided stack.
-     * @param slot  The inventory slot of which to replace the itemstack.
-     * @param stack The replacing itemstack. If the stack is too big for
+     * @param slot  The inventory slot of which to replace the item stack.
+     * @param stack The replacing item stack. If the stack is too big for
      * this inventory ([Inventory.getMaxCountPerStack]),
      * it gets resized to this inventory's maximum amount.
      */

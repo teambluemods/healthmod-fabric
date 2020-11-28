@@ -124,8 +124,9 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     itemGroup(HealthMod.id("all"), "HealthMod")
 
     text("band_aid.1", "Gives you regeneration for 15 seconds.")
-    text("band_aid.2", "Only has 2 uses.")
-    text("band_aid.3", "After the first use, you have a 25% chance of getting an infection.")
+    text("band_aid.2", "Can only be used once.")
+    text("band_aid.3", "You have a 25% chance of getting an infection.")
+    text("band_aid.failed_apply", "Uh oh, you didn't put the band aid on correctly!")
 
     configText("title", "HealthMod Config")
 

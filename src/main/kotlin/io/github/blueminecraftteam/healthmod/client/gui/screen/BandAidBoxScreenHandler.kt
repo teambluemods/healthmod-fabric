@@ -28,7 +28,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
 
-
 class BandAidBoxScreenHandler(
     syncId: Int,
     playerInventory: PlayerInventory,
@@ -56,11 +55,11 @@ class BandAidBoxScreenHandler(
         }
     }
 
-    constructor(syncId: Int, playerInventory: PlayerInventory) : this(syncId, playerInventory, SimpleInventory(9))
+    constructor(syncId: Int, playerInventory: PlayerInventory) : this(syncId, playerInventory, SimpleInventory(6))
 
     override fun canUse(player: PlayerEntity) = inventory.canPlayerUse(player)
 
-    override fun transferSlot(player: PlayerEntity?, invSlot: Int): ItemStack? {
+    override fun transferSlot(player: PlayerEntity, invSlot: Int): ItemStack? {
         var newStack = ItemStack.EMPTY
         val slot: Slot? = slots[invSlot]
 

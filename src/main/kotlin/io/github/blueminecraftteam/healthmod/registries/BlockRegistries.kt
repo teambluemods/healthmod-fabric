@@ -39,6 +39,7 @@ object BlockRegistries : ModRegistry<Block> {
         BandAidBoxBlock(
             AbstractBlock.Settings.of(Material.WOOL, MaterialColor.WHITE)
                 .nonOpaque()
+                .dropsNothing()
                 .sounds(BlockSoundGroup.WOOL)
                 .strength(0F, 0F)
         )
