@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "healthmod-datagen",
+  "version": "${version}",
+  "name": "HealthMod Data Generation",
+  "description": "fake mod for data generation hahayes",
+  "authors": [
+    "air"
+  ],
+  "contributors": [
+    "no"
+  ],
+  "contact": {
+    "website": "https://no.you/bruh?there=is&no=website",
+    "repo": "https://github.com/blueminecraftteam/HealthMod"
+  },
+  "license": "GPL-3.0-or-later",
+  "environment": "*",
+  "entrypoints": {
+    "preLaunch": [
+      "io.github.blueminecraftteam.healthmod.datagen.HealthModDataGeneration::INSTANCE"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.10.8",
+    "fabric": "*",
+    "fabric-language-kotlin": "*",
+    "minecraft": "1.16.4"
+  }
+}

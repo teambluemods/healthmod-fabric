@@ -7,30 +7,31 @@
   "authors": [
     "Blue Minecraft Team"
   ],
+  "contributors": [
+    "xf8b"
+  ],
   "contact": {
     "website": "https://www.curseforge.com/minecraft/mc-mods/healthmod",
     "repo": "https://github.com/blueminecraftteam/HealthMod"
   },
-  "license": "GPL-3.0",
+  "license": "GPL-3.0-or-later",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.github.blueminecraftteam.healthmod.HealthMod"
+      "io.github.blueminecraftteam.healthmod.HealthMod::INSTANCE"
     ],
     "client": [
-      "com.github.blueminecraftteam.healthmod.client.HealthModClient"
-    ],
-    "rrp:pregen": [
-      "com.github.blueminecraftteam.healthmod.HealthModRRPPregenEntrypoint"
+      "io.github.blueminecraftteam.healthmod.client.HealthModClient::INSTANCE"
     ]
   },
   "mixins": [
     "healthmod.mixins.json"
   ],
   "depends": {
-    "minecraft": "1.16.x",
+    "fabricloader": ">=0.10.8",
     "fabric": "*",
-    "fabricloader": ">0.10.1+build.209"
+    "fabric-language-kotlin": "*",
+    "minecraft": "1.16.4"
   }
 }

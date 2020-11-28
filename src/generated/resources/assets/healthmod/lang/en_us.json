@@ -1,0 +1,9 @@
+{
+  "item.healthmod.band_aid": "Band Aid",
+  "effect.healthmod.wound_infection": "Wound Infection",
+  "itemGroup.healthmod.all": "HealthMod",
+  "text.healthmod.band_aid.1": "Gives you regeneration for 15 seconds.",
+  "text.healthmod.band_aid.2": "Only has 2 uses.",
+  "text.healthmod.band_aid.3": "After the first use, you have a 25% chance of getting an infection.",
+  "death.attack.wound_infection": "%1$s died from a wound infection"
+}

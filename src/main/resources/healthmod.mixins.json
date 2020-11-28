@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.github.blueminecraftteam.healthmod.mixins",
+  "package": "io.github.blueminecraftteam.healthmod.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "DamageSourceAccessorMixin"
