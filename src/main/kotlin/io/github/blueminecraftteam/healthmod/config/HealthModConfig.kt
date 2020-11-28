@@ -23,6 +23,7 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config
 
+// TODO: actual config
 @Config(name = HealthMod.MOD_ID)
 class HealthModConfig : ConfigData {
     val placeholder: Boolean = true
