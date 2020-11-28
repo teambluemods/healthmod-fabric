@@ -40,6 +40,10 @@ class LanguageFileDsl {
         json.addProperty(translationKey, translated)
     }
 
+    fun text(name: String, translated: String) = simple("text.${HealthMod.MOD_ID}.$name", translated)
+
+    fun configText(name: String, translated: String) = simple("text.autoconfig.${HealthMod.MOD_ID}.$name", translated)
+
     fun item(item: Item) {
         json.addProperty(
             item.translationKey,
@@ -119,8 +123,11 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
 
     itemGroup(HealthMod.id("all"), "HealthMod")
 
-    simple("text.${HealthMod.MOD_ID}.band_aid.1", "Gives you regeneration for 15 seconds.")
-    simple("text.${HealthMod.MOD_ID}.band_aid.2", "Only has 2 uses.")
-    simple("text.${HealthMod.MOD_ID}.band_aid.3", "After the first use, you have a 25% chance of getting an infection.")
+    text("band_aid.1", "Gives you regeneration for 15 seconds.")
+    text("band_aid.2", "Only has 2 uses.")
+    text("band_aid.3", "After the first use, you have a 25% chance of getting an infection.")
+    configText("placeholder", "Placeholder")
+    configText("bean", "Bean")
+    configText("type", "Type")
     simple("death.attack.wound_infection", "%1\$s died from a wound infection")
 })

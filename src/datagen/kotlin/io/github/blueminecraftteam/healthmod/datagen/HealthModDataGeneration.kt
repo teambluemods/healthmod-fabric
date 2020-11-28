@@ -19,8 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.datagen
 
-import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
-import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
+import io.github.blueminecraftteam.healthmod.HealthMod
 import me.shedaniel.cloth.api.datagen.v1.DataGeneratorHandler
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint
 import org.apache.logging.log4j.LogManager
@@ -34,11 +33,10 @@ object HealthModDataGeneration : PreLaunchEntrypoint {
      * Runs data generation.
      */
     override fun onPreLaunch() {
+        HealthMod.initRegistries()
+
         try {
             val handler = DataGeneratorHandler.create(Paths.get("../src/generated/resources"))
-
-            ItemRegistries.init()
-            StatusEffectRegistries.init()
 
             English.generate(handler.simple)
             ModelDataGeneration.generate(handler.modelStates)

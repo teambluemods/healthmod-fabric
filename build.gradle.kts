@@ -34,6 +34,8 @@ repositories {
     maven("https://dl.bintray.com/user11681/maven")
     // for cloth api
     maven("https://dl.bintray.com/shedaniel/cloth/")
+
+    jcenter()
 }
 
 dependencies {
@@ -52,6 +54,16 @@ dependencies {
 
     // yes
     modImplementation("io.github.prospector:modmenu:${property("modmenu_version")}")
+
+    // config
+    modApi("me.shedaniel.cloth:config-2:${property("cloth_config_version")}") {
+        exclude(group = "net.fabricmc.fabric-api")
+    }
+    include("me.shedaniel.cloth:config-2:${property("cloth_config_version")}")
+    modApi("me.sargunvohra.mcmods:autoconfig1u:${property("auto_config_version")}") {
+        exclude(group = "net.fabricmc.fabric-api")
+    }
+    include("me.sargunvohra.mcmods:autoconfig1u:${property("auto_config_version")}")
 
     // datagen
     modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")

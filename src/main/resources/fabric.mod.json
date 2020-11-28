@@ -3,7 +3,7 @@
   "id": "healthmod",
   "version": "${version}",
   "name": "HealthMod",
-  "description": "A mod which adds health related items.",
+  "description": "a mod which adds health related items",
   "authors": [
     "Blue Minecraft Team"
   ],
@@ -11,8 +11,9 @@
     "xf8b"
   ],
   "contact": {
-    "website": "https://www.curseforge.com/minecraft/mc-mods/healthmod",
-    "repo": "https://github.com/blueminecraftteam/HealthMod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/healthmod/",
+    "repo": "https://github.com/blueminecraftteam/HealthMod/",
+    "issues": "https://github.com/blueminecraftteam/HealthMod/issues/"
   },
   "license": "GPL-3.0-or-later",
   "icon": "icon.png",
@@ -23,6 +24,9 @@
     ],
     "client": [
       "io.github.blueminecraftteam.healthmod.client.HealthModClient::INSTANCE"
+    ],
+    "modmenu": [
+      "io.github.blueminecraftteam.healthmod.api.HealthModModMenuApiImpl"
     ]
   },
   "mixins": [
@@ -33,5 +37,8 @@
     "fabric": "*",
     "fabric-language-kotlin": "*",
     "minecraft": "1.16.4"
+  },
+  "suggests": {
+    "modmenu": "1.14.13+build.21"
   }
 }

@@ -19,7 +19,10 @@
 
 package io.github.blueminecraftteam.healthmod
 
+import io.github.blueminecraftteam.healthmod.config.HealthModConfig
 import io.github.blueminecraftteam.healthmod.registries.*
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
+import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.item.ItemGroup
@@ -36,7 +39,17 @@ object HealthMod : ModInitializer {
     fun id(path: String) = Identifier(MOD_ID, path)
 
     override fun onInitialize() {
-        // to force load and register
+        AutoConfig.register(HealthModConfig::class.java, ::Toml4jConfigSerializer)
+
+        initRegistries()
+    }
+
+    /**
+     * Force loads and registers all items, blocks, etc.
+     *
+     * This is to work around it not being registered until the class has been referenced.
+     */
+    fun initRegistries() {
         ItemRegistries.init()
         BlockRegistries.init()
         BlockEntityTypeRegistries.init()

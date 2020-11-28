@@ -17,19 +17,21 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.api
+package io.github.blueminecraftteam.healthmod.config
 
-import io.github.blueminecraftteam.healthmod.config.HealthModConfig
-import io.github.prospector.modmenu.api.ConfigScreenFactory
-import io.github.prospector.modmenu.api.ModMenuApi
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
-import net.fabricmc.api.EnvType
-import net.fabricmc.api.Environment
+import io.github.blueminecraftteam.healthmod.HealthMod
+import me.sargunvohra.mcmods.autoconfig1u.ConfigData
+import me.sargunvohra.mcmods.autoconfig1u.annotation.Config
 
+@Config(name = HealthMod.MOD_ID)
+class HealthModConfig : ConfigData {
+    val placeholder: Boolean = true
+    val bean: Int = 2
+    val type: Type = Type.DEFAULT
 
-@Environment(EnvType.CLIENT)
-class HealthModModMenuApiImpl : ModMenuApi {
-    override fun getModConfigScreenFactory() = ConfigScreenFactory { parent ->
-        AutoConfig.getConfigScreen(HealthModConfig::class.java, parent).get()
+    enum class Type {
+        DEFAULT,
+        NOT_DEFAULT,
+        INSANE;
     }
 }

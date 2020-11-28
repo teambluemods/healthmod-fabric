@@ -45,7 +45,9 @@ object BlockRegistries : ModRegistry<Block> {
     )
 
     override fun register(id: String, toRegister: Block): Block {
-        Registry.register(Registry.ITEM, id, BlockItem(toRegister, Item.Settings().group(HealthMod.ITEM_GROUP)))
+        ItemRegistries.register(id, BlockItem(toRegister, Item.Settings().group(HealthMod.ITEM_GROUP)))
+            .run { this as BlockItem }
+            .apply { appendBlocks(Item.BLOCK_ITEMS, this) }
 
         return super.register(id, toRegister)
     }
