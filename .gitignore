@@ -118,4 +118,4 @@ run/
 !gradle-wrapper.jar
 
 src/test/
-src/generated/resources/.cache
+src/generated/resources/.cache/

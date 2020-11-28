@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
+
 package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.statuseffects.WoundInfectionStatusEffect
