@@ -21,9 +21,11 @@ package io.github.blueminecraftteam.healthmod.datagen
 
 import com.google.gson.JsonObject
 import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
 import me.shedaniel.cloth.api.datagen.v1.SimpleData
+import net.minecraft.block.Block
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.item.Item
 import net.minecraft.util.Identifier
@@ -44,6 +46,18 @@ class LanguageFileDsl {
             WordUtils.capitalizeFully(
                 Registry.ITEM
                     .getId(item)
+                    .path
+                    .replace("_", " ")
+            )
+        )
+    }
+
+    fun block(block: Block) {
+        json.addProperty(
+            block.translationKey,
+            WordUtils.capitalizeFully(
+                Registry.BLOCK
+                    .getId(block)
                     .path
                     .replace("_", " ")
             )
@@ -85,6 +99,14 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
         .map { it.get(itemRegistriesClass.objectInstance!!) }
         .filterIsInstance<Item>()) {
         item(item)
+    }
+
+    val blockRegistriesClass = BlockRegistries::class
+
+    for (block in blockRegistriesClass.memberProperties
+        .map { it.get(blockRegistriesClass.objectInstance!!) }
+        .filterIsInstance<Block>()) {
+        block(block)
     }
 
     val statusEffectRegistriesClass = StatusEffectRegistries::class

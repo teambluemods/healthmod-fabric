@@ -17,18 +17,17 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.client
+package io.github.blueminecraftteam.healthmod.registries
 
-import io.github.blueminecraftteam.healthmod.client.gui.screen.BandAidBoxScreen
-import io.github.blueminecraftteam.healthmod.registries.ScreenHandlerTypeRegistries
-import net.fabricmc.api.ClientModInitializer
-import net.fabricmc.api.EnvType
-import net.fabricmc.api.Environment
-import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry
+import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.client.gui.screen.BandAidBoxScreenHandler
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry
+import net.minecraft.screen.ScreenHandlerType
+import net.minecraft.util.registry.Registry
 
-@Environment(EnvType.CLIENT)
-object HealthModClient : ClientModInitializer {
-    override fun onInitializeClient() {
-        ScreenRegistry.register(ScreenHandlerTypeRegistries.BAND_AID_BOX, ::BandAidBoxScreen)
-    }
+object ScreenHandlerTypeRegistries : ModRegistry<ScreenHandlerType<*>> {
+    override val registry: Registry<ScreenHandlerType<*>>
+        get() = Registry.SCREEN_HANDLER
+
+    val BAND_AID_BOX = ScreenHandlerRegistry.registerSimple(HealthMod.id("band_aid_box"), ::BandAidBoxScreenHandler)
 }

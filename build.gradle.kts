@@ -50,6 +50,9 @@ dependencies {
     // yeet mojank console spam
     modRuntime("user11681:noauth:+")
 
+    // yes
+    modImplementation("io.github.prospector:modmenu:${property("modmenu_version")}")
+
     // datagen
     modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")
     include("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")

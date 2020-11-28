@@ -19,28 +19,28 @@
 
 package io.github.blueminecraftteam.healthmod
 
-import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
-import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
+import io.github.blueminecraftteam.healthmod.registries.*
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.util.Identifier
 
-class HealthMod : ModInitializer {
+object HealthMod : ModInitializer {
+    const val MOD_ID = "healthmod"
+    val ITEM_GROUP: ItemGroup = FabricItemGroupBuilder
+        .create(id("all"))
+        .icon { ItemStack(ItemRegistries.BAND_AID) }
+        .build()
+
+    fun id(path: String) = Identifier(MOD_ID, path)
+
     override fun onInitialize() {
         // to force load and register
         ItemRegistries.init()
+        BlockRegistries.init()
+        BlockEntityTypeRegistries.init()
+        ScreenHandlerTypeRegistries.init()
         StatusEffectRegistries.init()
-    }
-
-    companion object {
-        const val MOD_ID = "healthmod"
-        val ITEM_GROUP: ItemGroup = FabricItemGroupBuilder
-            .create(id("all"))
-            .icon { ItemStack(ItemRegistries.BAND_AID) }
-            .build()
-
-        fun id(path: String) = Identifier(MOD_ID, path)
     }
 }
