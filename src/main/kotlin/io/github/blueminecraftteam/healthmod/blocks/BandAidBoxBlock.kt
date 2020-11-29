@@ -34,7 +34,6 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-
 class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
     override fun createBlockEntity(world: BlockView): BlockEntity = BandAidBoxBlockEntity()
 

@@ -27,10 +27,9 @@ import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
 import net.minecraft.world.World
 
-class VaccineItem(settings: Settings?) : Item(settings) {
+class VaccineItem(settings: Settings) : Item(settings) {
     @Environment(EnvType.CLIENT)
     override fun appendTooltip(stack: ItemStack, world: World?, tooltip: List<Text>, context: TooltipContext) {
         //TODO
     }
-
 }
