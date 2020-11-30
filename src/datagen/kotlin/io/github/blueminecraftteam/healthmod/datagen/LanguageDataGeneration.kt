@@ -133,6 +133,8 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     text("band_aid.3", "You have a 25% chance of getting an infection.")
     text("band_aid.failed_apply", "Uh oh, you didn't put the band aid on correctly!")
 
+    text("antibiotics.resistant_bacteria", "Uh oh, the bacteria has become resistant!")
+
     configText("title", "HealthMod Config")
 
     configText("option.placeholder", "Placeholder")
@@ -142,4 +144,5 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     override(BlockRegistries.BAND_AID_BOX.translationKey, "Box of Band Aids")
 
     simple("death.attack.wound_infection", "%1\$s died from a wound infection")
+    simple("death.attack.wound_infection.player", "%1\$s died from a wound infection")
 })

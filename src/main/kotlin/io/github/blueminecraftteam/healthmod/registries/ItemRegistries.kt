@@ -20,6 +20,7 @@
 package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.items.AntibioticsItem
 import io.github.blueminecraftteam.healthmod.items.BandAidItem
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.item.FoodComponent
@@ -41,6 +42,11 @@ object ItemRegistries : ModRegistry<Item> {
                 .maxDamage(1)
                 .rarity(Rarity.UNCOMMON)
         )
+    )
+
+    val ANTIBIOTICS = register(
+        id = "antibiotics",
+        toRegister = AntibioticsItem(Item.Settings().group(HealthMod.ITEM_GROUP).maxCount(16))
     )
 
     val BROCCOLI = register(

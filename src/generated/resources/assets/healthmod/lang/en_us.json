@@ -1,4 +1,5 @@
 {
+  "item.healthmod.antibiotics": "Antibiotics",
   "item.healthmod.band_aid": "Band Aid",
   "item.healthmod.broccoli": "Broccoli",
   "effect.healthmod.healthy": "Healthy",
@@ -8,10 +9,12 @@
   "text.healthmod.band_aid.2": "Can only be used once.",
   "text.healthmod.band_aid.3": "You have a 25% chance of getting an infection.",
   "text.healthmod.band_aid.failed_apply": "Uh oh, you didn't put the band aid on correctly!",
+  "text.healthmod.antibiotics.resistant_bacteria": "Uh oh, the bacteria has become resistant!",
   "text.autoconfig.healthmod.title": "HealthMod Config",
   "text.autoconfig.healthmod.option.placeholder": "Placeholder",
   "text.autoconfig.healthmod.option.bean": "Bean",
   "text.autoconfig.healthmod.option.type": "Type",
   "block.healthmod.band_aid_box": "Box of Band Aids",
-  "death.attack.wound_infection": "%1$s died from a wound infection"
+  "death.attack.wound_infection": "%1$s died from a wound infection",
+  "death.attack.wound_infection.player": "%1$s died from a wound infection"
 }
