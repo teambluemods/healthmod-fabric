@@ -6,7 +6,8 @@
   "mixins": [
     "DamageSourceAccessorMixin",
     "PlayerEntityMixin",
-    "SplashTextResourceSupplierMixin"
+    "SplashTextResourceSupplierMixin",
+    "StatusEffectAccessorMixin"
   ],
   "client": [],
   "server": [],

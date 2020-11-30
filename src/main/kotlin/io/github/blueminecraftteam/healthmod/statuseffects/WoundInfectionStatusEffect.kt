@@ -36,6 +36,6 @@ class WoundInfectionStatusEffect(type: StatusEffectType, color: Int) : StatusEff
     }
 
     companion object {
-        private val DAMAGE_SOURCE = DamageSourceAccessorMixin.newDamageSource("wound_infection")
+        private val DAMAGE_SOURCE = DamageSourceAccessorMixin.healthmod_newDamageSource("wound_infection")
     }
 }

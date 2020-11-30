@@ -49,8 +49,10 @@ class BandAidItem(settings: Settings) : Item(settings) {
             val itemStack = user.getStackInHand(hand)
 
             if (user.maxHealth != user.health) {
-                // 1 in 4 chance to have it not apply correct
-                if (ThreadLocalRandom.current().nextInt(0, 3) == 0) {
+                val chance = if (user.hasStatusEffect(StatusEffectRegistries.HEALTHY)) 10 else 4
+
+                // 1 in 4 chance (or 1 in 10 if healthy) to have it not apply correct
+                if (ThreadLocalRandom.current().nextInt(1, chance + 1) == 1) {
                     user.addStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 15 * 20, 0))
                     user.sendMessage(TranslatableText("text.healthmod.band_aid.failed_apply"), true)
                 } else {

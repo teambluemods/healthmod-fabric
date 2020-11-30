@@ -21,10 +21,13 @@ package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.items.BandAidItem
+import net.minecraft.entity.effect.StatusEffectInstance
+import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
 import net.minecraft.util.Rarity
 import net.minecraft.util.registry.Registry
 
+@Suppress("UNUSED")
 object ItemRegistries : ModRegistry<Item> {
     override val registry: Registry<Item>
         get() = Registry.ITEM
@@ -37,6 +40,21 @@ object ItemRegistries : ModRegistry<Item> {
                 .maxCount(16)
                 .maxDamage(1)
                 .rarity(Rarity.UNCOMMON)
+        )
+    )
+
+    val BROCCOLI = register(
+        id = "broccoli",
+        toRegister = Item(
+            Item.Settings()
+                .group(HealthMod.ITEM_GROUP)
+                .food(
+                    FoodComponent.Builder()
+                        .hunger(3)
+                        .saturationModifier(2F)
+                        .statusEffect(StatusEffectInstance(StatusEffectRegistries.HEALTHY, 60 * 20), 1F)
+                        .build()
+                )
         )
     )
 }

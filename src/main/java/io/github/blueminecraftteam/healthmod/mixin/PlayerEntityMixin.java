@@ -44,7 +44,13 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", at = @At("TAIL"))
     private void applyInfectedOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (cir.getReturnValueZ() && amount > 2F) {
-            if (ThreadLocalRandom.current().nextInt(0, 10) == 0) {
+            int infectionChance = 10;
+
+            if (this.hasStatusEffect(StatusEffectRegistries.INSTANCE.getHEALTHY())) {
+                infectionChance = 25;
+            }
+
+            if (ThreadLocalRandom.current().nextInt(1, infectionChance + 1) == 1) {
                 // cursed getter name
                 this.addStatusEffect(new StatusEffectInstance(StatusEffectRegistries.INSTANCE.getWOUND_INFECTION(), 15 * 20, 0));
             }

@@ -19,11 +19,13 @@
 
 package io.github.blueminecraftteam.healthmod.registries
 
+import io.github.blueminecraftteam.healthmod.mixin.StatusEffectAccessorMixin
 import io.github.blueminecraftteam.healthmod.statuseffects.WoundInfectionStatusEffect
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectType
 import net.minecraft.util.registry.Registry
 
+@Suppress("UNUSED")
 object StatusEffectRegistries : ModRegistry<StatusEffect> {
     override val registry: Registry<StatusEffect>
         get() = Registry.STATUS_EFFECT
@@ -31,5 +33,10 @@ object StatusEffectRegistries : ModRegistry<StatusEffect> {
     val WOUND_INFECTION = register(
         id = "wound_infection",
         toRegister = WoundInfectionStatusEffect(StatusEffectType.HARMFUL, 0x00FF00)
+    )
+
+    val HEALTHY = register(
+        id = "healthy",
+        toRegister = StatusEffectAccessorMixin.healthmod_createStatusEffect(StatusEffectType.BENEFICIAL, 0x67eb34)
     )
 }

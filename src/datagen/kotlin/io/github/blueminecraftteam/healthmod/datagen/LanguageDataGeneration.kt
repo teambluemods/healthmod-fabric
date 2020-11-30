@@ -40,6 +40,11 @@ class LanguageFileDsl {
         json.addProperty(translationKey, translated)
     }
 
+    fun override(translationKey: String, translated: String) {
+        json.remove(translationKey)
+        json.addProperty(translationKey, translated)
+    }
+
     fun text(name: String, translated: String) = simple("text.${HealthMod.MOD_ID}.$name", translated)
 
     fun configText(name: String, translated: String) = simple("text.autoconfig.${HealthMod.MOD_ID}.$name", translated)
@@ -133,6 +138,8 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     configText("option.placeholder", "Placeholder")
     configText("option.bean", "Bean")
     configText("option.type", "Type")
+
+    override(BlockRegistries.BAND_AID_BOX.translationKey, "Box of Band Aids")
 
     simple("death.attack.wound_infection", "%1\$s died from a wound infection")
 })

@@ -20,11 +20,14 @@
 package io.github.blueminecraftteam.healthmod.blocks
 
 import io.github.blueminecraftteam.healthmod.blocks.entities.BandAidBoxBlockEntity
+import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
 import net.minecraft.block.entity.BlockEntity
+import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
@@ -56,6 +59,22 @@ class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
         }
 
         return ActionResult.SUCCESS
+    }
+
+    override fun onPlaced(
+        world: World,
+        pos: BlockPos,
+        state: BlockState,
+        placer: LivingEntity?,
+        itemStack: ItemStack
+    ) {
+        val blockEntity = world.getBlockEntity(pos)
+
+        if (blockEntity is BandAidBoxBlockEntity) {
+            for (i in 0 until 6) {
+                blockEntity.setStack(i, ItemRegistries.BAND_AID.defaultStack)
+            }
+        }
     }
 
     override fun onStateReplaced(

@@ -1,6 +1,7 @@
 {
   "item.healthmod.band_aid": "Band Aid",
-  "block.healthmod.band_aid_box": "Band Aid Box",
+  "item.healthmod.broccoli": "Broccoli",
+  "effect.healthmod.healthy": "Healthy",
   "effect.healthmod.wound_infection": "Wound Infection",
   "itemGroup.healthmod.all": "HealthMod",
   "text.healthmod.band_aid.1": "Gives you regeneration for 15 seconds.",
@@ -11,5 +12,6 @@
   "text.autoconfig.healthmod.option.placeholder": "Placeholder",
   "text.autoconfig.healthmod.option.bean": "Bean",
   "text.autoconfig.healthmod.option.type": "Type",
+  "block.healthmod.band_aid_box": "Box of Band Aids",
   "death.attack.wound_infection": "%1$s died from a wound infection"
 }
