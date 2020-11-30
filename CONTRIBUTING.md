@@ -1,4 +1,4 @@
-# Contributing to MythosCraft
+# Contributing to HealthMod
 
 Please see [the code of conduct](./CODE_OF_CONDUCT.md) before contributing.
 
