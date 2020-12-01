@@ -61,6 +61,4 @@ object BlockRegistries : ModRegistry<Block> {
 
         return register(id, toRegister)
     }
-
-    override fun register(id: String, toRegister: Block) = register(id, toRegister, customItemProperties = null)
 }
