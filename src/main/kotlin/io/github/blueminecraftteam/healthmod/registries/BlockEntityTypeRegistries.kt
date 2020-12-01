@@ -28,7 +28,7 @@ object BlockEntityTypeRegistries : ModRegistry<BlockEntityType<*>> {
         get() = Registry.BLOCK_ENTITY_TYPE
 
     val BAND_AID_BOX = register(
-        "band_aid_box",
-        BlockEntityType.Builder.create(::BandAidBoxBlockEntity, BlockRegistries.BAND_AID_BOX).build(null)
+        id = "band_aid_box",
+        toRegister = BlockEntityType.Builder.create(::BandAidBoxBlockEntity, BlockRegistries.BAND_AID_BOX).build(null)
     )
 }

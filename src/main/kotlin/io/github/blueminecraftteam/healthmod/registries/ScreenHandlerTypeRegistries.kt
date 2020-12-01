@@ -29,5 +29,6 @@ object ScreenHandlerTypeRegistries : ModRegistry<ScreenHandlerType<*>> {
     override val registry: Registry<ScreenHandlerType<*>>
         get() = Registry.SCREEN_HANDLER
 
-    val BAND_AID_BOX = ScreenHandlerRegistry.registerSimple(HealthMod.id("band_aid_box"), ::BandAidBoxScreenHandler)
+    val BAND_AID_BOX: ScreenHandlerType<BandAidBoxScreenHandler> =
+        ScreenHandlerRegistry.registerSimple(HealthMod.id("band_aid_box"), ::BandAidBoxScreenHandler)
 }

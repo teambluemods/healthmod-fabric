@@ -28,6 +28,7 @@ import net.minecraft.block.MaterialColor
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.sound.BlockSoundGroup
+import net.minecraft.util.Rarity
 import net.minecraft.util.registry.Registry
 
 object BlockRegistries : ModRegistry<Block> {
@@ -35,21 +36,31 @@ object BlockRegistries : ModRegistry<Block> {
         get() = Registry.BLOCK
 
     val BAND_AID_BOX = register(
-        "band_aid_box",
-        BandAidBoxBlock(
+        id = "band_aid_box",
+        toRegister = BandAidBoxBlock(
             AbstractBlock.Settings.of(Material.WOOL, MaterialColor.WHITE)
                 .nonOpaque()
                 .dropsNothing()
                 .sounds(BlockSoundGroup.WOOL)
                 .strength(0F, 0F)
-        )
+        ),
+        customItemProperties = Item.Settings()
+            .group(HealthMod.ITEM_GROUP)
+            .maxCount(1)
+            .rarity(Rarity.UNCOMMON)
     )
 
-    override fun register(id: String, toRegister: Block): Block {
-        ItemRegistries.register(id, BlockItem(toRegister, Item.Settings().group(HealthMod.ITEM_GROUP)))
+    private fun register(id: String, toRegister: Block, customItemProperties: Item.Settings? = null): Block {
+        ItemRegistries
+            .register(
+                id,
+                BlockItem(toRegister, customItemProperties ?: Item.Settings().group(HealthMod.ITEM_GROUP))
+            )
             .run { this as BlockItem }
             .apply { appendBlocks(Item.BLOCK_ITEMS, this) }
 
-        return super.register(id, toRegister)
+        return register(id, toRegister)
     }
+
+    override fun register(id: String, toRegister: Block) = register(id, toRegister, customItemProperties = null)
 }
