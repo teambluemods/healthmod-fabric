@@ -26,14 +26,13 @@ import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.item.ItemGroup
-import net.minecraft.item.ItemStack
 import net.minecraft.util.Identifier
 
 object HealthMod : ModInitializer {
     const val MOD_ID = "healthmod"
     val ITEM_GROUP: ItemGroup = FabricItemGroupBuilder
         .create(id("all"))
-        .icon { ItemStack(ItemRegistries.BAND_AID) }
+        .icon { ItemRegistries.BAND_AID.defaultStack }
         .build()
 
     fun id(path: String) = Identifier(MOD_ID, path)

@@ -31,6 +31,7 @@ import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.Rarity
 import net.minecraft.util.registry.Registry
 
+@Suppress("UNUSED")
 object BlockRegistries : ModRegistry<Block> {
     override val registry: Registry<Block>
         get() = Registry.BLOCK

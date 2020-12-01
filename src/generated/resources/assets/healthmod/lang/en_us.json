@@ -11,7 +11,7 @@
   "text.healthmod.band_aid.failed_apply": "Uh oh, you didn't put the band aid on correctly!",
   "text.healthmod.antibiotics.resistant_bacteria": "Uh oh, the bacteria has become resistant!",
   "text.autoconfig.healthmod.title": "HealthMod Config",
-  "text.autoconfig.healthmod.category.wound_infection": "Wound Infection",
+  "text.autoconfig.healthmod.category.woundInfection": "Wound Infection",
   "text.autoconfig.healthmod.category.other": "Other",
   "text.autoconfig.healthmod.option.bacterialResistanceChance": "Bacterial Resistance Chance",
   "text.autoconfig.healthmod.option.bacterialResistanceChance.@Tooltip": "Chance for antibiotics to fail and make harmful effects stronger (1/config value)",

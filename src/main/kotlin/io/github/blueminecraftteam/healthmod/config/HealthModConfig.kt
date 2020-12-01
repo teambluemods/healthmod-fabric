@@ -26,28 +26,44 @@ import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry
+import org.apache.logging.log4j.LogManager
+import kotlin.reflect.KMutableProperty1
+import kotlin.reflect.full.memberProperties
 
 @Config(name = HealthMod.MOD_ID)
 class HealthModConfig : ConfigData {
-    @ConfigEntry.Category("wound_infection")
+    @ConfigEntry.Category("woundInfection")
     @ConfigEntry.Gui.Tooltip
     var bandAidInfectionChance = 4
 
-    @ConfigEntry.Category("wound_infection")
+    @ConfigEntry.Category("woundInfection")
     @ConfigEntry.Gui.Tooltip
     var bandAidInfectionChanceWhenHealthy = 10
 
-    @ConfigEntry.Category("wound_infection")
+    @ConfigEntry.Category("woundInfection")
     @ConfigEntry.Gui.Tooltip
     var damagedInfectionChance = 10
 
-    @ConfigEntry.Category("wound_infection")
+    @ConfigEntry.Category("woundInfection")
     @ConfigEntry.Gui.Tooltip
     var damagedInfectionChanceWhenHealthy = 25
 
     @ConfigEntry.Category("other")
     @ConfigEntry.Gui.Tooltip
     var bacterialResistanceChance = 500
+
+    override fun validatePostLoad() {
+        val logger = LogManager.getLogger()
+        val properties = HealthModConfig::class.memberProperties
+            .filterIsInstance<KMutableProperty1<HealthModConfig, Int>>()
+
+        for (field in properties) {
+            if (field.get(this) < 1) {
+                logger.warn("Invalid config option for ${field.name} (value ${field.get(this)}), defaulting to 1")
+                field.set(this, 1)
+            }
+        }
+    }
 }
 
 val config: HealthModConfig get() = AutoConfig.getConfigHolder(HealthModConfig::class.java).config

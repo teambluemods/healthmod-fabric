@@ -151,7 +151,7 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
 
     config("title", "HealthMod Config")
 
-    configCategory("wound_infection", "Wound Infection")
+    configCategory("woundInfection", "Wound Infection")
     configCategory("other", "Other")
 
     configOption(
