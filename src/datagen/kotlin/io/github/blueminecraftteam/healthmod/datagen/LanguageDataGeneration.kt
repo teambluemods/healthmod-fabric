@@ -47,7 +47,21 @@ class LanguageFileDsl {
 
     fun text(name: String, translated: String) = simple("text.${HealthMod.MOD_ID}.$name", translated)
 
-    fun configText(name: String, translated: String) = simple("text.autoconfig.${HealthMod.MOD_ID}.$name", translated)
+    fun config(text: String, translated: String) {
+        simple("text.autoconfig.${HealthMod.MOD_ID}.$text", translated)
+    }
+
+    fun configCategory(category: String, translated: String) {
+        config("category.$category", translated)
+    }
+
+    fun configOption(option: String, translated: String, tooltip: String? = null) {
+        config("option.$option", translated)
+
+        if (tooltip != null) {
+            config("option.$option.@Tooltip", tooltip)
+        }
+    }
 
     fun item(item: Item) {
         json.addProperty(
@@ -135,11 +149,36 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
 
     text("antibiotics.resistant_bacteria", "Uh oh, the bacteria has become resistant!")
 
-    configText("title", "HealthMod Config")
+    config("title", "HealthMod Config")
 
-    configText("option.placeholder", "Placeholder")
-    configText("option.bean", "Bean")
-    configText("option.type", "Type")
+    configCategory("wound_infection", "Wound Infection")
+    configCategory("other", "Other")
+
+    configOption(
+        option = "bacterialResistanceChance",
+        translated = "Bacterial Resistance Chance",
+        tooltip = "Chance for antibiotics to fail and make harmful effects stronger (1/config value)"
+    )
+    configOption(
+        option = "bandAidInfectionChance",
+        translated = "Band Aid Infection Chance",
+        tooltip = "Chance for band aids to fail and give you a wound infection (1/config value)"
+    )
+    configOption(
+        option = "bandAidInfectionChanceWhenHealthy",
+        translated = "Band Aid Infection Chance (Healthy)",
+        tooltip = "Chance for band aids to fail and give you a wound infection when healthy (1/config value)"
+    )
+    configOption(
+        option = "damagedInfectionChance",
+        translated = "Damaged Infection Chance",
+        tooltip = "Chance for you to get a wound infection when damaged by 2 or more (1/config value)"
+    )
+    configOption(
+        option = "damagedInfectionChanceWhenHealthy",
+        translated = "Damaged Infection Chance (Healthy)",
+        tooltip = "Chance for you to get a wound infection when healthy and damaged by 2 or more (1/config value)"
+    )
 
     override(BlockRegistries.BAND_AID_BOX.translationKey, "Box of Band Aids")
 

@@ -20,6 +20,7 @@
 package io.github.blueminecraftteam.healthmod.items
 
 import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.mixin.StatusEffectInstanceAccessorMixin
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectType
@@ -38,15 +39,17 @@ import kotlin.math.roundToInt
 class AntibioticsItem(settings: Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
         if (!world.isClient) {
-            for ((statusEffect, statusEffectInstance) in Collections.synchronizedMap(user.activeStatusEffects)) {
-                if (ThreadLocalRandom.current().nextInt(1, 500 + 1) != 1) {
+            if (ThreadLocalRandom.current().nextInt(1, config.bacterialResistanceChance + 1) != 1) {
+                for ((statusEffect, _) in Collections.synchronizedMap(user.activeStatusEffects)) {
                     if (statusEffect.type == StatusEffectType.HARMFUL && statusEffect != StatusEffects.POISON) {
                         user.removeStatusEffect(statusEffect)
                     }
-                } else {
-                    user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"), true)
+                }
+            } else {
+                user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"), true)
 
-                    if (statusEffect.type == StatusEffectType.HARMFUL) {
+                for ((statusEffect, statusEffectInstance) in Collections.synchronizedMap(user.activeStatusEffects)) {
+                    if (statusEffect.type == StatusEffectType.HARMFUL && statusEffect != StatusEffects.POISON) {
                         user.removeStatusEffect(statusEffect)
 
                         user.applyStatusEffect(statusEffectInstance.apply {

@@ -20,6 +20,7 @@
 package io.github.blueminecraftteam.healthmod.items
 
 import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
@@ -49,7 +50,11 @@ class BandAidItem(settings: Settings) : Item(settings) {
             val itemStack = user.getStackInHand(hand)
 
             if (user.maxHealth != user.health) {
-                val chance = if (user.hasStatusEffect(StatusEffectRegistries.HEALTHY)) 10 else 4
+                val chance = if (user.hasStatusEffect(StatusEffectRegistries.HEALTHY)) {
+                    config.bandAidInfectionChanceWhenHealthy
+                } else {
+                    config.bandAidInfectionChance
+                }
 
                 // 1 in 4 chance (or 1 in 10 if healthy) to have it not apply correct
                 if (ThreadLocalRandom.current().nextInt(1, chance + 1) == 1) {

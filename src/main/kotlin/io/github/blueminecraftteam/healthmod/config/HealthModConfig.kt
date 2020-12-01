@@ -17,22 +17,37 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+@file:JvmName("HealthModConfigHolder")
+
 package io.github.blueminecraftteam.healthmod.config
 
 import io.github.blueminecraftteam.healthmod.HealthMod
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config
+import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry
 
-// TODO: actual config
 @Config(name = HealthMod.MOD_ID)
 class HealthModConfig : ConfigData {
-    val placeholder: Boolean = true
-    val bean: Int = 2
-    val type: Type = Type.DEFAULT
+    @ConfigEntry.Category("wound_infection")
+    @ConfigEntry.Gui.Tooltip
+    var bandAidInfectionChance = 4
 
-    enum class Type {
-        DEFAULT,
-        NOT_DEFAULT,
-        INSANE;
-    }
+    @ConfigEntry.Category("wound_infection")
+    @ConfigEntry.Gui.Tooltip
+    var bandAidInfectionChanceWhenHealthy = 10
+
+    @ConfigEntry.Category("wound_infection")
+    @ConfigEntry.Gui.Tooltip
+    var damagedInfectionChance = 10
+
+    @ConfigEntry.Category("wound_infection")
+    @ConfigEntry.Gui.Tooltip
+    var damagedInfectionChanceWhenHealthy = 25
+
+    @ConfigEntry.Category("other")
+    @ConfigEntry.Gui.Tooltip
+    var bacterialResistanceChance = 500
 }
+
+val config: HealthModConfig get() = AutoConfig.getConfigHolder(HealthModConfig::class.java).config
