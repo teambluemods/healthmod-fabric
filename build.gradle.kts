@@ -31,9 +31,13 @@ sourceSets {
 
 repositories {
     // for noauth
-    maven("https://dl.bintray.com/user11681/maven")
+    maven("https://dl.bintray.com/user11681/maven") { name = "user11681" }
     // for cloth api
-    maven("https://dl.bintray.com/shedaniel/cloth/")
+    maven("https://dl.bintray.com/shedaniel/cloth/") { name = "shedaniel" }
+
+    maven("https://jitpack.io") { name = "Jitpack" }
+
+    maven("https://aperlambda.github.io/maven") { name = "AperLambda" }
 
     jcenter()
 }
@@ -68,6 +72,15 @@ dependencies {
     // datagen
     modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")
     include("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")
+
+    // gui
+    modImplementation("com.github.lambdaurora:spruceui:${property("spruceui_version")}")
+    include("com.github.lambdaurora:spruceui:${property("spruceui_version")}")
+    include("org.aperlambda:lambdajcommon:1.8.1") {
+        // yeet google
+        exclude(group = "com.google.code.gson")
+        exclude(group = "com.google.guava")
+    }
 
     // note: older mods on loom 0.2.1 might need transitiveness disabled
     "datagenCompile"(sourceSets.main.get().output)
