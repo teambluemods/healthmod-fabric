@@ -53,7 +53,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
             if (ThreadLocalRandom.current().nextInt(1, infectionChance + 1) == 1) {
                 // cursed getter name
-                this.addStatusEffect(new StatusEffectInstance(StatusEffectRegistries.INSTANCE.getWOUND_INFECTION(), 15 * 20, 0));
+                this.addStatusEffect(new StatusEffectInstance(StatusEffectRegistries.getWOUND_INFECTION(), 15 * 20, 0));
             }
         }
     }

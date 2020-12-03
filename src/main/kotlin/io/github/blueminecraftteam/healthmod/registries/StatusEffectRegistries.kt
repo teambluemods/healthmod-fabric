@@ -30,6 +30,7 @@ object StatusEffectRegistries : ModRegistry<StatusEffect> {
     override val registry: Registry<StatusEffect>
         get() = Registry.STATUS_EFFECT
 
+    @JvmStatic
     val WOUND_INFECTION = register(
         id = "wound_infection",
         toRegister = WoundInfectionStatusEffect(StatusEffectType.HARMFUL, 0x00FF00)
