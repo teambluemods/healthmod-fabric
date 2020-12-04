@@ -34,11 +34,11 @@ import kotlin.reflect.full.memberProperties
 class HealthModConfig : ConfigData {
     @ConfigEntry.Category("woundInfection")
     @ConfigEntry.Gui.Tooltip
-    var bandAidInfectionChance = 4
+    var bandAidInfectionChance = 8
 
     @ConfigEntry.Category("woundInfection")
     @ConfigEntry.Gui.Tooltip
-    var bandAidInfectionChanceWhenHealthy = 10
+    var bandAidInfectionChanceWhenHealthy = 16
 
     @ConfigEntry.Category("woundInfection")
     @ConfigEntry.Gui.Tooltip
