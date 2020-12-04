@@ -30,7 +30,6 @@ import net.minecraft.inventory.Inventories
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.screen.NamedScreenHandlerFactory
-import net.minecraft.text.Text
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.collection.DefaultedList
 
@@ -43,7 +42,7 @@ class BandAidBoxBlockEntity :
     override fun createMenu(syncId: Int, inv: PlayerInventory, player: PlayerEntity) =
         BandAidBoxScreenHandler(syncId, inv, this)
 
-    override fun getDisplayName(): Text = TranslatableText(cachedState.block.translationKey)
+    override fun getDisplayName() = TranslatableText(cachedState.block.translationKey)
 
     override fun fromTag(state: BlockState, tag: CompoundTag) {
         super.fromTag(state, tag)

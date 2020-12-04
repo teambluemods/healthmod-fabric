@@ -24,7 +24,6 @@ import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import net.minecraft.block.BlockRenderType
 import net.minecraft.block.BlockState
 import net.minecraft.block.BlockWithEntity
-import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -38,7 +37,7 @@ import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
 class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
-    override fun createBlockEntity(world: BlockView): BlockEntity = BandAidBoxBlockEntity()
+    override fun createBlockEntity(world: BlockView) = BandAidBoxBlockEntity()
 
     override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
 
@@ -97,7 +96,7 @@ class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
         }
     }
 
-    override fun hasComparatorOutput(state: BlockState): Boolean = true
+    override fun hasComparatorOutput(state: BlockState) = true
 
     override fun getComparatorOutput(state: BlockState, world: World, pos: BlockPos) =
         ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos))
