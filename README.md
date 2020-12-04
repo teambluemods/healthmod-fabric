@@ -1,9 +1,18 @@
-# HealthMod  
+# HealthMod
 
-a mod which adds health related items  
+![lines of code](https://img.shields.io/tokei/lines/github/blueminecraftteam/healthmod-fabric)
+![activity](https://img.shields.io/github/commit-activity/w/blueminecraftteam/healthmod-fabric)  
+![license](https://img.shields.io/github/license/blueminecraftteam/healthmod-fabric)  
+![build](https://img.shields.io/github/workflow/status/blueminecraftteam/healthmod-fabric/CI/development/1.16.x)  
+![issues](https://img.shields.io/github/issues/blueminecraftteam/healthmod-fabric)
+![prs](https://img.shields.io/github/issues-pr/blueminecraftteam/healthmod-fabric)
+![forks](https://img.shields.io/github/forks/blueminecraftteam/healthmod-fabric)  
+![stars](https://img.shields.io/github/stars/blueminecraftteam/healthmod-fabric)
 
-## License 
- 
+a mod which adds health related items
+
+## License
+
 ### Code
 
 The code for HealthMod is licensed under GPL v3 or later. You can see details at [the license file](COPYING.md).

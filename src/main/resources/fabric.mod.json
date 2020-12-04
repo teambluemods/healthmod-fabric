@@ -13,8 +13,8 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/healthmod/",
-    "repo": "https://github.com/blueminecraftteam/HealthMod/",
-    "issues": "https://github.com/blueminecraftteam/HealthMod/issues/"
+    "repo": "https://github.com/blueminecraftteam/healthmod-fabric/",
+    "issues": "https://github.com/blueminecraftteam/healthmod-fabric/issues/"
   },
   "license": "GPL-3.0-or-later",
   "icon": "icon.png",

@@ -12,7 +12,7 @@
   ],
   "contact": {
     "website": "https://no.you/bruh?there=is&no=website",
-    "repo": "https://github.com/blueminecraftteam/HealthMod"
+    "repo": "https://github.com/blueminecraftteam/healthmod-fabric"
   },
   "license": "GPL-3.0-or-later",
   "environment": "*",

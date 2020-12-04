@@ -27,8 +27,7 @@ import net.minecraft.util.registry.Registry
 
 @Suppress("UNUSED")
 object StatusEffectRegistries : ModRegistry<StatusEffect> {
-    override val registry: Registry<StatusEffect>
-        get() = Registry.STATUS_EFFECT
+    override val registry: Registry<StatusEffect> get() = Registry.STATUS_EFFECT
 
     @JvmStatic
     val WOUND_INFECTION = register(
