@@ -36,8 +36,8 @@ import net.minecraft.util.collection.DefaultedList
  */
 interface ImplementedInventory : Inventory {
     /**
-     * Retrieves the item list of this inventory.
-     * Must return the same instance every time it's called.
+     * Item list of this inventory.
+     * Getter must return the same instance every time it's called.
      */
     val items: DefaultedList<ItemStack>
 
@@ -47,8 +47,7 @@ interface ImplementedInventory : Inventory {
     override fun size() = items.size
 
     /**
-     * Checks if the inventory is empty.
-     * @return true if this inventory has only empty stacks, false otherwise.
+     * Returns if this inventory is empty (has only empty stacks)
      */
     override fun isEmpty(): Boolean = items.all { it.isEmpty }
 
@@ -59,8 +58,9 @@ interface ImplementedInventory : Inventory {
 
     /**
      * Removes items from an inventory slot.
-     * @param slot  The slot to remove from.
-     * @param count How many items to remove. If there are less items in the slot than what are requested,
+     * Count to remove can be specified using [count].
+     *
+     * If there are less items in the slot than what are requested,
      * takes all items in that slot.
      */
     override fun removeStack(slot: Int, count: Int): ItemStack {
@@ -75,15 +75,14 @@ interface ImplementedInventory : Inventory {
 
     /**
      * Removes all items from an inventory slot.
-     * @param slot The slot to remove from.
      */
     override fun removeStack(slot: Int): ItemStack = Inventories.removeStack(items, slot)
 
     /**
      * Replaces the current stack in an inventory slot with the provided stack.
-     * @param slot  The inventory slot of which to replace the item stack.
-     * @param stack The replacing item stack. If the stack is too big for
-     * this inventory ([Inventory.getMaxCountPerStack]),
+     *
+     * If the stack is too big for
+     * this inventory (see [Inventory.getMaxCountPerStack]),
      * it gets resized to this inventory's maximum amount.
      */
     override fun setStack(slot: Int, stack: ItemStack) {
@@ -104,7 +103,7 @@ interface ImplementedInventory : Inventory {
     override fun markDirty() {}
 
     /**
-     * @return true if the player can use the inventory, false otherwise.
+     * Returns if the player can use the inventory.
      */
     override fun canPlayerUse(player: PlayerEntity) = true
 
@@ -114,8 +113,7 @@ interface ImplementedInventory : Inventory {
          */
         // why is this an object you ask? it's because intellijank wont let me do ImplementedInventory { items }
         fun of(items: DefaultedList<ItemStack>): ImplementedInventory = object : ImplementedInventory {
-            override val items: DefaultedList<ItemStack>
-                get() = items
+            override val items: DefaultedList<ItemStack> = items
         }
 
         /**
