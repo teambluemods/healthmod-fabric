@@ -49,7 +49,7 @@ class BandAidItem(settings: Settings) : Item(settings) {
         if (!world.isClient) {
             val itemStack = user.getStackInHand(hand)
 
-            if (user.maxHealth != user.health) {
+            if (user.maxHealth > user.health) {
                 val chance = if (user.hasStatusEffect(StatusEffectRegistries.HEALTHY)) {
                     config.bandAidInfectionChanceWhenHealthy
                 } else {
