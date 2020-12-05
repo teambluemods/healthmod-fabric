@@ -43,9 +43,12 @@ object ModelDataGeneration {
             .filterIsInstance<Block>()
             .forEach { block ->
                 data.addSingletonCubeAll(block)
-                data.addSimpleItemModel(block.asItem(), Registry.BLOCK.getId(block).run {
-                    Identifier(this.namespace, "block/${this.path}")
-                })
+                data.addSimpleItemModel(
+                    block.asItem(),
+                    Registry.BLOCK
+                        .getId(block)
+                        .run { Identifier(this.namespace, "block/${this.path}") }
+                )
             }
     }
 }

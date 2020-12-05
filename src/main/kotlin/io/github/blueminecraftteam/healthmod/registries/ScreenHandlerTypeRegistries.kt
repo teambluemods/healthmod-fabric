@@ -26,8 +26,7 @@ import net.minecraft.screen.ScreenHandlerType
 import net.minecraft.util.registry.Registry
 
 object ScreenHandlerTypeRegistries : ModRegistry<ScreenHandlerType<*>> {
-    override val registry: Registry<ScreenHandlerType<*>>
-        get() = Registry.SCREEN_HANDLER
+    override val registry: Registry<ScreenHandlerType<*>> get() = Registry.SCREEN_HANDLER
 
     val BAND_AID_BOX: ScreenHandlerType<BandAidBoxScreenHandler> =
         ScreenHandlerRegistry.registerSimple(HealthMod.id("band_aid_box"), ::BandAidBoxScreenHandler)

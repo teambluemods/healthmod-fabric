@@ -24,13 +24,13 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
+import io.github.blueminecraftteam.healthmod.util.capitalizeFully
+import io.github.blueminecraftteam.healthmod.util.id
 import me.shedaniel.cloth.api.datagen.v1.SimpleData
 import net.minecraft.block.Block
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.item.Item
 import net.minecraft.util.Identifier
-import net.minecraft.util.registry.Registry
-import org.apache.commons.lang3.text.WordUtils
 import kotlin.reflect.full.memberProperties
 
 class LanguageFileDsl {
@@ -66,24 +66,14 @@ class LanguageFileDsl {
     fun item(item: Item) {
         json.addProperty(
             item.translationKey,
-            WordUtils.capitalizeFully(
-                Registry.ITEM
-                    .getId(item)
-                    .path
-                    .replace("_", " ")
-            )
+            item.id.path.replace("_", " ").capitalizeFully()
         )
     }
 
     fun block(block: Block) {
         json.addProperty(
             block.translationKey,
-            WordUtils.capitalizeFully(
-                Registry.BLOCK
-                    .getId(block)
-                    .path
-                    .replace("_", " ")
-            )
+            block.id.path.replace("_", " ").capitalizeFully()
         )
     }
 
@@ -94,12 +84,7 @@ class LanguageFileDsl {
     fun statusEffect(effect: StatusEffect) {
         json.addProperty(
             effect.translationKey,
-            WordUtils.capitalizeFully(
-                Registry.STATUS_EFFECT
-                    .getId(effect)!!
-                    .path
-                    .replace("_", " ")
-            )
+            effect.id!!.path.replace("_", " ").capitalizeFully()
         )
     }
 }
@@ -118,27 +103,30 @@ sealed class LanguageDataGeneration(
 object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure = {
     val itemRegistriesClass = ItemRegistries::class
 
-    for (item in itemRegistriesClass.memberProperties
+    itemRegistriesClass.memberProperties
         .map { it.get(itemRegistriesClass.objectInstance!!) }
-        .filterIsInstance<Item>()) {
-        item(item)
-    }
+        .filterIsInstance<Item>()
+        .forEach { item ->
+            item(item)
+        }
 
     val blockRegistriesClass = BlockRegistries::class
 
-    for (block in blockRegistriesClass.memberProperties
+    blockRegistriesClass.memberProperties
         .map { it.get(blockRegistriesClass.objectInstance!!) }
-        .filterIsInstance<Block>()) {
-        block(block)
-    }
+        .filterIsInstance<Block>()
+        .forEach { block ->
+            block(block)
+        }
 
     val statusEffectRegistriesClass = StatusEffectRegistries::class
 
-    for (effect in statusEffectRegistriesClass.memberProperties
+    statusEffectRegistriesClass.memberProperties
         .map { it.get(statusEffectRegistriesClass.objectInstance!!) }
-        .filterIsInstance<StatusEffect>()) {
-        statusEffect(effect)
-    }
+        .filterIsInstance<StatusEffect>()
+        .forEach { effect ->
+            statusEffect(effect)
+        }
 
     itemGroup(HealthMod.id("all"), "HealthMod")
 

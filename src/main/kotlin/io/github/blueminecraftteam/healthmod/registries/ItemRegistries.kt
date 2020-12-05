@@ -30,8 +30,7 @@ import net.minecraft.util.registry.Registry
 
 @Suppress("UNUSED")
 object ItemRegistries : ModRegistry<Item> {
-    override val registry: Registry<Item>
-        get() = Registry.ITEM
+    override val registry: Registry<Item> get() = Registry.ITEM
 
     val BAND_AID = register(
         id = "band_aid",
@@ -46,7 +45,11 @@ object ItemRegistries : ModRegistry<Item> {
 
     val ANTIBIOTICS = register(
         id = "antibiotics",
-        toRegister = AntibioticsItem(Item.Settings().group(HealthMod.ITEM_GROUP).maxCount(16))
+        toRegister = AntibioticsItem(
+            Item.Settings()
+                .group(HealthMod.ITEM_GROUP)
+                .maxCount(16)
+        )
     )
 
     val BROCCOLI = register(

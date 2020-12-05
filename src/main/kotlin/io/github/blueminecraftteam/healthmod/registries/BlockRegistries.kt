@@ -33,8 +33,7 @@ import net.minecraft.util.registry.Registry
 
 @Suppress("UNUSED")
 object BlockRegistries : ModRegistry<Block> {
-    override val registry: Registry<Block>
-        get() = Registry.BLOCK
+    override val registry: Registry<Block> get() = Registry.BLOCK
 
     val BAND_AID_BOX = register(
         id = "band_aid_box",
