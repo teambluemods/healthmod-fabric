@@ -19,17 +19,46 @@
 
 package io.github.blueminecraftteam.healthmod.items
 
+import io.github.blueminecraftteam.healthmod.registries.PacketRegistries
+import io.github.blueminecraftteam.healthmod.util.throwIfNull
+import io.netty.buffer.Unpooled
+import net.fabricmc.fabric.api.network.ClientSidePacketRegistry
+import net.minecraft.client.MinecraftClient
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
+import net.minecraft.network.PacketByteBuf
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
+import net.minecraft.util.hit.EntityHitResult
+import net.minecraft.util.hit.HitResult
 import net.minecraft.world.World
+
 
 class FirstAidKitItem(settings: Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-        // TODO
+        if (world.isClient) {
+            val client = MinecraftClient.getInstance()
+            val hit = client.crosshairTarget.throwIfNull("Expected non-null crosshair target")
 
-        return TypedActionResult.success(user.getStackInHand(hand))
+            if (hit.type == HitResult.Type.ENTITY) {
+                val entityHit = hit as EntityHitResult
+                val entity = entityHit.entity
+
+                val passedData = PacketByteBuf(Unpooled.buffer())
+                passedData.writeUuid(entity.uuid)
+
+                ClientSidePacketRegistry.INSTANCE.sendToServer(PacketRegistries.FIRST_AID_KIT_USED, passedData)
+            } else {
+                val passedData = PacketByteBuf(Unpooled.buffer())
+                passedData.writeUuid(user.uuid)
+
+                ClientSidePacketRegistry.INSTANCE.sendToServer(PacketRegistries.FIRST_AID_KIT_USED, passedData)
+            }
+        } else {
+            user.getStackInHand(hand).damage(1, user) { it.sendToolBreakStatus(hand) }
+        }
+
+        return TypedActionResult.consume(user.getStackInHand(hand))
     }
 }

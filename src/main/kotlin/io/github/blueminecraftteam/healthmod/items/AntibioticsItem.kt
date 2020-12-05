@@ -48,8 +48,10 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
             } else {
                 user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"), true)
 
-                for ((statusEffect, statusEffectInstance) in Collections.synchronizedMap(user.activeStatusEffects)) {
-                    if (statusEffect.type == StatusEffectType.HARMFUL && statusEffect != StatusEffects.POISON) {
+                Collections.synchronizedMap(user.activeStatusEffects)
+                    .filter { (statusEffect, _) -> statusEffect.type != StatusEffectType.HARMFUL }
+                    .filter { (statusEffect, _) -> statusEffect != StatusEffects.POISON }
+                    .forEach { (statusEffect, statusEffectInstance) ->
                         user.removeStatusEffect(statusEffect)
 
                         user.applyStatusEffect(statusEffectInstance.apply {
@@ -66,7 +68,6 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
                             )
                         })
                     }
-                }
             }
         }
 
@@ -74,6 +75,6 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
 
         stack.decrement(1)
 
-        return TypedActionResult.consume(user.getStackInHand(hand))
+        return TypedActionResult.consume(stack)
     }
 }
