@@ -2,6 +2,7 @@
   "item.healthmod.antibiotics": "Antibiotics",
   "item.healthmod.band_aid": "Band Aid",
   "item.healthmod.broccoli": "Broccoli",
+  "item.healthmod.first_aid_kit": "First Aid Kit",
   "effect.healthmod.healthy": "Healthy",
   "effect.healthmod.wound_infection": "Wound Infection",
   "itemGroup.healthmod.all": "HealthMod",

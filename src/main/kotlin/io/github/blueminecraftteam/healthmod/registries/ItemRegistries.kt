@@ -22,6 +22,7 @@ package io.github.blueminecraftteam.healthmod.registries
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.items.AntibioticsItem
 import io.github.blueminecraftteam.healthmod.items.BandAidItem
+import io.github.blueminecraftteam.healthmod.items.FirstAidKitItem
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
@@ -64,6 +65,16 @@ object ItemRegistries : ModRegistry<Item> {
                         .statusEffect(StatusEffectInstance(StatusEffectRegistries.HEALTHY, 60 * 20), 1F)
                         .build()
                 )
+        )
+    )
+
+    val FIRST_AID_KIT = register(
+        id = "first_aid_kit",
+        toRegister = FirstAidKitItem(
+            Item.Settings()
+                .group(HealthMod.ITEM_GROUP)
+                .maxDamage(5)
+                .rarity(Rarity.UNCOMMON)
         )
     )
 }
