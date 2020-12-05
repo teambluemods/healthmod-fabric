@@ -15,7 +15,7 @@ a mod which adds health related items
 
 ### Code
 
-The code for HealthMod is licensed under GPL v3 or later. You can see details at [the license file](COPYING).
+The code for HealthMod is licensed under GPL v3 or later. You can see details at [the license file](COPYING.txt).
 
 ### Textures
 
