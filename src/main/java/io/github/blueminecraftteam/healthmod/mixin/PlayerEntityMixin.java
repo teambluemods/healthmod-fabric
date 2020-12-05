@@ -47,13 +47,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         if (cir.getReturnValueZ() && amount > 2F) {
             int infectionChance = HealthModConfigHolder.getConfig().getDamagedInfectionChance();
 
-            if (this.hasStatusEffect(StatusEffectRegistries.INSTANCE.getHEALTHY())) {
+            if (this.hasStatusEffect(StatusEffectRegistries.getHealthy())) {
                 infectionChance = HealthModConfigHolder.getConfig().getDamagedInfectionChanceWhenHealthy();
             }
 
             if (ThreadLocalRandom.current().nextInt(1, infectionChance + 1) == 1) {
-                // cursed getter name
-                this.addStatusEffect(new StatusEffectInstance(StatusEffectRegistries.getWOUND_INFECTION(), 15 * 20, 0));
+                this.addStatusEffect(new StatusEffectInstance(StatusEffectRegistries.getWoundInfection(), 15 * 20, 0));
             }
         }
     }

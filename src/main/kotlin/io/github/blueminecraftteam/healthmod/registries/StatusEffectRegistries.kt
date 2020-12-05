@@ -34,9 +34,12 @@ object StatusEffectRegistries : ModRegistry<StatusEffect> {
         id = "wound_infection",
         toRegister = WoundInfectionStatusEffect(StatusEffectType.HARMFUL, 0x00FF00)
     )
+        @JvmName("getWoundInfection") get
 
+    @JvmStatic
     val HEALTHY = register(
         id = "healthy",
         toRegister = StatusEffectAccessorMixin.healthmod_createStatusEffect(StatusEffectType.BENEFICIAL, 0x67eb34)
     )
+        @JvmName("getHealthy") get
 }

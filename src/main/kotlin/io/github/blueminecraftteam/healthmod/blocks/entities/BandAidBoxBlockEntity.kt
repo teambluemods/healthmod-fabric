@@ -33,9 +33,7 @@ import net.minecraft.screen.NamedScreenHandlerFactory
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.collection.DefaultedList
 
-class BandAidBoxBlockEntity :
-    BlockEntity(BlockEntityTypeRegistries.BAND_AID_BOX),
-    NamedScreenHandlerFactory,
+class BandAidBoxBlockEntity : BlockEntity(BlockEntityTypeRegistries.BAND_AID_BOX), NamedScreenHandlerFactory,
     ImplementedInventory {
     override val items: DefaultedList<ItemStack> = DefaultedList.ofSize(6, ItemStack.EMPTY)
 

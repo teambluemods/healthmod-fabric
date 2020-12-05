@@ -24,7 +24,6 @@ import net.minecraft.entity.effect.StatusEffectType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-// fuck access wideners
 @Mixin(StatusEffect.class)
 public interface StatusEffectAccessorMixin {
     @Invoker("<init>")
