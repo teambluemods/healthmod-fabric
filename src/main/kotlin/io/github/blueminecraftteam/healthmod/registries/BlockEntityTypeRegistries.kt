@@ -28,6 +28,8 @@ object BlockEntityTypeRegistries : ModRegistry<BlockEntityType<*>> {
 
     val BANDAGE_BOX = register(
         id = "bandage_box",
-        toRegister = BlockEntityType.Builder.create(::BandageBoxBlockEntity, BlockRegistries.BANDAGE_BOX).build(null)
+        toRegister = BlockEntityType.Builder
+            .create(::BandageBoxBlockEntity, BlockRegistries.BANDAGE_BOX)
+            .build(null)
     )
 }

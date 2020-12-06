@@ -21,7 +21,6 @@ package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.client.gui.screen.BandageBoxScreenHandler
-import io.github.blueminecraftteam.healthmod.client.gui.screen.BloodTestMachineScreenHandler
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry
 import net.minecraft.screen.ScreenHandlerType
 import net.minecraft.util.registry.Registry
@@ -29,10 +28,8 @@ import net.minecraft.util.registry.Registry
 object ScreenHandlerTypeRegistries : ModRegistry<ScreenHandlerType<*>> {
     override val registry: Registry<ScreenHandlerType<*>> get() = Registry.SCREEN_HANDLER
 
-
-    val BANDAGE_BOX: ScreenHandlerType<BandageBoxScreenHandler> =
-        ScreenHandlerRegistry.registerSimple(HealthMod.id("bandage_box"), ::BandageBoxScreenHandler)
-  
-    val BLOOD_TEST_MACHINE: ScreenHandlerType<BloodTestMachineScreenHandler> =
-        ScreenHandlerRegistry.registerSimple(HealthMod.id("blood_test_machine"), ::BloodTestMachineScreenHandler)
+    val BANDAGE_BOX: ScreenHandlerType<BandageBoxScreenHandler> = ScreenHandlerRegistry.registerSimple(
+        HealthMod.id("bandage_box"),
+        ::BandageBoxScreenHandler
+    )
 }
