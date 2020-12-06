@@ -43,7 +43,7 @@ public class SplashTextResourceSupplierMixin {
         this.splashTexts.addAll(Lists.newArrayList(
                 "Wear a mask!",
                 "helth goes brrrr",
-                "Be careful with band aids!",
+                "Be careful with bandages!",
                 "h"
         ));
     }

@@ -27,23 +27,22 @@ import net.minecraft.inventory.SimpleInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
-import net.minecraft.screen.BrewingStandScreenHandler
-import net.minecraft.screen.BrewingStandScreenHandler.*
 
-
-class BloodTestMachineScreenHandler(
+class BandageBoxScreenHandler(
     syncId: Int,
     playerInventory: PlayerInventory,
     private val inventory: Inventory
-) : ScreenHandler(ScreenHandlerTypeRegistries.BLOOD_TEST_MACHINE, syncId) {
+) : ScreenHandler(ScreenHandlerTypeRegistries.BANDAGE_BOX, syncId) {
     init {
-        checkSize(inventory, 3)
+        checkSize(inventory, 6)
 
         inventory.onOpen(playerInventory.player)
 
-        addSlot(Slot(inventory, 0, 56, 51))
-        addSlot(Slot(inventory, 1, 79, 58))
-        addSlot(Slot(inventory, 2, 102, 51))
+        for (row in 0 until 2) {
+            for (column in 0 until 3) {
+                addSlot(Slot(inventory, column + row * 3, 62 + column * 18, 17 + row * 18))
+            }
+        }
 
         for (row in 0 until 3) {
             for (column in 0 until 9) {

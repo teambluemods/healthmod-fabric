@@ -115,7 +115,7 @@ tasks {
     }
 
     jar {
-        from("COPYING.md") {
+        from("COPYING.txt") {
             rename { "${it}_${project.base.archivesBaseName}" }
         }
     }

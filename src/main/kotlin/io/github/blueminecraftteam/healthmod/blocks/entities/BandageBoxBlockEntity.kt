@@ -17,19 +17,20 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.registries
+package io.github.blueminecraftteam.healthmod.blocks.entities
 
-import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.client.gui.screen.BandageBoxScreenHandler
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry
-import net.minecraft.screen.ScreenHandlerType
-import net.minecraft.util.registry.Registry
+import io.github.blueminecraftteam.healthmod.inventories.SimpleBlockEntityInventory
+import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
+import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.entity.player.PlayerInventory
+import net.minecraft.screen.NamedScreenHandlerFactory
+import net.minecraft.text.TranslatableText
 
-object ScreenHandlerTypeRegistries : ModRegistry<ScreenHandlerType<*>> {
-    override val registry: Registry<ScreenHandlerType<*>> get() = Registry.SCREEN_HANDLER
+class BandageBoxBlockEntity : SimpleBlockEntityInventory(type = BlockEntityTypeRegistries.BANDAGE_BOX, size = 6),
+    NamedScreenHandlerFactory {
+    override fun createMenu(syncId: Int, inv: PlayerInventory, player: PlayerEntity) =
+        BandageBoxScreenHandler(syncId, inv, this)
 
-    val BANDAGE_BOX: ScreenHandlerType<BandageBoxScreenHandler> = ScreenHandlerRegistry.registerSimple(
-        HealthMod.id("bandage_box"),
-        ::BandageBoxScreenHandler
-    )
+    override fun getDisplayName() = TranslatableText(cachedState.block.translationKey)
 }

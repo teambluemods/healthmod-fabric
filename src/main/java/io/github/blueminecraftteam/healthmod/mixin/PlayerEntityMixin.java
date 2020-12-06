@@ -52,7 +52,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             }
 
             if (ThreadLocalRandom.current().nextInt(1, infectionChance + 1) == 1) {
-                this.addStatusEffect(new StatusEffectInstance(StatusEffectRegistries.getWoundInfection(), 15 * 20, 0));
+                // 2 minutes effect
+                this.addStatusEffect(new StatusEffectInstance(StatusEffectRegistries.getWoundInfection(), 2 * 60 * 20, 0));
             }
         }
     }

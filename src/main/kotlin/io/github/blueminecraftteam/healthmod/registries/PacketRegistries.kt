@@ -22,8 +22,6 @@ package io.github.blueminecraftteam.healthmod.registries
 import io.github.blueminecraftteam.healthmod.HealthMod
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry
 import net.minecraft.entity.LivingEntity
-import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.server.world.ServerWorld
 
 object PacketRegistries {
@@ -37,7 +35,7 @@ object PacketRegistries {
                 val entity = world.getEntity(byteBuf.readUuid())
 
                 if (entity is LivingEntity && entity.health < entity.maxHealth) {
-                    entity.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 20, 244))
+                    entity.heal(entity.health * 1.8F)
                 }
             }
         }
