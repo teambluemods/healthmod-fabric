@@ -35,7 +35,6 @@ import net.minecraft.text.TranslatableText
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
-import java.util.concurrent.ThreadLocalRandom
 
 class BandageItem(settings: Settings) : Item(settings) {
     @Environment(EnvType.CLIENT)
@@ -57,7 +56,7 @@ class BandageItem(settings: Settings) : Item(settings) {
                 }
 
                 // 1 in 4 chance (or 1 in 10 if healthy) to have it not apply correct
-                if (ThreadLocalRandom.current().nextInt(1, chance + 1) == 1) {
+                if ((1..chance + 1).random() == 1) {
                     // 2 minutes effect
                     user.addStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 2 * 60 * 20, 0))
                     user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.bandage.failed_apply"), true)

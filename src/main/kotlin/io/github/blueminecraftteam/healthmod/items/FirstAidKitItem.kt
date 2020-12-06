@@ -55,8 +55,6 @@ class FirstAidKitItem(settings: Settings) : Item(settings) {
 
                 ClientSidePacketRegistry.INSTANCE.sendToServer(PacketRegistries.FIRST_AID_KIT_USED, passedData)
             }
-        } else {
-            user.getStackInHand(hand).damage(1, user) { it.sendToolBreakStatus(hand) }
         }
 
         return TypedActionResult.consume(user.getStackInHand(hand))
