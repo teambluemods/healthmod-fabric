@@ -20,6 +20,7 @@
 package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.blocks.entities.BandageBoxBlockEntity
+import io.github.blueminecraftteam.healthmod.blocks.entities.BloodTestMachineBlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.util.registry.Registry
 
@@ -30,6 +31,13 @@ object BlockEntityTypeRegistries : ModRegistry<BlockEntityType<*>> {
         id = "bandage_box",
         toRegister = BlockEntityType.Builder
             .create(::BandageBoxBlockEntity, BlockRegistries.BANDAGE_BOX)
+            .build(null)
+    )
+
+    val BLOOD_TEST_MACHINE = register(
+        id = "blood_test_machine",
+        toRegister = BlockEntityType.Builder
+            .create(::BloodTestMachineBlockEntity, BlockRegistries.BLOOD_TEST_MACHINE)
             .build(null)
     )
 }

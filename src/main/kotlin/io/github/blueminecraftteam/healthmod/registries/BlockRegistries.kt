@@ -21,6 +21,7 @@ package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.blocks.BandageBoxBlock
+import io.github.blueminecraftteam.healthmod.blocks.BloodTestMachineBlock
 import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.Material
@@ -42,6 +43,19 @@ object BlockRegistries : ModRegistry<Block> {
                 .of(Material.WOOD, MaterialColor.ORANGE)
                 .sounds(BlockSoundGroup.WOOD)
                 .strength(2.5F)
+        ),
+        customItemProperties = Item.Settings()
+            .group(HealthMod.ITEM_GROUP)
+            .maxCount(1)
+            .rarity(Rarity.UNCOMMON)
+    )
+
+    val BLOOD_TEST_MACHINE = register(
+        id = "blood_test_machine",
+        toRegister = BloodTestMachineBlock(
+            AbstractBlock.Settings.of(Material.GLASS, MaterialColor.WHITE)
+                .sounds(BlockSoundGroup.GLASS)
+                .strength(0F, 0F)
         ),
         customItemProperties = Item.Settings()
             .group(HealthMod.ITEM_GROUP)
