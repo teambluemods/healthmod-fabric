@@ -19,4 +19,25 @@ The code for HealthMod is licensed under GPL v3 or later. You can see details at
 
 ### Textures
 
-<p class="license-text"><span rel="dct:title">The HealthMod textures are made</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/ilja615">ilja615</a> and are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+The following textures are made by [ilja615](https://github.com/ilja615) and are licensed
+under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+
+- [bandage_box_back.png](src/main/resources/assets/healthmod/textures/block/bandage_box_back.png)
+- [bandage_box_bottom.png](src/main/resources/assets/healthmod/textures/block/bandage_box_bottom.png)
+- [bandage_box_front.png](src/main/resources/assets/healthmod/textures/block/bandage_box_front.png)
+- [bandage_box_side.png](src/main/resources/assets/healthmod/textures/block/bandage_box_side.png)
+- [bandage_box_top.png](src/main/resources/assets/healthmod/textures/block/bandage_box_top.png)
+- [bandage.png](src/main/resources/assets/healthmod/textures/item/bandage.png)
+- [healthy.png](src/main/resources/assets/healthmod/textures/mob_effect/healthy.png)
+- [wound_infection.png](src/main/resources/assets/healthmod/textures/mob_effect/wound_infection.png)
+
+### Translations
+
+The following translation is made by [ItalianCucumber](https://github.com/ItalianCucumber) and is licensed
+under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+
+- [it_it.json](src/main/resources/assets/healthmod/lang/it_it.json)
