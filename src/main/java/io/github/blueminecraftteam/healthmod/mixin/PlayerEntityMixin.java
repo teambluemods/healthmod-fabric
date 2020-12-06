@@ -39,7 +39,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     private PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
 
-        throw new UnsupportedOperationException("Cannot create instance of mixin!");
+        throw new UnsupportedOperationException("You cannot create instances of mixins!");
     }
 
     @Inject(method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", at = @At("TAIL"))

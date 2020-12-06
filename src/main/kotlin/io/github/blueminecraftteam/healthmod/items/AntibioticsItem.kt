@@ -22,6 +22,7 @@ package io.github.blueminecraftteam.healthmod.items
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.mixin.StatusEffectInstanceAccessorMixin
+import io.github.blueminecraftteam.healthmod.util.debug
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectType
 import net.minecraft.entity.effect.StatusEffects
@@ -33,19 +34,22 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 import java.util.*
-import java.util.concurrent.ThreadLocalRandom
 import kotlin.math.roundToInt
 
 class AntibioticsItem(settings: Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
         if (!world.isClient) {
-            if (ThreadLocalRandom.current().nextInt(1, config.bacterialResistanceChance + 1) != 1) {
+            if ((1..config.bacterialResistanceChance + 1).random() != 1) {
+                debug<AntibioticsItem>("No resistant bacteria, clearing harmful status effects.")
+
                 for ((statusEffect, _) in Collections.synchronizedMap(user.activeStatusEffects)) {
                     if (statusEffect.type == StatusEffectType.HARMFUL && statusEffect != StatusEffects.POISON) {
                         user.removeStatusEffect(statusEffect)
                     }
                 }
             } else {
+                debug<AntibioticsItem>("Resistant bacteria, amplifying harmful status effects.")
+
                 user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"), true)
 
                 Collections.synchronizedMap(user.activeStatusEffects)

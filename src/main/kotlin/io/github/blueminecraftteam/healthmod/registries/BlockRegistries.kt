@@ -21,6 +21,7 @@ package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.blocks.BandageBoxBlock
+import io.github.blueminecraftteam.healthmod.util.debug
 import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.Material
@@ -50,10 +51,14 @@ object BlockRegistries : ModRegistry<Block> {
     )
 
     private fun register(id: String, toRegister: Block, customItemProperties: Item.Settings? = null): Block {
-        ItemRegistries.register(
+        val blockItem = ItemRegistries.register(
             id,
             BlockItem(toRegister, customItemProperties ?: Item.Settings().group(HealthMod.ITEM_GROUP))
-        ).run { this as BlockItem }.apply { appendBlocks(Item.BLOCK_ITEMS, this) }
+        ) as BlockItem
+
+        blockItem.appendBlocks(Item.BLOCK_ITEMS, blockItem)
+
+        debug<BlockRegistries>("Automatically registered block item $blockItem with custom item properties $customItemProperties.")
 
         return register(id, toRegister)
     }

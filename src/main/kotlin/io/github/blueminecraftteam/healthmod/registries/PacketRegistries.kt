@@ -20,6 +20,8 @@
 package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.util.debug
+import io.github.blueminecraftteam.healthmod.util.warn
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry
 import net.minecraft.entity.LivingEntity
 import net.minecraft.server.world.ServerWorld
@@ -32,12 +34,22 @@ object PacketRegistries {
             val world = context.player.world
 
             if (!world.isClient && world is ServerWorld) {
-                val entity = world.getEntity(byteBuf.readUuid())
+                val uuid = byteBuf.readUuid()
+                val entity = world.getEntity(uuid).also {
+                    if (it == null) {
+                        warn<PacketRegistries>("Could not find entity with UUID $uuid.")
+                    }
+                }
 
                 if (entity is LivingEntity && entity.health < entity.maxHealth) {
                     entity.heal(entity.health * 1.8F)
+                    context.player
+                        .getStackInHand(context.player.activeHand)
+                        .damage(1, context.player) { it.sendToolBreakStatus(it.activeHand) }
                 }
             }
         }
+
+        debug<PacketRegistries>("Successfully registered packets!")
     }
 }
