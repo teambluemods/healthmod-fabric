@@ -39,26 +39,32 @@ import kotlin.math.roundToInt
 class AntibioticsItem(settings: Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
         if (!world.isClient) {
+            val stack = user.getStackInHand(hand)
+
+            if (user.activeStatusEffects
+                    .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
+                    .isEmpty()
+            ) {
+                return TypedActionResult.pass(user.getStackInHand(hand))
+            }
+
             if ((1..config.bacterialResistanceChance + 1).random() != 1) {
                 debug<AntibioticsItem>("No resistant bacteria, clearing harmful status effects.")
 
-                for ((statusEffect, _) in Collections.synchronizedMap(user.activeStatusEffects)) {
-                    if (statusEffect.type == StatusEffectType.HARMFUL && statusEffect != StatusEffects.POISON) {
-                        user.removeStatusEffect(statusEffect)
-                    }
-                }
+                Collections.synchronizedMap(user.activeStatusEffects)
+                    .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
+                    .filter { (statusEffect, _) -> statusEffect != StatusEffects.POISON }
+                    .forEach { (statusEffect, _) -> user.removeStatusEffect(statusEffect) }
             } else {
                 debug<AntibioticsItem>("Resistant bacteria, amplifying harmful status effects.")
 
                 user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"), true)
 
                 Collections.synchronizedMap(user.activeStatusEffects)
-                    .filter { (statusEffect, _) -> statusEffect.type != StatusEffectType.HARMFUL }
+                    .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
                     .filter { (statusEffect, _) -> statusEffect != StatusEffects.POISON }
-                    .forEach { (statusEffect, statusEffectInstance) ->
-                        user.removeStatusEffect(statusEffect)
-
-                        user.applyStatusEffect(statusEffectInstance.apply {
+                    .mapValues { (statusEffect, statusEffectInstance) ->
+                        statusEffectInstance.apply {
                             this.upgrade(
                                 StatusEffectInstance(
                                     statusEffect,
@@ -70,15 +76,24 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
                                     (this as StatusEffectInstanceAccessorMixin).healthmod_getHiddenEffect()
                                 )
                             )
-                        })
+                        }
+                    }
+                    .forEach { (statusEffect, statusEffectInstance) ->
+                        user.removeStatusEffect(statusEffect)
+                        user.applyStatusEffect(statusEffectInstance)
                     }
             }
+
+            stack.decrement(1)
         }
 
-        val stack = user.getStackInHand(hand)
-
-        stack.decrement(1)
-
-        return TypedActionResult.consume(stack)
+        return if (user.activeStatusEffects
+                .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
+                .isEmpty()
+        ) {
+            TypedActionResult.pass(user.getStackInHand(hand))
+        } else {
+            TypedActionResult.consume(user.getStackInHand(hand))
+        }
     }
 }
