@@ -31,7 +31,7 @@ import net.minecraft.util.Identifier
 object HealthMod : ModInitializer {
     const val MOD_ID = "healthmod"
     val ITEM_GROUP: ItemGroup = FabricItemGroupBuilder.create(id("all"))
-        .icon { ItemRegistries.BAND_AID.defaultStack }
+        .icon { ItemRegistries.BANDAGE.defaultStack }
         .build()
 
     fun id(path: String) = Identifier(MOD_ID, path)

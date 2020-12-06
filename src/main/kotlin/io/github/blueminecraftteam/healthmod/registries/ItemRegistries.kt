@@ -21,7 +21,7 @@ package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.items.AntibioticsItem
-import io.github.blueminecraftteam.healthmod.items.BandAidItem
+import io.github.blueminecraftteam.healthmod.items.BandageItem
 import io.github.blueminecraftteam.healthmod.items.BloodVialItem
 import io.github.blueminecraftteam.healthmod.items.FirstAidKitItem
 import net.minecraft.entity.effect.StatusEffectInstance
@@ -34,9 +34,9 @@ import net.minecraft.util.registry.Registry
 object ItemRegistries : ModRegistry<Item> {
     override val registry: Registry<Item> get() = Registry.ITEM
 
-    val BAND_AID = register(
-        id = "band_aid",
-        toRegister = BandAidItem(
+    val BANDAGE = register(
+        id = "bandage",
+        toRegister = BandageItem(
             Item.Settings()
                 .group(HealthMod.ITEM_GROUP)
                 .maxCount(16)

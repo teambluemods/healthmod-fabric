@@ -28,11 +28,11 @@ import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
 
-class BandAidBoxScreenHandler(
+class BandageBoxScreenHandler(
     syncId: Int,
     playerInventory: PlayerInventory,
     private val inventory: Inventory
-) : ScreenHandler(ScreenHandlerTypeRegistries.BAND_AID_BOX, syncId) {
+) : ScreenHandler(ScreenHandlerTypeRegistries.BANDAGE_BOX, syncId) {
     init {
         checkSize(inventory, 6)
 

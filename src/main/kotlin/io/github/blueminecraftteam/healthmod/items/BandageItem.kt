@@ -37,12 +37,12 @@ import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 import java.util.concurrent.ThreadLocalRandom
 
-class BandAidItem(settings: Settings) : Item(settings) {
+class BandageItem(settings: Settings) : Item(settings) {
     @Environment(EnvType.CLIENT)
     override fun appendTooltip(stack: ItemStack, world: World?, tooltip: MutableList<Text>, context: TooltipContext) {
-        tooltip.add(TranslatableText("text.${HealthMod.MOD_ID}.band_aid.1"))
-        tooltip.add(TranslatableText("text.${HealthMod.MOD_ID}.band_aid.2"))
-        tooltip.add(TranslatableText("text.${HealthMod.MOD_ID}.band_aid.3"))
+        tooltip.add(TranslatableText("text.${HealthMod.MOD_ID}.bandage.1"))
+        tooltip.add(TranslatableText("text.${HealthMod.MOD_ID}.bandage.2"))
+        tooltip.add(TranslatableText("text.${HealthMod.MOD_ID}.bandage.3"))
     }
 
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
@@ -51,16 +51,16 @@ class BandAidItem(settings: Settings) : Item(settings) {
 
             if (user.maxHealth > user.health) {
                 val chance = if (user.hasStatusEffect(StatusEffectRegistries.HEALTHY)) {
-                    config.bandAidInfectionChanceWhenHealthy
+                    config.bandageInfectionChanceWhenHealthy
                 } else {
-                    config.bandAidInfectionChance
+                    config.bandageInfectionChance
                 }
 
                 // 1 in 4 chance (or 1 in 10 if healthy) to have it not apply correct
                 if (ThreadLocalRandom.current().nextInt(1, chance + 1) == 1) {
                     // 2 minutes effect
                     user.addStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 2 * 60 * 20, 0))
-                    user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.band_aid.failed_apply"), true)
+                    user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.bandage.failed_apply"), true)
                 } else {
                     user.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0))
                 }

@@ -19,15 +19,15 @@
 
 package io.github.blueminecraftteam.healthmod.registries
 
-import io.github.blueminecraftteam.healthmod.blocks.entities.BandAidBoxBlockEntity
+import io.github.blueminecraftteam.healthmod.blocks.entities.BandageBoxBlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.util.registry.Registry
 
 object BlockEntityTypeRegistries : ModRegistry<BlockEntityType<*>> {
     override val registry: Registry<BlockEntityType<*>> get() = Registry.BLOCK_ENTITY_TYPE
 
-    val BAND_AID_BOX = register(
-        id = "band_aid_box",
-        toRegister = BlockEntityType.Builder.create(::BandAidBoxBlockEntity, BlockRegistries.BAND_AID_BOX).build(null)
+    val BANDAGE_BOX = register(
+        id = "bandage_box",
+        toRegister = BlockEntityType.Builder.create(::BandageBoxBlockEntity, BlockRegistries.BANDAGE_BOX).build(null)
     )
 }

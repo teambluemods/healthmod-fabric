@@ -19,27 +19,46 @@
 
 package io.github.blueminecraftteam.healthmod.blocks
 
-import io.github.blueminecraftteam.healthmod.blocks.entities.BandAidBoxBlockEntity
+import io.github.blueminecraftteam.healthmod.blocks.entities.BandageBoxBlockEntity
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
-import net.minecraft.block.BlockRenderType
-import net.minecraft.block.BlockState
-import net.minecraft.block.BlockWithEntity
+import net.minecraft.block.*
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
-import net.minecraft.util.ActionResult
-import net.minecraft.util.Hand
-import net.minecraft.util.ItemScatterer
+import net.minecraft.state.StateManager
+import net.minecraft.util.*
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
-    override fun createBlockEntity(world: BlockView) = BandAidBoxBlockEntity()
+class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
+    init {
+        this.defaultState = this.stateManager.defaultState.with(HorizontalFacingBlock.FACING, Direction.NORTH)
+    }
+
+    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        builder.add(HorizontalFacingBlock.FACING)
+    }
+
+    override fun createBlockEntity(world: BlockView) = BandageBoxBlockEntity()
 
     override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
+
+    override fun getPlacementState(ctx: ItemPlacementContext): BlockState =
+        defaultState.with(HorizontalFacingBlock.FACING, ctx.playerFacing.opposite)
+
+
+    override fun rotate(state: BlockState, rotation: BlockRotation): BlockState = state.with(
+        HorizontalFacingBlock.FACING,
+        rotation.rotate(state.get(HorizontalFacingBlock.FACING))
+    )
+
+    override fun mirror(state: BlockState, mirror: BlockMirror): BlockState =
+        state.rotate(mirror.getRotation(state.get(HorizontalFacingBlock.FACING)))
 
     override fun onUse(
         state: BlockState,
@@ -69,9 +88,9 @@ class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
     ) {
         val blockEntity = world.getBlockEntity(pos)
 
-        if (blockEntity is BandAidBoxBlockEntity) {
+        if (blockEntity is BandageBoxBlockEntity) {
             for (i in 0 until 6) {
-                blockEntity.setStack(i, ItemRegistries.BAND_AID.defaultStack)
+                blockEntity.setStack(i, ItemRegistries.BANDAGE.defaultStack)
             }
         }
     }
@@ -86,12 +105,14 @@ class BandAidBoxBlock(settings: Settings) : BlockWithEntity(settings) {
         if (state.block != newState.block) {
             val blockEntity = world.getBlockEntity(pos)
 
-            if (blockEntity is BandAidBoxBlockEntity) {
+            if (blockEntity is BandageBoxBlockEntity) {
                 ItemScatterer.spawn(world, pos, blockEntity)
+
                 // update comparators
                 world.updateComparators(pos, this)
             }
 
+            @Suppress("DEPRECATION")
             super.onStateReplaced(state, world, pos, newState, moved)
         }
     }

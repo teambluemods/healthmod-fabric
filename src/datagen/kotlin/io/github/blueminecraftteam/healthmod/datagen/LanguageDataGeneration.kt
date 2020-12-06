@@ -130,10 +130,10 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
 
     itemGroup(HealthMod.id("all"), "HealthMod")
 
-    text("band_aid.1", "Gives you regeneration for 15 seconds.")
-    text("band_aid.2", "Can only be used once.")
-    text("band_aid.3", "You have a 25% chance of getting an infection.")
-    text("band_aid.failed_apply", "Uh oh, you didn't put the band aid on correctly!")
+    text("bandage.1", "Gives you regeneration for 15 seconds.")
+    text("bandage.2", "Can only be used once.")
+    text("bandage.3", "You have a 25% chance of getting an infection.")
+    text("bandage.failed_apply", "Uh oh, you didn't put the bandage on correctly!")
 
     text("antibiotics.resistant_bacteria", "Uh oh, the bacteria have become resistant!")
 
@@ -148,14 +148,14 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
         tooltip = "Chance for antibiotics to fail and make harmful effects stronger (1/config value)"
     )
     configOption(
-        option = "bandAidInfectionChance",
-        translated = "Band Aid Infection Chance",
-        tooltip = "Chance for band aids to fail and give you a wound infection (1/config value)"
+        option = "bandageInfectionChance",
+        translated = "Bandage Infection Chance",
+        tooltip = "Chance for bandages to fail and give you a wound infection (1/config value)"
     )
     configOption(
-        option = "bandAidInfectionChanceWhenHealthy",
-        translated = "Band Aid Infection Chance (Healthy)",
-        tooltip = "Chance for band aids to fail and give you a wound infection when healthy (1/config value)"
+        option = "bandageInfectionChanceWhenHealthy",
+        translated = "Bandage Infection Chance (Healthy)",
+        tooltip = "Chance for bandages to fail and give you a wound infection when healthy (1/config value)"
     )
     configOption(
         option = "damagedInfectionChance",
@@ -168,7 +168,7 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
         tooltip = "Chance for you to get a wound infection when healthy and damaged by 2 or more (1/config value)"
     )
 
-    override(BlockRegistries.BAND_AID_BOX.translationKey, "Box of Band Aids")
+    override(BlockRegistries.BANDAGE_BOX.translationKey, "Box of Bandages")
 
     simple("death.attack.wound_infection", "%1\$s died from a wound infection")
     simple("death.attack.wound_infection.player", "%1\$s died from a wound infection")

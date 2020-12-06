@@ -19,7 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.client
 
-import io.github.blueminecraftteam.healthmod.client.gui.screen.BandAidBoxScreen
+import io.github.blueminecraftteam.healthmod.client.gui.screen.BandageBoxScreen
 import io.github.blueminecraftteam.healthmod.registries.ScreenHandlerTypeRegistries
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.EnvType
@@ -29,6 +29,6 @@ import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry
 @Environment(EnvType.CLIENT)
 object HealthModClient : ClientModInitializer {
     override fun onInitializeClient() {
-        ScreenRegistry.register(ScreenHandlerTypeRegistries.BAND_AID_BOX, ::BandAidBoxScreen)
+        ScreenRegistry.register(ScreenHandlerTypeRegistries.BANDAGE_BOX, ::BandageBoxScreen)
     }
 }

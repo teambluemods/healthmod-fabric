@@ -26,9 +26,10 @@ import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-class BandAidBoxScreen(handler: BandAidBoxScreenHandler, inventory: PlayerInventory, title: Text) :
-    HandledScreen<BandAidBoxScreenHandler>(handler, inventory, title) {
+class BandageBoxScreen(handler: BandageBoxScreenHandler, inventory: PlayerInventory, title: Text) :
+    HandledScreen<BandageBoxScreenHandler>(handler, inventory, title) {
     override fun drawBackground(matrices: MatrixStack, delta: Float, mouseX: Int, mouseY: Int) {
+        @Suppress("DEPRECATION")
         RenderSystem.color4f(1.0f, 1.0f, 1.0f, 1.0f)
         client!!.textureManager.bindTexture(TEXTURE)
         val x = (width - backgroundWidth) / 2
