@@ -48,7 +48,7 @@ class BandageItem(settings: Settings) : Item(settings) {
         if (!world.isClient) {
             val itemStack = user.getStackInHand(hand)
 
-            if (user.maxHealth > user.health) {
+            if (user.health < user.maxHealth) {
                 val chance = if (user.hasStatusEffect(StatusEffectRegistries.HEALTHY)) {
                     config.bandageInfectionChanceWhenHealthy
                 } else {
@@ -64,7 +64,7 @@ class BandageItem(settings: Settings) : Item(settings) {
                     user.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0))
                 }
 
-                itemStack.damage(1, user) { it.sendToolBreakStatus(hand) }
+                itemStack.decrement(1)
             }
         }
 

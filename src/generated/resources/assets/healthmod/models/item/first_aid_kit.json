@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "healthmod:item/first_aid_kit"
-  }
+  "parent": "healthmod:block/first_aid_kit"
 }

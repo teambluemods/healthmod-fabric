@@ -1,19 +1,7 @@
 {
   "variants": {
-    "facing=north": {
+    "": {
       "model": "healthmod:block/bandage_box"
-    },
-    "facing=south": {
-      "model": "healthmod:block/bandage_box",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "healthmod:block/bandage_box",
-      "y": 270
-    },
-    "facing=east": {
-      "model": "healthmod:block/bandage_box",
-      "y": 90
     }
   }
 }

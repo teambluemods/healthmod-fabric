@@ -53,6 +53,5 @@ object HealthMod : ModInitializer {
         BlockEntityTypeRegistries.init()
         ScreenHandlerTypeRegistries.init()
         StatusEffectRegistries.init()
-        PacketRegistries.init()
     }
 }

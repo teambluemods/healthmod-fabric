@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "healthmod:block/first_aid_kit"
+    },
+    "facing=south": {
+      "model": "healthmod:block/first_aid_kit",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "healthmod:block/first_aid_kit",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "healthmod:block/first_aid_kit",
+      "y": 90
+    }
+  }
+}

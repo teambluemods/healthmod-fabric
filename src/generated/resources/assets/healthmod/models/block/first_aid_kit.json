@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "healthmod:block/first_aid_kit_bottom",
+    "up": "healthmod:block/first_aid_kit_top",
+    "north": "healthmod:block/first_aid_kit_front",
+    "south": "healthmod:block/first_aid_kit_back",
+    "east": "healthmod:block/first_aid_kit_side",
+    "west": "healthmod:block/first_aid_kit_side",
+    "particle": "minecraft:block/acacia_planks"
+  }
+}

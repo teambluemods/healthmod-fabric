@@ -54,12 +54,12 @@ object ModelDataGeneration {
             }
 
         data.addState(
-            BlockRegistries.BANDAGE_BOX,
+            BlockRegistries.FIRST_AID_KIT,
             JsonObject().apply {
                 add("variants", JsonObject().apply {
                     for (direction in Direction.values().filter { it.axis.isHorizontal }) {
                         add("facing=${direction.name.toLowerCase()}", JsonObject().apply {
-                            addProperty("model", "healthmod:block/bandage_box")
+                            addProperty("model", "healthmod:block/first_aid_kit")
 
                             when (direction) {
                                 Direction.NORTH -> {
@@ -76,16 +76,16 @@ object ModelDataGeneration {
         )
 
         data.addBlockModel(
-            BlockRegistries.BANDAGE_BOX,
+            BlockRegistries.FIRST_AID_KIT,
             JsonObject().apply {
                 addProperty("parent", "minecraft:block/cube")
                 add("textures", JsonObject().apply {
-                    addProperty("down", "healthmod:block/bandage_box_bottom")
-                    addProperty("up", "healthmod:block/bandage_box_top")
-                    addProperty("north", "healthmod:block/bandage_box_front")
-                    addProperty("south", "healthmod:block/bandage_box_back")
-                    addProperty("east", "healthmod:block/bandage_box_side")
-                    addProperty("west", "healthmod:block/bandage_box_side")
+                    addProperty("down", "healthmod:block/first_aid_kit_bottom")
+                    addProperty("up", "healthmod:block/first_aid_kit_top")
+                    addProperty("north", "healthmod:block/first_aid_kit_front")
+                    addProperty("south", "healthmod:block/first_aid_kit_back")
+                    addProperty("east", "healthmod:block/first_aid_kit_side")
+                    addProperty("west", "healthmod:block/first_aid_kit_side")
                     addProperty("particle", "minecraft:block/acacia_planks")
                 })
             }

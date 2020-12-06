@@ -92,6 +92,7 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
                 world.updateComparators(pos, this)
             }
 
+            @Suppress("DEPRECATION")
             super.onStateReplaced(state, world, pos, newState, moved)
         }
     }

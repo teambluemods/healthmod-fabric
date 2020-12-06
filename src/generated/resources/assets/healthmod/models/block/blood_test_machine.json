@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "healthmod:block/bandage_box"
+    "all": "healthmod:block/blood_test_machine"
   }
 }

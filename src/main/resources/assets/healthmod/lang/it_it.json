@@ -3,7 +3,7 @@
   "item.healthmod.bandage": "Cerotto",
   "item.healthmod.blood_vial": "Fiala sanguigna",
   "item.healthmod.broccoli": "Broccolo",
-  "item.healthmod.first_aid_kit": "Kit di pronto soccorso",
+  "block.healthmod.first_aid_kit": "Kit di pronto soccorso",
   "effect.healthmod.healthy": "Sano",
   "effect.healthmod.wound_infection": "Infezione feritale",
   "itemGroup.healthmod.all": "HealthMod",
@@ -27,5 +27,6 @@
   "text.autoconfig.healthmod.option.damagedInfectionChanceWhenHealthy.@Tooltip": "Probabilità che contrai un infezione feritale quando sano e danneggiato da 2 o più (1/valore configurazione)",
   "block.healthmod.bandage_box": "Scatola di cerotti",
   "death.attack.wound_infection": "%1$s è morto di un infezione feritale",
-  "death.attack.wound_infection.player": "%1$s è morto di un infezione feritale"
+  "death.attack.wound_infection.player": "%1$s è morto di un infezione feritale",
+  "block.healthmod.blood_test_machine": "Macchina delle analisi del sangue"
 }

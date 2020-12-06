@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "healthmod:block/blood_test_machine"
+    }
+  }
+}

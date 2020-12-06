@@ -19,13 +19,17 @@
 
 package io.github.blueminecraftteam.healthmod.blocks
 
-import io.github.blueminecraftteam.healthmod.blocks.entities.BandageBoxBlockEntity
+import io.github.blueminecraftteam.healthmod.blocks.entities.FirstAidKitBlockEntity
+import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import net.minecraft.block.*
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
+import net.minecraft.potion.PotionUtil
+import net.minecraft.potion.Potions
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.state.StateManager
 import net.minecraft.util.*
@@ -35,7 +39,7 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
-class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
+class FirstAidKitBlock(settings: Settings) : BlockWithEntity(settings) {
     init {
         this.defaultState = this.stateManager.defaultState.with(HorizontalFacingBlock.FACING, Direction.NORTH)
     }
@@ -44,7 +48,7 @@ class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
         builder.add(HorizontalFacingBlock.FACING)
     }
 
-    override fun createBlockEntity(world: BlockView) = BandageBoxBlockEntity()
+    override fun createBlockEntity(world: BlockView) = FirstAidKitBlockEntity()
 
     override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
 
@@ -88,13 +92,11 @@ class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
     ) {
         val blockEntity = world.getBlockEntity(pos)
 
-        if (blockEntity is BandageBoxBlockEntity) {
-            for (i in 0 until 6) {
-                blockEntity.setStack(
-                    i,
-                    // random amount of bandages from 1 to 8
-                    ItemStack(ItemRegistries.BANDAGE, (1..8).random())
-                )
+        if (blockEntity is FirstAidKitBlockEntity) {
+            blockEntity.apply {
+                setStack(0, BlockRegistries.BANDAGE_BOX.asItem().defaultStack)
+                setStack(1, ItemStack(ItemRegistries.ANTIBIOTICS, 2))
+                setStack(2, PotionUtil.setPotion(ItemStack(Items.SPLASH_POTION), Potions.LONG_REGENERATION))
             }
         }
     }
@@ -109,7 +111,7 @@ class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
         if (state.block != newState.block) {
             val blockEntity = world.getBlockEntity(pos)
 
-            if (blockEntity is BandageBoxBlockEntity) {
+            if (blockEntity is FirstAidKitBlockEntity) {
                 ItemScatterer.spawn(world, pos, blockEntity)
 
                 // update comparators

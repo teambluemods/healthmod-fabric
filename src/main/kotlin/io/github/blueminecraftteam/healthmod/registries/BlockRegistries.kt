@@ -22,6 +22,7 @@ package io.github.blueminecraftteam.healthmod.registries
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.blocks.BandageBoxBlock
 import io.github.blueminecraftteam.healthmod.blocks.BloodTestMachineBlock
+import io.github.blueminecraftteam.healthmod.blocks.FirstAidKitBlock
 import io.github.blueminecraftteam.healthmod.util.debug
 import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
@@ -41,9 +42,9 @@ object BlockRegistries : ModRegistry<Block> {
         id = "bandage_box",
         toRegister = BandageBoxBlock(
             AbstractBlock.Settings
-                .of(Material.WOOD, MaterialColor.ORANGE)
-                .sounds(BlockSoundGroup.WOOD)
-                .strength(2.5F)
+                .of(Material.CARPET, MaterialColor.WHITE)
+                .sounds(BlockSoundGroup.WOOL)
+                .strength(0F, 0F)
         ),
         customItemProperties = Item.Settings()
             .group(HealthMod.ITEM_GROUP)
@@ -54,8 +55,22 @@ object BlockRegistries : ModRegistry<Block> {
     val BLOOD_TEST_MACHINE = register(
         id = "blood_test_machine",
         toRegister = BloodTestMachineBlock(
-            AbstractBlock.Settings.of(Material.GLASS, MaterialColor.WHITE)
+            AbstractBlock.Settings
+                .of(Material.GLASS, MaterialColor.WHITE)
                 .sounds(BlockSoundGroup.GLASS)
+                .strength(0F, 0F)
+        ),
+        customItemProperties = Item.Settings()
+            .group(HealthMod.ITEM_GROUP)
+            .maxCount(1)
+            .rarity(Rarity.UNCOMMON)
+    )
+
+    val FIRST_AID_KIT = register(
+        id = "first_aid_kit",
+        toRegister = FirstAidKitBlock(
+            AbstractBlock.Settings
+                .of(Material.AGGREGATE, MaterialColor.ORANGE)
                 .strength(0F, 0F)
         ),
         customItemProperties = Item.Settings()

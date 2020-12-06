@@ -23,15 +23,20 @@ import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.gui.screen.ingame.HandledScreen
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.player.PlayerInventory
+import net.minecraft.screen.ScreenHandler
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-class BandageBoxScreen(handler: BandageBoxScreenHandler, inventory: PlayerInventory, title: Text) :
-    HandledScreen<BandageBoxScreenHandler>(handler, inventory, title) {
+class SimpleInventoryScreen<T : ScreenHandler>(
+    handler: T,
+    inventory: PlayerInventory,
+    title: Text,
+    private val texture: Identifier
+) : HandledScreen<T>(handler, inventory, title) {
     override fun drawBackground(matrices: MatrixStack, delta: Float, mouseX: Int, mouseY: Int) {
         @Suppress("DEPRECATION")
         RenderSystem.color4f(1.0f, 1.0f, 1.0f, 1.0f)
-        client!!.textureManager.bindTexture(TEXTURE)
+        client!!.textureManager.bindTexture(texture)
         val x = (width - backgroundWidth) / 2
         val y = (height - backgroundHeight) / 2
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight)
@@ -47,10 +52,5 @@ class BandageBoxScreen(handler: BandageBoxScreenHandler, inventory: PlayerInvent
         super.init()
 
         titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2
-    }
-
-    companion object {
-        // TODO: use own texture?
-        private val TEXTURE = Identifier("minecraft", "textures/gui/container/dispenser.png")
     }
 }
