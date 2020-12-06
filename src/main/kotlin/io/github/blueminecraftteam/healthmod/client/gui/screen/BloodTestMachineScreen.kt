@@ -26,8 +26,8 @@ import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-class BloodTestMachineScreen(handler: BandAidBoxScreenHandler, inventory: PlayerInventory, title: Text) :
-    HandledScreen<BandAidBoxScreenHandler>(handler, inventory, title) {
+class BloodTestMachineScreen(handler: BloodTestMachineScreenHandler, inventory: PlayerInventory, title: Text) :
+    HandledScreen<BloodTestMachineScreenHandler>(handler, inventory, title) {
     override fun drawBackground(matrices: MatrixStack, delta: Float, mouseX: Int, mouseY: Int) {
         RenderSystem.color4f(1.0f, 1.0f, 1.0f, 1.0f)
         client!!.textureManager.bindTexture(TEXTURE)
