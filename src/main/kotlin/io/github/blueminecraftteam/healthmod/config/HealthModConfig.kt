@@ -48,6 +48,9 @@ class HealthModConfig : ConfigData {
     @ConfigEntry.Gui.Tooltip
     var damagedInfectionChanceWhenHealthy = 25
 
+    @ConfigEntry.Category("woundInfection")
+    var woundInfectionChanceWhenBleeding = 25
+
     @ConfigEntry.Category("other")
     @ConfigEntry.Gui.Tooltip
     var bacterialResistanceChance = 500

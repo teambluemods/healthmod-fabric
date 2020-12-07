@@ -37,6 +37,8 @@ repositories {
 
     maven("https://jitpack.io") { name = "Jitpack" }
 
+    maven("https://maven.abusedmaster.xyz") { name = "OnyxStudios" }
+
     maven("https://aperlambda.github.io/maven") { name = "AperLambda" }
 
     jcenter()
