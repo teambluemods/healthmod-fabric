@@ -31,8 +31,8 @@ import kotlin.math.roundToInt
 class BleedingStatusEffect(type: StatusEffectType, color: Int) : StatusEffect(type, color) {
     override fun applyUpdateEffect(entity: LivingEntity, amplifier: Int) {
         entity.damage(DAMAGE_SOURCE, 0.25f)
-        if((1..config.woundInfectionChanceWhenBleeding + 1).random() != 1) {
-            entity.applyStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION))
+        if((1..config.woundInfectionChanceWhenBleeding + 1).random() == 1) {
+            entity.applyStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 1200))
             entity.removeStatusEffect(StatusEffectRegistries.BLEEDING)
         }
     }
