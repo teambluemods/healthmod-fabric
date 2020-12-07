@@ -58,6 +58,12 @@ dependencies {
     // yeet mojank console spam
     modRuntime("user11681:noauth:+")
 
+    modApi("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.7.9")
+    // Replace modImplementation with modApi if you expose components in your own API
+    modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:2.7.9")
+    // Includes Cardinal Components API as a Jar-in-Jar dependency (optional)
+    include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:2.7.9")
+
     // yes
     modImplementation("io.github.prospector:modmenu:${property("mod_menu_version")}")
 

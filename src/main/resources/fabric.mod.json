@@ -41,5 +41,10 @@
   },
   "suggests": {
     "modmenu": "1.14.13+build.21"
+  },
+  "custom": {
+    "cardinal-components": [
+      "healthmod:sanitized_wound"
+    ]
   }
 }
