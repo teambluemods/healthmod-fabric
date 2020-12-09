@@ -44,7 +44,8 @@
   },
   "custom": {
     "cardinal-components": [
-      "healthmod:sanitized_wound"
+      "healthmod:sanitized_wound",
+      "healthmod:blood_level"
     ]
   }
 }

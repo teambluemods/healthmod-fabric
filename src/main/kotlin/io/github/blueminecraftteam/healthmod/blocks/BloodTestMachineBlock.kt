@@ -68,12 +68,7 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
         itemStack: ItemStack
     ) {
         val blockEntity = world.getBlockEntity(pos)
-
-        if (blockEntity is BloodTestMachineBlockEntity) {
-            for (i in 0 until 3) {
-                blockEntity.setStack(i, ItemRegistries.BLOOD_VIAL.defaultStack)
-            }
-        }
+        
     }
 
     override fun onStateReplaced(

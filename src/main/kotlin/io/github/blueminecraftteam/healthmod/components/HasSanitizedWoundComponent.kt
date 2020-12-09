@@ -20,7 +20,6 @@
 package io.github.blueminecraftteam.healthmod.components
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
 import net.minecraft.nbt.CompoundTag
 
 public interface BooleanComponent : ComponentV3 {
