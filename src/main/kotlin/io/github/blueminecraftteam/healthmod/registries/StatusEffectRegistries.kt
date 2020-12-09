@@ -30,24 +30,24 @@ import net.minecraft.util.registry.Registry
 object StatusEffectRegistries : ModRegistry<StatusEffect> {
     override val registry: Registry<StatusEffect> get() = Registry.STATUS_EFFECT
 
+    @get:JvmName("getWoundInfection")
     @JvmStatic
     val WOUND_INFECTION = register(
         id = "wound_infection",
         toRegister = WoundInfectionStatusEffect(StatusEffectType.HARMFUL, 0x00FF00)
     )
-        @JvmName("getWoundInfection") get
 
+    @get:JvmName("getBleeding")
     @JvmStatic
     val BLEEDING = register(
         id = "bleeding",
         toRegister = BleedingStatusEffect(StatusEffectType.HARMFUL, 0xa00808)
     )
-        @JvmName("getBleeding") get
 
+    @get:JvmName("getHealthy")
     @JvmStatic
     val HEALTHY = register(
         id = "healthy",
         toRegister = StatusEffectAccessorMixin.healthmod_createStatusEffect(StatusEffectType.BENEFICIAL, 0x67eb34)
     )
-        @JvmName("getHealthy") get
 }
