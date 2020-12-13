@@ -32,6 +32,9 @@
     ],
     "modmenu": [
       "io.github.blueminecraftteam.healthmod.api.HealthModModMenuApiImpl"
+    ],
+    "cardinal-components-entity": [
+      "io.github.blueminecraftteam.healthmod.registries.ComponentRegistries"
     ]
   },
   "mixins": [

@@ -24,8 +24,6 @@ import net.minecraft.nbt.CompoundTag
 
 interface IntLevelComponent : ComponentV3 {
     var value: Int
-    val max get() = Int.MAX_VALUE
-    val min get() = Int.MIN_VALUE
 
     operator fun plus(tagToAmount: Pair<CompoundTag, Int>) {
         readFromNbt(tagToAmount.first)

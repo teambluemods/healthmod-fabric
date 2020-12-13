@@ -19,12 +19,18 @@
 
 package io.github.blueminecraftteam.healthmod.components
 
+import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent
+import io.github.blueminecraftteam.healthmod.registries.ComponentRegistries
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.network.PacketByteBuf
+import net.minecraft.server.network.ServerPlayerEntity
 
-class BloodLevelComponent : IntLevelComponent {
+class BloodLevelComponent(private val provider: Any) : IntLevelComponent, AutoSyncedComponent {
     override var value = 20
-    override var max = 20
-    override var min = 0
+        set(value) {
+            field = value
+            ComponentRegistries.BLOOD_LEVEL.sync(provider)
+        }
 
     override fun readFromNbt(tag: CompoundTag) {
         value = tag.getInt("value")
@@ -33,4 +39,14 @@ class BloodLevelComponent : IntLevelComponent {
     override fun writeToNbt(tag: CompoundTag) {
         tag.putInt("value", value)
     }
+
+    override fun writeSyncPacket(buf: PacketByteBuf, recipient: ServerPlayerEntity) {
+        buf.writeVarInt(value)
+    }
+
+    override fun applySyncPacket(buf: PacketByteBuf) {
+        this.value = buf.readVarInt()
+    }
+
+    override fun shouldSyncWith(player: ServerPlayerEntity) = player == provider
 }

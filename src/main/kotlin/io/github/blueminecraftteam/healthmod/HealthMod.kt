@@ -21,6 +21,7 @@ package io.github.blueminecraftteam.healthmod
 
 import io.github.blueminecraftteam.healthmod.config.HealthModConfig
 import io.github.blueminecraftteam.healthmod.registries.*
+import io.github.blueminecraftteam.healthmod.util.debug
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
 import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer
 import net.fabricmc.api.ModInitializer
@@ -40,6 +41,7 @@ object HealthMod : ModInitializer {
         AutoConfig.register(HealthModConfig::class.java, ::Toml4jConfigSerializer)
 
         initRegistries()
+        debug<HealthMod>("Initialized all registries")
     }
 
     /**
