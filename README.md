@@ -19,6 +19,10 @@ The code for HealthMod is licensed under GPL v3 or later. You can see details at
 
 ### Textures
 
+All textures are from [healthmod-textures](https://github.com/blueminecraftteam/healthmod-textures).
+
+---
+
 The following textures are made by [ilja615](https://github.com/ilja615) and are licensed
 under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
@@ -67,6 +71,8 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 - [broccoli.png](src/main/resources/assets/healthmod/textures/item/broccoli.png)
 
 ### Translations
+
+All translations are from [healthmod-translations](https://github.com/blueminecraftteam/healthmod-translations).
 
 The following translations are made by [xf8b](https://github.com/xf8b) and are licensed
 under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
