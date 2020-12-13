@@ -19,14 +19,11 @@
 
 package io.github.blueminecraftteam.healthmod.components
 
-import dev.onyxstudios.cca.api.v3.component.ComponentV3
 import net.minecraft.nbt.CompoundTag
 
-public interface BooleanComponent : ComponentV3 {
-    var value: Boolean
-}
 class HasSanitizedWoundComponent : BooleanComponent {
-    override var value: Boolean = false
+    override var value = false
+
     override fun readFromNbt(tag: CompoundTag) {
         value = tag.getBoolean("value")
     }

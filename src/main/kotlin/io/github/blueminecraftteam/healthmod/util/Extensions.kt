@@ -25,9 +25,11 @@ import net.minecraft.item.Item
 import net.minecraft.util.registry.Registry
 import org.apache.commons.lang3.text.WordUtils
 
-fun <T> T?.throwIfNull(message: String? = null) = this ?: error(message ?: "No message")
+// kotlin
 
 fun String.capitalizeFully(): String = WordUtils.capitalizeFully(this)
+
+// minecraft
 
 val Item.id get() = Registry.ITEM.getId(this)
 

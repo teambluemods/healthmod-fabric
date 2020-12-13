@@ -20,23 +20,37 @@
 package io.github.blueminecraftteam.healthmod.blocks
 
 import io.github.blueminecraftteam.healthmod.blocks.entities.BloodTestMachineBlockEntity
-import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
-import net.minecraft.block.BlockRenderType
-import net.minecraft.block.BlockState
-import net.minecraft.block.BlockWithEntity
-import net.minecraft.entity.LivingEntity
+import net.minecraft.block.*
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.ItemScatterer
+import net.minecraft.util.function.BooleanBiFunction
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.shape.VoxelShape
+import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
+import java.util.stream.Stream
+
 
 class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
+    override fun getOutlineShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ): VoxelShape = SHAPE
+
+    override fun getCollisionShape(
+        state: BlockState,
+        world: BlockView,
+        pos: BlockPos,
+        context: ShapeContext
+    ): VoxelShape = SHAPE
+
     override fun createBlockEntity(world: BlockView) = BloodTestMachineBlockEntity()
 
     override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
@@ -58,17 +72,6 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
         }
 
         return ActionResult.SUCCESS
-    }
-
-    override fun onPlaced(
-        world: World,
-        pos: BlockPos,
-        state: BlockState,
-        placer: LivingEntity?,
-        itemStack: ItemStack
-    ) {
-        val blockEntity = world.getBlockEntity(pos)
-        
     }
 
     override fun onStateReplaced(
@@ -96,4 +99,22 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
 
     override fun getComparatorOutput(state: BlockState, world: World, pos: BlockPos) =
         ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos))
+
+    companion object {
+        private val SHAPE = Stream.of(
+            Block.createCuboidShape(1.0, 0.0, 10.0, 11.0, 13.0, 15.0),
+            Block.createCuboidShape(1.0, 0.0, 7.0, 11.0, 9.0, 10.0),
+            Block.createCuboidShape(11.0, 0.0, 7.0, 15.0, 13.0, 15.0),
+            Block.createCuboidShape(12.0, 4.0, 6.0, 14.0, 10.0, 7.0),
+            Block.createCuboidShape(12.0, 0.0, 5.0, 14.0, 1.0, 7.0),
+            Block.createCuboidShape(11.0, 0.0, 1.0, 15.0, 1.0, 5.0),
+            Block.createCuboidShape(12.0, 1.0, 2.0, 14.0, 3.0, 4.0),
+            Block.createCuboidShape(13.0, 2.0, 1.0, 14.0, 5.0, 2.0),
+            Block.createCuboidShape(14.0, 2.0, 4.0, 15.0, 5.0, 5.0),
+            Block.createCuboidShape(11.0, 2.0, 3.0, 12.0, 5.0, 4.0),
+            Block.createCuboidShape(6.0, 8.0, 15.0, 10.0, 13.0, 16.0)
+        )
+            .reduce { first, second -> VoxelShapes.combineAndSimplify(first, second, BooleanBiFunction.OR) }
+            .get()
+    }
 }

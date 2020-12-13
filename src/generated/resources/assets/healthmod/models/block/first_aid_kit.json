@@ -7,6 +7,6 @@
     "south": "healthmod:block/first_aid_kit_back",
     "east": "healthmod:block/first_aid_kit_side",
     "west": "healthmod:block/first_aid_kit_side",
-    "particle": "minecraft:block/acacia_planks"
+    "particle": "healthmod:block/first_aid_kit_bottom"
   }
 }

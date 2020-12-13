@@ -59,6 +59,7 @@ object BlockRegistries : ModRegistry<Block> {
                 .of(Material.GLASS, MaterialColor.WHITE)
                 .sounds(BlockSoundGroup.GLASS)
                 .strength(0F, 0F)
+                .nonOpaque()
         ),
         customItemProperties = Item.Settings()
             .group(HealthMod.ITEM_GROUP)

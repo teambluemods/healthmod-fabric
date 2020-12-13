@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "healthmod:block/bandage_box"
+    "down": "healthmod:block/bandage_box_bottom",
+    "up": "healthmod:block/bandage_box_top",
+    "north": "healthmod:block/bandage_box_front",
+    "south": "healthmod:block/bandage_box_back",
+    "east": "healthmod:block/bandage_box_side",
+    "west": "healthmod:block/bandage_box_side",
+    "particle": "healthmod:block/bandage_box_bottom"
   }
 }

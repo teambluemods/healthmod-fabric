@@ -35,12 +35,26 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ---
 
+The following textures are made by [ItalianCucumber](https://github.com/ItalianCucumber) and are licensed
+under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+
+- [blood_test_machine.png](src/main/resources/assets/healthmod/textures/block/blood_test_machine.png)
+- [blood_test_machine_screen.png](src/main/resources/assets/healthmod/textures/block/blood_test_machine_screen.png)
+- [blood_test_effects.png](src/main/resources/assets/healthmod/textures/block/blood_test_effects.png)
+- [blood_test_machine.json](src/generated/overrided/assets/healthmod/models/block/blood_test_machine.json)
+
+---
+
 The following textures are made by [Secnyt](https://github.com/secnyt) and are licensed
 under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
 - [antibiotics.png](src/main/resources/assets/healthmod/textures/item/antibiotics.png)
+- [blood_vial.png](src/main/resources/assets/healthmod/textures/item/blood_vial.png)
+- [empty_vial.png](src/main/resources/assets/healthmod/textures/item/empty_vial.png)
 
 ---
 
@@ -53,14 +67,14 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ### Translations
 
-The following translation is made by [xf8b](https://github.com/xf8b) and is licensed
+The following translations are made by [xf8b](https://github.com/xf8b) and are licensed
 under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
 - [en_us.json](src/generated/resources/assets/healthmod/lang/en_us.json)
-
-:warning: The above translation was made using a library, [Cloth API](https://github.com/shedaniel/cloth-api).
+  - :warning: This translation was made using a library, [Cloth API](https://github.com/shedaniel/cloth-api).
+- [en_gb.json](src/main/resources/assets/healthmod/lang/en_gb.json)
 
 ---
 
@@ -70,3 +84,12 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
 - [it_it.json](src/main/resources/assets/healthmod/lang/it_it.json)
+
+---
+
+The following translation is made by [TheOnlyTails](https://github.com/TheOnlyTails) and is licensed
+under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
+
+- [he_il.json](src/main/resources/assets/healthmod/lang/he_il.json)

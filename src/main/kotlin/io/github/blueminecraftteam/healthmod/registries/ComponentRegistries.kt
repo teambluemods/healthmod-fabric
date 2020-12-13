@@ -17,17 +17,20 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.components
+package io.github.blueminecraftteam.healthmod.registries
 
 import dev.onyxstudios.cca.api.v3.component.ComponentKey
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry
-import net.minecraft.util.Identifier
+import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
+import io.github.blueminecraftteam.healthmod.components.BloodLevelComponent
+import io.github.blueminecraftteam.healthmod.components.BooleanComponent
+import io.github.blueminecraftteam.healthmod.components.HasSanitizedWoundComponent
+import io.github.blueminecraftteam.healthmod.components.IntLevelComponent
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy
+import net.minecraft.util.Identifier
 
-
-class ComponentInitializer : EntityComponentInitializer {
+object ComponentRegistries : EntityComponentInitializer {
     val SANITIZED_WOUND: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
         Identifier("healthmod:sanitized_wound"),
         BooleanComponent::class.java
@@ -43,5 +46,4 @@ class ComponentInitializer : EntityComponentInitializer {
         registry.registerForPlayers(SANITIZED_WOUND, { HasSanitizedWoundComponent() }, RespawnCopyStrategy.INVENTORY)
         registry.registerForPlayers(BLOOD_LEVEL, { BloodLevelComponent() }, RespawnCopyStrategy.LOSSLESS_ONLY)
     }
-
 }

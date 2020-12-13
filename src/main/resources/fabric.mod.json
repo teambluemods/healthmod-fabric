@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "healthmod",
-  "version": "${version}",
+  "version": "$version",
   "name": "HealthMod",
   "description": "a mod which adds health related items",
   "authors": [
@@ -9,6 +9,9 @@
   ],
   "contributors": [
     "xf8b",
+    "Secnyt",
+    "ItalianCucumber",
+    "Saksham Kumar",
     "ilja615"
   ],
   "contact": {
