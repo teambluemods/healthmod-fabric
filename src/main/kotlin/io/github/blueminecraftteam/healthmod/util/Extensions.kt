@@ -24,6 +24,7 @@ import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.item.Item
 import net.minecraft.util.math.Direction
 import net.minecraft.util.registry.Registry
+import net.minecraft.world.World
 import org.apache.commons.lang3.text.WordUtils
 
 // kotlin
@@ -37,6 +38,8 @@ val Item.id get() = Registry.ITEM.getId(this)
 val Block.id get() = Registry.BLOCK.getId(this)
 
 val StatusEffect.id get() = Registry.STATUS_EFFECT.getId(this)
+
+val World.isServer get() = !isClient
 
 fun Direction.toYRotation() = when (this) {
     Direction.NORTH -> 0

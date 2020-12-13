@@ -22,7 +22,6 @@ package io.github.blueminecraftteam.healthmod.registries
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.items.AntibioticsItem
 import io.github.blueminecraftteam.healthmod.items.BandageItem
-import io.github.blueminecraftteam.healthmod.items.BloodVialItem
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
@@ -69,6 +68,6 @@ object ItemRegistries : ModRegistry<Item> {
 
     val BLOOD_VIAL = register(
         id = "blood_vial",
-        toRegister = BloodVialItem(Item.Settings().group(HealthMod.ITEM_GROUP))
+        toRegister = Item(Item.Settings().group(HealthMod.ITEM_GROUP))
     )
 }

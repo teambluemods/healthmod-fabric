@@ -22,6 +22,7 @@ package io.github.blueminecraftteam.healthmod.items
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
+import io.github.blueminecraftteam.healthmod.util.isServer
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.item.TooltipContext
@@ -45,7 +46,7 @@ class BandageItem(settings: Settings) : Item(settings) {
     }
 
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-        if (!world.isClient) {
+        if (world.isServer) {
             val itemStack = user.getStackInHand(hand)
 
             if (user.health < user.maxHealth) {

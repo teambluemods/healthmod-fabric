@@ -21,6 +21,7 @@ package io.github.blueminecraftteam.healthmod.blocks
 
 import io.github.blueminecraftteam.healthmod.blocks.entities.BandageBoxBlockEntity
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
+import io.github.blueminecraftteam.healthmod.util.isServer
 import net.minecraft.block.*
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -68,7 +69,7 @@ class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
         hand: Hand,
         hit: BlockHitResult
     ): ActionResult {
-        if (!world.isClient) {
+        if (world.isServer) {
             val factory = state.createScreenHandlerFactory(world, pos)
 
             if (factory != null) {

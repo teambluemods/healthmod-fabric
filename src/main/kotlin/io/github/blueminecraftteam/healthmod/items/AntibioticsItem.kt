@@ -23,6 +23,7 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.mixin.StatusEffectInstanceAccessorMixin
 import io.github.blueminecraftteam.healthmod.util.debug
+import io.github.blueminecraftteam.healthmod.util.isServer
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectType
 import net.minecraft.entity.effect.StatusEffects
@@ -38,7 +39,7 @@ import kotlin.math.roundToInt
 
 class AntibioticsItem(settings: Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-        if (!world.isClient) {
+        if (world.isServer) {
             val stack = user.getStackInHand(hand)
 
             if (user.activeStatusEffects

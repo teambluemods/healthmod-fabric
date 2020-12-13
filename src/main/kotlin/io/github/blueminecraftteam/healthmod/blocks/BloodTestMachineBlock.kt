@@ -20,6 +20,7 @@
 package io.github.blueminecraftteam.healthmod.blocks
 
 import io.github.blueminecraftteam.healthmod.blocks.entities.BloodTestMachineBlockEntity
+import io.github.blueminecraftteam.healthmod.util.isServer
 import net.minecraft.block.*
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.screen.ScreenHandler
@@ -63,7 +64,7 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
         hand: Hand,
         hit: BlockHitResult
     ): ActionResult {
-        if (!world.isClient) {
+        if (world.isServer) {
             val factory = state.createScreenHandlerFactory(world, pos)
 
             if (factory != null) {
