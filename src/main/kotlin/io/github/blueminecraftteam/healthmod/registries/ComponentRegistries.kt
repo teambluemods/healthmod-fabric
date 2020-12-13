@@ -34,7 +34,7 @@ class ComponentRegistries : EntityComponentInitializer {
     override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
         // add component to every PlayerEntity
         registry.registerForPlayers(SANITIZED_WOUND, { HasSanitizedWoundComponent() }, RespawnCopyStrategy.INVENTORY)
-        registry.registerForPlayers(BLOOD_LEVEL, { BloodLevelComponent() }, RespawnCopyStrategy.LOSSLESS_ONLY)
+        registry.registerForPlayers(BLOOD_LEVEL, ::BloodLevelComponent, RespawnCopyStrategy.LOSSLESS_ONLY)
     }
 
     companion object {
