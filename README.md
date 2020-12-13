@@ -43,7 +43,8 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 - [blood_test_machine.png](src/main/resources/assets/healthmod/textures/block/blood_test_machine.png)
 - [blood_test_machine_screen.png](src/main/resources/assets/healthmod/textures/block/blood_test_machine_screen.png)
 - [blood_test_effects.png](src/main/resources/assets/healthmod/textures/block/blood_test_effects.png)
-- [blood_test_machine.json](src/generated/overrided/assets/healthmod/models/block/blood_test_machine.json)
+- [blood_test_machine.json](src/generated/overrided/assets/healthmod/models/block/blood_test_machine.json) / Scale
+  decreased from 0.7 to 0.5 from original
 
 ---
 
