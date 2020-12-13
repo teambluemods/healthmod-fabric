@@ -23,12 +23,12 @@ import dev.onyxstudios.cca.api.v3.component.ComponentKey
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
+import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.components.BloodLevelComponent
 import io.github.blueminecraftteam.healthmod.components.BooleanComponent
 import io.github.blueminecraftteam.healthmod.components.HasSanitizedWoundComponent
 import io.github.blueminecraftteam.healthmod.components.IntLevelComponent
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy
-import net.minecraft.util.Identifier
 
 class ComponentRegistries : EntityComponentInitializer {
     override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
@@ -39,12 +39,12 @@ class ComponentRegistries : EntityComponentInitializer {
 
     companion object {
         val SANITIZED_WOUND: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
-            Identifier("healthmod:sanitized_wound"),
+            HealthMod.id("sanitized_wound"),
             BooleanComponent::class.java
         )
 
         val BLOOD_LEVEL: ComponentKey<IntLevelComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
-            Identifier("healthmod:blood_level"),
+            HealthMod.id("blood_level"),
             IntLevelComponent::class.java
         )
     }
