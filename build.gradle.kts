@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("fabric-loom") version "0.5-SNAPSHOT"
     java
-    kotlin("jvm") version "1.4.0"
+    kotlin("jvm") version "1.4.21"
     idea
     id("net.minecrell.licenser") version "0.4.1"
     id("maven-publish")
@@ -58,11 +58,10 @@ dependencies {
     // yeet mojank console spam
     modRuntime("user11681:noauth:+")
 
-    modApi("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:2.7.9")
-    // Replace modImplementation with modApi if you expose components in your own API
-    modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:2.7.9")
-    // Includes Cardinal Components API as a Jar-in-Jar dependency (optional)
-    include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:2.7.9")
+    modApi("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${property("cca_version")}")
+    // for entity components
+    modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${property("cca_version")}")
+    include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${property("cca_version")}")
 
     // yes
     modImplementation("io.github.prospector:modmenu:${property("mod_menu_version")}")
@@ -84,7 +83,7 @@ dependencies {
     // gui
     modImplementation("com.github.lambdaurora:spruceui:${property("spruceui_version")}")
     include("com.github.lambdaurora:spruceui:${property("spruceui_version")}")
-    include("org.aperlambda:lambdajcommon:1.8.1") {
+    include("org.aperlambda:lambdajcommon:${property("lambdajcommon_version")}") {
         // yeet google
         exclude(group = "com.google.code.gson")
         exclude(group = "com.google.guava")
@@ -114,7 +113,7 @@ tasks {
         }
     }
 
-    processResources {
+    withType<ProcessResources>().configureEach {
         inputs.property("version", project.version)
 
         filesMatching("fabric.mod.json") {
