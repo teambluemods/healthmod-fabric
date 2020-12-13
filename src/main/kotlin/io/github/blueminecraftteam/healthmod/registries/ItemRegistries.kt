@@ -69,11 +69,6 @@ object ItemRegistries : ModRegistry<Item> {
 
     val BLOOD_VIAL = register(
         id = "blood_vial",
-        toRegister = BloodVialItem(
-            Item.Settings()
-                .group(HealthMod.ITEM_GROUP)
-                .maxDamage(2000000)
-                .rarity(Rarity.UNCOMMON)
-        )
+        toRegister = BloodVialItem(Item.Settings().group(HealthMod.ITEM_GROUP))
     )
 }

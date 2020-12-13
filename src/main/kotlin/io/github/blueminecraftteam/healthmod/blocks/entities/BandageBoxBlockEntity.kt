@@ -22,15 +22,9 @@ package io.github.blueminecraftteam.healthmod.blocks.entities
 import io.github.blueminecraftteam.healthmod.client.gui.screen.BandageBoxScreenHandler
 import io.github.blueminecraftteam.healthmod.inventories.SimpleBlockEntityInventory
 import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
-import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.entity.player.PlayerInventory
-import net.minecraft.screen.NamedScreenHandlerFactory
-import net.minecraft.text.TranslatableText
 
-class BandageBoxBlockEntity : SimpleBlockEntityInventory(type = BlockEntityTypeRegistries.BANDAGE_BOX, size = 6),
-    NamedScreenHandlerFactory {
-    override fun createMenu(syncId: Int, inv: PlayerInventory, player: PlayerEntity) =
-        BandageBoxScreenHandler(syncId, inv, this)
-
-    override fun getDisplayName() = TranslatableText(cachedState.block.translationKey)
-}
+class BandageBoxBlockEntity : SimpleBlockEntityInventory(
+    type = BlockEntityTypeRegistries.BANDAGE_BOX,
+    menuFactory = ::BandageBoxScreenHandler,
+    size = 6
+)

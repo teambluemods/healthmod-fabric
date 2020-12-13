@@ -26,6 +26,7 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.util.id
+import io.github.blueminecraftteam.healthmod.util.toYRotation
 import me.shedaniel.cloth.api.datagen.v1.ModelStateData
 import net.minecraft.block.Block
 import net.minecraft.item.Item
@@ -36,7 +37,6 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.reflect.full.memberProperties
-
 
 object ModelDataGeneration {
     private fun horizontalRotatingBlock(data: ModelStateData, block: Block) {
@@ -50,7 +50,7 @@ object ModelDataGeneration {
                         add("facing=${direction.name.toLowerCase()}", JsonObject().apply {
                             addProperty("model", "${HealthMod.MOD_ID}:block/$id")
 
-                            direction.asRotation()
+                            direction.toYRotation()
                                 .takeUnless(0::equals)
                                 ?.let { addProperty("y", it) }
                         })

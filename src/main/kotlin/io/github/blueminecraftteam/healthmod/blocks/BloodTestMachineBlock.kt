@@ -35,7 +35,7 @@ import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import java.util.stream.Stream
 
-
+// TODO make this rotate
 class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
     override fun getOutlineShape(
         state: BlockState?,

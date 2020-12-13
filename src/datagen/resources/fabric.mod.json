@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "healthmod-datagen",
-  "version": "${version}",
+  "version": "$version",
   "name": "HealthMod Data Generation",
   "description": "fake mod for data generation hahayes",
   "authors": [

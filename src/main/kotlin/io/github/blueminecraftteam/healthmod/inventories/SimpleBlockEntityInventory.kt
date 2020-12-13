@@ -22,14 +22,33 @@ package io.github.blueminecraftteam.healthmod.inventories
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.inventory.Inventories
+import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.screen.NamedScreenHandlerFactory
+import net.minecraft.screen.ScreenHandler
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.collection.DefaultedList
 
-abstract class SimpleBlockEntityInventory(type: BlockEntityType<*>, size: Int) : BlockEntity(type),
-    ImplementedInventory {
+abstract class SimpleBlockEntityInventory(
+    type: BlockEntityType<*>,
+    private val menuFactory: (Int, PlayerInventory, Inventory) -> ScreenHandler,
+    size: Int
+) : BlockEntity(type),
+    ImplementedInventory,
+    NamedScreenHandlerFactory {
     override val items: DefaultedList<ItemStack> = DefaultedList.ofSize(size, ItemStack.EMPTY)
+
+    override fun createMenu(syncId: Int, inv: PlayerInventory, player: PlayerEntity) = menuFactory(
+        syncId,
+        inv,
+        this
+    )
+
+    override fun getDisplayName() = TranslatableText(cachedState.block.translationKey)
 
     override fun fromTag(state: BlockState, tag: CompoundTag) {
         super.fromTag(state, tag)
