@@ -30,20 +30,22 @@ import io.github.blueminecraftteam.healthmod.components.IntLevelComponent
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy
 import net.minecraft.util.Identifier
 
-object ComponentRegistries : EntityComponentInitializer {
-    val SANITIZED_WOUND: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
-        Identifier("healthmod:sanitized_wound"),
-        BooleanComponent::class.java
-    )
-
-    val BLOOD_LEVEL: ComponentKey<IntLevelComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
-        Identifier("healthmod:blood_level"),
-        IntLevelComponent::class.java
-    )
-
+class ComponentRegistries : EntityComponentInitializer {
     override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
         // add component to every PlayerEntity
         registry.registerForPlayers(SANITIZED_WOUND, { HasSanitizedWoundComponent() }, RespawnCopyStrategy.INVENTORY)
         registry.registerForPlayers(BLOOD_LEVEL, { BloodLevelComponent() }, RespawnCopyStrategy.LOSSLESS_ONLY)
+    }
+
+    companion object {
+        val SANITIZED_WOUND: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+            Identifier("healthmod:sanitized_wound"),
+            BooleanComponent::class.java
+        )
+
+        val BLOOD_LEVEL: ComponentKey<IntLevelComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+            Identifier("healthmod:blood_level"),
+            IntLevelComponent::class.java
+        )
     }
 }
