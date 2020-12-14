@@ -29,8 +29,6 @@ import java.nio.file.Paths
 import kotlin.system.exitProcess
 
 object HealthModDataGeneration : PreLaunchEntrypoint {
-    private val LOGGER = LogManager.getLogger()
-
     /**
      * Runs data generation.
      */
