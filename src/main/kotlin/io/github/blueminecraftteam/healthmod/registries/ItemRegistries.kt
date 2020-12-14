@@ -80,6 +80,6 @@ object ItemRegistries : ModRegistry<Item> {
 
     val SOAP = register(
         id = "soap",
-        toRegister = SoapItem(Item.Settings().group(HealthMod.ITEM_GROUP))
+        toRegister = SoapItem(Item.Settings().group(HealthMod.ITEM_GROUP).maxDamage(30))
     )
 }

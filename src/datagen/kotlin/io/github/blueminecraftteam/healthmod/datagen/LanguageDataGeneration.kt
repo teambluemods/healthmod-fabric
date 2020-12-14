@@ -135,6 +135,10 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     text("bandage.3", "You have a 25% chance of getting an infection.")
     text("bandage.failed_apply", "Uh oh, you didn't put the bandage on correctly!")
 
+    text("isopropyl_alcohol.apply", "You feel a slight pain where you were bleeding.")
+
+    text("soap.apply", "You were cleansed.")
+
     text("antibiotics.resistant_bacteria", "Uh oh, the bacteria have become resistant!")
 
     config("title", "HealthMod Config")

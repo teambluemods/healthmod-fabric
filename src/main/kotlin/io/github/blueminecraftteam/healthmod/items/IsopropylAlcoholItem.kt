@@ -19,12 +19,14 @@
 
 package io.github.blueminecraftteam.healthmod.items
 
+import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.registries.ComponentRegistries
+import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
-import net.minecraft.text.LiteralText
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
@@ -36,16 +38,22 @@ class IsopropylAlcoholItem(settings: Settings) : Item(settings) {
         val hasSanitizedWoundComponent = ComponentRegistries.SANITIZED_WOUND.get(user)
         val stackInHand = user.getStackInHand(hand)
 
-        return if (hasSanitizedWoundComponent.value) {
-            hasSanitizedWoundComponent.value = true
-            stackInHand.decrement(1)
-            // TODO translatable text
-            user.sendMessage(
-                LiteralText("The bacteria is gone, but you feel a slight pain at the site of bleeding."),
-                true
-            )
-            user.damage(DamageSource.GENERIC, 0.5F)
-            TypedActionResult.consume(stackInHand)
+        return if (user.hasStatusEffect(StatusEffectRegistries.BLEEDING)) {
+            if (hasSanitizedWoundComponent.value) {
+                hasSanitizedWoundComponent.value = true
+                stackInHand.decrement(1)
+
+                user.sendMessage(
+                    TranslatableText("text.${HealthMod.MOD_ID}.isopropyl_alcohol.apply"),
+                    true
+                )
+
+                user.damage(DamageSource.GENERIC, 0.5F)
+
+                TypedActionResult.consume(stackInHand)
+            } else {
+                TypedActionResult.pass(stackInHand)
+            }
         } else {
             TypedActionResult.pass(stackInHand)
         }

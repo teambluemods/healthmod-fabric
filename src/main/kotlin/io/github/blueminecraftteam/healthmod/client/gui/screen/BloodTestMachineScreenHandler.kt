@@ -27,9 +27,6 @@ import net.minecraft.inventory.SimpleInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
-import net.minecraft.screen.BrewingStandScreenHandler
-import net.minecraft.screen.BrewingStandScreenHandler.*
-
 
 class BloodTestMachineScreenHandler(
     syncId: Int,
