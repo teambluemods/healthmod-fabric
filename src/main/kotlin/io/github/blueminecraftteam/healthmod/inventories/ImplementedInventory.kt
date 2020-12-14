@@ -111,7 +111,6 @@ interface ImplementedInventory : Inventory {
         /**
          * Creates an inventory from the item list.
          */
-        // why is this an object you ask? it's because intellijank wont let me do ImplementedInventory { items }
         fun of(items: DefaultedList<ItemStack>) = object : ImplementedInventory {
             override val items: DefaultedList<ItemStack> = items
         }

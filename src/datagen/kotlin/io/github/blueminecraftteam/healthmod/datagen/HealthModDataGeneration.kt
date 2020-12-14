@@ -20,6 +20,8 @@
 package io.github.blueminecraftteam.healthmod.datagen
 
 import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.util.fatal
+import io.github.blueminecraftteam.healthmod.util.info
 import me.shedaniel.cloth.api.datagen.v1.DataGeneratorHandler
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint
 import org.apache.logging.log4j.LogManager
@@ -47,11 +49,11 @@ object HealthModDataGeneration : PreLaunchEntrypoint {
             exitProcess(1)
         }
 
-        LOGGER.info("thanks for flying on datagen airways™, we are approaching the runway")
+        info<HealthModDataGeneration>("thanks for flying on datagen airways™, we are approaching the runway")
 
         exitProcess(0)
 
         @Suppress("UNREACHABLE_CODE") // this is for the haha funi
-        LOGGER.fatal("oh shit")
+        fatal<HealthModDataGeneration>("oh shit")
     }
 }

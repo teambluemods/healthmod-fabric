@@ -19,8 +19,35 @@
 
 package io.github.blueminecraftteam.healthmod.items
 
+import io.github.blueminecraftteam.healthmod.registries.ComponentRegistries
+import net.minecraft.entity.damage.DamageSource
+import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
+import net.minecraft.item.ItemStack
+import net.minecraft.text.LiteralText
+import net.minecraft.util.Hand
+import net.minecraft.util.TypedActionResult
+import net.minecraft.world.World
 
 class IsopropylAlcoholItem(settings: Settings) : Item(settings) {
-    // TODO
+    // TODO make fire grow faster if thrown into fire (because isopropyl alcohol is flammable)
+
+    override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
+        val hasSanitizedWoundComponent = ComponentRegistries.SANITIZED_WOUND.get(user)
+        val stackInHand = user.getStackInHand(hand)
+
+        return if (hasSanitizedWoundComponent.value) {
+            hasSanitizedWoundComponent.value = true
+            stackInHand.decrement(1)
+            // TODO translatable text
+            user.sendMessage(
+                LiteralText("The bacteria is gone, but you feel a slight pain at the site of bleeding."),
+                true
+            )
+            user.damage(DamageSource.GENERIC, 0.5F)
+            TypedActionResult.consume(stackInHand)
+        } else {
+            TypedActionResult.pass(stackInHand)
+        }
+    }
 }

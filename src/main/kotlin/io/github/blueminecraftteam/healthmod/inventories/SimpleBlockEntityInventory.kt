@@ -33,7 +33,7 @@ import net.minecraft.screen.ScreenHandler
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.collection.DefaultedList
 
-abstract class SimpleBlockEntityInventory(
+class SimpleBlockEntityInventory(
     type: BlockEntityType<*>,
     private val menuFactory: (Int, PlayerInventory, Inventory) -> ScreenHandler,
     size: Int

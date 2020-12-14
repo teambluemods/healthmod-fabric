@@ -26,14 +26,14 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.components.BloodLevelComponent
 import io.github.blueminecraftteam.healthmod.components.BooleanComponent
-import io.github.blueminecraftteam.healthmod.components.HasSanitizedWoundComponent
 import io.github.blueminecraftteam.healthmod.components.IntLevelComponent
+import io.github.blueminecraftteam.healthmod.components.SanitizedWoundComponent
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy
 
 class ComponentRegistries : EntityComponentInitializer {
     override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
         // add component to every PlayerEntity
-        registry.registerForPlayers(SANITIZED_WOUND, { HasSanitizedWoundComponent() }, RespawnCopyStrategy.INVENTORY)
+        registry.registerForPlayers(SANITIZED_WOUND, { SanitizedWoundComponent() }, RespawnCopyStrategy.INVENTORY)
         registry.registerForPlayers(BLOOD_LEVEL, ::BloodLevelComponent, RespawnCopyStrategy.LOSSLESS_ONLY)
     }
 

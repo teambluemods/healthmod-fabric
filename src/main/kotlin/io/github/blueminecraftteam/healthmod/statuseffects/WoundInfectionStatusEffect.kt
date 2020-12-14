@@ -26,7 +26,7 @@ import net.minecraft.entity.effect.StatusEffectType
 
 class WoundInfectionStatusEffect(type: StatusEffectType, color: Int) : StatusEffect(type, color) {
     override fun applyUpdateEffect(entity: LivingEntity, amplifier: Int) {
-        entity.damage(DAMAGE_SOURCE, 0.5f)
+        entity.damage(DAMAGE_SOURCE, 0.5F)
     }
 
     override fun canApplyUpdateEffect(duration: Int, amplifier: Int): Boolean {

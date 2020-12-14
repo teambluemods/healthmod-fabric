@@ -98,6 +98,7 @@ class FirstAidKitBlock(settings: Settings) : BlockWithEntity(settings) {
                 setStack(0, BlockRegistries.BANDAGE_BOX.asItem().defaultStack)
                 setStack(1, ItemStack(ItemRegistries.ANTIBIOTICS, 2))
                 setStack(2, PotionUtil.setPotion(ItemStack(Items.SPLASH_POTION), Potions.LONG_REGENERATION))
+                setStack(3, ItemRegistries.ISOPROPYL_ALCOHOL.defaultStack)
                 // TODO more items
             }
         }

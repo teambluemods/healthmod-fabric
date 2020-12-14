@@ -21,7 +21,7 @@ package io.github.blueminecraftteam.healthmod.components
 
 import net.minecraft.nbt.CompoundTag
 
-class HasSanitizedWoundComponent : BooleanComponent {
+class SanitizedWoundComponent : BooleanComponent {
     override var value = false
 
     override fun readFromNbt(tag: CompoundTag) {

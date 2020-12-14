@@ -41,6 +41,8 @@ repositories {
 
     maven("https://aperlambda.github.io/maven") { name = "AperLambda" }
 
+    maven("https://repo.repsy.io/mvn/progamer28415/main") { name = "xf8b" }
+
     jcenter()
 }
 
@@ -88,6 +90,10 @@ dependencies {
         exclude(group = "com.google.code.gson")
         exclude(group = "com.google.guava")
     }
+
+    // random utils
+    implementation("io.github.xf8b:utils:${property("utils_version")}")
+    include("io.github.xf8b:utils:${property("utils_version")}")
 
     // note: older mods on loom 0.2.1 might need transitiveness disabled
     "datagenCompile"(sourceSets.main.get().output)
