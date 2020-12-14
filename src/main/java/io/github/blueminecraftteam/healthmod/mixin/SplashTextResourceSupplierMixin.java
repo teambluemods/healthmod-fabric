@@ -44,7 +44,8 @@ public class SplashTextResourceSupplierMixin {
                 "Wear a mask!",
                 "helth goes brrrr",
                 "Be careful with bandages!",
-                "h"
+                "h",
+                "wide putin"
         ));
     }
 }
