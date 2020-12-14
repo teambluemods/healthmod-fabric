@@ -22,9 +22,9 @@ package io.github.blueminecraftteam.healthmod.datagen
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.util.fatal
 import io.github.blueminecraftteam.healthmod.util.info
+import io.github.blueminecraftteam.healthmod.util.logger
 import me.shedaniel.cloth.api.datagen.v1.DataGeneratorHandler
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint
-import org.apache.logging.log4j.LogManager
 import java.nio.file.Paths
 import kotlin.system.exitProcess
 
@@ -43,7 +43,7 @@ object HealthModDataGeneration : PreLaunchEntrypoint {
 
             handler.run()
         } catch (throwable: Throwable) {
-            LOGGER.fatal("Error happened during datagen!", throwable)
+            logger<HealthModDataGeneration>().fatal("Error happened during datagen!", throwable)
             exitProcess(1)
         }
 
