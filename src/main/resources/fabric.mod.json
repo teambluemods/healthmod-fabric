@@ -10,6 +10,7 @@
   "contributors": [
     "xf8b",
     "Secnyt",
+    "AG6",
     "ItalianCucumber",
     "Saksham Kumar",
     "ilja615",
@@ -52,7 +53,8 @@
   "custom": {
     "cardinal-components": [
       "healthmod:sanitized_wound",
-      "healthmod:blood_level"
+      "healthmod:blood_level",
+      "healthmod:cleanliness"
     ]
   }
 }

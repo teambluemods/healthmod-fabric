@@ -24,10 +24,7 @@ import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
 import io.github.blueminecraftteam.healthmod.HealthMod
-import io.github.blueminecraftteam.healthmod.components.BloodLevelComponent
-import io.github.blueminecraftteam.healthmod.components.BooleanComponent
-import io.github.blueminecraftteam.healthmod.components.IntLevelComponent
-import io.github.blueminecraftteam.healthmod.components.SanitizedWoundComponent
+import io.github.blueminecraftteam.healthmod.components.*
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy
 
 class ComponentRegistries : EntityComponentInitializer {
@@ -35,6 +32,7 @@ class ComponentRegistries : EntityComponentInitializer {
         // add component to every PlayerEntity
         registry.registerForPlayers(SANITIZED_WOUND, { SanitizedWoundComponent() }, RespawnCopyStrategy.INVENTORY)
         registry.registerForPlayers(BLOOD_LEVEL, ::BloodLevelComponent, RespawnCopyStrategy.LOSSLESS_ONLY)
+        registry.registerForPlayers(CLEANLINESS, ::CleanlinessComponent, RespawnCopyStrategy.LOSSLESS_ONLY)
     }
 
     companion object {
@@ -45,6 +43,11 @@ class ComponentRegistries : EntityComponentInitializer {
 
         val BLOOD_LEVEL: ComponentKey<IntLevelComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
             HealthMod.id("blood_level"),
+            IntLevelComponent::class.java
+        )
+
+        val CLEANLINESS: ComponentKey<IntLevelComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+            HealthMod.id("cleanliness"),
             IntLevelComponent::class.java
         )
     }
