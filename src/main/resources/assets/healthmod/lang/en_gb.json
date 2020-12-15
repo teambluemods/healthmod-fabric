@@ -31,7 +31,7 @@
   "death.attack.wound_infection": "%1$s died from a wound infection",
   "death.attack.wound_infection.player": "%1$s died from a wound infection",
   "item.healthmod.isopropyl_alcohol": "Isopropyl Alcohol",
-  "item.healthmod.soap": "Soap",
+  "item.healthmod.soap": "Bar of Soap",
   "text.healthmod.isopropyl_alcohol.apply": "You feel a slight pain where you were bleeding.",
   "text.healthmod.soap.apply": "You were cleansed."
 }

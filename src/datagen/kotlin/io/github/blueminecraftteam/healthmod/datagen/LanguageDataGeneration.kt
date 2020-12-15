@@ -173,6 +173,7 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     )
 
     override(BlockRegistries.BANDAGE_BOX.translationKey, "Box of Bandages")
+    override(ItemRegistries.SOAP.translationKey, "Bar of Soap")
 
     simple("death.attack.wound_infection", "%1\$s died from a wound infection")
     simple("death.attack.wound_infection.player", "%1\$s died from a wound infection")
