@@ -21,6 +21,6 @@ package io.github.blueminecraftteam.healthmod.components
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3
 
-interface IntLevelComponent : ComponentV3 {
+interface IntComponent : ComponentV3 {
     var value: Int
 }

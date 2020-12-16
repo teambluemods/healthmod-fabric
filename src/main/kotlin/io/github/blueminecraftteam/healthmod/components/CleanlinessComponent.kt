@@ -25,7 +25,7 @@ import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.server.network.ServerPlayerEntity
 
-class CleanlinessComponent(private val provider: Any) : IntLevelComponent, AutoSyncedComponent {
+class CleanlinessComponent(private val provider: Any) : IntComponent, AutoSyncedComponent {
     override var value = 0
         set(value) {
             field = value

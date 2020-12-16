@@ -41,14 +41,14 @@ class ComponentRegistries : EntityComponentInitializer {
             BooleanComponent::class.java
         )
 
-        val BLOOD_LEVEL: ComponentKey<IntLevelComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+        val BLOOD_LEVEL: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
             HealthMod.id("blood_level"),
-            IntLevelComponent::class.java
+            IntComponent::class.java
         )
 
-        val CLEANLINESS: ComponentKey<IntLevelComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+        val CLEANLINESS: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
             HealthMod.id("cleanliness"),
-            IntLevelComponent::class.java
+            IntComponent::class.java
         )
     }
 }
