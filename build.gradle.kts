@@ -1,5 +1,6 @@
 import net.fabricmc.loom.task.RunClientTask
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.api.tasks.compile.JavaCompile as CompileJava
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile as CompileKotlin
 
 plugins {
     id("fabric-loom") version "0.5-SNAPSHOT"
@@ -15,6 +16,23 @@ fun property(name: String) = project.findProperty(name)!!
 base.archivesBaseName = property("archives_base_name").toString()
 version = property("mod_version")
 group = property("maven_group")
+
+tasks.processResources {
+    val toReplace = listOf(
+        "mod_version",
+        "minecraft_version",
+        "loader_version",
+        "fabric_version",
+        "fabric_kotlin_version",
+        "mod_menu_version"
+    ).map { it to project.findProperty(it)!!.toString() }.toMap()
+
+    inputs.properties(toReplace)
+
+    filesMatching("fabric.mod.json") {
+        expand(toReplace)
+    }
+}
 
 sourceSets {
     main {
@@ -43,7 +61,7 @@ repositories {
 
     maven("https://repo.repsy.io/mvn/progamer28415/main") { name = "xf8b" }
 
-    jcenter()
+    jcenter { name = "JCenter" }
 }
 
 dependencies {
@@ -100,11 +118,12 @@ dependencies {
 }
 
 tasks {
-    withType<KotlinCompile>().configureEach {
+    withType<CompileKotlin>().configureEach {
         kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.languageVersion = "1.4"
     }
 
-    withType<JavaCompile>().configureEach {
+    withType<CompileJava>().configureEach {
         // this fixes some edge cases with special characters not displaying correctly
         // if Javadoc is generated, this must be specified in that task too.
         options.encoding = "UTF-8"
@@ -119,16 +138,12 @@ tasks {
         }
     }
 
-    withType<ProcessResources>().configureEach {
-        inputs.property("version", project.version)
-
-        filesMatching("fabric.mod.json") {
-            expand("version" to project.version)
-        }
-    }
-
     jar {
-        from("COPYING.txt") {
+        from("COPYING") {
+            rename { "${it}_${project.base.archivesBaseName}" }
+        }
+
+        from("COPYING.LESSER") {
             rename { "${it}_${project.base.archivesBaseName}" }
         }
     }

@@ -1,20 +1,27 @@
 {
   "schemaVersion": 1,
   "id": "healthmod-datagen",
-  "version": "$version",
+  "version": "${mod_version}",
   "name": "HealthMod Data Generation",
-  "description": "fake mod for data generation hahayes",
+  "description": "a dummy mod",
   "authors": [
-    "air"
+    "Blue Minecraft Team"
   ],
   "contributors": [
-    "no"
+    "xf8b",
+    "Secnyt",
+    "AG6",
+    "ItalianCucumber",
+    "Saksham Kumar",
+    "ilja615",
+    "TheOnlyTails"
   ],
   "contact": {
-    "website": "https://no.you/bruh?there=is&no=website",
-    "repo": "https://github.com/blueminecraftteam/healthmod-fabric"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/healthmod/",
+    "repo": "https://github.com/blueminecraftteam/healthmod-fabric/",
+    "issues": "https://github.com/blueminecraftteam/healthmod-fabric/issues/"
   },
-  "license": "GPL-3.0-or-later",
+  "license": "LGPL-3.0-or-later",
   "environment": "*",
   "entrypoints": {
     "preLaunch": [
@@ -22,9 +29,12 @@
     ]
   },
   "depends": {
-    "fabricloader": ">=0.10.8",
-    "fabric": "*",
-    "fabric-language-kotlin": "*",
-    "minecraft": "1.16.4"
+    "fabricloader": ">=${loader_version}",
+    "fabric": ">=${fabric_version}",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}",
+    "minecraft": "${minecraft_version}"
+  },
+  "suggests": {
+    "modmenu": "${mod_menu_version}"
   }
 }

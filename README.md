@@ -15,11 +15,14 @@ a mod which adds health related items
 
 ### Code
 
-The code for HealthMod is licensed under GPL v3 or later. You can see details at [the license file](COPYING.txt).
+The code for HealthMod is licensed under LGPL v3 or later. You can see details at [COPYING](COPYING)
+and [COPYING.LESSER](COPYING.LESSER).
 
 ### Textures
 
 All textures are from [healthmod-textures](https://github.com/blueminecraftteam/healthmod-textures).
+
+See [the texture license file](TEXTURE_LICENSE.txt) for more info.
 
 ---
 
@@ -74,6 +77,10 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 All translations are from [healthmod-translations](https://github.com/blueminecraftteam/healthmod-translations).
 
-[![license icon](https://licensebuttons.net/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0)  
+[![license icon](https://licensebuttons.net/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0)
 
-To the extent possible under law, [xf8b](https://github.com/xf8b/), [ItalianCucumber](https://github.com/ItalianCucumber/), and [TheOnlyTails](https://github.com/TheOnlyTails) have waived all copyright and related or neighboring rights to the HealthMod Translations.
+To the extent possible under law, [xf8b](https://github.com/xf8b/),
+[ItalianCucumber](https://github.com/ItalianCucumber/), and [TheOnlyTails](https://github.com/TheOnlyTails) have waived
+all copyright and related or neighboring rights to the HealthMod Translations.
+
+See [the translation license file](TRANSLATION_LICENSE.txt) for more info.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "healthmod",
-  "version": "$version",
+  "version": "${mod_version}",
   "name": "HealthMod",
   "description": "a mod which adds health related items",
   "authors": [
@@ -21,7 +21,7 @@
     "repo": "https://github.com/blueminecraftteam/healthmod-fabric/",
     "issues": "https://github.com/blueminecraftteam/healthmod-fabric/issues/"
   },
-  "license": "GPL-3.0-or-later",
+  "license": "LGPL-3.0-or-later",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
@@ -42,13 +42,13 @@
     "healthmod.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.10.8",
-    "fabric": "*",
-    "fabric-language-kotlin": "*",
-    "minecraft": "1.16.4"
+    "fabricloader": ">=${loader_version}",
+    "fabric": ">=${fabric_version}",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}",
+    "minecraft": "${minecraft_version}"
   },
   "suggests": {
-    "modmenu": "1.14.13+build.21"
+    "modmenu": "${mod_menu_version}"
   },
   "custom": {
     "cardinal-components": [

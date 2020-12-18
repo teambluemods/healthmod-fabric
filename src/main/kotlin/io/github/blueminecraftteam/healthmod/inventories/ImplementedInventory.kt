@@ -4,16 +4,16 @@
  * This file is part of HealthMod.
  *
  * HealthMod is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
+ * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * HealthMod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received a copy of the GNU Lesser General Public License
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
@@ -37,7 +37,6 @@ import net.minecraft.util.collection.DefaultedList
 interface ImplementedInventory : Inventory {
     /**
      * Item list of this inventory.
-     * Getter must return the same instance every time it's called.
      */
     val items: DefaultedList<ItemStack>
 
@@ -112,7 +111,7 @@ interface ImplementedInventory : Inventory {
          * Creates an inventory from the item list.
          */
         fun of(items: DefaultedList<ItemStack>) = object : ImplementedInventory {
-            override val items: DefaultedList<ItemStack> = items
+            override val items = items
         }
 
         /**
