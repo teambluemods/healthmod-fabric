@@ -29,9 +29,5 @@
   "death.attack.wound_infection": "%1$s מת מזיהום פצע",
   "death.attack.wound_infection.player": "%1$s מת מזיהום פצע",
   "block.healthmod.blood_test_machine": "מכונת בדיקת דם",
-  "effect.healthmod.bleeding": "דימום",
-  "item.healthmod.isopropyl_alcohol": "Isopropyl Alcohol",
-  "item.healthmod.soap": "Soap",
-  "text.healthmod.isopropyl_alcohol.apply": "You feel a slight pain where you were bleeding.",
-  "text.healthmod.soap.apply": "You were cleansed."
+  "effect.healthmod.bleeding": "דימום"
 }
