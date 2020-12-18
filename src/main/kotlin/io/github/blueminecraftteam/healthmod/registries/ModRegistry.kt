@@ -24,11 +24,20 @@ import io.github.blueminecraftteam.healthmod.util.debug
 import net.minecraft.util.registry.Registry
 
 interface ModRegistry<T> {
+    /**
+     * The [Registry] to register any [T] to.
+     */
     val registry: Registry<T>
 
+    /**
+     * Force loads this class.
+     */
     fun init() {
         debug<ModRegistry<*>>("Initialized registry ${this::class.java.simpleName}!")
     }
 
+    /**
+     * Registers [T] to the [registry] with the specified [id]. Will have a namespace of `healthmod`.
+     */
     fun register(id: String, toRegister: T): T = Registry.register(registry, HealthMod.id(id), toRegister)
 }

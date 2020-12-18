@@ -39,12 +39,10 @@ object HealthMod : ModInitializer {
 
     override fun onInitialize() {
         AutoConfig.register(HealthModConfig::class.java, ::Toml4jConfigSerializer)
-        //TODO Register attributes shit
 
         initRegistries()
         debug<HealthMod>("Initialized all registries")
     }
-
 
     /**
      * Force loads and registers all items, blocks, etc.
@@ -55,8 +53,8 @@ object HealthMod : ModInitializer {
         ItemRegistries.init()
         BlockRegistries.init()
         BlockEntityTypeRegistries.init()
-        EntityRegistries.init()
         ScreenHandlerTypeRegistries.init()
         StatusEffectRegistries.init()
+        ProfessionRegistries.init()
     }
 }
