@@ -17,7 +17,7 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.entities.trades
+package io.github.blueminecraftteam.healthmod.professions.trades
 
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
@@ -31,7 +31,7 @@ import net.minecraft.village.TradeOffer
 import net.minecraft.village.TradeOffers.Factory
 import java.util.*
 
-object EntityTrades {
+object ProfessionTrades {
     internal val DOCTOR = immutableMapOf(
         1 to arrayOf(
             SellFactory(sell = ItemRegistries.BANDAGE, price = 1, count = 2, experience = 1),

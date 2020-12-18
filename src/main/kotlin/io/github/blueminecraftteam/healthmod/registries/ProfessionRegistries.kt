@@ -1,7 +1,7 @@
 package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
-import io.github.blueminecraftteam.healthmod.entities.trades.EntityTrades
+import io.github.blueminecraftteam.healthmod.professions.trades.ProfessionTrades
 import net.fabricmc.fabric.api.`object`.builder.v1.villager.VillagerProfessionBuilder
 import net.fabricmc.fabric.api.`object`.builder.v1.world.poi.PointOfInterestHelper
 import net.minecraft.sound.SoundEvents
@@ -33,6 +33,6 @@ object ProfessionRegistries : ModRegistry<VillagerProfession> {
     override fun init() {
         super.init()
 
-        TradeOffers.PROFESSION_TO_LEVELED_TRADE[DOCTOR] = EntityTrades.DOCTOR
+        TradeOffers.PROFESSION_TO_LEVELED_TRADE[DOCTOR] = ProfessionTrades.DOCTOR
     }
 }
