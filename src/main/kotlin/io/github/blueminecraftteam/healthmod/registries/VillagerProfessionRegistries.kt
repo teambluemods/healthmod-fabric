@@ -29,7 +29,7 @@ import net.minecraft.village.TradeOffers
 import net.minecraft.village.VillagerProfession
 import net.minecraft.world.poi.PointOfInterestType
 
-object ProfessionRegistries : ModRegistry<VillagerProfession> {
+object VillagerProfessionRegistries : ModRegistry<VillagerProfession> {
     override val registry: Registry<VillagerProfession> get() = Registry.VILLAGER_PROFESSION
 
     val DOCTOR_POINT_OF_INTEREST: PointOfInterestType = PointOfInterestHelper.register(

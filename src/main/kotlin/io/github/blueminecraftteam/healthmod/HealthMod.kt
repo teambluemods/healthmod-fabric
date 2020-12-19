@@ -55,6 +55,6 @@ object HealthMod : ModInitializer {
         BlockEntityTypeRegistries.init()
         ScreenHandlerTypeRegistries.init()
         StatusEffectRegistries.init()
-        ProfessionRegistries.init()
+        VillagerProfessionRegistries.init()
     }
 }

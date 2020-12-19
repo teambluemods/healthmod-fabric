@@ -20,6 +20,7 @@
 package io.github.blueminecraftteam.healthmod.mixin;
 
 import com.google.common.collect.Lists;
+import io.github.blueminecraftteam.healthmod.config.HealthModConfigHolder;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.resource.SplashTextResourceSupplier;
@@ -43,12 +44,14 @@ public class SplashTextResourceSupplierMixin {
 
     @Inject(method = "apply(Ljava/util/List;Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)V", at = @At("TAIL"))
     private void addCustomSplashTexts(List<String> list, ResourceManager resourceManager, Profiler profiler, CallbackInfo ci) {
-        this.splashTexts.addAll(Lists.newArrayList(
-                "Wear a mask!",
-                "helth goes brrrr",
-                "Be careful with bandages!",
-                "h",
-                "wide putin"
-        ));
+        if (HealthModConfigHolder.getConfig().getExtraSplashTexts()) {
+            this.splashTexts.addAll(Lists.newArrayList(
+                    "Wear a mask!",
+                    "helth goes brrrr",
+                    "Be careful with bandages!",
+                    "h",
+                    "wide putin"
+            ));
+        }
     }
 }

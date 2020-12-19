@@ -48,6 +48,10 @@ class HealthModConfig : ConfigData {
     @ConfigEntry.Gui.Tooltip
     var damagedInfectionChanceWhenHealthy = 25
 
+    @ConfigEntry.Category("easterEggs")
+    @ConfigEntry.Gui.Tooltip
+    var extraSplashTexts = true
+
     @ConfigEntry.Category("other")
     @ConfigEntry.Gui.Tooltip
     var bacterialResistanceChance = 500

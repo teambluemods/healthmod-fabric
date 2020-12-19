@@ -24,6 +24,7 @@ import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.item.Item
 import net.minecraft.util.math.Direction
 import net.minecraft.util.registry.Registry
+import net.minecraft.village.VillagerProfession
 import net.minecraft.world.World
 import org.apache.commons.lang3.text.WordUtils
 
@@ -38,6 +39,8 @@ val Item.id get() = Registry.ITEM.getId(this)
 val Block.id get() = Registry.BLOCK.getId(this)
 
 val StatusEffect.id get() = Registry.STATUS_EFFECT.getId(this)
+
+val VillagerProfession.id get() = Registry.VILLAGER_PROFESSION.getId(this)
 
 val World.isServer get() = !isClient
 

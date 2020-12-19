@@ -24,6 +24,7 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
+import io.github.blueminecraftteam.healthmod.registries.VillagerProfessionRegistries
 import io.github.blueminecraftteam.healthmod.util.capitalizeFully
 import io.github.blueminecraftteam.healthmod.util.id
 import me.shedaniel.cloth.api.datagen.v1.SimpleData
@@ -31,6 +32,7 @@ import net.minecraft.block.Block
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.item.Item
 import net.minecraft.util.Identifier
+import net.minecraft.village.VillagerProfession
 import kotlin.reflect.full.memberProperties
 
 class LanguageFileDsl {
@@ -87,6 +89,19 @@ class LanguageFileDsl {
             effect.id!!.path.replace("_", " ").capitalizeFully()
         )
     }
+
+    fun villagerProfession(villagerProfession: VillagerProfession) {
+        val id = villagerProfession.id.path
+
+        json.addProperty(
+            "entity.minecraft.villager.$id",
+            id.capitalizeFully()
+        )
+        json.addProperty(
+            "subtitles.entity.villager.$id",
+            "${id.capitalizeFully()} works"
+        )
+    }
 }
 
 sealed class LanguageDataGeneration(
@@ -106,27 +121,28 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     itemRegistriesClass.memberProperties
         .map { it.get(itemRegistriesClass.objectInstance!!) }
         .filterIsInstance<Item>()
-        .forEach { item ->
-            item(item)
-        }
+        .forEach(this::item)
 
     val blockRegistriesClass = BlockRegistries::class
 
     blockRegistriesClass.memberProperties
         .map { it.get(blockRegistriesClass.objectInstance!!) }
         .filterIsInstance<Block>()
-        .forEach { block ->
-            block(block)
-        }
+        .forEach(this::block)
 
     val statusEffectRegistriesClass = StatusEffectRegistries::class
 
     statusEffectRegistriesClass.memberProperties
         .map { it.get(statusEffectRegistriesClass.objectInstance!!) }
         .filterIsInstance<StatusEffect>()
-        .forEach { effect ->
-            statusEffect(effect)
-        }
+        .forEach(this::statusEffect)
+
+    val professionRegistriesClass = VillagerProfessionRegistries::class
+
+    professionRegistriesClass.memberProperties
+        .map { it.get(professionRegistriesClass.objectInstance!!) }
+        .filterIsInstance<VillagerProfession>()
+        .forEach(this::villagerProfession)
 
     itemGroup(HealthMod.id("all"), "HealthMod")
 
@@ -144,13 +160,9 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     config("title", "HealthMod Config")
 
     configCategory("woundInfection", "Wound Infection")
+    configCategory("easterEggs", "Easter Eggs")
     configCategory("other", "Other")
 
-    configOption(
-        option = "bacterialResistanceChance",
-        translated = "Bacterial Resistance Chance",
-        tooltip = "Chance for antibiotics to fail and make harmful effects stronger (1/config value)"
-    )
     configOption(
         option = "bandageInfectionChance",
         translated = "Bandage Infection Chance",
@@ -170,6 +182,16 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
         option = "damagedInfectionChanceWhenHealthy",
         translated = "Damaged Infection Chance (Healthy)",
         tooltip = "Chance for you to get a wound infection when healthy and damaged by 2 or more (1/config value)"
+    )
+    configOption(
+        option = "extraSplashTexts",
+        translated = "Extra Splash Texts",
+        tooltip = """If extra splash texts (e.g. "helth goes brrrr") should be added"""
+    )
+    configOption(
+        option = "bacterialResistanceChance",
+        translated = "Bacterial Resistance Chance",
+        tooltip = "Chance for antibiotics to fail and make harmful effects stronger (1/config value)"
     )
 
     override(BlockRegistries.BANDAGE_BOX.translationKey, "Box of Bandages")
