@@ -6,11 +6,12 @@
   "mixins": [
     "DamageSourceAccessorMixin",
     "PlayerEntityMixin",
-    "SplashTextResourceSupplierMixin",
     "StatusEffectAccessorMixin",
     "StatusEffectInstanceAccessorMixin"
   ],
-  "client": [],
+  "client": [
+    "SplashTextResourceSupplierMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

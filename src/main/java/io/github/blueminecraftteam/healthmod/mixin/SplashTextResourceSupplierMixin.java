@@ -20,6 +20,8 @@
 package io.github.blueminecraftteam.healthmod.mixin;
 
 import com.google.common.collect.Lists;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.resource.SplashTextResourceSupplier;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.profiler.Profiler;
@@ -32,6 +34,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
+@Environment(EnvType.CLIENT)
 @Mixin(SplashTextResourceSupplier.class)
 public class SplashTextResourceSupplierMixin {
     @Shadow
