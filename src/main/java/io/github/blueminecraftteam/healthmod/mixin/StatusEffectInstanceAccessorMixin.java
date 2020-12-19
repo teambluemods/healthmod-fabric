@@ -29,10 +29,10 @@ public interface StatusEffectInstanceAccessorMixin {
     boolean healthmod_isAmbient();
 
     @Accessor("showParticles")
-    boolean healthmod_showsParticles();
+    boolean healthmod_shouldShowParticles();
 
     @Accessor("showIcon")
-    boolean healthmod_showsIcon();
+    boolean healthmod_shouldShowIcon();
 
     @Accessor("hiddenEffect")
     StatusEffectInstance healthmod_getHiddenEffect();

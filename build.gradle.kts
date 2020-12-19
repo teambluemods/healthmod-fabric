@@ -122,6 +122,10 @@ tasks {
     }
 
     withType<ProcessResources>().configureEach {
+        /*
+         * DO NOT USE INTELLIJ FOR BUILDING!!!
+         * It may be faster, but it will break the mod, as the IntelliJ compiler does not support this task.
+         */
         val toReplace = listOf(
             "mod_version",
             "minecraft_version",
@@ -185,6 +189,7 @@ publishing {
             artifact(tasks.remapJar.get()) {
                 builtBy(tasks.remapJar.get())
             }
+
             artifact(tasks["sourcesJar"]) {
                 builtBy(tasks.remapSourcesJar.get())
             }

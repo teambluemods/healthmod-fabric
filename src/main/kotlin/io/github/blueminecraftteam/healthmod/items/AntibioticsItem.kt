@@ -72,8 +72,8 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
                                     (duration * 1.5F).roundToInt(),
                                     amplifier + 1,
                                     (this as StatusEffectInstanceAccessorMixin).healthmod_isAmbient(),
-                                    (this as StatusEffectInstanceAccessorMixin).healthmod_showsParticles(),
-                                    (this as StatusEffectInstanceAccessorMixin).healthmod_showsIcon(),
+                                    (this as StatusEffectInstanceAccessorMixin).healthmod_shouldShowParticles(),
+                                    (this as StatusEffectInstanceAccessorMixin).healthmod_shouldShowIcon(),
                                     (this as StatusEffectInstanceAccessorMixin).healthmod_getHiddenEffect()
                                 )
                             )

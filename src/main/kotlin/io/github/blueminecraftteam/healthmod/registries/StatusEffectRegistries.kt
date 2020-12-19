@@ -40,6 +40,6 @@ object StatusEffectRegistries : ModRegistry<StatusEffect> {
     @JvmStatic
     val HEALTHY = register(
         id = "healthy",
-        toRegister = StatusEffectAccessorMixin.healthmod_createStatusEffect(StatusEffectType.BENEFICIAL, 0x67eb34)
+        toRegister = StatusEffectAccessorMixin.healthmod_create(StatusEffectType.BENEFICIAL, 0x67eb34)
     )
 }
