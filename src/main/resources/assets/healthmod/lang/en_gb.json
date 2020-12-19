@@ -5,7 +5,6 @@
   "item.healthmod.broccoli": "Broccoli",
   "block.healthmod.blood_test_machine": "Blood Test Machine",
   "block.healthmod.first_aid_kit": "First Aid Kit",
-  "effect.healthmod.bleeding": "Bleeding",
   "effect.healthmod.healthy": "Healthy",
   "effect.healthmod.wound_infection": "Wound Infection",
   "itemGroup.healthmod.all": "HealthMod",

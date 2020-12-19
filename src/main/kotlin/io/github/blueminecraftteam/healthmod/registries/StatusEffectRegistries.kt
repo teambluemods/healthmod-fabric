@@ -20,7 +20,6 @@
 package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.mixin.StatusEffectAccessorMixin
-import io.github.blueminecraftteam.healthmod.statuseffects.BleedingStatusEffect
 import io.github.blueminecraftteam.healthmod.statuseffects.WoundInfectionStatusEffect
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectType
@@ -35,13 +34,6 @@ object StatusEffectRegistries : ModRegistry<StatusEffect> {
     val WOUND_INFECTION = register(
         id = "wound_infection",
         toRegister = WoundInfectionStatusEffect(StatusEffectType.HARMFUL, 0x00FF00)
-    )
-
-    @get:JvmName("getBleeding")
-    @JvmStatic
-    val BLEEDING = register(
-        id = "bleeding",
-        toRegister = BleedingStatusEffect(StatusEffectType.HARMFUL, 0xa00808)
     )
 
     @get:JvmName("getHealthy")

@@ -63,7 +63,6 @@ class BandageItem(settings: Settings) : Item(settings) {
                     user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.bandage.failed_apply"), true)
                 } else {
                     user.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0))
-                    user.removeStatusEffect(StatusEffectRegistries.BLEEDING)
                 }
 
                 itemStack.decrement(1)

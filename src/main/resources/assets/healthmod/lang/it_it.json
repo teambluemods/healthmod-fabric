@@ -6,7 +6,6 @@
   "item.healthmod.isopropyl_alcohol": "Alcool isopropilico",
   "item.healthmod.soap": "Saponetta",
   "block.healthmod.first_aid_kit": "Kit di pronto soccorso",
-  "effect.healthmod.bleeding": "Sanguinamento",
   "effect.healthmod.healthy": "Sano",
   "effect.healthmod.wound_infection": "Infezione ferita",
   "itemGroup.healthmod.all": "HealthMod",

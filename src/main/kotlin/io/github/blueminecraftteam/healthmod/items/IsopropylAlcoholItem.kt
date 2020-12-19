@@ -21,7 +21,6 @@ package io.github.blueminecraftteam.healthmod.items
 
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.registries.ComponentRegistries
-import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
@@ -38,8 +37,8 @@ class IsopropylAlcoholItem(settings: Settings) : Item(settings) {
         val hasSanitizedWoundComponent = ComponentRegistries.SANITIZED_WOUND.get(user)
         val stackInHand = user.getStackInHand(hand)
 
-        return if (user.hasStatusEffect(StatusEffectRegistries.BLEEDING)) {
-            if (hasSanitizedWoundComponent.value) {
+        return if (user.health < user.maxHealth) {
+            if (!hasSanitizedWoundComponent.value) {
                 hasSanitizedWoundComponent.value = true
                 stackInHand.decrement(1)
 
