@@ -17,23 +17,6 @@ base.archivesBaseName = property("archives_base_name").toString()
 version = property("mod_version")
 group = property("maven_group")
 
-tasks.processResources {
-    val toReplace = listOf(
-        "mod_version",
-        "minecraft_version",
-        "loader_version",
-        "fabric_version",
-        "fabric_kotlin_version",
-        "mod_menu_version"
-    ).map { it to project.findProperty(it)!!.toString() }.toMap()
-
-    inputs.properties(toReplace)
-
-    filesMatching("fabric.mod.json") {
-        expand(toReplace)
-    }
-}
-
 sourceSets {
     main {
         resources {
@@ -135,6 +118,23 @@ tasks {
 
         if (JavaVersion.current().isJava9Compatible) {
             options.compilerArgs.addAll(listOf("--release", targetVersion))
+        }
+    }
+
+    withType<ProcessResources>().configureEach {
+        val toReplace = listOf(
+            "mod_version",
+            "minecraft_version",
+            "loader_version",
+            "fabric_version",
+            "fabric_kotlin_version",
+            "mod_menu_version"
+        ).map { it to project.findProperty(it)!!.toString() }.toMap()
+
+        inputs.properties(toReplace)
+
+        filesMatching("fabric.mod.json") {
+            expand(toReplace)
         }
     }
 
