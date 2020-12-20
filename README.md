@@ -26,8 +26,8 @@ See [the texture license file](TEXTURE_LICENSE.txt) for more info.
 
 ---
 
-The following textures are made by [ilja615](https://github.com/ilja615) and are licensed
-under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The following textures are made by [ilja615](https://github.com/ilja615)
+and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
@@ -42,8 +42,8 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ---
 
-The following textures are made by [ItalianCucumber](https://github.com/ItalianCucumber) and are licensed
-under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The following textures are made by [ItalianCucumber](https://github.com/ItalianCucumber)
+and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
@@ -55,8 +55,8 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ---
 
-The following textures are made by [Secnyt](https://github.com/secnyt) and are licensed
-under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The following textures are made by [Secnyt](https://github.com/secnyt)
+and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
@@ -66,8 +66,8 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ---
 
-The following textures are made by [Saksham Kumar](https://github.com/saksham4106) and are licensed
-under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The following textures are made by [Saksham Kumar](https://github.com/saksham4106)
+and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
@@ -75,8 +75,8 @@ under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ---
 
-The following textures are made by [HigherLight](https://github.com/HigherLight) and are licensed
-under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The following textures are made by [HigherLight](https://github.com/HigherLight)
+and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
@@ -94,9 +94,9 @@ All translations are from [healthmod-translations](https://github.com/blueminecr
 
 [![license icon](https://licensebuttons.net/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0)
 
-To the extent possible under law, [xf8b](https://github.com/xf8b/),
-[ItalianCucumber](https://github.com/ItalianCucumber/), [TheOnlyTails](https://github.com/TheOnlyTails)
-and [HigherLight](https://github.com/HigherLight/) have waived all copyright and related or neighboring rights to the
-HealthMod Translations.
+To the extent possible under law,
+[xf8b](https://github.com/xf8b/), [ItalianCucumber](https://github.com/ItalianCucumber/),
+[TheOnlyTails](https://github.com/TheOnlyTails) and [HigherLight](https://github.com/HigherLight/)
+have waived all copyright and related or neighboring rights to the HealthMod Translations.
 
 See [the translation license file](TRANSLATION_LICENSE.txt) for more info.
