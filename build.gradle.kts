@@ -40,10 +40,6 @@ repositories {
 
     maven("https://maven.abusedmaster.xyz") { name = "OnyxStudios" }
 
-    maven("https://aperlambda.github.io/maven") { name = "AperLambda" }
-
-    maven("https://repo.repsy.io/mvn/progamer28415/main") { name = "xf8b" }
-
     jcenter { name = "JCenter" }
 }
 
@@ -62,6 +58,7 @@ dependencies {
     modRuntime("user11681:noauth:+")
 
     modApi("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${property("cca_version")}")
+    include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${property("cca_version")}")
     // for entity components
     modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${property("cca_version")}")
     include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${property("cca_version")}")
@@ -73,11 +70,15 @@ dependencies {
     modApi("me.shedaniel.cloth:config-2:${property("cloth_config_version")}") {
         exclude(group = "net.fabricmc.fabric-api")
     }
-    include("me.shedaniel.cloth:config-2:${property("cloth_config_version")}")
+    include("me.shedaniel.cloth:config-2:${property("cloth_config_version")}") {
+        exclude(group = "net.fabricmc.fabric-api")
+    }
     modApi("me.sargunvohra.mcmods:autoconfig1u:${property("auto_config_version")}") {
         exclude(group = "net.fabricmc.fabric-api")
     }
-    include("me.sargunvohra.mcmods:autoconfig1u:${property("auto_config_version")}")
+    include("me.sargunvohra.mcmods:autoconfig1u:${property("auto_config_version")}") {
+        exclude(group = "net.fabricmc.fabric-api")
+    }
 
     // datagen
     modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")
