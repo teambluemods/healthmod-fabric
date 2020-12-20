@@ -30,6 +30,6 @@ import net.minecraft.world.World
 class VaccineItem(settings: Settings) : Item(settings) {
     @Environment(EnvType.CLIENT)
     override fun appendTooltip(stack: ItemStack, world: World?, tooltip: List<Text>, context: TooltipContext) {
-        //TODO
+        // TODO
     }
 }

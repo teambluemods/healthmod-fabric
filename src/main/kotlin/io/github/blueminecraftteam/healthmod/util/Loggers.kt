@@ -26,6 +26,8 @@ inline fun <reified T> logger(): Logger = LogManager.getLogger(T::class.java)
 
 inline fun <reified T> fatal(message: String) = logger<T>().fatal(message)
 
+inline fun <reified T> error(message: String, throwable: Throwable) = logger<T>().error(message, throwable)
+
 inline fun <reified T> warn(message: String) = logger<T>().warn(message)
 
 inline fun <reified T> info(message: String) = logger<T>().info(message)

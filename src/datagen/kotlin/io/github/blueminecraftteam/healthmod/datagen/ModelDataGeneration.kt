@@ -19,7 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.datagen
 
-import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import io.github.blueminecraftteam.healthmod.HealthMod
@@ -80,7 +80,7 @@ object ModelDataGeneration {
     private fun override(data: ModelStateData, block: Block, path: Path) {
         val normalized = path.toAbsolutePath().normalize()
         val reader = Files.newBufferedReader(normalized)
-        val gson = Gson().newBuilder().setPrettyPrinting().create()
+        val gson = GsonBuilder().setPrettyPrinting().create()
         val json = gson.fromJson(reader, JsonElement::class.java)
 
         data.addBlockModel(block, json)

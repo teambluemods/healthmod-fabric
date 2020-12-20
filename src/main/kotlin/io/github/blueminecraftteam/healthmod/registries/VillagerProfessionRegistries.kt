@@ -32,7 +32,7 @@ import net.minecraft.world.poi.PointOfInterestType
 object VillagerProfessionRegistries : ModRegistry<VillagerProfession> {
     override val registry: Registry<VillagerProfession> get() = Registry.VILLAGER_PROFESSION
 
-    val DOCTOR_POINT_OF_INTEREST: PointOfInterestType = PointOfInterestHelper.register(
+    private val DOCTOR_POINT_OF_INTEREST: PointOfInterestType = PointOfInterestHelper.register(
         HealthMod.id("doctor_point_of_interest"),
         /* ticket count of */ 1,
         /* search distance of */ 1,
@@ -40,7 +40,7 @@ object VillagerProfessionRegistries : ModRegistry<VillagerProfession> {
         BlockRegistries.BANDAGE_BOX
     )
 
-    val DOCTOR: VillagerProfession = register(
+    private val DOCTOR: VillagerProfession = register(
         id = "doctor",
         toRegister = VillagerProfessionBuilder.create()
             .id(HealthMod.id("doctor"))

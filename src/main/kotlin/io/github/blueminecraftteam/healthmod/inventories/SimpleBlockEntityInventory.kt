@@ -38,7 +38,7 @@ open class SimpleBlockEntityInventory(
     private val menuFactory: (Int, PlayerInventory, Inventory) -> ScreenHandler,
     size: Int
 ) : BlockEntity(type), ImplementedInventory, NamedScreenHandlerFactory {
-    override val items = DefaultedList.ofSize(size, ItemStack.EMPTY)
+    override val items: DefaultedList<ItemStack> = DefaultedList.ofSize(size, ItemStack.EMPTY)
 
     override fun createMenu(syncId: Int, inv: PlayerInventory, player: PlayerEntity) = menuFactory(syncId, inv, this)
 
