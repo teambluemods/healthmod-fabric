@@ -32,5 +32,10 @@
   "text.autoconfig.healthmod.option.damagedInfectionChanceWhenHealthy.@Tooltip": "Kans om 'n wondinfeksie te kry tydens gesond en beskadig deur 2 of meer (1/opstelling waarde)",
   "block.healthmod.bandage_box": "'n Boks Verbande",
   "death.attack.wound_infection": "%1$s het van 'n wondinfeksie doodgegaan",
-  "death.attack.wound_infection.player": "%1$s het van 'n wondinfeksie doodgegaan"
+  "death.attack.wound_infection.player": "%1$s het van 'n wondinfeksie doodgegaan",
+  "text.autoconfig.healthmod.category.easterEggs": "Geheimlike Verassings",
+  "text.autoconfig.healthmod.option.extraSplashTexts": "Ekstra Splash Bewoording",
+  "text.autoconfig.healthmod.option.extraSplashTexts.@Tooltip": "As ekstra splash bewoording (bv. \"helth goes brrrr\") bygevoeg moet word",
+  "entity.minecraft.villager.doctor": "Dokter",
+  "subtitles.entity.villager.doctor": "Dokter is besig om te werk"
 }

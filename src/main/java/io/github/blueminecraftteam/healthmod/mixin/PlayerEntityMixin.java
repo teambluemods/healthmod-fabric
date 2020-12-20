@@ -43,8 +43,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
 
     @Inject(method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", at = @At("TAIL"))
-    private void applyInfectedOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (cir.getReturnValueZ() && amount > 2F) {
+    private void applyInfectedOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
+        if (callbackInfoReturnable.getReturnValueZ() && amount > 2F) {
             int infectionChance = HealthModConfigHolder.getConfig().getDamagedInfectionChance();
 
             if (this.hasStatusEffect(StatusEffectRegistries.getHealthy())) {

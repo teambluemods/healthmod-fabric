@@ -19,17 +19,38 @@
 
 package io.github.blueminecraftteam.healthmod.components
 
+import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent
+import io.github.blueminecraftteam.healthmod.registries.ComponentRegistries
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.network.PacketByteBuf
+import net.minecraft.server.network.ServerPlayerEntity
 
 class SanitizedWoundComponent : BooleanComponent {
     override var value = false
+}
+
+class CleanlinessComponent(private val provider: Any) : IntComponent, AutoSyncedComponent {
+    override var value = 0
+        set(value) {
+            field = value
+            ComponentRegistries.CLEANLINESS.sync(provider)
+        }
 
     override fun readFromNbt(tag: CompoundTag) {
-        value = tag.getBoolean("value")
+        value = tag.getInt("value")
     }
 
     override fun writeToNbt(tag: CompoundTag) {
-        tag.putBoolean("value", value)
+        tag.putInt("value", value)
     }
-}
 
+    override fun writeSyncPacket(buf: PacketByteBuf, recipient: ServerPlayerEntity) {
+        buf.writeVarInt(value)
+    }
+
+    override fun applySyncPacket(buf: PacketByteBuf) {
+        this.value = buf.readVarInt()
+    }
+
+    override fun shouldSyncWith(player: ServerPlayerEntity) = player == provider
+}

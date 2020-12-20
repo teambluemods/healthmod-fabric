@@ -38,11 +38,15 @@ class ComponentRegistries : EntityComponentInitializer {
     }
 
     companion object {
+        @JvmStatic
+        @get:JvmName("getSanitizedWound")
         val SANITIZED_WOUND: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
             HealthMod.id("sanitized_wound"),
             BooleanComponent::class.java
         )
 
+        @JvmStatic
+        @get:JvmName("getCleanliness")
         val CLEANLINESS: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
             HealthMod.id("cleanliness"),
             IntComponent::class.java

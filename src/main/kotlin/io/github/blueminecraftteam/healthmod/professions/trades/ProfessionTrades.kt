@@ -42,7 +42,6 @@ object ProfessionTrades {
         2 to arrayOf(
             SellFactory(sell = ItemRegistries.ANTIBIOTICS, price = 1, count = 2, experience = 1),
             SellFactory(sell = BlockRegistries.FIRST_AID_KIT, price = 3, count = 1, experience = 4),
-            BuyFactory(buy = ItemRegistries.SOAP, price = 2, count = 1, experience = 2),
             BuyFactory(buy = ItemRegistries.ISOPROPYL_ALCOHOL, price = 2, count = 1, experience = 2),
         ),
         3 to arrayOf(

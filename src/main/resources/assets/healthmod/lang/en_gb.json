@@ -32,5 +32,10 @@
   "item.healthmod.isopropyl_alcohol": "Isopropyl Alcohol",
   "item.healthmod.soap": "Bar of Soap",
   "text.healthmod.isopropyl_alcohol.apply": "You feel a slight pain where you were bleeding.",
-  "text.healthmod.soap.apply": "You were cleansed."
+  "text.healthmod.soap.apply": "You were cleansed.",
+  "entity.minecraft.villager.doctor": "Doctor",
+  "subtitles.entity.villager.doctor": "Doctor works",
+  "text.autoconfig.healthmod.category.easterEggs": "Easter Eggs",
+  "text.autoconfig.healthmod.option.extraSplashTexts": "Extra Splash Texts",
+  "text.autoconfig.healthmod.option.extraSplashTexts.@Tooltip": "If extra splash texts (e.g. \"helth goes brrrr\") should be added"
 }

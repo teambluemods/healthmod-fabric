@@ -38,14 +38,12 @@ class IsopropylAlcoholItem(settings: Settings) : Item(settings) {
         val stackInHand = user.getStackInHand(hand)
 
         return if (user.health < user.maxHealth) {
+            // TODO wounded component
             if (!hasSanitizedWoundComponent.value) {
                 hasSanitizedWoundComponent.value = true
                 stackInHand.decrement(1)
 
-                user.sendMessage(
-                    TranslatableText("text.${HealthMod.MOD_ID}.isopropyl_alcohol.apply"),
-                    true
-                )
+                user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.isopropyl_alcohol.apply"), true)
 
                 user.damage(DamageSource.GENERIC, 0.5F)
 

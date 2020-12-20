@@ -20,7 +20,16 @@
 package io.github.blueminecraftteam.healthmod.components
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3
+import net.minecraft.nbt.CompoundTag
 
 interface IntComponent : ComponentV3 {
     var value: Int
+
+    override fun readFromNbt(tag: CompoundTag) {
+        value = tag.getInt("value")
+    }
+
+    override fun writeToNbt(tag: CompoundTag) {
+        tag.putInt("value", value)
+    }
 }
