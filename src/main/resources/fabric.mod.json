@@ -3,7 +3,7 @@
   "id": "healthmod",
   "version": "${mod_version}",
   "name": "HealthMod",
-  "description": "a mod which adds health related items",
+  "description": "a mod which adds health related things",
   "authors": [
     "Blue Minecraft Team"
   ],

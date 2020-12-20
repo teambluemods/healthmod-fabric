@@ -1,5 +1,3 @@
-# HealthMod
-
 ![lines of code](https://img.shields.io/tokei/lines/github/blueminecraftteam/healthmod-fabric)
 ![activity](https://img.shields.io/github/commit-activity/w/blueminecraftteam/healthmod-fabric)  
 ![license](https://img.shields.io/github/license/blueminecraftteam/healthmod-fabric)  
@@ -9,7 +7,9 @@
 ![forks](https://img.shields.io/github/forks/blueminecraftteam/healthmod-fabric)  
 ![stars](https://img.shields.io/github/stars/blueminecraftteam/healthmod-fabric)
 
-a mod which adds health related items
+# HealthMod
+
+a mod which adds health related things
 
 ## License
 

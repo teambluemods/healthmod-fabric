@@ -83,19 +83,6 @@ dependencies {
     modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")
     include("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")
 
-    // gui
-    modImplementation("com.github.lambdaurora:spruceui:${property("spruceui_version")}")
-    include("com.github.lambdaurora:spruceui:${property("spruceui_version")}")
-    include("org.aperlambda:lambdajcommon:${property("lambdajcommon_version")}") {
-        // yeet google
-        exclude(group = "com.google.code.gson")
-        exclude(group = "com.google.guava")
-    }
-
-    // random utils
-    implementation("io.github.xf8b:utils:${property("utils_version")}")
-    include("io.github.xf8b:utils:${property("utils_version")}")
-
     // note: older mods on loom 0.2.1 might need transitiveness disabled
     "datagenCompile"(sourceSets.main.get().output)
 }
