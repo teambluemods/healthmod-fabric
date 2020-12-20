@@ -134,11 +134,11 @@ tasks {
     }
 
     jar {
-        from("COPYING") {
+        from("COPYING.md") {
             rename { "${it}_${project.base.archivesBaseName}" }
         }
 
-        from("COPYING.LESSER") {
+        from("COPYING.LESSER.md") {
             rename { "${it}_${project.base.archivesBaseName}" }
         }
     }

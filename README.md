@@ -15,14 +15,14 @@ a mod which adds health related things
 
 ### Code
 
-The code for HealthMod is licensed under LGPL v3 or later. You can see details at [COPYING](COPYING)
-and [COPYING.LESSER](COPYING.LESSER).
+The code for HealthMod is licensed under LGPL v3 or later. You can see details at [the GPL license file](COPYING.md)
+and [the LGPL license file](COPYING.LESSER.md).
 
 ### Textures
 
 All textures are from [healthmod-textures](https://github.com/blueminecraftteam/healthmod-textures).
 
-See [the texture license file](TEXTURE_LICENSE.txt) for more info.
+See [the texture license file](TEXTURE_LICENSE.md) for more info.
 
 ---
 
@@ -99,4 +99,4 @@ To the extent possible under law,
 [TheOnlyTails](https://github.com/TheOnlyTails) and [HigherLight](https://github.com/HigherLight/)
 have waived all copyright and related or neighboring rights to the HealthMod Translations.
 
-See [the translation license file](TRANSLATION_LICENSE.txt) for more info.
+See [the translation license file](TRANSLATION_LICENSE.md) for more info.
