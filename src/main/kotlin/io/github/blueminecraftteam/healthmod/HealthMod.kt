@@ -41,7 +41,7 @@ object HealthMod : ModInitializer {
         AutoConfig.register(HealthModConfig::class.java, ::Toml4jConfigSerializer)
 
         initRegistries()
-        debug<HealthMod>("Initialized all registries")
+        debug<HealthMod>("Initialized all registries!")
     }
 
     /**

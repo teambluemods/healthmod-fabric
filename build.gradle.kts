@@ -12,6 +12,9 @@ plugins {
 }
 
 fun property(name: String) = project.findProperty(name)!!
+fun propertyOrEnv(name: String, envName: String = name) = project.findProperty(name) ?: System.getenv(envName)!!
+fun hasPropertyOrEnv(name: String, envName: String = name) =
+    project.hasProperty(name) || System.getenv().containsKey(envName)
 
 base.archivesBaseName = property("archives_base_name").toString()
 version = property("mod_version")
@@ -172,19 +175,33 @@ license {
 // configure the maven publication
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        create<MavenPublication>("maven") {
             // add all the jars that should be included when publishing to maven
-            artifact(tasks.remapJar.get()) {
-                builtBy(tasks.remapJar.get())
-            }
 
             artifact(tasks["sourcesJar"]) {
-                builtBy(tasks.remapSourcesJar.get())
+                builtBy(tasks["remapSourcesJar"])
+            }
+
+            afterEvaluate {
+                artifact(tasks["remapJar"]) {
+                    artifactId = "healthmod-fabric"
+                }
             }
         }
     }
 
     // repositories to publish to
     repositories {
+        if (hasPropertyOrEnv(name = "modMavenUrl", envName = "MOD_MAVEN_URL")
+            && hasPropertyOrEnv(name = "modMavenUsername", envName = "MOD_MAVEN_USERNAME")
+            && hasPropertyOrEnv(name = "modMavenPassword", envName = "MOD_MAVEN_PASSWORD")
+        ) {
+            maven(propertyOrEnv(name = "modMavenUrl", envName = "MOD_MAVEN_URL")) {
+                credentials {
+                    username = propertyOrEnv(name = "modMavenUsername", envName = "MOD_MAVEN_USERNAME").toString()
+                    password = propertyOrEnv(name = "modMavenPassword", envName = "MOD_MAVEN_PASSWORD").toString()
+                }
+            }
+        }
     }
 }
