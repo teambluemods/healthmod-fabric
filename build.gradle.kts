@@ -197,6 +197,17 @@ publishing {
 
     // repositories to publish to
     repositories {
+        if (hasPropertyOrEnv(name = "githubPackagesUsername", envName = "GITHUB_USERNAME")
+            && hasPropertyOrEnv(name = "githubPackagesToken", envName = "GITHUB_TOKEN")
+        ) {
+            maven("https://maven.pkg.github.com/blueminecraftteam/healthmod-fabric") {
+                credentials {
+                    username = propertyOrEnv(name = "githubPackagesUsername", envName = "GITHUB_USERNAME").toString()
+                    password = propertyOrEnv(name = "githubPackagesToken", envName = "GITHUB_TOKEN").toString()
+                }
+            }
+        }
+
         if (hasPropertyOrEnv(name = "modMavenUrl", envName = "MOD_MAVEN_URL")
             && hasPropertyOrEnv(name = "modMavenUsername", envName = "MOD_MAVEN_USERNAME")
             && hasPropertyOrEnv(name = "modMavenPassword", envName = "MOD_MAVEN_PASSWORD")

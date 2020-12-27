@@ -54,3 +54,29 @@ class CleanlinessComponent(private val provider: Any) : IntComponent, AutoSynced
 
     override fun shouldSyncWith(player: ServerPlayerEntity) = player == provider
 }
+
+class WoundedComponent(private val provider: Any) : IntComponent, AutoSyncedComponent {
+    override var value = 0
+        set(value) {
+            field = value
+            ComponentRegistries.WOUNDED.sync(provider)
+        }
+
+    override fun readFromNbt(tag: CompoundTag) {
+        value = tag.getInt("value")
+    }
+
+    override fun writeToNbt(tag: CompoundTag) {
+        tag.putInt("value", value)
+    }
+
+    override fun writeSyncPacket(buf: PacketByteBuf, recipient: ServerPlayerEntity) {
+        buf.writeVarInt(value)
+    }
+
+    override fun applySyncPacket(buf: PacketByteBuf) {
+        this.value = buf.readVarInt()
+    }
+
+    override fun shouldSyncWith(player: ServerPlayerEntity) = player == provider
+}

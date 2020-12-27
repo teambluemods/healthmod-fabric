@@ -53,7 +53,8 @@
   "custom": {
     "cardinal-components": [
       "healthmod:sanitized_wound",
-      "healthmod:cleanliness"
+      "healthmod:cleanliness",
+      "healthmod:wounded"
     ]
   }
 }

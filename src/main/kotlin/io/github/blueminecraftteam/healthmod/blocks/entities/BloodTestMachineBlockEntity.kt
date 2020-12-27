@@ -23,6 +23,7 @@ import io.github.blueminecraftteam.healthmod.client.gui.screen.BloodTestMachineS
 import io.github.blueminecraftteam.healthmod.inventories.SimpleBlockEntityInventory
 import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
 
+// TODO functionality
 class BloodTestMachineBlockEntity : SimpleBlockEntityInventory(
     type = BlockEntityTypeRegistries.BLOOD_TEST_MACHINE,
     menuFactory = ::BloodTestMachineScreenHandler,

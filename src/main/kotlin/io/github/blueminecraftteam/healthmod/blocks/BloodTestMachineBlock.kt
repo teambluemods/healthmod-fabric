@@ -22,6 +22,7 @@ package io.github.blueminecraftteam.healthmod.blocks
 import io.github.blueminecraftteam.healthmod.blocks.entities.BloodTestMachineBlockEntity
 import io.github.blueminecraftteam.healthmod.util.isServer
 import net.minecraft.block.*
+import net.minecraft.block.HorizontalFacingBlock.FACING
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.screen.ScreenHandler
@@ -39,24 +40,22 @@ import java.util.stream.Stream
 // TODO fix hitbox and collision box
 class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
     init {
-        this.defaultState = this.stateManager.defaultState.with(HorizontalFacingBlock.FACING, Direction.NORTH)
+        this.defaultState = this.stateManager.defaultState.with(FACING, Direction.NORTH)
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(HorizontalFacingBlock.FACING)
+        builder.add(FACING)
     }
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState =
-        defaultState.with(HorizontalFacingBlock.FACING, ctx.playerFacing.opposite)
+        defaultState.with(FACING, ctx.playerFacing.opposite)
 
 
-    override fun rotate(state: BlockState, rotation: BlockRotation): BlockState = state.with(
-        HorizontalFacingBlock.FACING,
-        rotation.rotate(state[HorizontalFacingBlock.FACING])
-    )
+    override fun rotate(state: BlockState, rotation: BlockRotation): BlockState =
+        state.with(FACING, rotation.rotate(state[FACING]))
 
     override fun mirror(state: BlockState, mirror: BlockMirror): BlockState =
-        state.rotate(mirror.getRotation(state[HorizontalFacingBlock.FACING]))
+        state.rotate(mirror.getRotation(state[FACING]))
 
     override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext) = SHAPE
 
@@ -89,10 +88,8 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
         moved: Boolean
     ) {
         if (state.block != newState.block) {
-            val blockEntity = world.getBlockEntity(pos)
-
-            if (blockEntity is BloodTestMachineBlockEntity) {
-                ItemScatterer.spawn(world, pos, blockEntity)
+            (world.getBlockEntity(pos) as? BloodTestMachineBlockEntity)?.let {
+                ItemScatterer.spawn(world, pos, it)
                 // update comparators
                 world.updateComparators(pos, this)
             }

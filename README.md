@@ -1,11 +1,10 @@
-![lines of code](https://img.shields.io/tokei/lines/github/blueminecraftteam/healthmod-fabric)
-![activity](https://img.shields.io/github/commit-activity/w/blueminecraftteam/healthmod-fabric)  
-![license](https://img.shields.io/github/license/blueminecraftteam/healthmod-fabric)  
-![build](https://img.shields.io/github/workflow/status/blueminecraftteam/healthmod-fabric/CI/development/1.16.x)  
-![issues](https://img.shields.io/github/issues/blueminecraftteam/healthmod-fabric)
-![prs](https://img.shields.io/github/issues-pr/blueminecraftteam/healthmod-fabric)
-![forks](https://img.shields.io/github/forks/blueminecraftteam/healthmod-fabric)  
-![stars](https://img.shields.io/github/stars/blueminecraftteam/healthmod-fabric)
+![lines of code](https://img.shields.io/tokei/lines/github/blueminecraftteam/healthmod-fabric?style=for-the-badge)
+![activity](https://img.shields.io/github/commit-activity/w/blueminecraftteam/healthmod-fabric?style=for-the-badge)  
+![license](https://img.shields.io/badge/license-lgpl%20v3%20or%20later-green?style=for-the-badge)  
+![available on curseforge and modrinth](https://img.shields.io/badge/available%20on-modrinth%20and%20curseforge-orange?style=for-the-badge)
+![categories technology adventure and health](https://img.shields.io/badge/categories-technology%2C%20adventure%20and%20health-red?style=for-the-badge)
+![issues](https://img.shields.io/github/issues/blueminecraftteam/healthmod-fabric?style=for-the-badge)
+![stars](https://img.shields.io/github/stars/blueminecraftteam/healthmod-fabric?style=for-the-badge)
 
 # HealthMod
 
