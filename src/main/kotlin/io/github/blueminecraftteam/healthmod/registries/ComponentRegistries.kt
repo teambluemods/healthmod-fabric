@@ -35,6 +35,7 @@ class ComponentRegistries : EntityComponentInitializer {
         // add component to every PlayerEntity
         registry.registerForPlayers(SANITIZED_WOUND, { SanitizedWoundComponent() }, RespawnCopyStrategy.INVENTORY)
         registry.registerForPlayers(CLEANLINESS, ::CleanlinessComponent, RespawnCopyStrategy.LOSSLESS_ONLY)
+        registry.registerForPlayers(WOUNDED, { WoundedComponent() }, RespawnCopyStrategy.LOSSLESS_ONLY)
     }
 
     companion object {
@@ -50,6 +51,11 @@ class ComponentRegistries : EntityComponentInitializer {
         val CLEANLINESS: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
             HealthMod.id("cleanliness"),
             IntComponent::class.java
+        )
+
+        val WOUNDED: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+            HealthMod.id("wounded"),
+            BooleanComponent::class.java
         )
     }
 }
