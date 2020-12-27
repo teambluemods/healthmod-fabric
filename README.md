@@ -15,14 +15,12 @@ a mod which adds health related things
 
 ### Code
 
-The code for HealthMod is licensed under LGPL v3 or later. You can see details at [the GPL license file](COPYING.md)
-and [the LGPL license file](COPYING.LESSER.md).
+The code for HealthMod is licensed under LGPL v3 or later. You can see the full license file [here](COPYING.LESSER.md).
 
 ### Textures
 
-All textures are from [healthmod-textures](https://github.com/blueminecraftteam/healthmod-textures).
-
-See [the texture license file](TEXTURE_LICENSE.md) for more info.
+All textures are from [healthmod-textures](https://github.com/blueminecraftteam/healthmod-textures). You can see the
+full license [here](TEXTURE_LICENSE.md).
 
 ---
 
@@ -50,8 +48,8 @@ and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa
 - [blood_test_machine.png](src/main/resources/assets/healthmod/textures/block/blood_test_machine.png)
 - [blood_test_machine_screen.png](src/main/resources/assets/healthmod/textures/block/blood_test_machine_screen.png)
 - [blood_test_effects.png](src/main/resources/assets/healthmod/textures/block/blood_test_effects.png)
-- [blood_test_machine.json](src/generated/overrided/assets/healthmod/models/block/blood_test_machine.json) / Scale
-  decreased from 0.7 to 0.5 from original
+- [blood_test_machine.json](src/generated/overrided/assets/healthmod/models/block/blood_test_machine.json)
+  / Scale decreased from 0.7 to 0.5 from original
 
 ---
 
@@ -66,8 +64,8 @@ and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa
 
 ---
 
-The following textures are made by [Saksham Kumar](https://github.com/saksham4106)
-and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The following texture is made by [Saksham Kumar](https://github.com/saksham4106)
+and is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
 
@@ -99,4 +97,4 @@ To the extent possible under law,
 [TheOnlyTails](https://github.com/TheOnlyTails) and [HigherLight](https://github.com/HigherLight/)
 have waived all copyright and related or neighboring rights to the HealthMod Translations.
 
-See [the translation license file](TRANSLATION_LICENSE.md) for more info.
+You can see the full license [here](TRANSLATION_LICENSE.md).
