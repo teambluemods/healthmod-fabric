@@ -23,34 +23,44 @@ import io.github.blueminecraftteam.healthmod.blocks.entities.BloodTestMachineBlo
 import io.github.blueminecraftteam.healthmod.util.isServer
 import net.minecraft.block.*
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemPlacementContext
 import net.minecraft.screen.ScreenHandler
-import net.minecraft.util.ActionResult
-import net.minecraft.util.Hand
-import net.minecraft.util.ItemScatterer
+import net.minecraft.state.StateManager
+import net.minecraft.util.*
 import net.minecraft.util.function.BooleanBiFunction
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.shape.VoxelShape
+import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 import java.util.stream.Stream
 
-// TODO make this rotate
+// TODO fix hitbox and collision box
 class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
-    override fun getOutlineShape(
-        state: BlockState?,
-        world: BlockView?,
-        pos: BlockPos?,
-        context: ShapeContext?
-    ): VoxelShape = SHAPE
+    init {
+        this.defaultState = this.stateManager.defaultState.with(HorizontalFacingBlock.FACING, Direction.NORTH)
+    }
 
-    override fun getCollisionShape(
-        state: BlockState,
-        world: BlockView,
-        pos: BlockPos,
-        context: ShapeContext
-    ): VoxelShape = SHAPE
+    override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
+        builder.add(HorizontalFacingBlock.FACING)
+    }
+
+    override fun getPlacementState(ctx: ItemPlacementContext): BlockState =
+        defaultState.with(HorizontalFacingBlock.FACING, ctx.playerFacing.opposite)
+
+
+    override fun rotate(state: BlockState, rotation: BlockRotation): BlockState = state.with(
+        HorizontalFacingBlock.FACING,
+        rotation.rotate(state[HorizontalFacingBlock.FACING])
+    )
+
+    override fun mirror(state: BlockState, mirror: BlockMirror): BlockState =
+        state.rotate(mirror.getRotation(state[HorizontalFacingBlock.FACING]))
+
+    override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext) = SHAPE
+
+    override fun getCollisionShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext) = SHAPE
 
     override fun createBlockEntity(world: BlockView) = BloodTestMachineBlockEntity()
 
@@ -65,11 +75,7 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
         hit: BlockHitResult
     ): ActionResult {
         if (world.isServer) {
-            val factory = state.createScreenHandlerFactory(world, pos)
-
-            if (factory != null) {
-                player.openHandledScreen(factory)
-            }
+            state.createScreenHandlerFactory(world, pos)?.let(player::openHandledScreen)
         }
 
         return ActionResult.SUCCESS
@@ -114,8 +120,6 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
             Block.createCuboidShape(14.0, 2.0, 4.0, 15.0, 5.0, 5.0),
             Block.createCuboidShape(11.0, 2.0, 3.0, 12.0, 5.0, 4.0),
             Block.createCuboidShape(6.0, 8.0, 15.0, 10.0, 13.0, 16.0)
-        )
-            .reduce { first, second -> VoxelShapes.combineAndSimplify(first, second, BooleanBiFunction.OR) }
-            .get()
+        ).reduce { first, second -> VoxelShapes.combineAndSimplify(first, second, BooleanBiFunction.OR) }.get()
     }
 }

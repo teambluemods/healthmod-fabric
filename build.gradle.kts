@@ -1,24 +1,29 @@
+import groovy.lang.MissingPropertyException
 import net.fabricmc.loom.task.RunClientTask
 import org.gradle.api.tasks.compile.JavaCompile as CompileJava
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile as CompileKotlin
 
 plugins {
-    id("fabric-loom") version "0.5-SNAPSHOT"
     java
     kotlin("jvm") version "1.4.21"
-    idea
-    id("net.minecrell.licenser") version "0.4.1"
+    id("fabric-loom") version "0.5-SNAPSHOT"
     id("maven-publish")
+    id("net.minecrell.licenser") version "0.4.1"
 }
 
-fun property(name: String) = project.findProperty(name)!!
-fun propertyOrEnv(name: String, envName: String = name) = project.findProperty(name) ?: System.getenv(envName)!!
-fun hasPropertyOrEnv(name: String, envName: String = name) =
-    project.hasProperty(name) || System.getenv().containsKey(envName)
+fun propertyOrEnv(name: String, envName: String = name) = project.findProperty(name)
+    ?: System.getenv(envName)
+    ?: MissingPropertyException("Property $name/environment variable $envName was not found")
 
-base.archivesBaseName = property("archives_base_name").toString()
-version = property("mod_version")
-group = property("maven_group")
+// getters for if a property exists
+fun hasPropertyOrEnv(
+    name: String,
+    envName: String = name
+) = project.hasProperty(name) || System.getenv().containsKey(envName)
+
+base.archivesBaseName = project.property("archives_base_name").toString()
+version = project.property("mod_version")!!
+group = project.property("maven_group")!!
 
 sourceSets {
     main {
@@ -47,45 +52,45 @@ repositories {
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:${property("minecraft_version")}")
-    mappings("net.fabricmc:yarn:${property("yarn_mappings")}:v2")
-    modImplementation("net.fabricmc:fabric-loader:${property("loader_version")}")
+    minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
+    mappings("net.fabricmc:yarn:${project.property("yarn_mappings")}:v2")
+    modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
 
     // fapi
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
 
     // kotlin adapter
-    modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin_version")}")
+    modImplementation("net.fabricmc:fabric-language-kotlin:${project.property("fabric_kotlin_version")}")
 
     // yeet mojank console spam
     modRuntime("user11681:noauth:+")
 
-    modApi("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${property("cca_version")}")
-    include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${property("cca_version")}")
+    modApi("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.property("cca_version")}")
+    include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.property("cca_version")}")
     // for entity components
-    modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${property("cca_version")}")
-    include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${property("cca_version")}")
+    modImplementation("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.property("cca_version")}")
+    include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.property("cca_version")}")
 
     // yes
-    modImplementation("io.github.prospector:modmenu:${property("mod_menu_version")}")
+    modImplementation("io.github.prospector:modmenu:${project.property("mod_menu_version")}")
 
     // config
-    modApi("me.shedaniel.cloth:config-2:${property("cloth_config_version")}") {
+    modApi("me.shedaniel.cloth:config-2:${project.property("cloth_config_version")}") {
         exclude(group = "net.fabricmc.fabric-api")
     }
-    include("me.shedaniel.cloth:config-2:${property("cloth_config_version")}") {
+    include("me.shedaniel.cloth:config-2:${project.property("cloth_config_version")}") {
         exclude(group = "net.fabricmc.fabric-api")
     }
-    modApi("me.sargunvohra.mcmods:autoconfig1u:${property("auto_config_version")}") {
+    modApi("me.sargunvohra.mcmods:autoconfig1u:${project.property("auto_config_version")}") {
         exclude(group = "net.fabricmc.fabric-api")
     }
-    include("me.sargunvohra.mcmods:autoconfig1u:${property("auto_config_version")}") {
+    include("me.sargunvohra.mcmods:autoconfig1u:${project.property("auto_config_version")}") {
         exclude(group = "net.fabricmc.fabric-api")
     }
 
     // datagen
-    modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")
-    include("me.shedaniel.cloth.api:cloth-datagen-api-v1:${property("cloth_api_version")}")
+    modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${project.property("cloth_api_version")}")
+    include("me.shedaniel.cloth.api:cloth-datagen-api-v1:${project.property("cloth_api_version")}")
 
     // note: older mods on loom 0.2.1 might need transitiveness disabled
     "datagenCompile"(sourceSets.main.get().output)
@@ -124,7 +129,7 @@ tasks {
             "fabric_version",
             "fabric_kotlin_version",
             "mod_menu_version"
-        ).map { it to project.findProperty(it)!!.toString() }.toMap()
+        ).map { it to project.property(it).toString() }.toMap()
 
         inputs.properties(toReplace)
 

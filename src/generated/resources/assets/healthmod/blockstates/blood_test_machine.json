@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=north": {
       "model": "healthmod:block/blood_test_machine"
+    },
+    "facing=south": {
+      "model": "healthmod:block/blood_test_machine",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "healthmod:block/blood_test_machine",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "healthmod:block/blood_test_machine",
+      "y": 90
     }
   }
 }

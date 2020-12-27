@@ -48,11 +48,11 @@ object ModelDataGeneration {
                 add("variants", JsonObject().apply {
                     for (direction in Direction.values().filter { it.axis.isHorizontal }) {
                         add("facing=${direction.name.toLowerCase()}", JsonObject().apply {
-                            addProperty("model", "${HealthMod.MOD_ID}:block/$id")
+                            addProperty("model", HealthMod.id("block/$id").toString())
 
-                            direction.toYRotation()
-                                .takeUnless(0::equals)
-                                ?.let { addProperty("y", it) }
+                            direction.toYRotation().takeUnless(0::equals)?.let {
+                                addProperty("y", it)
+                            }
                         })
                     }
                 })
@@ -65,13 +65,13 @@ object ModelDataGeneration {
                 addProperty("parent", "minecraft:block/cube")
 
                 add("textures", JsonObject().apply {
-                    addProperty("down", "${HealthMod.MOD_ID}:block/${id}_bottom")
-                    addProperty("up", "${HealthMod.MOD_ID}:block/${id}_top")
-                    addProperty("north", "${HealthMod.MOD_ID}:block/${id}_front")
-                    addProperty("south", "${HealthMod.MOD_ID}:block/${id}_back")
-                    addProperty("east", "${HealthMod.MOD_ID}:block/${id}_side")
-                    addProperty("west", "${HealthMod.MOD_ID}:block/${id}_side")
-                    addProperty("particle", "${HealthMod.MOD_ID}:block/${id}_bottom")
+                    addProperty("down", HealthMod.id("block/${id}_bottom").toString())
+                    addProperty("up", HealthMod.id("block/${id}_top").toString())
+                    addProperty("north", HealthMod.id("block/${id}_front").toString())
+                    addProperty("south", HealthMod.id("block/${id}_back").toString())
+                    addProperty("east", HealthMod.id("block/${id}_side").toString())
+                    addProperty("west", HealthMod.id("block/${id}_side").toString())
+                    addProperty("particle", HealthMod.id("block/${id}_bottom").toString())
                 })
             }
         )
@@ -93,7 +93,7 @@ object ModelDataGeneration {
         itemRegistriesClass.memberProperties
             .map { it.get(itemRegistriesClass.objectInstance!!) }
             .filterIsInstance<Item>()
-            .forEach { item -> data.addGeneratedItemModel(item) }
+            .forEach(data::addGeneratedItemModel)
 
         blockRegistriesClass.memberProperties
             .map { it.get(blockRegistriesClass.objectInstance!!) }
@@ -110,6 +110,8 @@ object ModelDataGeneration {
 
         horizontalRotatingBlock(data, BlockRegistries.FIRST_AID_KIT)
         horizontalRotatingBlock(data, BlockRegistries.BANDAGE_BOX)
+        horizontalRotatingBlock(data, BlockRegistries.BLOOD_TEST_MACHINE)
+
         override(
             data,
             BlockRegistries.BLOOD_TEST_MACHINE,

@@ -29,10 +29,11 @@ import net.minecraft.village.TradeOffers
 import net.minecraft.village.VillagerProfession
 import net.minecraft.world.poi.PointOfInterestType
 
+@Suppress("MemberVisibilityCanBePrivate") // datagen wont work if i do this
 object VillagerProfessionRegistries : ModRegistry<VillagerProfession> {
     override val registry: Registry<VillagerProfession> get() = Registry.VILLAGER_PROFESSION
 
-    private val DOCTOR_POINT_OF_INTEREST: PointOfInterestType = PointOfInterestHelper.register(
+    val DOCTOR_POINT_OF_INTEREST: PointOfInterestType = PointOfInterestHelper.register(
         HealthMod.id("doctor_point_of_interest"),
         /* ticket count of */ 1,
         /* search distance of */ 1,
@@ -40,7 +41,7 @@ object VillagerProfessionRegistries : ModRegistry<VillagerProfession> {
         BlockRegistries.BANDAGE_BOX
     )
 
-    private val DOCTOR: VillagerProfession = register(
+    val DOCTOR: VillagerProfession = register(
         id = "doctor",
         toRegister = VillagerProfessionBuilder.create()
             .id(HealthMod.id("doctor"))
