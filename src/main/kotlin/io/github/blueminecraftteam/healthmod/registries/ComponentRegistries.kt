@@ -24,10 +24,7 @@ import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer
 import io.github.blueminecraftteam.healthmod.HealthMod
-import io.github.blueminecraftteam.healthmod.components.BooleanComponent
-import io.github.blueminecraftteam.healthmod.components.CleanlinessComponent
-import io.github.blueminecraftteam.healthmod.components.IntComponent
-import io.github.blueminecraftteam.healthmod.components.SanitizedWoundComponent
+import io.github.blueminecraftteam.healthmod.components.*
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy
 
 class ComponentRegistries : EntityComponentInitializer {
@@ -53,6 +50,8 @@ class ComponentRegistries : EntityComponentInitializer {
             IntComponent::class.java
         )
 
+        @JvmStatic
+        @get:JvmName("getWounded")
         val WOUNDED: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
             HealthMod.id("wounded"),
             BooleanComponent::class.java
