@@ -20,6 +20,9 @@
 package io.github.blueminecraftteam.healthmod.blocks
 
 import io.github.blueminecraftteam.healthmod.blocks.entities.BloodTestMachineBlockEntity
+import io.github.blueminecraftteam.healthmod.compatibility.datagen.LootTable
+import io.github.blueminecraftteam.healthmod.compatibility.datagen.Model
+import io.github.blueminecraftteam.healthmod.compatibility.datagen.State
 import io.github.blueminecraftteam.healthmod.util.isServer
 import net.minecraft.block.*
 import net.minecraft.block.HorizontalFacingBlock.FACING
@@ -38,6 +41,9 @@ import net.minecraft.world.World
 import java.util.stream.Stream
 
 // TODO fix hitbox and collision box
+@LootTable(LootTable.Type.SILK_TOUCH_ONLY)
+@Model(Model.Type.OVERRIDING)
+@State(State.Type.HORIZONTALLY_ROTATING)
 class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
     init {
         this.defaultState = this.stateManager.defaultState.with(FACING, Direction.NORTH)

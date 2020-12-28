@@ -20,6 +20,8 @@
 package io.github.blueminecraftteam.healthmod.blocks
 
 import io.github.blueminecraftteam.healthmod.blocks.entities.FirstAidKitBlockEntity
+import io.github.blueminecraftteam.healthmod.compatibility.datagen.Model
+import io.github.blueminecraftteam.healthmod.compatibility.datagen.State
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.util.isServer
@@ -40,6 +42,8 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
 
+@Model(Model.Type.CUBE)
+@State(State.Type.HORIZONTALLY_ROTATING)
 class FirstAidKitBlock(settings: Settings) : BlockWithEntity(settings) {
     init {
         this.defaultState = this.stateManager.defaultState.with(HorizontalFacingBlock.FACING, Direction.NORTH)

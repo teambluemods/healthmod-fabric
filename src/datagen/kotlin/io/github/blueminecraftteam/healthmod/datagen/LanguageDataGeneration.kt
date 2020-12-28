@@ -21,6 +21,7 @@ package io.github.blueminecraftteam.healthmod.datagen
 
 import com.google.gson.JsonObject
 import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.compatibility.datagen.CustomEnglishTranslation
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
@@ -65,17 +66,17 @@ class LanguageFileDsl {
         }
     }
 
-    fun item(item: Item) {
+    fun item(item: Item, translation: String = item.id.path.replace("_", " ").capitalizeFully()) {
         json.addProperty(
             item.translationKey,
-            item.id.path.replace("_", " ").capitalizeFully()
+            translation
         )
     }
 
-    fun block(block: Block) {
+    fun block(block: Block, translation: String = block.id.path.replace("_", " ").capitalizeFully()) {
         json.addProperty(
             block.translationKey,
-            block.id.path.replace("_", " ").capitalizeFully()
+            translation
         )
     }
 
@@ -107,8 +108,8 @@ class LanguageFileDsl {
 sealed class LanguageDataGeneration(
     private val locale: String,
     private val languageFileDslClosure: LanguageFileDsl.() -> Unit
-) {
-    fun generate(data: SimpleData) {
+) : Generator<SimpleData> {
+    override fun generate(data: SimpleData) {
         val languageFileDsl = LanguageFileDsl()
         languageFileDslClosure(languageFileDsl)
         data.addJson("assets/${HealthMod.MOD_ID}/lang/$locale.json", languageFileDsl.json)
@@ -121,14 +122,28 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
     itemRegistriesClass.memberProperties
         .map { it.get(itemRegistriesClass.objectInstance!!) }
         .filterIsInstance<Item>()
-        .forEach(this::item)
+        .forEach { item ->
+            item::class.annotations
+                .filterIsInstance<CustomEnglishTranslation>()
+                .getOrNull(0)
+                ?.translation
+                ?.let { translation -> item(item, translation) }
+                ?: item(item)
+        }
 
     val blockRegistriesClass = BlockRegistries::class
 
     blockRegistriesClass.memberProperties
         .map { it.get(blockRegistriesClass.objectInstance!!) }
         .filterIsInstance<Block>()
-        .forEach(this::block)
+        .forEach { block ->
+            block::class.annotations
+                .filterIsInstance<CustomEnglishTranslation>()
+                .getOrNull(0)
+                ?.translation
+                ?.let { translation -> block(block, translation) }
+                ?: block(block)
+        }
 
     val statusEffectRegistriesClass = StatusEffectRegistries::class
 
@@ -193,9 +208,6 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
         translated = "Bacterial Resistance Chance",
         tooltip = "Chance for antibiotics to fail and make harmful effects stronger (1/config value)"
     )
-
-    override(BlockRegistries.BANDAGE_BOX.translationKey, "Box of Bandages")
-    override(ItemRegistries.SOAP.translationKey, "Bar of Soap")
 
     simple("death.attack.wound_infection", "%1\$s died from a wound infection")
     simple("death.attack.wound_infection.player", "%1\$s died from a wound infection")

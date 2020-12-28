@@ -4,6 +4,8 @@
   "item.healthmod.blood_vial": "Blood Vial",
   "item.healthmod.broccoli": "Broccoli",
   "item.healthmod.isopropyl_alcohol": "Isopropyl Alcohol",
+  "item.healthmod.soap": "Bar of Soap",
+  "block.healthmod.bandage_box": "Box of Bandages",
   "block.healthmod.blood_test_machine": "Blood Test Machine",
   "block.healthmod.first_aid_kit": "First Aid Kit",
   "effect.healthmod.healthy": "Healthy",
@@ -34,8 +36,6 @@
   "text.autoconfig.healthmod.option.extraSplashTexts.@Tooltip": "If extra splash texts (e.g. \"helth goes brrrr\") should be added",
   "text.autoconfig.healthmod.option.bacterialResistanceChance": "Bacterial Resistance Chance",
   "text.autoconfig.healthmod.option.bacterialResistanceChance.@Tooltip": "Chance for antibiotics to fail and make harmful effects stronger (1/config value)",
-  "block.healthmod.bandage_box": "Box of Bandages",
-  "item.healthmod.soap": "Bar of Soap",
   "death.attack.wound_infection": "%1$s died from a wound infection",
   "death.attack.wound_infection.player": "%1$s died from a wound infection"
 }
