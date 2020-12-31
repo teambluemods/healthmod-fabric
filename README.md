@@ -1,14 +1,30 @@
 ![lines of code](https://img.shields.io/tokei/lines/github/blueminecraftteam/healthmod-fabric?style=for-the-badge)
 ![activity](https://img.shields.io/github/commit-activity/w/blueminecraftteam/healthmod-fabric?style=for-the-badge)  
-![license](https://img.shields.io/badge/license-lgpl%20v3%20or%20later-green?style=for-the-badge)  
+![license: lgpl v3 or later](https://img.shields.io/badge/license-lgpl%20v3%20or%20later-green?style=for-the-badge)  
 ![available on curseforge and modrinth](https://img.shields.io/badge/available%20on-modrinth%20and%20curseforge-orange?style=for-the-badge)
-![categories technology adventure and health](https://img.shields.io/badge/categories-technology%2C%20adventure%20and%20health-red?style=for-the-badge)
+![categories: technology, adventure and health](https://img.shields.io/badge/categories-technology%2C%20adventure%20and%20health-red?style=for-the-badge)  
 ![issues](https://img.shields.io/github/issues/blueminecraftteam/healthmod-fabric?style=for-the-badge)
 ![stars](https://img.shields.io/github/stars/blueminecraftteam/healthmod-fabric?style=for-the-badge)
 
 # HealthMod
 
 a mod which adds health related things
+
+## Required Dependencies
+
+- [Minecraft 1.16.4](https://minecraft.net/)
+- [Fabric Loader 0.10.8](https://fabricmc.net/use/)
+- [Fabric API 0.28.4](https://www.curseforge.com/minecraft/mc-mods/fabric-api/)
+- [Fabric Language Kotlin 1.4.21](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin/)
+
+### Note
+
+You can use any higher version of these dependencies. For example,
+if [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/) has a new version `0.28.5`, you can use that.
+
+## Support
+
+Join [the Discord server](https://discord.gg/VvB7zx2rvU)! Support is given in the #support channel.
 
 ## License
 
