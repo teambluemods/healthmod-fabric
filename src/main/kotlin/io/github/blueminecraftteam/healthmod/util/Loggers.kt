@@ -21,15 +21,21 @@ package io.github.blueminecraftteam.healthmod.util
 
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KProperty
 
-inline fun <reified T> logger(): Logger = LogManager.getLogger(T::class.java)
+class LoggerDelegate<T : Any> : ReadOnlyProperty<T, Logger> {
+    private lateinit var logger: Logger
 
-inline fun <reified T> fatal(message: String) = logger<T>().fatal(message)
+    /**
+     * Returns the value of the property for the given object.
+     * @param thisRef the object for which the value is requested.
+     * @param property the metadata for the property.
+     * @return the property value.
+     */
+    override fun getValue(thisRef: T, property: KProperty<*>): Logger {
+        if (!this::logger.isInitialized) logger = LogManager.getLogger(thisRef::class.java)
 
-inline fun <reified T> error(message: String, throwable: Throwable) = logger<T>().error(message, throwable)
-
-inline fun <reified T> warn(message: String) = logger<T>().warn(message)
-
-inline fun <reified T> info(message: String) = logger<T>().info(message)
-
-inline fun <reified T> debug(message: String) = logger<T>().debug(message)
+        return logger
+    }
+}

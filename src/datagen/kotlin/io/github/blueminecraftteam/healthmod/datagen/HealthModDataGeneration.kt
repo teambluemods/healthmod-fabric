@@ -20,15 +20,16 @@
 package io.github.blueminecraftteam.healthmod.datagen
 
 import io.github.blueminecraftteam.healthmod.HealthMod
-import io.github.blueminecraftteam.healthmod.util.fatal
-import io.github.blueminecraftteam.healthmod.util.info
-import io.github.blueminecraftteam.healthmod.util.logger
+import io.github.blueminecraftteam.healthmod.util.LoggerDelegate
 import me.shedaniel.cloth.api.datagen.v1.DataGeneratorHandler
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint
+import org.apache.logging.log4j.Logger
 import java.nio.file.Paths
 import kotlin.system.exitProcess
 
 object HealthModDataGeneration : PreLaunchEntrypoint {
+    private val logger: Logger by LoggerDelegate()
+
     /**
      * Runs data generation.
      */
@@ -43,15 +44,15 @@ object HealthModDataGeneration : PreLaunchEntrypoint {
 
             handler.run()
         } catch (throwable: Throwable) {
-            logger<HealthModDataGeneration>().fatal("Error happened during datagen!", throwable)
+            logger.fatal("Error happened during datagen!", throwable)
             exitProcess(1)
         }
 
-        info<HealthModDataGeneration>("thanks for flying on datagen airways™, we are approaching the runway")
+        logger.info("thanks for flying on datagen airways™, we are approaching the runway")
 
         exitProcess(0)
 
         @Suppress("UNREACHABLE_CODE") // this is for the haha funi
-        fatal<HealthModDataGeneration>("oh shit")
+        logger.fatal("oh shit")
     }
 }

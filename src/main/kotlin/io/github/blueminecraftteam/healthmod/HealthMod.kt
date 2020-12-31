@@ -21,27 +21,32 @@ package io.github.blueminecraftteam.healthmod
 
 import io.github.blueminecraftteam.healthmod.config.HealthModConfig
 import io.github.blueminecraftteam.healthmod.registries.*
-import io.github.blueminecraftteam.healthmod.util.debug
+import io.github.blueminecraftteam.healthmod.util.LoggerDelegate
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
 import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
+import org.apache.logging.log4j.Logger
 
 object HealthMod : ModInitializer {
     const val MOD_ID = "healthmod"
     val ITEM_GROUP: ItemGroup = FabricItemGroupBuilder.create(id("all"))
         .icon { ItemRegistries.BANDAGE.defaultStack }
         .build()
+    private val logger: Logger by LoggerDelegate()
 
     fun id(path: String) = Identifier(MOD_ID, path)
 
     override fun onInitialize() {
         AutoConfig.register(HealthModConfig::class.java, ::Toml4jConfigSerializer)
 
+        logger.debug("Registered config!")
+
         initRegistries()
-        debug<HealthMod>("Initialized all registries!")
+
+        logger.debug("Initialized all registries!")
     }
 
     /**

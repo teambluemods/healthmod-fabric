@@ -42,7 +42,7 @@ class SimpleInventoryScreen<T : ScreenHandler>(
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight)
     }
 
-    override fun render(matrices: MatrixStack?, mouseX: Int, mouseY: Int, delta: Float) {
+    override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         renderBackground(matrices)
         super.render(matrices, mouseX, mouseY, delta)
         drawMouseoverTooltip(matrices, mouseX, mouseY)

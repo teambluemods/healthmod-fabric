@@ -20,8 +20,9 @@
 package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
-import io.github.blueminecraftteam.healthmod.util.debug
+import io.github.blueminecraftteam.healthmod.util.LoggerDelegate
 import net.minecraft.util.registry.Registry
+import org.apache.logging.log4j.Logger
 
 interface ModRegistry<T> {
     /**
@@ -33,11 +34,15 @@ interface ModRegistry<T> {
      * Force loads this class.
      */
     fun init() {
-        debug<ModRegistry<*>>("Initialized registry ${this::class.java.simpleName}!")
+        logger.debug("Initialized registry ${this::class.java.simpleName}!")
     }
 
     /**
      * Registers [T] to the [registry] with the specified [id]. Will have a namespace of `healthmod`.
      */
     fun register(id: String, toRegister: T): T = Registry.register(registry, HealthMod.id(id), toRegister)
+
+    companion object {
+        private val logger: Logger by LoggerDelegate()
+    }
 }

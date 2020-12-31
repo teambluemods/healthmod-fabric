@@ -23,7 +23,7 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.blocks.BandageBoxBlock
 import io.github.blueminecraftteam.healthmod.blocks.BloodTestMachineBlock
 import io.github.blueminecraftteam.healthmod.blocks.FirstAidKitBlock
-import io.github.blueminecraftteam.healthmod.util.debug
+import io.github.blueminecraftteam.healthmod.util.LoggerDelegate
 import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.Material
@@ -33,6 +33,7 @@ import net.minecraft.item.Item
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.Rarity
 import net.minecraft.util.registry.Registry
+import org.apache.logging.log4j.Logger
 
 @Suppress("UNUSED")
 object BlockRegistries : ModRegistry<Block> {
@@ -80,6 +81,8 @@ object BlockRegistries : ModRegistry<Block> {
             .rarity(Rarity.UNCOMMON)
     )
 
+    private val logger: Logger by LoggerDelegate()
+
     private fun register(id: String, toRegister: Block, customItemProperties: Item.Settings? = null): Block {
         val blockItem = ItemRegistries.register(
             id,
@@ -88,7 +91,7 @@ object BlockRegistries : ModRegistry<Block> {
 
         blockItem.appendBlocks(Item.BLOCK_ITEMS, blockItem)
 
-        debug<BlockRegistries>("Automatically registered block item $blockItem with custom item properties $customItemProperties.")
+        logger.debug("Automatically registered block item $blockItem with custom item properties $customItemProperties.")
 
         return register(id, toRegister)
     }

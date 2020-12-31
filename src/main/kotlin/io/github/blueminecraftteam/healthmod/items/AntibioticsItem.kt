@@ -22,7 +22,7 @@ package io.github.blueminecraftteam.healthmod.items
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.mixin.StatusEffectInstanceAccessorMixin
-import io.github.blueminecraftteam.healthmod.util.debug
+import io.github.blueminecraftteam.healthmod.util.LoggerDelegate
 import io.github.blueminecraftteam.healthmod.util.isServer
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectType
@@ -34,6 +34,7 @@ import net.minecraft.text.TranslatableText
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
+import org.apache.logging.log4j.Logger
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -50,14 +51,14 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
             }
 
             if ((1..config.bacterialResistanceChance + 1).random() != 1) {
-                debug<AntibioticsItem>("No resistant bacteria, clearing harmful status effects.")
+                logger.debug("No resistant bacteria, clearing harmful status effects.")
 
                 Collections.synchronizedMap(user.activeStatusEffects)
                     .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
                     .filter { (statusEffect, _) -> statusEffect != StatusEffects.POISON }
                     .forEach { (statusEffect, _) -> user.removeStatusEffect(statusEffect) }
             } else {
-                debug<AntibioticsItem>("Resistant bacteria, amplifying harmful status effects.")
+                logger.debug("Resistant bacteria, amplifying harmful status effects.")
 
                 user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"), true)
 
@@ -96,5 +97,9 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
         } else {
             TypedActionResult.consume(user.getStackInHand(hand))
         }
+    }
+
+    companion object {
+        private val logger: Logger by LoggerDelegate()
     }
 }

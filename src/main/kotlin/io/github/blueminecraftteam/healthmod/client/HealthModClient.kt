@@ -39,6 +39,7 @@ object HealthModClient : ClientModInitializer {
                 Identifier("minecraft", "textures/gui/container/dispenser.png")
             )
         }
+
         ScreenRegistry.register(ScreenHandlerTypeRegistries.BLOOD_TEST_MACHINE) { handler, inventory, title ->
             // TODO: use own texture?
             SimpleInventoryScreen(
@@ -48,6 +49,7 @@ object HealthModClient : ClientModInitializer {
                 Identifier("minecraft", "textures/gui/container/brewing_stand.png")
             )
         }
+
         ScreenRegistry.register(ScreenHandlerTypeRegistries.FIRST_AID_KIT) { handler, inventory, title ->
             // TODO: use own texture?
             SimpleInventoryScreen(
