@@ -19,6 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.client
 
+import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.client.guis.screens.SimpleInventoryScreen
 import io.github.blueminecraftteam.healthmod.registries.ScreenHandlerTypeRegistries
 import net.fabricmc.api.ClientModInitializer
@@ -36,7 +37,17 @@ object HealthModClient : ClientModInitializer {
                 handler,
                 inventory,
                 title,
-                Identifier("minecraft", "textures/gui/container/dispenser.png")
+                HealthMod.id("textures/gui/bandage_box.png")
+            )
+        }
+
+        ScreenRegistry.register(ScreenHandlerTypeRegistries.FIRST_AID_KIT) { handler, inventory, title ->
+            // TODO: use own texture?
+            SimpleInventoryScreen(
+                handler,
+                inventory,
+                title,
+                HealthMod.id("textures/gui/first_aid_kit.png")
             )
         }
 
@@ -47,16 +58,6 @@ object HealthModClient : ClientModInitializer {
                 inventory,
                 title,
                 Identifier("minecraft", "textures/gui/container/brewing_stand.png")
-            )
-        }
-
-        ScreenRegistry.register(ScreenHandlerTypeRegistries.FIRST_AID_KIT) { handler, inventory, title ->
-            // TODO: use own texture?
-            SimpleInventoryScreen(
-                handler,
-                inventory,
-                title,
-                Identifier("minecraft", "textures/gui/container/dispenser.png")
             )
         }
     }
