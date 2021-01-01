@@ -22,7 +22,7 @@ package io.github.blueminecraftteam.healthmod.items
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
-import io.github.blueminecraftteam.healthmod.util.isServer
+import io.github.blueminecraftteam.healthmod.util.extensions.isServer
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.item.TooltipContext

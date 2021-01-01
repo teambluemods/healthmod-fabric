@@ -27,7 +27,7 @@ import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.util.addBlockCubeModel
 import io.github.blueminecraftteam.healthmod.util.addHorizontallyRotatingState
-import io.github.blueminecraftteam.healthmod.util.id
+import io.github.blueminecraftteam.healthmod.util.extensions.id
 import me.shedaniel.cloth.api.datagen.v1.ModelStateData
 import net.minecraft.block.Block
 import net.minecraft.item.Item

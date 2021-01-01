@@ -25,7 +25,7 @@ import io.github.blueminecraftteam.healthmod.compatibility.datagen.Model
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.State
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
-import io.github.blueminecraftteam.healthmod.util.isServer
+import io.github.blueminecraftteam.healthmod.util.extensions.isServer
 import net.minecraft.block.*
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity

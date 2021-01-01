@@ -26,8 +26,8 @@ import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
 import io.github.blueminecraftteam.healthmod.registries.VillagerProfessionRegistries
-import io.github.blueminecraftteam.healthmod.util.capitalizeFully
-import io.github.blueminecraftteam.healthmod.util.id
+import io.github.blueminecraftteam.healthmod.util.extensions.capitalizeFully
+import io.github.blueminecraftteam.healthmod.util.extensions.id
 import me.shedaniel.cloth.api.datagen.v1.SimpleData
 import net.minecraft.block.Block
 import net.minecraft.entity.effect.StatusEffect

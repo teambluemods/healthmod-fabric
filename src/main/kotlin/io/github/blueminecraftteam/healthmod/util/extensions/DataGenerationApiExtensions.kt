@@ -21,6 +21,7 @@ package io.github.blueminecraftteam.healthmod.util
 
 import com.google.gson.JsonObject
 import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.util.extensions.toYRotation
 import me.shedaniel.cloth.api.datagen.v1.ModelStateData
 import net.minecraft.block.Block
 import net.minecraft.util.math.Direction

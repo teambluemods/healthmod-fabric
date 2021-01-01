@@ -23,7 +23,7 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.mixin.StatusEffectInstanceAccessorMixin
 import io.github.blueminecraftteam.healthmod.util.LoggerDelegate
-import io.github.blueminecraftteam.healthmod.util.isServer
+import io.github.blueminecraftteam.healthmod.util.extensions.isServer
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectType
 import net.minecraft.entity.effect.StatusEffects

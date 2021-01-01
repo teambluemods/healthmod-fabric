@@ -23,7 +23,7 @@ import io.github.blueminecraftteam.healthmod.blocks.entities.BloodTestMachineBlo
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.LootTable
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.Model
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.State
-import io.github.blueminecraftteam.healthmod.util.isServer
+import io.github.blueminecraftteam.healthmod.util.extensions.isServer
 import net.minecraft.block.*
 import net.minecraft.block.HorizontalFacingBlock.FACING
 import net.minecraft.entity.player.PlayerEntity

@@ -28,22 +28,19 @@ import io.github.blueminecraftteam.healthmod.components.*
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy
 
 object ComponentRegistries : EntityComponentInitializer {
-    @JvmStatic
-    @get:JvmName("getSanitizedWound")
+    @JvmField
     val SANITIZED_WOUND: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
         HealthMod.id("sanitized_wound"),
         BooleanComponent::class.java
     )
 
-    @JvmStatic
-    @get:JvmName("getCleanliness")
+    @JvmField
     val CLEANLINESS: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
         HealthMod.id("cleanliness"),
         IntComponent::class.java
     )
 
-    @JvmStatic
-    @get:JvmName("getWounded")
+    @JvmField
     val WOUNDED: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
         HealthMod.id("wounded"),
         IntComponent::class.java
