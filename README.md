@@ -6,9 +6,9 @@
 ![issues](https://img.shields.io/github/issues/blueminecraftteam/healthmod-fabric?style=for-the-badge)
 ![stars](https://img.shields.io/github/stars/blueminecraftteam/healthmod-fabric?style=for-the-badge)
 
-# HealthMod
+# HealthMod Fabric
 
-a mod which adds health related things
+a mod which adds health related things but for Fabric
 
 ## Required Dependencies
 
