@@ -28,7 +28,7 @@ import java.nio.file.Paths
 import kotlin.system.exitProcess
 
 object HealthModDataGeneration : PreLaunchEntrypoint {
-    private val logger: Logger by LoggerDelegate()
+    private val LOGGER: Logger by LoggerDelegate()
 
     /**
      * Runs data generation.
@@ -45,15 +45,15 @@ object HealthModDataGeneration : PreLaunchEntrypoint {
 
             handler.run()
         } catch (throwable: Throwable) {
-            logger.fatal("Error happened during datagen!", throwable)
+            LOGGER.fatal("Error happened during datagen!", throwable)
             exitProcess(1)
         }
 
-        logger.info("thanks for flying on datagen airways™, we are approaching the runway")
+        LOGGER.info("thanks for flying on datagen airways™, we are approaching the runway")
 
         exitProcess(0)
 
         @Suppress("UNREACHABLE_CODE") // this is for the haha funi
-        logger.fatal("oh shit")
+        LOGGER.fatal("oh shit")
     }
 }

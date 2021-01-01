@@ -35,18 +35,18 @@ object HealthMod : ModInitializer {
     val ITEM_GROUP: ItemGroup = FabricItemGroupBuilder.create(id("all"))
         .icon { ItemRegistries.BANDAGE.defaultStack }
         .build()
-    private val logger: Logger by LoggerDelegate()
+    private val LOGGER: Logger by LoggerDelegate()
 
     fun id(path: String) = Identifier(MOD_ID, path)
 
     override fun onInitialize() {
         AutoConfig.register(HealthModConfig::class.java, ::Toml4jConfigSerializer)
 
-        logger.debug("Registered config!")
+        LOGGER.debug("Registered config!")
 
         initRegistries()
 
-        logger.debug("Initialized all registries!")
+        LOGGER.debug("Initialized all registries!")
     }
 
     /**

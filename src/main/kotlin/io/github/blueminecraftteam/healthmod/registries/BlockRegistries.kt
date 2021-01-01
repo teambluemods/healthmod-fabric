@@ -39,7 +39,7 @@ import org.apache.logging.log4j.Logger
 object BlockRegistries : ModRegistry<Block> {
     override val registry: Registry<Block> get() = Registry.BLOCK
 
-    private val logger: Logger by LoggerDelegate()
+    private val LOGGER: Logger by LoggerDelegate()
 
     val BANDAGE_BOX = register(
         id = "bandage_box",
@@ -92,7 +92,7 @@ object BlockRegistries : ModRegistry<Block> {
 
         blockItem.appendBlocks(Item.BLOCK_ITEMS, blockItem)
 
-        logger.debug("Automatically registered block item $blockItem with custom item properties $customItemProperties.")
+        LOGGER.debug("Automatically registered block item $blockItem with custom item properties $customItemProperties.")
 
         return this.register(id, toRegister)
     }

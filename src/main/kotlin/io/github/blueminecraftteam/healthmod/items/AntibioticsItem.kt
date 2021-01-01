@@ -51,14 +51,14 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
             }
 
             if ((1..config.bacterialResistanceChance + 1).random() != 1) {
-                logger.debug("No resistant bacteria, clearing harmful status effects.")
+                LOGGER.debug("No resistant bacteria, clearing harmful status effects.")
 
                 Collections.synchronizedMap(user.activeStatusEffects)
                     .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
                     .filter { (statusEffect, _) -> statusEffect != StatusEffects.POISON }
                     .forEach { (statusEffect, _) -> user.removeStatusEffect(statusEffect) }
             } else {
-                logger.debug("Resistant bacteria, amplifying harmful status effects.")
+                LOGGER.debug("Resistant bacteria, amplifying harmful status effects.")
 
                 user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"), true)
 
@@ -100,6 +100,6 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
     }
 
     companion object {
-        private val logger: Logger by LoggerDelegate()
+        private val LOGGER: Logger by LoggerDelegate()
     }
 }

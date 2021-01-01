@@ -34,7 +34,7 @@ interface ModRegistry<T> {
      * Force loads this class.
      */
     fun init() {
-        logger.debug("Initialized registry ${this::class.java.simpleName}!")
+        LOGGER.debug("Initialized registry ${this::class.java.simpleName}!")
     }
 
     /**
@@ -43,6 +43,6 @@ interface ModRegistry<T> {
     fun register(id: String, toRegister: T): T = Registry.register(registry, HealthMod.id(id), toRegister)
 
     companion object {
-        private val logger: Logger by LoggerDelegate()
+        private val LOGGER: Logger by LoggerDelegate()
     }
 }
