@@ -38,6 +38,7 @@ sourceSets {
     }
 }
 
+// note: older mods on loom 0.2.1 might need transitiveness disabled
 repositories {
     // for noauth
     maven("https://dl.bintray.com/user11681/maven") { name = "user11681" }
@@ -92,14 +93,15 @@ dependencies {
     modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${project.property("cloth_api_version")}")
     include("me.shedaniel.cloth.api:cloth-datagen-api-v1:${project.property("cloth_api_version")}")
 
-    // note: older mods on loom 0.2.1 might need transitiveness disabled
     "datagenCompile"(sourceSets.main.get().output)
 }
 
 tasks {
     withType<CompileKotlin>().configureEach {
-        kotlinOptions.jvmTarget = "1.8"
-        kotlinOptions.languageVersion = "1.4"
+        kotlinOptions {
+            jvmTarget = "1.8"
+            languageVersion = "1.4"
+        }
     }
 
     withType<CompileJava>().configureEach {
@@ -150,6 +152,7 @@ tasks {
 
     create(name = "generateData", type = RunClientTask::class) {
         classpath = configurations.runtimeClasspath.get()
+
         classpath(sourceSets["main"].output)
         classpath(sourceSets["datagen"].output)
     }

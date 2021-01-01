@@ -12,6 +12,8 @@ a mod which adds health related things but for Fabric
 
 ## Required Dependencies
 
+<a title="Fabric Language Kotlin" href="https://minecraft.curseforge.com/projects/fabric-language-kotlin" target="_blank" rel="noopener noreferrer"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.imgur.com/c1DH9VL.png" alt="" width="171" height="50" /></a>
+
 - [Minecraft 1.16.4](https://minecraft.net/)
 - [Fabric Loader 0.10.8](https://fabricmc.net/use/)
 - [Fabric API 0.29.0](https://www.curseforge.com/minecraft/mc-mods/fabric-api/)
