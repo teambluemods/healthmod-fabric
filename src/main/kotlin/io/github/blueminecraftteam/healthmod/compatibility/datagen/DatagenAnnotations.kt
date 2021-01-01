@@ -19,8 +19,44 @@
 
 package io.github.blueminecraftteam.healthmod.compatibility.datagen
 
-import net.minecraft.loot.LootTable
+annotation class CustomEnglishTranslation(val translation: String)
 
+annotation class Model(val type: Type) {
+    enum class Type {
+        /**
+         * Creates a cube block model and a simple item model.
+         */
+        CUBE,
+
+        /**
+         * Creates a cube-all block model and simple item model.
+         */
+        CUBE_ALL,
+
+        /**
+         * Generates a simple item model but no block model so that you can manually override in the generator class.
+         */
+        OVERRIDING,
+    }
+}
+
+annotation class State(val type: Type) {
+    enum class Type {
+        /**
+         * Simple state with only one possible model.
+         */
+        SIMPLE,
+
+        /**
+         * State with 4 variations all pointing to the same model, except using different `y` rotations.
+         */
+        HORIZONTALLY_ROTATING
+    }
+}
+
+/**
+ * Tells the generator to generate a loot table consistent with the [type] provided.
+ */
 annotation class LootTable(val type: Type) {
     enum class Type {
         /**
@@ -39,38 +75,8 @@ annotation class LootTable(val type: Type) {
         NORMAL,
 
         /**
-         * Custom loot table. Set [tableBuilder] if you are using this type!
+         * Custom loot table. Manually set in the generator class.
          */
-        CUSTOM;
-
-
-        lateinit var tableBuilder: LootTable.Builder
-    }
-}
-
-annotation class CustomEnglishTranslation(val translation: String) {
-    annotation class ConfigEntry(val translation: String, val tooltip: String)
-}
-
-annotation class Model(val type: Type) {
-    enum class Type {
-        /**
-         * Creates a cube block model and a simple item model.
-         */
-        CUBE,
-
-        /**
-         * Creates a cube-all block model and simple item model.
-         */
-        CUBE_ALL,
-
-        OVERRIDING,
-    }
-}
-
-annotation class State(val type: Type) {
-    enum class Type {
-        SIMPLE,
-        HORIZONTALLY_ROTATING
+        CUSTOM,
     }
 }

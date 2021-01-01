@@ -21,6 +21,7 @@ package io.github.blueminecraftteam.healthmod.blocks
 
 import io.github.blueminecraftteam.healthmod.blocks.entities.BandageBoxBlockEntity
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.CustomEnglishTranslation
+import io.github.blueminecraftteam.healthmod.compatibility.datagen.LootTable
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.Model
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.State
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
@@ -42,6 +43,7 @@ import net.minecraft.world.World
 @CustomEnglishTranslation("Box of Bandages")
 @Model(Model.Type.CUBE)
 @State(State.Type.HORIZONTALLY_ROTATING)
+@LootTable(LootTable.Type.NONE)
 class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
     init {
         this.defaultState = this.stateManager.defaultState.with(HorizontalFacingBlock.FACING, Direction.NORTH)

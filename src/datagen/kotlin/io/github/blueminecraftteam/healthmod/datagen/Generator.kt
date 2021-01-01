@@ -19,6 +19,12 @@
 
 package io.github.blueminecraftteam.healthmod.datagen
 
+/**
+ * A generator which generates anything. Takes in one [T] to use for generation.
+ */
 interface Generator<T> {
+    /**
+     * Starts generation using the [data].
+     */
     fun generate(data: T)
 }

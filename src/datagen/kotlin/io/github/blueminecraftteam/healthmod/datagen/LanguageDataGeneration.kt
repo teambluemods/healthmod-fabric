@@ -35,6 +35,7 @@ import net.minecraft.item.Item
 import net.minecraft.util.Identifier
 import net.minecraft.village.VillagerProfession
 import kotlin.reflect.full.memberProperties
+import kotlin.reflect.jvm.isAccessible
 
 class LanguageFileDsl {
     val json = JsonObject()
@@ -119,7 +120,7 @@ sealed class LanguageDataGeneration(
 object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure = {
     val itemRegistriesClass = ItemRegistries::class
 
-    itemRegistriesClass.memberProperties
+    itemRegistriesClass.memberProperties.onEach { it.isAccessible = true }
         .map { it.get(itemRegistriesClass.objectInstance!!) }
         .filterIsInstance<Item>()
         .forEach { item ->
@@ -133,7 +134,7 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
 
     val blockRegistriesClass = BlockRegistries::class
 
-    blockRegistriesClass.memberProperties
+    blockRegistriesClass.memberProperties.onEach { it.isAccessible = true }
         .map { it.get(blockRegistriesClass.objectInstance!!) }
         .filterIsInstance<Block>()
         .forEach { block ->
@@ -147,14 +148,14 @@ object English : LanguageDataGeneration(locale = "en_us", languageFileDslClosure
 
     val statusEffectRegistriesClass = StatusEffectRegistries::class
 
-    statusEffectRegistriesClass.memberProperties
+    statusEffectRegistriesClass.memberProperties.onEach { it.isAccessible = true }
         .map { it.get(statusEffectRegistriesClass.objectInstance!!) }
         .filterIsInstance<StatusEffect>()
         .forEach(this::statusEffect)
 
     val professionRegistriesClass = VillagerProfessionRegistries::class
 
-    professionRegistriesClass.memberProperties
+    professionRegistriesClass.memberProperties.onEach { it.isAccessible = true }
         .map { it.get(professionRegistriesClass.objectInstance!!) }
         .filterIsInstance<VillagerProfession>()
         .forEach(this::villagerProfession)

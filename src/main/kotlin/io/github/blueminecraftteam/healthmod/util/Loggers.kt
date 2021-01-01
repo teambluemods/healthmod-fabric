@@ -24,7 +24,7 @@ import org.apache.logging.log4j.Logger
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-class LoggerDelegate<T : Any> : ReadOnlyProperty<T, Logger> {
+class LoggerDelegate<in T : Any> : ReadOnlyProperty<T, Logger> {
     private lateinit var logger: Logger
 
     /**

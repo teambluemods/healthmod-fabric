@@ -41,6 +41,7 @@ object HealthModDataGeneration : PreLaunchEntrypoint {
 
             English.generate(handler.simple)
             ModelDataGeneration.generate(handler.modelStates)
+            LootTableDataGeneration.generate(handler.lootTables)
 
             handler.run()
         } catch (throwable: Throwable) {

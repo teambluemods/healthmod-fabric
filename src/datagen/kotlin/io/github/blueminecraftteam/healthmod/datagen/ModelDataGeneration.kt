@@ -36,6 +36,7 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.reflect.full.memberProperties
+import kotlin.reflect.jvm.isAccessible
 
 object ModelDataGeneration : Generator<ModelStateData> {
     private fun override(data: ModelStateData, block: Block, path: Path) {
@@ -51,24 +52,24 @@ object ModelDataGeneration : Generator<ModelStateData> {
         val itemRegistriesClass = ItemRegistries::class
         val blockRegistriesClass = BlockRegistries::class
 
-        itemRegistriesClass.memberProperties
+        itemRegistriesClass.memberProperties.onEach { it.isAccessible = true }
             .map { it.get(itemRegistriesClass.objectInstance!!) }
             .filterIsInstance<Item>()
             .forEach(data::addGeneratedItemModel)
 
-        blockRegistriesClass.memberProperties
+        blockRegistriesClass.memberProperties.onEach { it.isAccessible = true }
             .map { it.get(blockRegistriesClass.objectInstance!!) }
             .filterIsInstance<Block>()
             .forEach { block ->
                 val modelType = block::class.annotations
                     .filterIsInstance<Model>()
+                    .map(Model::type)
                     .getOrNull(0)
-                    ?.type
                     ?: Model.Type.CUBE_ALL
                 val stateType = block::class.annotations
                     .filterIsInstance<State>()
+                    .map(State::type)
                     .getOrNull(0)
-                    ?.type
                     ?: State.Type.SIMPLE
 
                 when (modelType) {

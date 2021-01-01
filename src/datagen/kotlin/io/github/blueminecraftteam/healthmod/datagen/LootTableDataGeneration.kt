@@ -19,10 +19,33 @@
 
 package io.github.blueminecraftteam.healthmod.datagen
 
+import io.github.blueminecraftteam.healthmod.compatibility.datagen.LootTable
+import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import me.shedaniel.cloth.api.datagen.v1.LootTableData
+import net.minecraft.block.Block
+import kotlin.reflect.full.memberProperties
+import kotlin.reflect.jvm.isAccessible
 
 object LootTableDataGeneration : Generator<LootTableData> {
     override fun generate(data: LootTableData) {
-        // TODO finish
+        val blockRegistriesClass = BlockRegistries::class
+
+        blockRegistriesClass.memberProperties.onEach { it.isAccessible = true }
+            .map { it.get(blockRegistriesClass.objectInstance!!) }
+            .filterIsInstance<Block>()
+            .forEach { block ->
+                val type = block::class.annotations
+                    .filterIsInstance<LootTable>()
+                    .map(LootTable::type)
+                    .getOrNull(0)
+                    ?: LootTable.Type.NORMAL
+
+                when (type) {
+                    LootTable.Type.NONE -> Unit /* do nothing */
+                    LootTable.Type.NORMAL -> data.registerBlockDropSelf(block)
+                    LootTable.Type.SILK_TOUCH_ONLY -> data.registerBlockDropSelfRequiresSilkTouch(block)
+                    LootTable.Type.CUSTOM -> Unit /* manually override in class */
+                }
+            }
     }
 }

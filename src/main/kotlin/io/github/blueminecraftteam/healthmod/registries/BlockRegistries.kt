@@ -39,6 +39,8 @@ import org.apache.logging.log4j.Logger
 object BlockRegistries : ModRegistry<Block> {
     override val registry: Registry<Block> get() = Registry.BLOCK
 
+    private val logger: Logger by LoggerDelegate()
+
     val BANDAGE_BOX = register(
         id = "bandage_box",
         toRegister = BandageBoxBlock(
@@ -81,18 +83,17 @@ object BlockRegistries : ModRegistry<Block> {
             .rarity(Rarity.UNCOMMON)
     )
 
-    private val logger: Logger by LoggerDelegate()
-
-    private fun register(id: String, toRegister: Block, customItemProperties: Item.Settings? = null): Block {
-        val blockItem = ItemRegistries.register(
-            id,
-            BlockItem(toRegister, customItemProperties ?: Item.Settings().group(HealthMod.ITEM_GROUP))
-        ) as BlockItem
+    private fun register(
+        id: String,
+        toRegister: Block,
+        customItemProperties: Item.Settings = Item.Settings().group(HealthMod.ITEM_GROUP)
+    ): Block {
+        val blockItem = ItemRegistries.register(id, BlockItem(toRegister, customItemProperties)) as BlockItem
 
         blockItem.appendBlocks(Item.BLOCK_ITEMS, blockItem)
 
         logger.debug("Automatically registered block item $blockItem with custom item properties $customItemProperties.")
 
-        return register(id, toRegister)
+        return this.register(id, toRegister)
     }
 }

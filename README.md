@@ -14,7 +14,7 @@ a mod which adds health related things
 
 - [Minecraft 1.16.4](https://minecraft.net/)
 - [Fabric Loader 0.10.8](https://fabricmc.net/use/)
-- [Fabric API 0.28.4](https://www.curseforge.com/minecraft/mc-mods/fabric-api/)
+- [Fabric API 0.29.0](https://www.curseforge.com/minecraft/mc-mods/fabric-api/)
 - [Fabric Language Kotlin 1.4.21](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin/)
 
 ### Note
