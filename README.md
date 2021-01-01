@@ -103,8 +103,8 @@ and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa
 - [block/bandage_box_side.png](src/main/resources/assets/healthmod/textures/block/bandage_box_side.png)
 - [block/bandage_box_top.png](src/main/resources/assets/healthmod/textures/block/bandage_box_top.png)
 - [block/bandage_box_bottom.png](src/main/resources/assets/healthmod/textures/block/bandage_box_bottom.png)
-- [gui/first_aid_kit_gui.png](src/main/resources/assets/healthmod/textures/gui/first_aid_kit.png)
-- [gui/bandage_box_gui.png](src/main/resources/assets/healthmod/textures/gui/bandage_box.png)
+- [gui/first_aid_kit.png](src/main/resources/assets/healthmod/textures/gui/first_aid_kit.png)
+- [gui/bandage_box.png](src/main/resources/assets/healthmod/textures/gui/bandage_box.png)
 
 ### Translations
 
