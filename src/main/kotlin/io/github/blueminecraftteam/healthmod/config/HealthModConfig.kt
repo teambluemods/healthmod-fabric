@@ -60,7 +60,7 @@ class HealthModConfig : ConfigData {
         val logger = LogManager.getLogger()
         val properties = HealthModConfig::class.memberProperties
             .filterIsInstance<KMutableProperty1<HealthModConfig, Int>>()
-            .filter { it.returnType == Number::class }
+            .filter { Number::class.isInstance(it.returnType) }
 
         for (field in properties) {
             if (field.get(this) < 1) {

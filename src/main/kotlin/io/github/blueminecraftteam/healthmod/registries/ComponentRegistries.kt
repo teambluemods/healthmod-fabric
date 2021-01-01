@@ -27,34 +27,32 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.components.*
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy
 
-class ComponentRegistries : EntityComponentInitializer {
+object ComponentRegistries : EntityComponentInitializer {
+    @JvmStatic
+    @get:JvmName("getSanitizedWound")
+    val SANITIZED_WOUND: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+        HealthMod.id("sanitized_wound"),
+        BooleanComponent::class.java
+    )
+
+    @JvmStatic
+    @get:JvmName("getCleanliness")
+    val CLEANLINESS: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+        HealthMod.id("cleanliness"),
+        IntComponent::class.java
+    )
+
+    @JvmStatic
+    @get:JvmName("getWounded")
+    val WOUNDED: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
+        HealthMod.id("wounded"),
+        IntComponent::class.java
+    )
+
     override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
         // add component to every PlayerEntity
         registry.registerForPlayers(SANITIZED_WOUND, { SanitizedWoundComponent() }, RespawnCopyStrategy.INVENTORY)
         registry.registerForPlayers(CLEANLINESS, ::CleanlinessComponent, RespawnCopyStrategy.LOSSLESS_ONLY)
         registry.registerForPlayers(WOUNDED, ::WoundedComponent, RespawnCopyStrategy.LOSSLESS_ONLY)
-    }
-
-    companion object {
-        @JvmStatic
-        @get:JvmName("getSanitizedWound")
-        val SANITIZED_WOUND: ComponentKey<BooleanComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
-            HealthMod.id("sanitized_wound"),
-            BooleanComponent::class.java
-        )
-
-        @JvmStatic
-        @get:JvmName("getCleanliness")
-        val CLEANLINESS: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
-            HealthMod.id("cleanliness"),
-            IntComponent::class.java
-        )
-
-        @JvmStatic
-        @get:JvmName("getWounded")
-        val WOUNDED: ComponentKey<IntComponent> = ComponentRegistryV3.INSTANCE.getOrCreate(
-            HealthMod.id("wounded"),
-            IntComponent::class.java
-        )
     }
 }

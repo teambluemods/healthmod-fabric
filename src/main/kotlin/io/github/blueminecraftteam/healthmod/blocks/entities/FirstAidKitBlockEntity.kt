@@ -19,7 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.blocks.entities
 
-import io.github.blueminecraftteam.healthmod.client.gui.screen.FirstAidKitScreenHandler
+import io.github.blueminecraftteam.healthmod.client.guis.screens.FirstAidKitScreenHandler
 import io.github.blueminecraftteam.healthmod.inventories.SimpleBlockEntityInventory
 import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
 

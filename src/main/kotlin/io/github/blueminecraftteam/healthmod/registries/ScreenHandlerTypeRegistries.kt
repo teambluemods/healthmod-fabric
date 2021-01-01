@@ -20,9 +20,9 @@
 package io.github.blueminecraftteam.healthmod.registries
 
 import io.github.blueminecraftteam.healthmod.HealthMod
-import io.github.blueminecraftteam.healthmod.client.gui.screen.BandageBoxScreenHandler
-import io.github.blueminecraftteam.healthmod.client.gui.screen.BloodTestMachineScreenHandler
-import io.github.blueminecraftteam.healthmod.client.gui.screen.FirstAidKitScreenHandler
+import io.github.blueminecraftteam.healthmod.client.guis.screens.BandageBoxScreenHandler
+import io.github.blueminecraftteam.healthmod.client.guis.screens.BloodTestMachineScreenHandler
+import io.github.blueminecraftteam.healthmod.client.guis.screens.FirstAidKitScreenHandler
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry
 import net.minecraft.screen.ScreenHandlerType
 import net.minecraft.util.registry.Registry

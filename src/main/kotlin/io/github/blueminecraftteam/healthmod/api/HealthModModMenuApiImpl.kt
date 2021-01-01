@@ -27,7 +27,7 @@ import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 
 @Environment(EnvType.CLIENT)
-class HealthModModMenuApiImpl : ModMenuApi {
+object HealthModModMenuApiImpl : ModMenuApi {
     override fun getModConfigScreenFactory() = ConfigScreenFactory { parent ->
         AutoConfig.getConfigScreen(HealthModConfig::class.java, parent).get()
     }

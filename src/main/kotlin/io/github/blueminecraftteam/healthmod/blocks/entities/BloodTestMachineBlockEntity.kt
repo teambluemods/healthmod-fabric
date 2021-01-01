@@ -19,7 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.blocks.entities
 
-import io.github.blueminecraftteam.healthmod.client.gui.screen.BloodTestMachineScreenHandler
+import io.github.blueminecraftteam.healthmod.client.guis.screens.BloodTestMachineScreenHandler
 import io.github.blueminecraftteam.healthmod.inventories.SimpleBlockEntityInventory
 import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
 

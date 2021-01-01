@@ -17,7 +17,7 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.client.gui.screen
+package io.github.blueminecraftteam.healthmod.client.guis.screens
 
 import io.github.blueminecraftteam.healthmod.registries.ScreenHandlerTypeRegistries
 import net.minecraft.entity.player.PlayerEntity
@@ -28,11 +28,11 @@ import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
 
-class BandageBoxScreenHandler(
+class FirstAidKitScreenHandler(
     syncId: Int,
     playerInventory: PlayerInventory,
     private val inventory: Inventory
-) : ScreenHandler(ScreenHandlerTypeRegistries.BANDAGE_BOX, syncId) {
+) : ScreenHandler(ScreenHandlerTypeRegistries.FIRST_AID_KIT, syncId) {
     init {
         checkSize(inventory, 6)
 

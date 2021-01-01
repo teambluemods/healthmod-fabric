@@ -17,7 +17,7 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.client.gui.screen
+package io.github.blueminecraftteam.healthmod.client.guis.screens
 
 import io.github.blueminecraftteam.healthmod.registries.ScreenHandlerTypeRegistries
 import net.minecraft.entity.player.PlayerEntity
@@ -28,21 +28,19 @@ import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
 
-class FirstAidKitScreenHandler(
+class BloodTestMachineScreenHandler(
     syncId: Int,
     playerInventory: PlayerInventory,
     private val inventory: Inventory
-) : ScreenHandler(ScreenHandlerTypeRegistries.FIRST_AID_KIT, syncId) {
+) : ScreenHandler(ScreenHandlerTypeRegistries.BLOOD_TEST_MACHINE, syncId) {
     init {
-        checkSize(inventory, 6)
+        checkSize(inventory, 3)
 
         inventory.onOpen(playerInventory.player)
 
-        for (row in 0 until 2) {
-            for (column in 0 until 3) {
-                addSlot(Slot(inventory, column + row * 3, 62 + column * 18, 17 + row * 18))
-            }
-        }
+        addSlot(Slot(inventory, 0, 56, 51))
+        addSlot(Slot(inventory, 1, 79, 58))
+        addSlot(Slot(inventory, 2, 102, 51))
 
         for (row in 0 until 3) {
             for (column in 0 until 9) {

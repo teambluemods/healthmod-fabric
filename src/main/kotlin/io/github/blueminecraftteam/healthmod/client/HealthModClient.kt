@@ -19,7 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.client
 
-import io.github.blueminecraftteam.healthmod.client.gui.screen.SimpleInventoryScreen
+import io.github.blueminecraftteam.healthmod.client.guis.screens.SimpleInventoryScreen
 import io.github.blueminecraftteam.healthmod.registries.ScreenHandlerTypeRegistries
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.EnvType

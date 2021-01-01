@@ -32,10 +32,10 @@
       "io.github.blueminecraftteam.healthmod.client.HealthModClient::INSTANCE"
     ],
     "modmenu": [
-      "io.github.blueminecraftteam.healthmod.api.HealthModModMenuApiImpl"
+      "io.github.blueminecraftteam.healthmod.api.HealthModModMenuApiImpl::INSTANCE"
     ],
     "cardinal-components-entity": [
-      "io.github.blueminecraftteam.healthmod.registries.ComponentRegistries"
+      "io.github.blueminecraftteam.healthmod.registries.ComponentRegistries::INSTANCE"
     ]
   },
   "mixins": [
