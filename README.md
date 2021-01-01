@@ -19,8 +19,9 @@ a mod which adds health related things
 
 ### Note
 
-You can use any higher version of these dependencies. For example,
-if [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/) has a new version `0.28.5`, you can use that.
+You can use any higher version of these dependencies. For example, if the mod is
+using [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/) version `0.54.2`, but there is a newer
+version (`0.54.3`), you can use that.
 
 ## Support
 
