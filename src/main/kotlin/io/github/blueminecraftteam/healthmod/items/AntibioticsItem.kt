@@ -24,6 +24,7 @@ import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.mixin.StatusEffectInstanceAccessorMixin
 import io.github.blueminecraftteam.healthmod.util.LoggerDelegate
 import io.github.blueminecraftteam.healthmod.util.extensions.isServer
+import io.github.blueminecraftteam.healthmod.util.extensions.minusAssign
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectType
 import net.minecraft.entity.effect.StatusEffects
@@ -40,32 +41,35 @@ import kotlin.math.roundToInt
 
 class AntibioticsItem(settings: Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
+        if (user.activeStatusEffects
+                .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
+                .isEmpty()
+        ) {
+            return TypedActionResult.pass(user.getStackInHand(hand))
+        }
+
         if (world.isServer) {
             val stack = user.getStackInHand(hand)
-
-            if (user.activeStatusEffects
-                    .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
-                    .isEmpty()
-            ) {
-                return TypedActionResult.pass(user.getStackInHand(hand))
-            }
 
             if ((1..config.bacterialResistanceChance + 1).random() != 1) {
                 LOGGER.debug("No resistant bacteria, clearing harmful status effects.")
 
-                Collections.synchronizedMap(user.activeStatusEffects)
-                    .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
-                    .filter { (statusEffect, _) -> statusEffect != StatusEffects.POISON }
-                    .forEach { (statusEffect, _) -> user.removeStatusEffect(statusEffect) }
+                Collections.synchronizedMap(user.activeStatusEffects).keys
+                    .filter { it.type == StatusEffectType.HARMFUL }
+                    .filter { it != StatusEffects.POISON }
+                    .forEach(user::removeStatusEffect)
             } else {
                 LOGGER.debug("Resistant bacteria, amplifying harmful status effects.")
 
-                user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"), true)
+                user.sendMessage(
+                    TranslatableText("text.${HealthMod.MOD_ID}.antibiotics.resistant_bacteria"),
+                    true
+                )
 
                 Collections.synchronizedMap(user.activeStatusEffects)
                     .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
                     .filter { (statusEffect, _) -> statusEffect != StatusEffects.POISON }
-                    .mapValues { (statusEffect, statusEffectInstance) ->
+                    .forEach { (statusEffect, statusEffectInstance) ->
                         statusEffectInstance.apply {
                             this.upgrade(
                                 StatusEffectInstance(
@@ -80,23 +84,12 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
                             )
                         }
                     }
-                    .forEach { (statusEffect, statusEffectInstance) ->
-                        user.removeStatusEffect(statusEffect)
-                        user.applyStatusEffect(statusEffectInstance)
-                    }
             }
 
-            stack.decrement(1)
+            stack -= 1
         }
 
-        return if (user.activeStatusEffects
-                .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
-                .isEmpty()
-        ) {
-            TypedActionResult.pass(user.getStackInHand(hand))
-        } else {
-            TypedActionResult.consume(user.getStackInHand(hand))
-        }
+        return TypedActionResult.consume(user.getStackInHand(hand))
     }
 
     companion object {

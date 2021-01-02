@@ -26,7 +26,11 @@ import io.github.blueminecraftteam.healthmod.compatibility.datagen.Model
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.State
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.util.extensions.isServer
-import net.minecraft.block.*
+import net.minecraft.block.Block
+import net.minecraft.block.BlockRenderType
+import net.minecraft.block.BlockState
+import net.minecraft.block.BlockWithEntity
+import net.minecraft.block.HorizontalFacingBlock.FACING
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemPlacementContext
@@ -46,11 +50,11 @@ import net.minecraft.world.World
 @LootTable(LootTable.Type.NONE)
 class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
     init {
-        this.defaultState = this.stateManager.defaultState.with(HorizontalFacingBlock.FACING, Direction.NORTH)
+        this.defaultState = this.stateManager.defaultState.with(FACING, Direction.NORTH)
     }
 
     override fun appendProperties(builder: StateManager.Builder<Block, BlockState>) {
-        builder.add(HorizontalFacingBlock.FACING)
+        builder.add(FACING)
     }
 
     override fun createBlockEntity(world: BlockView) = BandageBoxBlockEntity()
@@ -58,16 +62,13 @@ class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
     override fun getRenderType(state: BlockState) = BlockRenderType.MODEL
 
     override fun getPlacementState(ctx: ItemPlacementContext): BlockState =
-        defaultState.with(HorizontalFacingBlock.FACING, ctx.playerFacing.opposite)
+        defaultState.with(FACING, ctx.playerFacing.opposite)
 
-
-    override fun rotate(state: BlockState, rotation: BlockRotation): BlockState = state.with(
-        HorizontalFacingBlock.FACING,
-        rotation.rotate(state.get(HorizontalFacingBlock.FACING))
-    )
+    override fun rotate(state: BlockState, rotation: BlockRotation): BlockState =
+        state.with(FACING, rotation.rotate(state[FACING]))
 
     override fun mirror(state: BlockState, mirror: BlockMirror): BlockState =
-        state.rotate(mirror.getRotation(state.get(HorizontalFacingBlock.FACING)))
+        state.rotate(mirror.getRotation(state[FACING]))
 
     override fun onUse(
         state: BlockState,
@@ -78,11 +79,7 @@ class BandageBoxBlock(settings: Settings) : BlockWithEntity(settings) {
         hit: BlockHitResult
     ): ActionResult {
         if (world.isServer) {
-            val factory = state.createScreenHandlerFactory(world, pos)
-
-            if (factory != null) {
-                player.openHandledScreen(factory)
-            }
+            state.createScreenHandlerFactory(world, pos)?.let(player::openHandledScreen)
         }
 
         return ActionResult.SUCCESS

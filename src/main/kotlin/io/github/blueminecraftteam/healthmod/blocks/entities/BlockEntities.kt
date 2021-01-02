@@ -20,6 +20,8 @@
 package io.github.blueminecraftteam.healthmod.blocks.entities
 
 import io.github.blueminecraftteam.healthmod.client.guis.screens.BandageBoxScreenHandler
+import io.github.blueminecraftteam.healthmod.client.guis.screens.BloodTestMachineScreenHandler
+import io.github.blueminecraftteam.healthmod.client.guis.screens.FirstAidKitScreenHandler
 import io.github.blueminecraftteam.healthmod.inventories.SimpleBlockEntityInventory
 import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
 
@@ -27,4 +29,17 @@ class BandageBoxBlockEntity : SimpleBlockEntityInventory(
     type = BlockEntityTypeRegistries.BANDAGE_BOX,
     menuFactory = ::BandageBoxScreenHandler,
     size = 6
+)
+
+class FirstAidKitBlockEntity : SimpleBlockEntityInventory(
+    type = BlockEntityTypeRegistries.FIRST_AID_KIT,
+    menuFactory = ::FirstAidKitScreenHandler,
+    size = 6
+)
+
+// TODO functionality
+class BloodTestMachineBlockEntity : SimpleBlockEntityInventory(
+    type = BlockEntityTypeRegistries.BLOOD_TEST_MACHINE,
+    menuFactory = ::BloodTestMachineScreenHandler,
+    size = 3
 )

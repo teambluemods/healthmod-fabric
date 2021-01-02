@@ -25,36 +25,11 @@ import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.server.network.ServerPlayerEntity
 
-class SanitizedWoundComponent : BooleanComponent {
-    override var value = false
-}
-
-class CleanlinessComponent(private val provider: Any) : IntComponent, AutoSyncedComponent {
-    override var value = 0
-        set(value) {
-            field = value
-            ComponentRegistries.CLEANLINESS.sync(provider)
-        }
-
-    override fun readFromNbt(tag: CompoundTag) {
-        value = tag.getInt("value")
-    }
-
-    override fun writeToNbt(tag: CompoundTag) {
-        tag.putInt("value", value)
-    }
-
-    override fun writeSyncPacket(buf: PacketByteBuf, recipient: ServerPlayerEntity) {
-        buf.writeVarInt(value)
-    }
-
-    override fun applySyncPacket(buf: PacketByteBuf) {
-        this.value = buf.readVarInt()
-    }
-
-    override fun shouldSyncWith(player: ServerPlayerEntity) = player == provider
-}
-
+/**
+ * Component for how many more ticks until there is a chance of infection. Synced with the client for TODO client-side gui.
+ *
+ * TODO implement.
+ */
 class WoundedComponent(private val provider: Any) : IntComponent, AutoSyncedComponent {
     override var value = 0
         set(value) {

@@ -38,16 +38,19 @@ class BloodTestMachineScreenHandler(
 
         inventory.onOpen(playerInventory.player)
 
+        // blood test machine inventory
         addSlot(Slot(inventory, 0, 56, 51))
         addSlot(Slot(inventory, 1, 79, 58))
         addSlot(Slot(inventory, 2, 102, 51))
 
+        // player inventory
         for (row in 0 until 3) {
             for (column in 0 until 9) {
                 addSlot(Slot(playerInventory, column + row * 9 + 9, 8 + column * 18, 84 + row * 18))
             }
         }
 
+        // player hotbar
         for (column in 0 until 9) {
             addSlot(Slot(playerInventory, column, 8 + column * 18, 142))
         }
@@ -57,11 +60,11 @@ class BloodTestMachineScreenHandler(
 
     override fun canUse(player: PlayerEntity) = inventory.canPlayerUse(player)
 
-    override fun transferSlot(player: PlayerEntity, invSlot: Int): ItemStack? {
+    override fun transferSlot(player: PlayerEntity, invSlot: Int): ItemStack {
         var newStack = ItemStack.EMPTY
-        val slot: Slot? = slots[invSlot]
+        val slot = slots[invSlot] ?: return newStack
 
-        if (slot != null && slot.hasStack()) {
+        if (slot.hasStack()) {
             val originalStack = slot.stack
             newStack = originalStack.copy()
 

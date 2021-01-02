@@ -19,17 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.items
 
-import net.fabricmc.api.EnvType
-import net.fabricmc.api.Environment
-import net.minecraft.client.item.TooltipContext
 import net.minecraft.item.Item
-import net.minecraft.item.ItemStack
-import net.minecraft.text.Text
-import net.minecraft.world.World
 
-class VaccineItem(settings: Settings) : Item(settings) {
-    @Environment(EnvType.CLIENT)
-    override fun appendTooltip(stack: ItemStack, world: World?, tooltip: List<Text>, context: TooltipContext) {
-        // TODO
-    }
-}
+// TODO
+class VaccineItem(settings: Settings) : Item(settings)

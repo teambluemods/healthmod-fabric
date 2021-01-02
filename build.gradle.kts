@@ -7,7 +7,7 @@ plugins {
     java
     kotlin("jvm") version "1.4.21"
     id("fabric-loom") version "0.5-SNAPSHOT"
-    id("maven-publish")
+    `maven-publish`
     id("net.minecrell.licenser") version "0.4.1"
 }
 
@@ -48,6 +48,8 @@ repositories {
     maven("https://jitpack.io") { name = "Jitpack" }
 
     maven("https://maven.abusedmaster.xyz") { name = "OnyxStudios" }
+
+    maven("https://repo.repsy.io/mvn/progamer28415/main") { name = "xf8b" }
 
     jcenter { name = "JCenter" }
 }
@@ -92,6 +94,16 @@ dependencies {
     // datagen
     modApi("me.shedaniel.cloth.api:cloth-datagen-api-v1:${project.property("cloth_api_version")}")
     include("me.shedaniel.cloth.api:cloth-datagen-api-v1:${project.property("cloth_api_version")}")
+
+    // random utils
+    modImplementation("io.github.xf8b:utils:${project.property("utils_version")}")
+    modImplementation("io.github.xf8b:utils-gson:${project.property("utils_version")}") {
+        isTransitive = false
+    }
+    include("io.github.xf8b:utils:${project.property("utils_version")}")
+    include("io.github.xf8b:utils-gson:${project.property("utils_version")}") {
+        isTransitive = false
+    }
 
     "datagenCompile"(sourceSets.main.get().output)
 }

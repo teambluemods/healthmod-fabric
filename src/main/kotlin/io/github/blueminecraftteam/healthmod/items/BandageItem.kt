@@ -23,6 +23,7 @@ import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.config.config
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
 import io.github.blueminecraftteam.healthmod.util.extensions.isServer
+import io.github.blueminecraftteam.healthmod.util.extensions.minusAssign
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.item.TooltipContext
@@ -47,7 +48,7 @@ class BandageItem(settings: Settings) : Item(settings) {
 
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
         if (world.isServer) {
-            val itemStack = user.getStackInHand(hand)
+            val stackInHand = user.getStackInHand(hand)
 
             if (user.health < user.maxHealth) {
                 val chance = if (user.hasStatusEffect(StatusEffectRegistries.HEALTHY)) {
@@ -59,13 +60,13 @@ class BandageItem(settings: Settings) : Item(settings) {
                 // 1 in 4 chance (or 1 in 10 if healthy) to have it not apply correct
                 if ((1..chance + 1).random() == 1) {
                     // 2 minutes effect
-                    user.addStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 2 * 60 * 20, 0))
+                    user.addStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 2 * 60 * 20))
                     user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.bandage.failed_apply"), true)
                 } else {
-                    user.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20, 0))
+                    user.addStatusEffect(StatusEffectInstance(StatusEffects.REGENERATION, 15 * 20))
                 }
 
-                itemStack.decrement(1)
+                stackInHand -= 1
             }
         }
 

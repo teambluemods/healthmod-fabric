@@ -47,7 +47,7 @@ object BlockRegistries : ModRegistry<Block> {
             AbstractBlock.Settings
                 .of(Material.CARPET, MaterialColor.WHITE)
                 .sounds(BlockSoundGroup.WOOL)
-                .strength(0F, 0F)
+                .breakInstantly()
         ),
         customItemProperties = Item.Settings()
             .group(HealthMod.ITEM_GROUP)
@@ -61,7 +61,7 @@ object BlockRegistries : ModRegistry<Block> {
             AbstractBlock.Settings
                 .of(Material.GLASS, MaterialColor.WHITE)
                 .sounds(BlockSoundGroup.GLASS)
-                .strength(0F, 0F)
+                .breakInstantly()
                 .nonOpaque()
         ),
         customItemProperties = Item.Settings()
@@ -75,7 +75,7 @@ object BlockRegistries : ModRegistry<Block> {
         toRegister = FirstAidKitBlock(
             AbstractBlock.Settings
                 .of(Material.AGGREGATE, MaterialColor.ORANGE)
-                .strength(0F, 0F)
+                .breakInstantly()
         ),
         customItemProperties = Item.Settings()
             .group(HealthMod.ITEM_GROUP)

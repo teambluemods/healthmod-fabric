@@ -32,7 +32,7 @@ object StatusEffectRegistries : ModRegistry<StatusEffect> {
     @JvmField
     val WOUND_INFECTION = register(
         id = "wound_infection",
-        toRegister = WoundInfectionStatusEffect(StatusEffectType.HARMFUL, 0x00FF00)
+        toRegister = WoundInfectionStatusEffect(type = StatusEffectType.HARMFUL, color = 0x00FF00)
     )
 
     @JvmField

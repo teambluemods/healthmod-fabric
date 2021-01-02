@@ -33,12 +33,12 @@ import net.minecraft.world.World
 @CustomEnglishTranslation("Bar of Soap")
 class SoapItem(settings: Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-        val stack = user.getStackInHand(hand)
+        val stackInHand = user.getStackInHand(hand)
 
         user.sendMessage(LiteralText("text.${HealthMod.MOD_ID}.soap.apply"), true)
 
-        stack.damage(1, user) { user.sendToolBreakStatus(hand) }
+        stackInHand.damage(1, user) { user.sendToolBreakStatus(hand) }
 
-        return TypedActionResult.consume(stack)
+        return TypedActionResult.consume(stackInHand)
     }
 }

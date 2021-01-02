@@ -39,7 +39,7 @@ object HealthModDataGeneration : PreLaunchEntrypoint {
         try {
             val handler = DataGeneratorHandler.create(Paths.get("../src/generated/resources"))
 
-            English.generate(handler.simple)
+            EnglishLanguageDataGeneration.generate(handler.simple)
             ModelDataGeneration.generate(handler.modelStates)
             LootTableDataGeneration.generate(handler.lootTables)
 

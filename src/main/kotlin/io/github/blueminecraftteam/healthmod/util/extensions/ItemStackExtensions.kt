@@ -17,14 +17,16 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.blocks.entities
+package io.github.blueminecraftteam.healthmod.util.extensions
 
-import io.github.blueminecraftteam.healthmod.client.guis.screens.FirstAidKitScreenHandler
-import io.github.blueminecraftteam.healthmod.inventories.SimpleBlockEntityInventory
-import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
+import net.minecraft.item.ItemStack
 
-class FirstAidKitBlockEntity : SimpleBlockEntityInventory(
-    type = BlockEntityTypeRegistries.FIRST_AID_KIT,
-    menuFactory = ::FirstAidKitScreenHandler,
-    size = 6
-)
+operator fun ItemStack.minus(amount: Int): ItemStack = this.copy().apply { decrement(amount) }
+operator fun ItemStack.minusAssign(amount: Int) {
+    decrement(amount)
+}
+
+operator fun ItemStack.plus(amount: Int): ItemStack = this.copy().apply { increment(amount) }
+operator fun ItemStack.plusAssign(amount: Int) {
+    increment(amount)
+}

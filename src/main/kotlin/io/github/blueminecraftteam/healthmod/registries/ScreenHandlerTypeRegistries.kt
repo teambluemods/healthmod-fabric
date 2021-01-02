@@ -34,13 +34,14 @@ object ScreenHandlerTypeRegistries : ModRegistry<ScreenHandlerType<*>> {
         HealthMod.id("bandage_box"),
         ::BandageBoxScreenHandler
     )
-    val BLOOD_TEST_MACHINE: ScreenHandlerType<BloodTestMachineScreenHandler> = ScreenHandlerRegistry.registerSimple(
-        HealthMod.id("blood_test_machine"),
-        ::BloodTestMachineScreenHandler
-    )
 
     val FIRST_AID_KIT: ScreenHandlerType<FirstAidKitScreenHandler> = ScreenHandlerRegistry.registerSimple(
         HealthMod.id("first_aid_kit"),
         ::FirstAidKitScreenHandler
+    )
+
+    val BLOOD_TEST_MACHINE: ScreenHandlerType<BloodTestMachineScreenHandler> = ScreenHandlerRegistry.registerSimple(
+        HealthMod.id("blood_test_machine"),
+        ::BloodTestMachineScreenHandler
     )
 }

@@ -17,15 +17,11 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.blocks.entities
+package io.github.blueminecraftteam.healthmod.components
 
-import io.github.blueminecraftteam.healthmod.client.guis.screens.BloodTestMachineScreenHandler
-import io.github.blueminecraftteam.healthmod.inventories.SimpleBlockEntityInventory
-import io.github.blueminecraftteam.healthmod.registries.BlockEntityTypeRegistries
-
-// TODO functionality
-class BloodTestMachineBlockEntity : SimpleBlockEntityInventory(
-    type = BlockEntityTypeRegistries.BLOOD_TEST_MACHINE,
-    menuFactory = ::BloodTestMachineScreenHandler,
-    size = 3
-)
+/**
+ * Component for when a player sanitizes their wound using isopropyl alcohol. TODO.
+ */
+class SanitizedWoundComponent : BooleanComponent {
+    override var value = false
+}

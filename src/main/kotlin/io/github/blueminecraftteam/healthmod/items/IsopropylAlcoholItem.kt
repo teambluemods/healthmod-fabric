@@ -21,6 +21,7 @@ package io.github.blueminecraftteam.healthmod.items
 
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.registries.ComponentRegistries
+import io.github.blueminecraftteam.healthmod.util.extensions.minusAssign
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
@@ -41,7 +42,7 @@ class IsopropylAlcoholItem(settings: Settings) : Item(settings) {
             // TODO wounded component
             if (!hasSanitizedWoundComponent.value) {
                 hasSanitizedWoundComponent.value = true
-                stackInHand.decrement(1)
+                stackInHand -= 1
 
                 user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.isopropyl_alcohol.apply"), true)
 

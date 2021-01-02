@@ -19,63 +19,76 @@
 
 package io.github.blueminecraftteam.healthmod.compatibility.datagen
 
+/**
+ * Tells the language file generator to use [translation] for the English translation instead of using the registry name.
+ */
 annotation class CustomEnglishTranslation(val translation: String)
 
+/**
+ * Tells the model generator to generate a model consistent with the [type] provided.
+ */
 annotation class Model(val type: Type) {
     enum class Type {
         /**
-         * Creates a cube block model and a simple item model.
+         * Generate a cube block model and a simple item model.
          */
         CUBE,
 
         /**
-         * Creates a cube-all block model and simple item model.
+         * Generate a cube-all block model and simple item model.
          */
         CUBE_ALL,
 
         /**
-         * Generates a simple item model but no block model so that you can manually override in the generator class.
+         * Generate a simple item model but no block model.
+         *
+         * This is so that you can manually override the block model in the generator class.
          */
         OVERRIDING,
     }
 }
 
+/**
+ * Tells the block state generator to generate a block state consistent with the [type] provided.
+ */
 annotation class State(val type: Type) {
     enum class Type {
         /**
-         * Simple state with only one possible model.
+         * Generate a simple block state with only one possible model.
          */
         SIMPLE,
 
         /**
-         * State with 4 variations all pointing to the same model, except using different `y` rotations.
+         * Generate a block state with 4 variations all pointing to the same model, except using different `y` rotations.
          */
         HORIZONTALLY_ROTATING
     }
 }
 
 /**
- * Tells the generator to generate a loot table consistent with the [type] provided.
+ * Tells the loot table generator to generate a loot table consistent with the [type] provided.
  */
 annotation class LootTable(val type: Type) {
     enum class Type {
         /**
-         * No loot table should be generated.
+         * Generate no loot table.
          */
         NONE,
 
         /**
-         * A loot table only dropping the block itself when mined with a silk touch tool.
+         * Generate a loot table only dropping the block itself when mined with a silk touch tool.
          */
         SILK_TOUCH_ONLY,
 
         /**
-         * A regular, self dropping loot table.
+         * Generate a regular, self dropping loot table.
          */
         NORMAL,
 
         /**
-         * Custom loot table. Manually set in the generator class.
+         * Generate no loot table.
+         *
+         * This is so that you can manually add a custom loot table in the generator class.
          */
         CUSTOM,
     }

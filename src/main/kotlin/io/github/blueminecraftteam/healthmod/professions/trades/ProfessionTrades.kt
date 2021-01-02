@@ -51,9 +51,13 @@ object ProfessionTrades {
     ).run(::Int2ObjectOpenHashMap)
 
     private class SellFactory(
+        /** Item stack to sell */
         private val sell: ItemStack,
+        /** Amount of emeralds to sell for */
         private val price: Int,
+        /** Maximum amount of times this trade can be used */
         private val maxUses: Int,
+        /** Amount of experience given on trade */
         private val experience: Int,
         private val priceMultiplier: Float = 0.05F
     ) : Factory {
@@ -82,9 +86,13 @@ object ProfessionTrades {
     }
 
     private class BuyFactory(
+        /** Item stack to buy */
         private val buy: ItemStack,
+        /** Amount of emeralds to buy for */
         private val price: Int,
+        /** Maximum amount of times this trade can be used */
         private val maxUses: Int,
+        /** Experience given on trade */
         private val experience: Int,
         private val priceMultiplier: Float = 0.05F
     ) : Factory {

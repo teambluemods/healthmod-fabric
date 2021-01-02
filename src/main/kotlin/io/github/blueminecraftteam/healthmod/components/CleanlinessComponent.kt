@@ -19,14 +19,23 @@
 
 package io.github.blueminecraftteam.healthmod.components
 
-import dev.onyxstudios.cca.api.v3.component.ComponentV3
+import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent
+import io.github.blueminecraftteam.healthmod.registries.ComponentRegistries
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.network.PacketByteBuf
+import net.minecraft.server.network.ServerPlayerEntity
 
 /**
- * Simple int component containing only one int.
+ * Component for how clean a player is. Automatically synced with the player for TODO client-side display.
+ *
+ * TODO: implement.
  */
-interface IntComponent : ComponentV3 {
-    var value: Int
+class CleanlinessComponent(private val provider: Any) : IntComponent, AutoSyncedComponent {
+    override var value = 0
+        set(value) {
+            field = value
+            ComponentRegistries.CLEANLINESS.sync(provider)
+        }
 
     override fun readFromNbt(tag: CompoundTag) {
         value = tag.getInt("value")
@@ -35,4 +44,14 @@ interface IntComponent : ComponentV3 {
     override fun writeToNbt(tag: CompoundTag) {
         tag.putInt("value", value)
     }
+
+    override fun writeSyncPacket(buf: PacketByteBuf, recipient: ServerPlayerEntity) {
+        buf.writeVarInt(value)
+    }
+
+    override fun applySyncPacket(buf: PacketByteBuf) {
+        this.value = buf.readVarInt()
+    }
+
+    override fun shouldSyncWith(player: ServerPlayerEntity) = player == provider
 }

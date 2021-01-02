@@ -23,10 +23,10 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.Model
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.State
+import io.github.blueminecraftteam.healthmod.datagen.util.extensions.addBlockCubeModel
+import io.github.blueminecraftteam.healthmod.datagen.util.extensions.addHorizontallyRotatingState
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
-import io.github.blueminecraftteam.healthmod.util.addBlockCubeModel
-import io.github.blueminecraftteam.healthmod.util.addHorizontallyRotatingState
 import io.github.blueminecraftteam.healthmod.util.extensions.id
 import me.shedaniel.cloth.api.datagen.v1.ModelStateData
 import net.minecraft.block.Block
@@ -75,7 +75,6 @@ object ModelDataGeneration : Generator<ModelStateData> {
                 when (modelType) {
                     Model.Type.CUBE -> data.addBlockCubeModel(block)
                     Model.Type.CUBE_ALL -> data.addSimpleBlockModel(block, Identifier("minecraft", "cube_all"))
-
                     Model.Type.OVERRIDING -> Unit /* do nothing, override manually */
                 }
 

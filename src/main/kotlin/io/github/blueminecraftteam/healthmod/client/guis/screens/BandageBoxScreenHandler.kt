@@ -38,18 +38,21 @@ class BandageBoxScreenHandler(
 
         inventory.onOpen(playerInventory.player)
 
+        // bandage box inventory
         for (row in 0 until 2) {
             for (column in 0 until 3) {
                 addSlot(Slot(inventory, column + row * 3, 62 + column * 18, 17 + row * 18))
             }
         }
 
+        // player inventory
         for (row in 0 until 3) {
             for (column in 0 until 9) {
                 addSlot(Slot(playerInventory, column + row * 9 + 9, 8 + column * 18, 84 + row * 18))
             }
         }
 
+        // player hotbar
         for (column in 0 until 9) {
             addSlot(Slot(playerInventory, column, 8 + column * 18, 142))
         }
@@ -59,11 +62,11 @@ class BandageBoxScreenHandler(
 
     override fun canUse(player: PlayerEntity) = inventory.canPlayerUse(player)
 
-    override fun transferSlot(player: PlayerEntity, invSlot: Int): ItemStack? {
+    override fun transferSlot(player: PlayerEntity, invSlot: Int): ItemStack {
         var newStack = ItemStack.EMPTY
-        val slot: Slot? = slots[invSlot]
+        val slot = slots[invSlot] ?: return newStack
 
-        if (slot != null && slot.hasStack()) {
+        if (slot.hasStack()) {
             val originalStack = slot.stack
             newStack = originalStack.copy()
 

@@ -94,8 +94,10 @@ class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {
         moved: Boolean
     ) {
         if (state.block != newState.block) {
-            (world.getBlockEntity(pos) as? BloodTestMachineBlockEntity)?.let {
-                ItemScatterer.spawn(world, pos, it)
+            val blockEntity = world.getBlockEntity(pos)
+
+            if (blockEntity is BloodTestMachineBlockEntity) {
+                ItemScatterer.spawn(world, pos, blockEntity)
                 // update comparators
                 world.updateComparators(pos, this)
             }

@@ -17,7 +17,7 @@
  * along with HealthMod.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-@file:JvmName("HealthModConfigHolder")
+@file:JvmName("HealthModConfigHolder") // disguises the top-level config field in a class called HealthModConfigHolder
 
 package io.github.blueminecraftteam.healthmod.config
 
@@ -30,6 +30,9 @@ import org.apache.logging.log4j.LogManager
 import kotlin.reflect.KMutableProperty1
 import kotlin.reflect.full.memberProperties
 
+/**
+ * Config for HealthMod containing all the config settings. Field values can vary as the config can be set at runtime.
+ */
 @Config(name = HealthMod.MOD_ID)
 class HealthModConfig : ConfigData {
     @ConfigEntry.Category("woundInfection")
@@ -56,6 +59,9 @@ class HealthModConfig : ConfigData {
     @ConfigEntry.Gui.Tooltip
     var bacterialResistanceChance = 500
 
+    /**
+     * Validates the config. If there are any invalid values, this will set them to a valid value.
+     */
     override fun validatePostLoad() {
         val logger = LogManager.getLogger()
         val properties = HealthModConfig::class.memberProperties
@@ -71,4 +77,7 @@ class HealthModConfig : ConfigData {
     }
 }
 
+/**
+ * Getter for the HealthMod config. In Kotlin, use `config.<thing>`. In Java, use `HealthModConfigHolder.getConfig().get<thing>()`.
+ */
 val config: HealthModConfig get() = AutoConfig.getConfigHolder(HealthModConfig::class.java).config
