@@ -23,9 +23,9 @@ a mod which adds health related things but for Fabric
 
 ### Note
 
-You can use any higher version of these dependencies. For example, if the mod is
-using [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/) version `0.54.2`, but there is a newer
-version (`0.54.3`), you can use both, and the mod will (hopefully) still work.
+You can use any higher version of these dependencies. 
+For example, if the mod is using [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/) version `0.54.2`,
+but there is a newer version (`0.54.3`), you can use both, and the mod will (hopefully) still work.
 
 ## Support
 
@@ -39,8 +39,8 @@ The code for HealthMod is licensed under LGPL v3 or later. You can see the full 
 
 ### Textures
 
-All textures are from [healthmod-textures](https://github.com/blueminecraftteam/healthmod-textures). You can see the
-full license [here](TEXTURE_LICENSE.md).
+All textures are from [healthmod-textures](https://github.com/blueminecraftteam/healthmod-textures). 
+You can see the full license [here](TEXTURE_LICENSE.md).
 
 ---
 

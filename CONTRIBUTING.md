@@ -17,4 +17,4 @@ Take a look at the [code guidelines](./CODE_GUIDELINES.md) before making a pull 
 
 ## Maintainers and Admins
 
-Please squash and merge PRs.
+Please squash and merge PRs, or rebase and merge when squashing would make less sense.
