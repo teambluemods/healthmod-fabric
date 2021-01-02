@@ -42,9 +42,9 @@ annotation class Model(val type: Type) {
         /**
          * Generate a simple item model but no block model.
          *
-         * This is so that you can manually override the block model in the generator class.
+         * This is so that you can manually add a custom block model in the generator class.
          */
-        OVERRIDING,
+        CUSTOM,
     }
 }
 

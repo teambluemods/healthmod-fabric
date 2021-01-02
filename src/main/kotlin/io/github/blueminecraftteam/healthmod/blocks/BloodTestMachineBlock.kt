@@ -41,7 +41,7 @@ import net.minecraft.world.World
 import java.util.stream.Stream
 
 // TODO fix hitbox and collision box
-@Model(Model.Type.OVERRIDING)
+@Model(Model.Type.CUSTOM)
 @State(State.Type.HORIZONTALLY_ROTATING)
 @LootTable(LootTable.Type.SILK_TOUCH_ONLY)
 class BloodTestMachineBlock(settings: Settings) : BlockWithEntity(settings) {

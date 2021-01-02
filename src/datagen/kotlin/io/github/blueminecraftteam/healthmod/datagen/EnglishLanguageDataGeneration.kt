@@ -21,16 +21,18 @@ package io.github.blueminecraftteam.healthmod.datagen
 
 import io.github.blueminecraftteam.healthmod.HealthMod
 import io.github.blueminecraftteam.healthmod.compatibility.datagen.CustomEnglishTranslation
-import io.github.blueminecraftteam.healthmod.datagen.util.extensions.*
 import io.github.blueminecraftteam.healthmod.registries.BlockRegistries
 import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
 import io.github.blueminecraftteam.healthmod.registries.StatusEffectRegistries
 import io.github.blueminecraftteam.healthmod.registries.VillagerProfessionRegistries
+import io.github.blueminecraftteam.healthmod.util.extensions.capitalizeFully
+import io.github.blueminecraftteam.healthmod.util.extensions.id
 import io.github.xf8b.utils.gson.JsonDsl
 import me.shedaniel.cloth.api.datagen.v1.SimpleData
 import net.minecraft.block.Block
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.item.Item
+import net.minecraft.util.Identifier
 import net.minecraft.village.VillagerProfession
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.jvm.isAccessible
@@ -137,4 +139,55 @@ object EnglishLanguageDataGeneration : Generator<SimpleData> {
 
         data.addJson("assets/${HealthMod.MOD_ID}/lang/en_us.json", jsonDsl.toJsonElement())
     }
+}
+
+// extensions to make life easier
+
+private fun JsonDsl.translateText(name: String, translated: String) {
+    property("text.${HealthMod.MOD_ID}.$name", translated)
+}
+
+private fun JsonDsl.translateConfig(text: String, translated: String) {
+    property("text.autoconfig.${HealthMod.MOD_ID}.$text", translated)
+}
+
+private fun JsonDsl.translateConfigCategory(category: String, translated: String) {
+    translateConfig("category.$category", translated)
+}
+
+private fun JsonDsl.translateConfigOption(option: String, translated: String, tooltip: String? = null) {
+    translateConfig("option.$option", translated)
+
+    if (tooltip != null) {
+        translateConfig("option.$option.@Tooltip", tooltip)
+    }
+}
+
+private fun JsonDsl.translateItem(
+    item: Item,
+    translation: String = item.id.path.replace("_", " ").capitalizeFully()
+) {
+    property(item.translationKey, translation)
+}
+
+private fun JsonDsl.translateBlock(
+    block: Block,
+    translation: String = block.id.path.replace("_", " ").capitalizeFully()
+) {
+    property(block.translationKey, translation)
+}
+
+private fun JsonDsl.translateItemGroup(id: Identifier, name: String) {
+    property("itemGroup.${id.namespace}.${id.path}", name)
+}
+
+private fun JsonDsl.translateStatusEffect(effect: StatusEffect) {
+    property(effect.translationKey, effect.id!!.path.replace("_", " ").capitalizeFully())
+}
+
+private fun JsonDsl.translateVillagerProfession(villagerProfession: VillagerProfession) {
+    val id = villagerProfession.id.path
+
+    property("entity.minecraft.villager.$id", id.capitalizeFully())
+    property("subtitles.entity.villager.$id", "${id.capitalizeFully()} works")
 }

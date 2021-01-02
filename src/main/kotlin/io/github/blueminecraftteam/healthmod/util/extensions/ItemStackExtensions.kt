@@ -21,12 +21,10 @@ package io.github.blueminecraftteam.healthmod.util.extensions
 
 import net.minecraft.item.ItemStack
 
-operator fun ItemStack.minus(amount: Int): ItemStack = this.copy().apply { decrement(amount) }
 operator fun ItemStack.minusAssign(amount: Int) {
     decrement(amount)
 }
 
-operator fun ItemStack.plus(amount: Int): ItemStack = this.copy().apply { increment(amount) }
 operator fun ItemStack.plusAssign(amount: Int) {
     increment(amount)
 }

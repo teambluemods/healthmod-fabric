@@ -31,6 +31,11 @@ import kotlin.reflect.KMutableProperty1
 import kotlin.reflect.full.memberProperties
 
 /**
+ * Getter for the HealthMod config. In Kotlin, use `config.<thing>`. In Java, use `HealthModConfigHolder.getConfig().get<thing>()`.
+ */
+val config: HealthModConfig get() = AutoConfig.getConfigHolder(HealthModConfig::class.java).config
+
+/**
  * Config for HealthMod containing all the config settings. Field values can vary as the config can be set at runtime.
  */
 @Config(name = HealthMod.MOD_ID)
@@ -76,8 +81,3 @@ class HealthModConfig : ConfigData {
         }
     }
 }
-
-/**
- * Getter for the HealthMod config. In Kotlin, use `config.<thing>`. In Java, use `HealthModConfigHolder.getConfig().get<thing>()`.
- */
-val config: HealthModConfig get() = AutoConfig.getConfigHolder(HealthModConfig::class.java).config
