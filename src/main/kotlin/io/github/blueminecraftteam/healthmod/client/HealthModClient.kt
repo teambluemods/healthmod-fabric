@@ -32,7 +32,6 @@ import net.minecraft.util.Identifier
 object HealthModClient : ClientModInitializer {
     override fun onInitializeClient() {
         ScreenRegistry.register(ScreenHandlerTypeRegistries.BANDAGE_BOX) { handler, inventory, title ->
-            // TODO: use own texture?
             SimpleInventoryScreen(
                 handler,
                 inventory,
@@ -42,7 +41,6 @@ object HealthModClient : ClientModInitializer {
         }
 
         ScreenRegistry.register(ScreenHandlerTypeRegistries.FIRST_AID_KIT) { handler, inventory, title ->
-            // TODO: use own texture?
             SimpleInventoryScreen(
                 handler,
                 inventory,
