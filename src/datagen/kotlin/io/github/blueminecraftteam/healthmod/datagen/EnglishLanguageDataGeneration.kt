@@ -32,9 +32,7 @@ import net.minecraft.block.Block
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.item.Item
 import net.minecraft.village.VillagerProfession
-import kotlin.reflect.KProperty0
 import kotlin.reflect.full.memberProperties
-import kotlin.reflect.full.staticProperties
 import kotlin.reflect.jvm.isAccessible
 
 object EnglishLanguageDataGeneration : Generator<SimpleData> {
@@ -43,10 +41,8 @@ object EnglishLanguageDataGeneration : Generator<SimpleData> {
 
         jsonDsl.apply {
             // items
-            val itemRegistriesClass = ItemRegistries::class
-
-            itemRegistriesClass.memberProperties.onEach { it.isAccessible = true }
-                .map { it.get(itemRegistriesClass.objectInstance!!) }
+            ItemRegistries::class.memberProperties.onEach { it.isAccessible = true }
+                .map { it.get(ItemRegistries) }
                 .filterIsInstance<Item>()
                 .forEach { item ->
                     item::class.annotations
@@ -58,10 +54,8 @@ object EnglishLanguageDataGeneration : Generator<SimpleData> {
                 }
 
             // blocks
-            val blockRegistriesClass = BlockRegistries::class
-
-            blockRegistriesClass.memberProperties.onEach { it.isAccessible = true }
-                .map { it.get(blockRegistriesClass.objectInstance!!) }
+            BlockRegistries::class.memberProperties.onEach { it.isAccessible = true }
+                .map { it.get(BlockRegistries) }
                 .filterIsInstance<Block>()
                 .forEach { block ->
                     block::class.annotations
@@ -73,17 +67,14 @@ object EnglishLanguageDataGeneration : Generator<SimpleData> {
                 }
 
             // status effects
-            val statusEffectRegistriesClass = StatusEffectRegistries::class
-
-            statusEffectRegistriesClass.staticProperties.map(KProperty0<*>::get)
+            StatusEffectRegistries.javaClass.fields
+                .map { it.get(StatusEffectRegistries) }
                 .filterIsInstance<StatusEffect>()
                 .forEach(this::translateStatusEffect)
 
             // villager professions
-            val villagerProfessionRegistriesClass = VillagerProfessionRegistries::class
-
-            villagerProfessionRegistriesClass.memberProperties.onEach { it.isAccessible = true }
-                .map { it.get(villagerProfessionRegistriesClass.objectInstance!!) }
+            VillagerProfessionRegistries::class.memberProperties.onEach { it.isAccessible = true }
+                .map { it.get(VillagerProfessionRegistries) }
                 .filterIsInstance<VillagerProfession>()
                 .forEach(this::translateVillagerProfession)
 
