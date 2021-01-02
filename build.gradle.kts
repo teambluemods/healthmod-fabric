@@ -96,11 +96,15 @@ dependencies {
     include("me.shedaniel.cloth.api:cloth-datagen-api-v1:${project.property("cloth_api_version")}")
 
     // random utils
-    modImplementation("io.github.xf8b:utils:${project.property("utils_version")}")
-    modImplementation("io.github.xf8b:utils-gson:${project.property("utils_version")}") {
+    implementation("io.github.xf8b:utils:${project.property("utils_version")}") {
         isTransitive = false
     }
-    include("io.github.xf8b:utils:${project.property("utils_version")}")
+    implementation("io.github.xf8b:utils-gson:${project.property("utils_version")}") {
+        isTransitive = false
+    }
+    include("io.github.xf8b:utils:${project.property("utils_version")}") {
+        isTransitive = false
+    }
     include("io.github.xf8b:utils-gson:${project.property("utils_version")}") {
         isTransitive = false
     }
