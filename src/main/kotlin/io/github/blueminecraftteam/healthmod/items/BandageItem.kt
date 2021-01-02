@@ -58,7 +58,7 @@ class BandageItem(settings: Settings) : Item(settings) {
                 }
 
                 // 1 in 4 chance (or 1 in 10 if healthy) to have it not apply correct
-                if ((1..chance + 1).random() == 1) {
+                if ((1..chance).random() == 1) {
                     // 2 minutes effect
                     user.addStatusEffect(StatusEffectInstance(StatusEffectRegistries.WOUND_INFECTION, 2 * 60 * 20))
                     user.sendMessage(TranslatableText("text.${HealthMod.MOD_ID}.bandage.failed_apply"), true)

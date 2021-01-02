@@ -41,17 +41,14 @@ import kotlin.math.roundToInt
 
 class AntibioticsItem(settings: Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
-        if (user.activeStatusEffects
-                .filter { (statusEffect, _) -> statusEffect.type == StatusEffectType.HARMFUL }
-                .isEmpty()
-        ) {
+        if (user.activeStatusEffects.keys.none { it.type == StatusEffectType.HARMFUL }) {
             return TypedActionResult.pass(user.getStackInHand(hand))
         }
 
         if (world.isServer) {
             val stack = user.getStackInHand(hand)
 
-            if ((1..config.bacterialResistanceChance + 1).random() != 1) {
+            if ((1..config.bacterialResistanceChance).random() != 1) {
                 LOGGER.debug("No resistant bacteria, clearing harmful status effects.")
 
                 Collections.synchronizedMap(user.activeStatusEffects).keys
