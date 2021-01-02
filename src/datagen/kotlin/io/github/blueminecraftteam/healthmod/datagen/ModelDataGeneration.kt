@@ -49,16 +49,13 @@ object ModelDataGeneration : Generator<ModelStateData> {
     }
 
     override fun generate(data: ModelStateData) {
-        val itemRegistriesClass = ItemRegistries::class
-        val blockRegistriesClass = BlockRegistries::class
-
-        itemRegistriesClass.memberProperties.onEach { it.isAccessible = true }
-            .map { it.get(itemRegistriesClass.objectInstance!!) }
+        ItemRegistries::class.memberProperties.onEach { it.isAccessible = true }
+            .map { it.get(ItemRegistries) }
             .filterIsInstance<Item>()
             .forEach(data::addGeneratedItemModel)
 
-        blockRegistriesClass.memberProperties.onEach { it.isAccessible = true }
-            .map { it.get(blockRegistriesClass.objectInstance!!) }
+        BlockRegistries::class.memberProperties.onEach { it.isAccessible = true }
+            .map { it.get(BlockRegistries) }
             .filterIsInstance<Block>()
             .forEach { block ->
                 val modelType = block::class.annotations

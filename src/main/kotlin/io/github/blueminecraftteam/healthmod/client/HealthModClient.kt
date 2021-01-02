@@ -37,7 +37,7 @@ object HealthModClient : ClientModInitializer {
                 handler,
                 inventory,
                 title,
-                HealthMod.id("textures/gui/bandage_box.png")
+                texture = HealthMod.id("textures/gui/bandage_box.png")
             )
         }
 
@@ -47,7 +47,7 @@ object HealthModClient : ClientModInitializer {
                 handler,
                 inventory,
                 title,
-                HealthMod.id("textures/gui/first_aid_kit.png")
+                texture = HealthMod.id("textures/gui/first_aid_kit.png")
             )
         }
 
@@ -57,7 +57,7 @@ object HealthModClient : ClientModInitializer {
                 handler,
                 inventory,
                 title,
-                Identifier("minecraft", "textures/gui/container/brewing_stand.png")
+                texture = Identifier("minecraft", "textures/gui/container/brewing_stand.png")
             )
         }
     }

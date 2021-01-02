@@ -82,7 +82,7 @@ go for the longer and more readable code. We don't write code for computers. We 
 - Method names should generally be verb phrases (`tick`, `getCarversForStep`), except for "withX", "toX", "fromX", "of"
   and builder methods.
 - Class names and non-boolean field and variable names should be noun phrases (`ChunkRegion`, `color`).
-- Boolean field and variable names should always be adjective phrases or present tense verb phrases (`powered`,
+- Boolean fields and variable names should always be adjective phrases or present tense verb phrases (`powered`,
   `canOpen`), avoiding the `is` and `has` prefixes when possible (`colored`, not `isColored` or `hasColor`).
 - To make code as easy to read as possible, keep names in the natural language order.
 - Use American English for consistency.
