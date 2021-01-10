@@ -19,28 +19,24 @@
 
 package io.github.blueminecraftteam.healthmod.inventories
 
+import io.github.blueminecraftteam.healthmod.util.MenuFactory
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.inventory.Inventories
-import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.screen.NamedScreenHandlerFactory
-import net.minecraft.screen.ScreenHandler
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.collection.DefaultedList
 
 /**
  * Simple block entity and inventory to reduce boilerplate.
  */
-open class SimpleBlockEntityInventory(
-    type: BlockEntityType<*>,
-    private val menuFactory: (Int, PlayerInventory, Inventory) -> ScreenHandler,
-    size: Int
-) : BlockEntity(type), ImplementedInventory, NamedScreenHandlerFactory {
+open class SimpleBlockEntityInventory(type: BlockEntityType<*>, private val menuFactory: MenuFactory, size: Int) :
+    BlockEntity(type), ImplementedInventory, NamedScreenHandlerFactory {
     override val items: DefaultedList<ItemStack> = DefaultedList.ofSize(size, ItemStack.EMPTY)
 
     override fun createMenu(syncId: Int, inv: PlayerInventory, player: PlayerEntity) = menuFactory(syncId, inv, this)

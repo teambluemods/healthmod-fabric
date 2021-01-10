@@ -22,11 +22,13 @@ package io.github.blueminecraftteam.healthmod.compatibility.datagen
 /**
  * Tells the language file generator to use [translation] for the English translation instead of using the registry name.
  */
+@Target(AnnotationTarget.CLASS)
 annotation class CustomEnglishTranslation(val translation: String)
 
 /**
  * Tells the model generator to generate a model consistent with the [type] provided.
  */
+@Target(AnnotationTarget.CLASS)
 annotation class Model(val type: Type) {
     enum class Type {
         /**
@@ -51,6 +53,7 @@ annotation class Model(val type: Type) {
 /**
  * Tells the block state generator to generate a block state consistent with the [type] provided.
  */
+@Target(AnnotationTarget.CLASS)
 annotation class State(val type: Type) {
     enum class Type {
         /**
@@ -68,6 +71,7 @@ annotation class State(val type: Type) {
 /**
  * Tells the loot table generator to generate a loot table consistent with the [type] provided.
  */
+@Target(AnnotationTarget.CLASS)
 annotation class LootTable(val type: Type) {
     enum class Type {
         /**
