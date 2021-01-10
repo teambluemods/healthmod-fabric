@@ -16,14 +16,12 @@ fun propertyOrEnv(name: String, envName: String = name) = project.findProperty(n
     ?: MissingPropertyException("Property $name/environment variable $envName was not found")
 
 // getters for if a property exists
-fun hasPropertyOrEnv(
-    name: String,
-    envName: String = name
-) = project.hasProperty(name) || System.getenv().containsKey(envName)
+fun hasPropertyOrEnv(name: String, envName: String = name) =
+    project.hasProperty(name) || System.getenv().containsKey(envName)
 
+group = project.property("maven_group")!!
 base.archivesBaseName = project.property("archives_base_name").toString()
 version = project.property("mod_version")!!
-group = project.property("maven_group")!!
 
 sourceSets {
     main {
@@ -33,8 +31,8 @@ sourceSets {
     }
 
     sourceSets.create("datagen") {
-        compileClasspath += sourceSets.main.get().compileClasspath
-        runtimeClasspath += sourceSets.main.get().runtimeClasspath
+        compileClasspath += sourceSets["main"].compileClasspath
+        runtimeClasspath += sourceSets["main"].runtimeClasspath
     }
 }
 
@@ -99,17 +97,17 @@ dependencies {
     implementation("io.github.xf8b:utils:${project.property("utils_version")}") {
         isTransitive = false
     }
-    implementation("io.github.xf8b:utils-gson:${project.property("utils_version")}") {
+    include("io.github.xf8b:utils:${project.property("utils_version")}") {
         isTransitive = false
     }
-    include("io.github.xf8b:utils:${project.property("utils_version")}") {
+    implementation("io.github.xf8b:utils-gson:${project.property("utils_version")}") {
         isTransitive = false
     }
     include("io.github.xf8b:utils-gson:${project.property("utils_version")}") {
         isTransitive = false
     }
 
-    "datagenCompile"(sourceSets.main.get().output)
+    "datagenCompile"(sourceSets["main"].output)
 }
 
 tasks {
@@ -167,7 +165,7 @@ tasks {
     }
 
     create(name = "generateData", type = RunClientTask::class) {
-        classpath = configurations.runtimeClasspath.get()
+        classpath = configurations["runtimeClasspath"]
 
         classpath(sourceSets["main"].output)
         classpath(sourceSets["datagen"].output)
@@ -187,13 +185,12 @@ license {
     header = rootProject.file("LICENSE_HEADER.txt")
 
     ext {
-        set("name", "Blue Minecraft Team")
-        set("years", "2020")
-        set("projectName", "HealthMod")
+        this["name"] = "Blue Minecraft Team"
+        this["years"] = "2020, 2021"
+        this["projectName"] = "HealthMod Fabric"
     }
 
-    include("**/*.java")
-    include("**/*.kt")
+    include("**/*.java", "**/*.kt")
 }
 
 // configure the maven publication
