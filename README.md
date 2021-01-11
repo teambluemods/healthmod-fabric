@@ -6,6 +6,11 @@
 ![issues](https://img.shields.io/github/issues/blueminecraftteam/healthmod-fabric?style=for-the-badge)
 ![stars](https://img.shields.io/github/stars/blueminecraftteam/healthmod-fabric?style=for-the-badge)
 
+<img src="https://raw.githubusercontent.com/blueminecraftteam/healthmod-textures/main/icon.png" alt="HealthMod logo" length=128 width=128/>
+
+*[The HealthMod logo](https://github.com/blueminecraftteam/healthmod-textures/blob/main/icon.png)
+by [HigherLight](https://github.com/HigherLight) is licensed under [CC BY-SA 4.0](TEXTURE_LICENSE.md)*
+
 # HealthMod Fabric
 
 a mod which adds health related things but for Fabric
