@@ -163,17 +163,11 @@ private fun JsonDsl.translateConfigOption(option: String, translated: String, to
     }
 }
 
-private fun JsonDsl.translateItem(
-    item: Item,
-    translation: String = item.id.path.replace("_", " ").capitalizeFully()
-) {
+private fun JsonDsl.translateItem(item: Item, translation: String = item.id.path.registryNameToLang()) {
     property(item.translationKey, translation)
 }
 
-private fun JsonDsl.translateBlock(
-    block: Block,
-    translation: String = block.id.path.replace("_", " ").capitalizeFully()
-) {
+private fun JsonDsl.translateBlock(block: Block, translation: String = block.id.path.registryNameToLang()) {
     property(block.translationKey, translation)
 }
 
@@ -182,7 +176,7 @@ private fun JsonDsl.translateItemGroup(id: Identifier, name: String) {
 }
 
 private fun JsonDsl.translateStatusEffect(effect: StatusEffect) {
-    property(effect.translationKey, effect.id!!.path.replace("_", " ").capitalizeFully())
+    property(effect.translationKey, effect.id!!.path.registryNameToLang())
 }
 
 private fun JsonDsl.translateVillagerProfession(villagerProfession: VillagerProfession) {
@@ -191,3 +185,5 @@ private fun JsonDsl.translateVillagerProfession(villagerProfession: VillagerProf
     property("entity.minecraft.villager.$id", id.capitalizeFully())
     property("subtitles.entity.villager.$id", "${id.capitalizeFully()} works")
 }
+
+private fun String.registryNameToLang() = this.replace("_", " ").capitalizeFully()

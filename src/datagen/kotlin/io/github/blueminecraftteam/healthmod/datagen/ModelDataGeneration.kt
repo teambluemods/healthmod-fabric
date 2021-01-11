@@ -19,6 +19,7 @@
 
 package io.github.blueminecraftteam.healthmod.datagen
 
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
 import io.github.blueminecraftteam.healthmod.HealthMod
@@ -33,6 +34,7 @@ import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.Direction
+import java.io.Reader
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -96,10 +98,12 @@ private fun ModelStateData.addBlockModelFromFile(block: Block, path: Path) {
     val normalized = path.toAbsolutePath().normalize()
     val reader = Files.newBufferedReader(normalized)
     val gson = GsonBuilder().setPrettyPrinting().create()
-    val json = gson.fromJson(reader, JsonElement::class.java)
+    val json = gson.fromJson<JsonElement>(reader)
 
     addBlockModel(block, json)
 }
+
+private inline fun <reified T> Gson.fromJson(reader: Reader) = fromJson(reader, T::class.java)
 
 private fun ModelStateData.addBlockCubeModel(block: Block) {
     val blockId = block.id.path

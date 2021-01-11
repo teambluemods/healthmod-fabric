@@ -89,7 +89,7 @@ and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa
 
 ---
 
-The following textures is made by [Saksham Kumar](https://github.com/saksham4106)
+The following texture is made by [Saksham Kumar](https://github.com/saksham4106)
 and is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a></p>
@@ -112,6 +112,7 @@ and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa
 - [block/bandage_box_bottom.png](src/main/resources/assets/healthmod/textures/block/bandage_box_bottom.png)
 - [gui/first_aid_kit.png](src/main/resources/assets/healthmod/textures/gui/first_aid_kit.png)
 - [gui/bandage_box.png](src/main/resources/assets/healthmod/textures/gui/bandage_box.png)
+- [icon.png](src/main/resources/assets/healthmod/icon.png)
 
 ### Translations
 

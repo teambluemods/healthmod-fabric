@@ -23,7 +23,7 @@
     "issues": "https://github.com/blueminecraftteam/healthmod-fabric/issues/"
   },
   "license": "LGPL-3.0-or-later",
-  "icon": "icon.png",
+  "icon": "assets/healthmod/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
