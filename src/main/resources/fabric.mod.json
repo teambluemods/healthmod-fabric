@@ -5,7 +5,7 @@
   "name": "HealthMod",
   "description": "a mod which adds health related things",
   "authors": [
-    "Blue Minecraft Team"
+    "Team Blue"
   ],
   "contributors": [
     "xf8b",
@@ -18,9 +18,9 @@
     "TheOnlyTails"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/healthmod/",
-    "repo": "https://github.com/blueminecraftteam/healthmod-fabric/",
-    "issues": "https://github.com/blueminecraftteam/healthmod-fabric/issues/"
+    "homepage": "https://modrinth.com/mod/healthmod-fabric",
+    "repo": "https://github.com/teambluemods/healthmod-fabric/",
+    "issues": "https://github.com/teambluemods/healthmod-fabric/issues/"
   },
   "license": "LGPL-3.0-or-later",
   "icon": "assets/healthmod/icon.png",
