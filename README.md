@@ -1,14 +1,14 @@
-![lines of code](https://img.shields.io/tokei/lines/github/blueminecraftteam/healthmod-fabric?style=for-the-badge)
-![activity](https://img.shields.io/github/commit-activity/w/blueminecraftteam/healthmod-fabric?style=for-the-badge)  
+![lines of code](https://img.shields.io/tokei/lines/github/teambluemods/healthmod-fabric?style=for-the-badge)
+![activity](https://img.shields.io/github/commit-activity/w/teambluemods/healthmod-fabric?style=for-the-badge)  
 ![license: lgpl v3 or later](https://img.shields.io/badge/license-lgpl%20v3%20or%20later-green?style=for-the-badge)  
 ![available on curseforge and modrinth](https://img.shields.io/badge/available%20on-modrinth%20and%20curseforge-orange?style=for-the-badge)
 ![categories: technology, adventure and health](https://img.shields.io/badge/categories-technology%2C%20adventure%20and%20health-red?style=for-the-badge)  
-![issues](https://img.shields.io/github/issues/blueminecraftteam/healthmod-fabric?style=for-the-badge)
-![stars](https://img.shields.io/github/stars/blueminecraftteam/healthmod-fabric?style=for-the-badge)
+![issues](https://img.shields.io/github/issues/teambluemods/healthmod-fabric?style=for-the-badge)
+![stars](https://img.shields.io/github/stars/teambluemods/healthmod-fabric?style=for-the-badge)
 
-<img src="https://raw.githubusercontent.com/blueminecraftteam/healthmod-textures/main/icon.png" alt="HealthMod logo" height=128 width=128/>
+<img src="https://raw.githubusercontent.com/teambluemods/healthmod-textures/main/icon.png" alt="HealthMod logo" height=128 width=128/>
 
-*[The HealthMod logo](https://github.com/blueminecraftteam/healthmod-textures/blob/main/icon.png)
+*[The HealthMod logo](https://github.com/teambluemods/healthmod-textures/blob/main/icon.png)
 by [HigherLight](https://github.com/HigherLight) is licensed under [CC BY-SA 4.0](TEXTURE_LICENSE.md)*
 
 # HealthMod Fabric
@@ -44,7 +44,7 @@ The code for HealthMod is licensed under LGPL v3 or later. You can see the full 
 
 ### Textures
 
-All textures are from [healthmod-textures](https://github.com/blueminecraftteam/healthmod-textures). 
+All textures are from [healthmod-textures](https://github.com/teambluemods/healthmod-textures). 
 You can see the full license [here](TEXTURE_LICENSE.md).
 
 ---
@@ -121,7 +121,7 @@ and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa
 
 ### Translations
 
-All translations are from [healthmod-translations](https://github.com/blueminecraftteam/healthmod-translations).
+All translations are from [healthmod-translations](https://github.com/teambluemods/healthmod-translations).
 
 [![license icon](https://licensebuttons.net/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0)
 
