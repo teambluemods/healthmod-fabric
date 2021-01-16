@@ -38,6 +38,6 @@ object StatusEffectRegistries : ModRegistry<StatusEffect> {
     @JvmField
     val HEALTHY = register(
         id = "healthy",
-        toRegister = _root_ide_package_.io.github.teambluemods.healthmod.mixin.StatusEffectAccessorMixin.healthmod_create(StatusEffectType.BENEFICIAL, 0x67eb34)
+        toRegister = StatusEffectAccessorMixin.healthmod_create(StatusEffectType.BENEFICIAL, 0x67eb34)
     )
 }
