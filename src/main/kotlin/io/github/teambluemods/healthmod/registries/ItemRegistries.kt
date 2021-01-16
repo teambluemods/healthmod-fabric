@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, 2021 Team Blue.
+ * Copyright (c) 2020, 2021 Blue Minecraft Team.
  *
  * This file is part of HealthMod Fabric.
  *
@@ -17,13 +17,10 @@
  * along with HealthMod Fabric.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.teambluemods.healthmod.registries
+package io.github.blueminecraftteam.healthmod.registries
 
-import io.github.teambluemods.healthmod.HealthMod
-import io.github.teambluemods.healthmod.items.AntibioticsItem
-import io.github.teambluemods.healthmod.items.BandageItem
-import io.github.teambluemods.healthmod.items.IsopropylAlcoholItem
-import io.github.teambluemods.healthmod.items.SoapItem
+import io.github.blueminecraftteam.healthmod.HealthMod
+import io.github.blueminecraftteam.healthmod.items.*
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
@@ -81,5 +78,10 @@ object ItemRegistries : ModRegistry<Item> {
     val SOAP = register(
         id = "soap",
         toRegister = SoapItem(Item.Settings().group(HealthMod.ITEM_GROUP).maxDamage(30))
+    )
+
+    val SYRINGE = register(
+            id = "syringe",
+            toRegister = SyringeItem(Item.Settings().group(HealthMod.ITEM_GROUP))
     )
 }
