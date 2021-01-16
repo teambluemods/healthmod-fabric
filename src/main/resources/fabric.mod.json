@@ -27,16 +27,16 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.blueminecraftteam.healthmod.HealthMod::INSTANCE"
+      "io.github.teambluemods.healthmod.HealthMod::INSTANCE"
     ],
     "client": [
-      "io.github.blueminecraftteam.healthmod.client.HealthModClient::INSTANCE"
+      "io.github.teambluemods.healthmod.client.HealthModClient::INSTANCE"
     ],
     "modmenu": [
-      "io.github.blueminecraftteam.healthmod.api.HealthModModMenuApiImpl::INSTANCE"
+      "io.github.teambluemods.healthmod.api.HealthModModMenuApiImpl::INSTANCE"
     ],
     "cardinal-components-entity": [
-      "io.github.blueminecraftteam.healthmod.registries.ComponentRegistries::INSTANCE"
+      "io.github.teambluemods.healthmod.registries.ComponentRegistries::INSTANCE"
     ]
   },
   "mixins": [

@@ -185,7 +185,7 @@ license {
     header = rootProject.file("LICENSE_HEADER.txt")
 
     ext {
-        this["name"] = "Blue Minecraft Team"
+        this["name"] = "Team Blue"
         this["years"] = "2020, 2021"
         this["projectName"] = "HealthMod Fabric"
     }
@@ -216,7 +216,9 @@ publishing {
         if (hasPropertyOrEnv(name = "githubPackagesUsername", envName = "GITHUB_USERNAME")
             && hasPropertyOrEnv(name = "githubPackagesToken", envName = "GITHUB_TOKEN")
         ) {
-            maven("https://maven.pkg.github.com/blueminecraftteam/healthmod-fabric") {
+            maven("https://maven.pkg.github.com/teambluemods/healthmod-fabric") {
+                name = "github"
+
                 credentials {
                     username = propertyOrEnv(name = "githubPackagesUsername", envName = "GITHUB_USERNAME").toString()
                     password = propertyOrEnv(name = "githubPackagesToken", envName = "GITHUB_TOKEN").toString()
@@ -229,6 +231,8 @@ publishing {
             && hasPropertyOrEnv(name = "modMavenPassword", envName = "MOD_MAVEN_PASSWORD")
         ) {
             maven(propertyOrEnv(name = "modMavenUrl", envName = "MOD_MAVEN_URL")) {
+                name = "modmaven"
+
                 credentials {
                     username = propertyOrEnv(name = "modMavenUsername", envName = "MOD_MAVEN_USERNAME").toString()
                     password = propertyOrEnv(name = "modMavenPassword", envName = "MOD_MAVEN_PASSWORD").toString()
