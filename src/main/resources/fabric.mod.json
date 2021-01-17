@@ -43,13 +43,13 @@
     "healthmod.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "fabric": ">=${fabric_version}",
-    "fabric-language-kotlin": ">=${fabric_kotlin_version}",
-    "minecraft": "~${minecraft_version}"
+    "minecraft": "${minecraft_range}",
+    "fabricloader": "${fabric_loader_range}",
+    "fabric": "${fabric_api_range}",
+    "fabric-language-kotlin": "${fabric_language_kotlin_range}"
   },
   "suggests": {
-    "modmenu": ">=${mod_menu_version}"
+    "modmenu": "${mod_menu_range}"
   },
   "custom": {
     "cardinal-components": [

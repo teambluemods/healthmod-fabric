@@ -58,10 +58,10 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
 
     // fapi
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_api_version")}")
 
     // kotlin adapter
-    modImplementation("net.fabricmc:fabric-language-kotlin:${project.property("fabric_kotlin_version")}")
+    modImplementation("net.fabricmc:fabric-language-kotlin:${project.property("fabric_language_kotlin_version")}")
 
     // yeet mojank console spam
     modRuntime("user11681:noauth:+")
@@ -138,20 +138,9 @@ tasks {
          * DO NOT USE INTELLIJ FOR BUILDING!!!
          * It may be faster, but it will break the mod, as the IntelliJ compiler does not support this task.
          */
-        val toReplace = listOf(
-            "mod_version",
-            "minecraft_version",
-            "loader_version",
-            "fabric_version",
-            "fabric_kotlin_version",
-            "mod_menu_version"
-        ).map { it to project.property(it).toString() }.toMap()
+        inputs.properties(project.properties)
 
-        inputs.properties(toReplace)
-
-        filesMatching("fabric.mod.json") {
-            expand(toReplace)
-        }
+        filesMatching("fabric.mod.json") { expand(project.properties) }
     }
 
     jar {

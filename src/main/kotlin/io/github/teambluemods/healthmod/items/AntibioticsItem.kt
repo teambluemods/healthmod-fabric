@@ -35,7 +35,6 @@ import net.minecraft.text.TranslatableText
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
-import org.apache.logging.log4j.Logger
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -73,10 +72,10 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
                                     statusEffect,
                                     (duration * 1.5F).roundToInt(),
                                     amplifier + 1,
-                                    (this as StatusEffectInstanceAccessorMixin).healthmod_isAmbient(),
-                                    (this as StatusEffectInstanceAccessorMixin).healthmod_shouldShowParticles(),
-                                    (this as StatusEffectInstanceAccessorMixin).healthmod_shouldShowIcon(),
-                                    (this as StatusEffectInstanceAccessorMixin).healthmod_getHiddenEffect()
+                                    (this as StatusEffectInstanceAccessorMixin).isAmbient,
+                                    (this as StatusEffectInstanceAccessorMixin).shouldShowParticles(),
+                                    (this as StatusEffectInstanceAccessorMixin).shouldShowIcon(),
+                                    (this as StatusEffectInstanceAccessorMixin).hiddenEffect
                                 )
                             )
                         }
@@ -90,6 +89,6 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
     }
 
     companion object {
-        private val LOGGER: Logger by LoggerDelegate()
+        private val LOGGER by LoggerDelegate()
     }
 }

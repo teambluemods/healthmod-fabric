@@ -27,7 +27,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(StatusEffect.class)
 public interface StatusEffectAccessorMixin {
     @Invoker("<init>")
-    static StatusEffect healthmod_create(StatusEffectType type, int color) {
+    static StatusEffect create(StatusEffectType type, int color) {
         throw new UnsupportedOperationException("Mixin was not applied!");
     }
 }

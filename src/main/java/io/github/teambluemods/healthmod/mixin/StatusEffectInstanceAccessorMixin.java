@@ -26,14 +26,14 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(StatusEffectInstance.class)
 public interface StatusEffectInstanceAccessorMixin {
     @Accessor("ambient")
-    boolean healthmod_isAmbient();
+    boolean isAmbient();
 
     @Accessor("showParticles")
-    boolean healthmod_shouldShowParticles();
+    boolean shouldShowParticles();
 
     @Accessor("showIcon")
-    boolean healthmod_shouldShowIcon();
+    boolean shouldShowIcon();
 
     @Accessor("hiddenEffect")
-    StatusEffectInstance healthmod_getHiddenEffect();
+    StatusEffectInstance getHiddenEffect();
 }

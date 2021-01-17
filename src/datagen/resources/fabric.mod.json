@@ -5,15 +5,16 @@
   "name": "HealthMod Data Generation",
   "description": "a dummy mod",
   "authors": [
-    "Blue Minecraft Team"
+    "Team Blue"
   ],
   "contributors": [
     "xf8b",
     "Secnyt",
     "AG6",
+    "ilja615",
     "ItalianCucumber",
     "Saksham Kumar",
-    "ilja615",
+    "HigherLight",
     "TheOnlyTails"
   ],
   "contact": {
@@ -29,12 +30,12 @@
     ]
   },
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "fabric": ">=${fabric_version}",
-    "fabric-language-kotlin": ">=${fabric_kotlin_version}",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${minecraft_range}",
+    "fabricloader": "${fabric_loader_range}",
+    "fabric": "${fabric_api_range}",
+    "fabric-language-kotlin": "${fabric_language_kotlin_range}"
   },
   "suggests": {
-    "modmenu": "${mod_menu_version}"
+    "modmenu": "${mod_menu_range}"
   }
 }

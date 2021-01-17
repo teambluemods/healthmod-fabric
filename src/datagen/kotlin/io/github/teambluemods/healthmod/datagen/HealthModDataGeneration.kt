@@ -23,12 +23,11 @@ import io.github.teambluemods.healthmod.HealthMod
 import io.github.teambluemods.healthmod.util.LoggerDelegate
 import me.shedaniel.cloth.api.datagen.v1.DataGeneratorHandler
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint
-import org.apache.logging.log4j.Logger
 import java.nio.file.Paths
 import kotlin.system.exitProcess
 
 object HealthModDataGeneration : PreLaunchEntrypoint {
-    private val LOGGER: Logger by LoggerDelegate()
+    private val LOGGER by LoggerDelegate()
 
     /**
      * Runs data generation.

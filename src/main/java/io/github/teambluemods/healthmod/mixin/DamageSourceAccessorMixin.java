@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(DamageSource.class)
 public interface DamageSourceAccessorMixin {
     @Invoker("<init>")
-    static DamageSource healthmod_create(String name) {
+    static DamageSource create(String name) {
         throw new UnsupportedOperationException("Mixin was not applied!");
     }
 }

@@ -28,7 +28,8 @@ import kotlin.reflect.jvm.isAccessible
 
 object LootTableDataGeneration : Generator<LootTableData> {
     override fun generate(data: LootTableData) {
-        BlockRegistries::class.memberProperties.onEach { it.isAccessible = true }
+        BlockRegistries::class.memberProperties
+            .onEach { it.isAccessible = true }
             .map { it.get(BlockRegistries) }
             .filterIsInstance<Block>()
             .forEach { block ->
