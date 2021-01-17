@@ -19,7 +19,7 @@
 
 package io.github.teambluemods.healthmod.mixin;
 
-import io.github.teambluemods.healthmod.config.HealthModConfigHolder;
+import io.github.teambluemods.healthmod.HealthMod;
 import io.github.teambluemods.healthmod.registries.StatusEffectRegistries;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -45,10 +45,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", at = @At("TAIL"))
     private void applyInfectedOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
         if (callbackInfoReturnable.getReturnValueZ() && amount > 2F) {
-            int infectionChance = HealthModConfigHolder.getConfig().getDamagedInfectionChance();
+            int infectionChance = HealthMod.getConfig().getDamagedInfectionChance();
 
             if (this.hasStatusEffect(StatusEffectRegistries.HEALTHY)) {
-                infectionChance = HealthModConfigHolder.getConfig().getDamagedInfectionChanceWhenHealthy();
+                infectionChance = HealthMod.getConfig().getDamagedInfectionChanceWhenHealthy();
             }
 
             if (ThreadLocalRandom.current().nextInt(1, infectionChance + 1) == 1) {

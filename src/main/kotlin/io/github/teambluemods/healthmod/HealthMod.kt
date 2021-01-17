@@ -23,6 +23,7 @@ import io.github.teambluemods.healthmod.config.HealthModConfig
 import io.github.teambluemods.healthmod.registries.*
 import io.github.teambluemods.healthmod.util.LoggerDelegate
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
+import me.sargunvohra.mcmods.autoconfig1u.ConfigHolder
 import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
@@ -34,15 +35,23 @@ object HealthMod : ModInitializer {
     val ITEM_GROUP: ItemGroup = FabricItemGroupBuilder.create(id("all"))
         .icon { ItemRegistries.BANDAGE.defaultStack }
         .build()
+    private lateinit var configHolder: ConfigHolder<HealthModConfig>
+
+    @JvmStatic
+    val config: HealthModConfig
+        get() {
+            if (!this::configHolder.isInitialized) {
+                configHolder = AutoConfig.register(HealthModConfig::class.java, ::Toml4jConfigSerializer)
+                LOGGER.debug("Registered config!")
+            }
+
+            return configHolder.get()
+        }
     private val LOGGER by LoggerDelegate()
 
     fun id(path: String) = Identifier(MOD_ID, path)
 
     override fun onInitialize() {
-        AutoConfig.register(HealthModConfig::class.java, ::Toml4jConfigSerializer)
-
-        LOGGER.debug("Registered config!")
-
         initRegistries()
 
         LOGGER.debug("Initialized all registries!")

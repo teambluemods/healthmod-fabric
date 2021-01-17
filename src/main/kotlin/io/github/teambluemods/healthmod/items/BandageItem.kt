@@ -20,7 +20,6 @@
 package io.github.teambluemods.healthmod.items
 
 import io.github.teambluemods.healthmod.HealthMod
-import io.github.teambluemods.healthmod.config.config
 import io.github.teambluemods.healthmod.registries.StatusEffectRegistries
 import io.github.teambluemods.healthmod.util.extensions.isServer
 import io.github.teambluemods.healthmod.util.extensions.minusAssign
@@ -52,9 +51,9 @@ class BandageItem(settings: Settings) : Item(settings) {
 
             if (user.health < user.maxHealth) {
                 val chance = if (user.hasStatusEffect(StatusEffectRegistries.HEALTHY)) {
-                    config.bandageInfectionChanceWhenHealthy
+                    HealthMod.config.bandageInfectionChanceWhenHealthy
                 } else {
-                    config.bandageInfectionChance
+                    HealthMod.config.bandageInfectionChance
                 }
 
                 // 1 in 4 chance (or 1 in 10 if healthy) to have it not apply correct

@@ -20,7 +20,6 @@
 package io.github.teambluemods.healthmod.items
 
 import io.github.teambluemods.healthmod.HealthMod
-import io.github.teambluemods.healthmod.config.config
 import io.github.teambluemods.healthmod.mixin.StatusEffectInstanceAccessorMixin
 import io.github.teambluemods.healthmod.util.LoggerDelegate
 import io.github.teambluemods.healthmod.util.extensions.isServer
@@ -47,7 +46,7 @@ class AntibioticsItem(settings: Settings) : Item(settings) {
         if (world.isServer) {
             val stack = user.getStackInHand(hand)
 
-            if ((1..config.bacterialResistanceChance).random() != 1) {
+            if ((1..HealthMod.config.bacterialResistanceChance).random() != 1) {
                 LOGGER.debug("No resistant bacteria, clearing harmful status effects.")
 
                 Collections.synchronizedMap(user.activeStatusEffects).keys

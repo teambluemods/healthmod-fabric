@@ -17,23 +17,15 @@
  * along with HealthMod Fabric.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-@file:JvmName("HealthModConfigHolder") // disguises the top-level config field in a class called HealthModConfigHolder
-
 package io.github.teambluemods.healthmod.config
 
 import io.github.teambluemods.healthmod.HealthMod
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry
 import org.apache.logging.log4j.LogManager
 import kotlin.reflect.KMutableProperty1
 import kotlin.reflect.full.memberProperties
-
-/**
- * Getter for the HealthMod config. In Kotlin, use `config.<thing>`. In Java, use `HealthModConfigHolder.getConfig().get<thing>()`.
- */
-val config: HealthModConfig get() = AutoConfig.getConfigHolder(HealthModConfig::class.java).config
 
 /**
  * Config for HealthMod containing all the config settings. Field values can vary as the config can be set at runtime.
