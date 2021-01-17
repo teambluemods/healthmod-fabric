@@ -44,8 +44,8 @@ The code for HealthMod is licensed under LGPL v3 or later. You can see the full 
 
 ### Textures
 
-All textures are from [healthmod-textures](https://github.com/teambluemods/healthmod-textures). 
-You can see the full license [here](TEXTURE_LICENSE.md).
+All textures are from [healthmod-textures](https://github.com/teambluemods/healthmod-textures). You can see the full
+license [here](TEXTURE_LICENSE.md).
 
 ---
 
@@ -117,7 +117,7 @@ and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa
 - [block/bandage_box_bottom.png](src/main/resources/assets/healthmod/textures/block/bandage_box_bottom.png)
 - [gui/first_aid_kit.png](src/main/resources/assets/healthmod/textures/gui/first_aid_kit.png)
 - [gui/bandage_box.png](src/main/resources/assets/healthmod/textures/gui/bandage_box.png)
-- [icon.png](src/main/resources/assets/healthmod/icon.png)
+- [icon.png](src/main/resources/assets/healthmod/icon.png) / Image resized from 1000x1000 to 512x512
 
 ### Translations
 

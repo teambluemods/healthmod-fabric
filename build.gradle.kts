@@ -138,9 +138,18 @@ tasks {
          * DO NOT USE INTELLIJ FOR BUILDING!!!
          * It may be faster, but it will break the mod, as the IntelliJ compiler does not support this task.
          */
-        inputs.properties(project.properties)
+        val versions = listOf(
+            "mod_version",
+            "minecraft_version",
+            "loader_version",
+            "fabric_api_version",
+            "fabric_language_kotlin_version",
+            "mod_menu_version"
+        ).map { key -> key to project.property(key) }.toMap()
 
-        filesMatching("fabric.mod.json") { expand(project.properties) }
+        inputs.properties(versions)
+
+        filesMatching("fabric.mod.json") { expand(versions) }
     }
 
     jar {

@@ -19,9 +19,9 @@
 
 package io.github.teambluemods.healthmod.api
 
-import io.github.teambluemods.healthmod.config.HealthModConfig
 import io.github.prospector.modmenu.api.ConfigScreenFactory
 import io.github.prospector.modmenu.api.ModMenuApi
+import io.github.teambluemods.healthmod.config.HealthModConfig
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment

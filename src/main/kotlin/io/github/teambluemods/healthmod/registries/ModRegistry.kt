@@ -22,7 +22,6 @@ package io.github.teambluemods.healthmod.registries
 import io.github.teambluemods.healthmod.HealthMod
 import io.github.teambluemods.healthmod.util.LoggerDelegate
 import net.minecraft.util.registry.Registry
-import org.apache.logging.log4j.Logger
 
 interface ModRegistry<T> {
     /**
@@ -43,6 +42,6 @@ interface ModRegistry<T> {
     fun register(id: String, toRegister: T): T = Registry.register(registry, HealthMod.id(id), toRegister)
 
     companion object {
-        private val LOGGER: Logger by LoggerDelegate()
+        private val LOGGER by LoggerDelegate()
     }
 }

@@ -33,13 +33,12 @@ import net.minecraft.item.Item
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.Rarity
 import net.minecraft.util.registry.Registry
-import org.apache.logging.log4j.Logger
 
 @Suppress("UNUSED")
 object BlockRegistries : ModRegistry<Block> {
     override val registry: Registry<Block> get() = Registry.BLOCK
 
-    private val LOGGER: Logger by LoggerDelegate()
+    private val LOGGER by LoggerDelegate()
 
     val BANDAGE_BOX = register(
         id = "bandage_box",

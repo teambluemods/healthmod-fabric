@@ -30,12 +30,12 @@
     ]
   },
   "depends": {
-    "minecraft": "${minecraft_range}",
-    "fabricloader": "${fabric_loader_range}",
-    "fabric": "${fabric_api_range}",
-    "fabric-language-kotlin": "${fabric_language_kotlin_range}"
+    "minecraft": ">=1.16.2",
+    "fabricloader": ">=${loader_version}",
+    "fabric": ">=${fabric_api_version}",
+    "fabric-language-kotlin": ">=${fabric_language_kotlin_version}"
   },
   "suggests": {
-    "modmenu": "${mod_menu_range}"
+    "modmenu": ">=${mod_menu_version}"
   }
 }
