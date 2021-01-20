@@ -19,7 +19,7 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/healthmod/",
-    "repo": "https://github.com/teambluemods/healthmod-fabric/",
+    "sources": "https://github.com/teambluemods/healthmod-fabric/",
     "issues": "https://github.com/teambluemods/healthmod-fabric/issues/"
   },
   "license": "LGPL-3.0-or-later",
