@@ -17,7 +17,7 @@
  * along with HealthMod Fabric.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.blueminecraftteam.healthmod.registries
+package io.github.teambluemods.healthmod.registries
 
 import io.github.teambluemods.healthmod.HealthMod
 import io.github.teambluemods.healthmod.items.*
