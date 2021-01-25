@@ -83,7 +83,7 @@ object ItemRegistries : ModRegistry<Item> {
     )
 
     val SYRINGE = register(
-            id = "syringe",
-            toRegister = SyringeItem(Item.Settings().group(HealthMod.ITEM_GROUP))
+        id = "syringe",
+        toRegister = SyringeItem(Item.Settings().group(HealthMod.ITEM_GROUP))
     )
 }
