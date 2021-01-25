@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, 2021 Blue Minecraft Team.
+ * Copyright (c) 2020, 2021 Team Blue.
  *
  * This file is part of HealthMod Fabric.
  *
@@ -19,8 +19,10 @@
 
 package io.github.blueminecraftteam.healthmod.registries
 
-import io.github.blueminecraftteam.healthmod.HealthMod
-import io.github.blueminecraftteam.healthmod.items.*
+import io.github.teambluemods.healthmod.HealthMod
+import io.github.teambluemods.healthmod.items.*
+import io.github.teambluemods.healthmod.registries.ModRegistry
+import io.github.teambluemods.healthmod.registries.StatusEffectRegistries
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
