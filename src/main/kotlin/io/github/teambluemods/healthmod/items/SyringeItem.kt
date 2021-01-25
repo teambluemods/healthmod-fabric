@@ -19,7 +19,7 @@
 
 package io.github.teambluemods.healthmod.items
 
-import io.github.blueminecraftteam.healthmod.registries.ItemRegistries
+import io.github.teambluemods.healthmod.registries.ItemRegistries
 import io.github.teambluemods.healthmod.util.extensions.isServer
 import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.player.PlayerEntity
