@@ -29,13 +29,13 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class SyringeItem(settings: Item.Settings): Item(settings) {
+class SyringeItem(settings: Item.Settings) : Item(settings) {
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
         if (world.isServer) {
             val stackInHand = user.getStackInHand(hand)
 
-            if (world.isServer) {
-                val setStackInHand = user.giveItemStack(ItemRegistries.SYRINGE.defaultStack)
+            if (!stackInHand.orCreateTag.contains("Blood")) {
+                stackInHand.orCreateTag.putInt("Blood", 1)
                 user.damage(DamageSource.GENERIC, 0.5f)
             }
         }
