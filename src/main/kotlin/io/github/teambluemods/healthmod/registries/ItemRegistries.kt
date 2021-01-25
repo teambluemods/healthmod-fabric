@@ -20,10 +20,9 @@
 package io.github.teambluemods.healthmod.registries
 
 import io.github.teambluemods.healthmod.HealthMod
-import io.github.teambluemods.healthmod.items.AntibioticsItem
-import io.github.teambluemods.healthmod.items.BandageItem
-import io.github.teambluemods.healthmod.items.IsopropylAlcoholItem
-import io.github.teambluemods.healthmod.items.SoapItem
+import io.github.teambluemods.healthmod.items.*
+import io.github.teambluemods.healthmod.registries.ModRegistry
+import io.github.teambluemods.healthmod.registries.StatusEffectRegistries
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
@@ -81,5 +80,10 @@ object ItemRegistries : ModRegistry<Item> {
     val SOAP = register(
         id = "soap",
         toRegister = SoapItem(Item.Settings().group(HealthMod.ITEM_GROUP).maxDamage(30))
+    )
+
+    val SYRINGE = register(
+            id = "syringe",
+            toRegister = SyringeItem(Item.Settings().group(HealthMod.ITEM_GROUP))
     )
 }
