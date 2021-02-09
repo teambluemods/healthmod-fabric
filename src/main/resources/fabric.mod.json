@@ -56,6 +56,11 @@
       "healthmod:sanitized_wound",
       "healthmod:cleanliness",
       "healthmod:wounded"
-    ]
+    ],
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/VvB7zx2rvU"
+      }
+    }
   }
 }
