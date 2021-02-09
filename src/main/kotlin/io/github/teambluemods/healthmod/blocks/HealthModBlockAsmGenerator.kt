@@ -110,7 +110,7 @@ object HealthModBlockAsmGenerator {
         val bytes = classWriter.toByteArray()
 
         @Suppress("UNCHECKED_CAST")
-        val klass = if ("9" >= System.getProperty("java.version")) {
+        val klass = try {
             Class.forName("java.lang.invoke.MethodHandles")
                 .getMethod("lookup")
                 .invoke(null)
@@ -119,7 +119,7 @@ object HealthModBlockAsmGenerator {
                         .getMethod("defineClass", ByteArray::class.java)
                         .invoke(this, bytes) as Class<out Block>
                 }
-        } else {
+        } catch (exception: NoSuchMethodException) {
             Unsafe::class.java.run {
                 val unsafe = getDeclaredField("theUnsafe").get(null)
 
