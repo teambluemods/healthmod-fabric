@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "healthmod:block/healthmod_block"
+    }
+  }
+}

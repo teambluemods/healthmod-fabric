@@ -42,8 +42,7 @@ import org.objectweb.asm.tree.ClassNode
 import sun.misc.Unsafe
 import kotlin.reflect.KClass
 
-// TODO: Test in production
-// TODO: Test in Java 8
+// cursed and funny
 object HealthModBlockAsmGenerator {
     private val KClass<*>.internalName get() = Type.getInternalName(this.java)
     private val KClass<*>.descriptor get() = Type.getDescriptor(this.java)
@@ -98,7 +97,7 @@ object HealthModBlockAsmGenerator {
             visitFieldInsn(
                 GETSTATIC,
                 ActionResult::class.internalName,
-                "PASS",
+                if (isDevelopmentEnvironment) "PASS" else "field_5811",
                 ActionResult::class.descriptor
             )
             visitInsn(ARETURN)
@@ -109,14 +108,17 @@ object HealthModBlockAsmGenerator {
         classNode.accept(classWriter)
 
         val bytes = classWriter.toByteArray()
+
         @Suppress("UNCHECKED_CAST")
         val klass = if ("9" >= System.getProperty("java.version")) {
             Class.forName("java.lang.invoke.MethodHandles")
                 .getMethod("lookup")
                 .invoke(null)
                 .run {
-                    this.javaClass.getMethod("defineClass", ByteArray::class.java).invoke(this, bytes)
-                } as Class<out Block>
+                    this.javaClass
+                        .getMethod("defineClass", ByteArray::class.java)
+                        .invoke(this, bytes) as Class<out Block>
+                }
         } else {
             Unsafe::class.java.run {
                 val unsafe = getDeclaredField("theUnsafe").get(null)
@@ -134,11 +136,10 @@ object HealthModBlockAsmGenerator {
         }
 
         BlockRegistries.register(
-            "health_mod_block",
-            klass.getConstructor(AbstractBlock.Settings::class.java).newInstance(
-                AbstractBlock.Settings.copy(Blocks.BEDROCK)
-            ),
+            "healthmod_block",
+            klass.getConstructor(AbstractBlock.Settings::class.java)
+                .newInstance(AbstractBlock.Settings.copy(Blocks.BEDROCK)),
             Item.Settings().group(HealthMod.ITEM_GROUP).maxCount(1)
-        ).also { println("hi") }
+        )
     }
 }
