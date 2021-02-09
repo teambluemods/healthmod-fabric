@@ -21,8 +21,6 @@ package io.github.teambluemods.healthmod.registries
 
 import io.github.teambluemods.healthmod.HealthMod
 import io.github.teambluemods.healthmod.items.*
-import io.github.teambluemods.healthmod.registries.ModRegistry
-import io.github.teambluemods.healthmod.registries.StatusEffectRegistries
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
@@ -32,58 +30,48 @@ import net.minecraft.util.registry.Registry
 @Suppress("UNUSED")
 object ItemRegistries : ModRegistry<Item> {
     override val registry: Registry<Item> get() = Registry.ITEM
+    val DEFAULT_SETTINGS: Item.Settings get() = Item.Settings().group(HealthMod.ITEM_GROUP)
 
     val BANDAGE = register(
         id = "bandage",
-        toRegister = BandageItem(
-            Item.Settings()
-                .group(HealthMod.ITEM_GROUP)
-                .maxCount(8)
-                .rarity(Rarity.UNCOMMON)
-        )
+        toRegister = BandageItem(DEFAULT_SETTINGS.maxCount(8).rarity(Rarity.UNCOMMON))
     )
 
     val ANTIBIOTICS = register(
         id = "antibiotics",
-        toRegister = AntibioticsItem(
-            Item.Settings()
-                .group(HealthMod.ITEM_GROUP)
-                .maxCount(16)
-        )
+        toRegister = AntibioticsItem(DEFAULT_SETTINGS.maxCount(16))
     )
 
     val BROCCOLI = register(
         id = "broccoli",
         toRegister = Item(
-            Item.Settings()
-                .group(HealthMod.ITEM_GROUP)
-                .food(
-                    FoodComponent.Builder()
-                        .hunger(3)
-                        .saturationModifier(2F)
-                        .statusEffect(StatusEffectInstance(StatusEffectRegistries.HEALTHY, 60 * 20), 1F)
-                        .build()
-                )
+            DEFAULT_SETTINGS.food(
+                FoodComponent.Builder()
+                    .hunger(3)
+                    .saturationModifier(2F)
+                    .statusEffect(StatusEffectInstance(StatusEffectRegistries.HEALTHY, 60 * 20), 1F)
+                    .build()
+            )
         )
     )
 
     val BLOOD_VIAL = register(
         id = "blood_vial",
-        toRegister = Item(Item.Settings().group(HealthMod.ITEM_GROUP))
+        toRegister = Item(DEFAULT_SETTINGS)
     )
 
     val ISOPROPYL_ALCOHOL = register(
         id = "isopropyl_alcohol",
-        toRegister = IsopropylAlcoholItem(Item.Settings().group(HealthMod.ITEM_GROUP).maxCount(1))
+        toRegister = IsopropylAlcoholItem(DEFAULT_SETTINGS.maxCount(1))
     )
 
     val SOAP = register(
         id = "soap",
-        toRegister = SoapItem(Item.Settings().group(HealthMod.ITEM_GROUP).maxDamage(30))
+        toRegister = SoapItem(DEFAULT_SETTINGS.maxDamage(30))
     )
 
     val SYRINGE = register(
         id = "syringe",
-        toRegister = SyringeItem(Item.Settings().group(HealthMod.ITEM_GROUP))
+        toRegister = SyringeItem(DEFAULT_SETTINGS)
     )
 }
