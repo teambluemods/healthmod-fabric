@@ -40,6 +40,7 @@ import org.objectweb.asm.Opcodes.*
 import org.objectweb.asm.Type
 import org.objectweb.asm.tree.ClassNode
 import sun.misc.Unsafe
+import java.security.ProtectionDomain
 import kotlin.reflect.KClass
 
 // cursed and funny
@@ -120,10 +121,20 @@ object HealthModBlockAsmGenerator {
                         .invoke(this, bytes) as Class<out Block>
                 }
         } catch (exception: NoSuchMethodException) {
-            Unsafe::class.java.run {
-                val unsafe = getDeclaredField("theUnsafe").get(null)
+            Unsafe::class.java.let { klass ->
+                val unsafe = klass.getDeclaredField("theUnsafe")
+                    .apply { isAccessible = true }
+                    .get(null)
 
-                getMethod("defineClass").invoke(
+                klass.getMethod(
+                    "defineClass",
+                    String::class.java,
+                    ByteArray::class.java,
+                    Int::class.java,
+                    Int::class.java,
+                    ClassLoader::class.java,
+                    ProtectionDomain::class.java
+                ).apply { isAccessible = true }.invoke(
                     unsafe,
                     "io/github/teambluemods/healthmod/blocks/HealthModBlock",
                     bytes,
