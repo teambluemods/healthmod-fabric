@@ -47,7 +47,7 @@ repositories {
 
     maven("https://maven.abusedmaster.xyz") { name = "OnyxStudios" }
 
-    maven("https://maven.terraformersmc.com/")
+    maven("https://maven.terraformersmc.com/") { name = "TerraformersMC" }
 
     maven("https://repo.repsy.io/mvn/progamer28415/main") { name = "xf8b" }
 
