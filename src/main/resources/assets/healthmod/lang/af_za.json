@@ -20,7 +20,7 @@
   "text.autoconfig.healthmod.title": "HealthMod Opstelling",
   "text.autoconfig.healthmod.category.woundInfection": "Wondinfeksie",
   "text.autoconfig.healthmod.category.other": "Ander",
-  "text.autoconfig.healthmod.option.bacterialResistanceChance": "Bakterieë weerstandings kans",
+  "text.autoconfig.healthmod.option.bacterialResistanceChance": "Bakteriese Weerstandingskans",
   "text.autoconfig.healthmod.option.bacterialResistanceChance.@Tooltip": "Kans vir antibiotika om te misluk en skadelike effekte sterker te maak (1/opstelling waarde)",
   "text.autoconfig.healthmod.option.bandageInfectionChance": "Verband Infeksiekans",
   "text.autoconfig.healthmod.option.bandageInfectionChance.@Tooltip": "Kans vir verbandings om te misluk en jou 'n wondinfeksie te gee (1/opstelling waarde)",
