@@ -27,6 +27,7 @@ sourceSets {
     main {
         resources {
             srcDir("src/generated/resources")
+            exclude(".cache")
         }
     }
 
