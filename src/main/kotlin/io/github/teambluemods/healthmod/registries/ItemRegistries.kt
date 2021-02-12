@@ -21,6 +21,8 @@ package io.github.teambluemods.healthmod.registries
 
 import io.github.teambluemods.healthmod.HealthMod
 import io.github.teambluemods.healthmod.items.*
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings
+import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
@@ -30,7 +32,7 @@ import net.minecraft.util.registry.Registry
 @Suppress("UNUSED")
 object ItemRegistries : ModRegistry<Item> {
     override val registry: Registry<Item> get() = Registry.ITEM
-    val DEFAULT_SETTINGS: Item.Settings get() = Item.Settings().group(HealthMod.ITEM_GROUP)
+    val DEFAULT_SETTINGS: FabricItemSettings get() = FabricItemSettings().group(HealthMod.ITEM_GROUP)
 
     val BANDAGE = register(
         id = "bandage",
@@ -73,5 +75,12 @@ object ItemRegistries : ModRegistry<Item> {
     val SYRINGE = register(
         id = "syringe",
         toRegister = SyringeItem(DEFAULT_SETTINGS)
+    )
+
+    val MASK = register(
+        id = "mask",
+        toRegister = WearableItem(DEFAULT_SETTINGS.equipmentSlot { EquipmentSlot.HEAD }
+            .maxCount(1)
+            .maxDamage(100))
     )
 }

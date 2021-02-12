@@ -26,7 +26,7 @@ import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.util.registry.Registry
 
 object BlockEntityTypeRegistries : ModRegistry<BlockEntityType<*>> {
-    override val registry: Registry<BlockEntityType<*>> get() = Registry.BLOCK_ENTITY_TYPE
+    override val registry: Registry<BlockEntityType<*>> = Registry.BLOCK_ENTITY_TYPE
 
     val BANDAGE_BOX = register(
         id = "bandage_box",
