@@ -38,8 +38,6 @@ import net.minecraft.world.World
  * *Note: for this to work correctly, you must use [FabricItemSettings.equipmentSlot].*
  */
 class WearableItem(settings: Settings) : Item(settings), Wearable {
-    // FIXME: right clicking to equip does not work. not sure why but who knows
-
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
         val stackInHand = user.getStackInHand(hand)
         val preferredEquipmentSlot = MobEntity.getPreferredEquipmentSlot(stackInHand)
