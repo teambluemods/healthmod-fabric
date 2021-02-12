@@ -35,8 +35,7 @@ import net.minecraft.util.registry.Registry
 
 @Suppress("UNUSED")
 object BlockRegistries : ModRegistry<Block> {
-    override val registry: Registry<Block> get() = Registry.BLOCK
-
+    override val registry: Registry<Block> = Registry.BLOCK
     private val LOGGER by LoggerDelegate()
 
     val BANDAGE_BOX = register(

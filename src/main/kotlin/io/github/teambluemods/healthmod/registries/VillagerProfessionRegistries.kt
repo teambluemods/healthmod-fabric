@@ -31,7 +31,7 @@ import net.minecraft.world.poi.PointOfInterestType
 
 @Suppress("MemberVisibilityCanBePrivate") // datagen requires public
 object VillagerProfessionRegistries : ModRegistry<VillagerProfession> {
-    override val registry: Registry<VillagerProfession> get() = Registry.VILLAGER_PROFESSION
+    override val registry: Registry<VillagerProfession> = Registry.VILLAGER_PROFESSION
 
     val DOCTOR_POINT_OF_INTEREST: PointOfInterestType = PointOfInterestHelper.register(
         HealthMod.id("doctor_point_of_interest"),

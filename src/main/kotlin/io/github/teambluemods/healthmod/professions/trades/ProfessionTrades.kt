@@ -50,7 +50,7 @@ object ProfessionTrades {
         // TODO more trades
     ).run(::Int2ObjectOpenHashMap)
 
-    private class SellFactory(
+    class SellFactory(
         /** Item stack to sell */
         private val sell: ItemStack,
         /** Amount of emeralds to sell for */
@@ -85,7 +85,7 @@ object ProfessionTrades {
         )
     }
 
-    private class BuyFactory(
+    class BuyFactory(
         /** Item stack to buy */
         private val buy: ItemStack,
         /** Amount of emeralds to buy for */

@@ -26,7 +26,7 @@ import net.minecraft.entity.effect.StatusEffectType
 import net.minecraft.util.registry.Registry
 
 object StatusEffectRegistries : ModRegistry<StatusEffect> {
-    override val registry: Registry<StatusEffect> get() = Registry.STATUS_EFFECT
+    override val registry: Registry<StatusEffect> = Registry.STATUS_EFFECT
 
     @JvmField
     val WOUND_INFECTION = register(
