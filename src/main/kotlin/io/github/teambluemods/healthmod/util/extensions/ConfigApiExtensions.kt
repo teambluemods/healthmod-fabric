@@ -17,18 +17,14 @@
  * along with HealthMod Fabric.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.teambluemods.healthmod.api
+package io.github.teambluemods.healthmod.util.extensions
 
-import com.terraformersmc.modmenu.api.ConfigScreenFactory
-import com.terraformersmc.modmenu.api.ModMenuApi
-import io.github.teambluemods.healthmod.config.HealthModConfig
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
-import net.fabricmc.api.EnvType
-import net.fabricmc.api.Environment
+import me.sargunvohra.mcmods.autoconfig1u.ConfigData
+import me.sargunvohra.mcmods.autoconfig1u.ConfigHolder
+import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer
 
-@Environment(EnvType.CLIENT)
-object HealthModModMenuApiImpl : ModMenuApi {
-    override fun getModConfigScreenFactory() = ConfigScreenFactory { parent ->
-        AutoConfig.getConfigScreen(HealthModConfig::class.java, parent).get()
-    }
-}
+inline fun <reified T : ConfigData> registerConfig(serializerFactory: ConfigSerializer.Factory<T>): ConfigHolder<T> =
+    AutoConfig.register(T::class.java, serializerFactory)
+
+inline fun <reified T : ConfigData> getConfig(): T = AutoConfig.getConfigHolder(T::class.java).get()

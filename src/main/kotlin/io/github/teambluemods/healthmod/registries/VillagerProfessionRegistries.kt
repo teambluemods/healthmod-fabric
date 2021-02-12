@@ -29,7 +29,7 @@ import net.minecraft.village.TradeOffers
 import net.minecraft.village.VillagerProfession
 import net.minecraft.world.poi.PointOfInterestType
 
-@Suppress("MemberVisibilityCanBePrivate") // datagen wont work if i do this
+@Suppress("MemberVisibilityCanBePrivate") // datagen requires public
 object VillagerProfessionRegistries : ModRegistry<VillagerProfession> {
     override val registry: Registry<VillagerProfession> get() = Registry.VILLAGER_PROFESSION
 

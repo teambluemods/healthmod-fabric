@@ -20,12 +20,11 @@
 package io.github.teambluemods.healthmod.registries
 
 import io.github.teambluemods.healthmod.mixin.StatusEffectAccessorMixin
-import io.github.teambluemods.healthmod.statuseffects.WoundInfectionStatusEffect
+import io.github.teambluemods.healthmod.effects.WoundInfectionStatusEffect
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.entity.effect.StatusEffectType
 import net.minecraft.util.registry.Registry
 
-@Suppress("UNUSED")
 object StatusEffectRegistries : ModRegistry<StatusEffect> {
     override val registry: Registry<StatusEffect> get() = Registry.STATUS_EFFECT
 

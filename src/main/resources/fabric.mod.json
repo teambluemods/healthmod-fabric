@@ -23,7 +23,7 @@
     "issues": "https://github.com/teambluemods/healthmod-fabric/issues/"
   },
   "license": "LGPL-3.0-or-later",
-  "icon": "assets/healthmod/icon.png",
+  "icon": "assets/healthmod/textures/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -56,6 +56,11 @@
       "healthmod:sanitized_wound",
       "healthmod:cleanliness",
       "healthmod:wounded"
-    ]
+    ],
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/VvB7zx2rvU"
+      }
+    }
   }
 }

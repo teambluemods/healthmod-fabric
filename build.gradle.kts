@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile as CompileKotlin
 
 plugins {
     java
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.4.30"
     id("fabric-loom") version "0.5-SNAPSHOT"
     `maven-publish`
     id("net.minecrell.licenser") version "0.4.1"
@@ -27,6 +27,7 @@ sourceSets {
     main {
         resources {
             srcDir("src/generated/resources")
+            exclude(".cache")
         }
     }
 
@@ -47,9 +48,11 @@ repositories {
 
     maven("https://maven.abusedmaster.xyz") { name = "OnyxStudios" }
 
+    maven("https://maven.terraformersmc.com/") { name = "TerraformersMC" }
+
     maven("https://repo.repsy.io/mvn/progamer28415/main") { name = "xf8b" }
 
-    jcenter { name = "JCenter" }
+    maven("https://maven.shedaniel.me/") { name = "shedaniel" }
 }
 
 dependencies {
@@ -73,7 +76,7 @@ dependencies {
     include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.property("cca_version")}")
 
     // yes
-    modImplementation("io.github.prospector:modmenu:${project.property("mod_menu_version")}")
+    modImplementation("com.terraformersmc:modmenu:${project.property("mod_menu_version")}")
 
     // config
     modApi("me.shedaniel.cloth:config-2:${project.property("cloth_config_version")}") {

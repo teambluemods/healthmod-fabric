@@ -17,7 +17,7 @@
  * along with HealthMod Fabric.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.teambluemods.healthmod.statuseffects
+package io.github.teambluemods.healthmod.effects
 
 import io.github.teambluemods.healthmod.mixin.DamageSourceAccessorMixin
 import net.minecraft.entity.LivingEntity

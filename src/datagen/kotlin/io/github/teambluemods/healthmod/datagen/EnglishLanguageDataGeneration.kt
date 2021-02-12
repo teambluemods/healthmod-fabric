@@ -67,6 +67,7 @@ object EnglishLanguageDataGeneration : Generator<SimpleData> {
                         ?.let { translation -> translateBlock(block, translation) }
                         ?: translateBlock(block)
                 }
+            property(key = "block.healthmod.healthmod_block", value = "HealthMod Block")
 
             // status effects
             StatusEffectRegistries.javaClass.fields

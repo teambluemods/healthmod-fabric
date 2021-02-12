@@ -37,5 +37,7 @@
   "block.healthmod.bandage_box": "Scatola di cerotti",
   "item.healthmod.soap": "Saponetta",
   "death.attack.wound_infection": "%1$s è morto/a di un'infezione ferita",
-  "death.attack.wound_infection.player": "%1$s è morto/a di un'infezione ferita"
+  "death.attack.wound_infection.player": "%1$s è morto/a di un'infezione ferita",
+  "item.healthmod.syringe": "Syringe",
+  "block.healthmod.healthmod_block": "HealthMod Block"
 }

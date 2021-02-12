@@ -19,7 +19,6 @@
 
 package io.github.teambluemods.healthmod.registries
 
-import io.github.teambluemods.healthmod.HealthMod
 import io.github.teambluemods.healthmod.blocks.BandageBoxBlock
 import io.github.teambluemods.healthmod.blocks.BloodTestMachineBlock
 import io.github.teambluemods.healthmod.blocks.FirstAidKitBlock
@@ -48,8 +47,7 @@ object BlockRegistries : ModRegistry<Block> {
                 .sounds(BlockSoundGroup.WOOL)
                 .breakInstantly()
         ),
-        customItemProperties = Item.Settings()
-            .group(HealthMod.ITEM_GROUP)
+        itemSettings = ItemRegistries.DEFAULT_SETTINGS
             .maxCount(1)
             .rarity(Rarity.UNCOMMON)
     )
@@ -63,8 +61,7 @@ object BlockRegistries : ModRegistry<Block> {
                 .breakInstantly()
                 .nonOpaque()
         ),
-        customItemProperties = Item.Settings()
-            .group(HealthMod.ITEM_GROUP)
+        itemSettings = ItemRegistries.DEFAULT_SETTINGS
             .maxCount(1)
             .rarity(Rarity.UNCOMMON)
     )
@@ -76,22 +73,21 @@ object BlockRegistries : ModRegistry<Block> {
                 .of(Material.AGGREGATE, MaterialColor.ORANGE)
                 .breakInstantly()
         ),
-        customItemProperties = Item.Settings()
-            .group(HealthMod.ITEM_GROUP)
+        itemSettings = ItemRegistries.DEFAULT_SETTINGS
             .maxCount(1)
             .rarity(Rarity.UNCOMMON)
     )
 
-    private fun register(
+    fun register(
         id: String,
         toRegister: Block,
-        customItemProperties: Item.Settings = Item.Settings().group(HealthMod.ITEM_GROUP)
+        itemSettings: Item.Settings = ItemRegistries.DEFAULT_SETTINGS
     ): Block {
-        val blockItem = ItemRegistries.register(id, BlockItem(toRegister, customItemProperties)) as BlockItem
+        val blockItem = ItemRegistries.register(id, BlockItem(toRegister, itemSettings)) as BlockItem
 
         blockItem.appendBlocks(Item.BLOCK_ITEMS, blockItem)
 
-        LOGGER.debug("Automatically registered block item $blockItem with custom item properties $customItemProperties.")
+        LOGGER.debug("Automatically registered block item $blockItem with custom item properties $itemSettings.")
 
         return this.register(id, toRegister)
     }

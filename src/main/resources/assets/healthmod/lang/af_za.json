@@ -20,7 +20,7 @@
   "text.autoconfig.healthmod.title": "HealthMod Opstelling",
   "text.autoconfig.healthmod.category.woundInfection": "Wondinfeksie",
   "text.autoconfig.healthmod.category.other": "Ander",
-  "text.autoconfig.healthmod.option.bacterialResistanceChance": "Bakterieë weerstandings kans",
+  "text.autoconfig.healthmod.option.bacterialResistanceChance": "Bakteriese Weerstandingskans",
   "text.autoconfig.healthmod.option.bacterialResistanceChance.@Tooltip": "Kans vir antibiotika om te misluk en skadelike effekte sterker te maak (1/opstelling waarde)",
   "text.autoconfig.healthmod.option.bandageInfectionChance": "Verband Infeksiekans",
   "text.autoconfig.healthmod.option.bandageInfectionChance.@Tooltip": "Kans vir verbandings om te misluk en jou 'n wondinfeksie te gee (1/opstelling waarde)",
@@ -37,5 +37,7 @@
   "text.autoconfig.healthmod.option.extraSplashTexts": "Ekstra Splash Bewoording",
   "text.autoconfig.healthmod.option.extraSplashTexts.@Tooltip": "As ekstra splash bewoording (bv. \"helth goes brrrr\") bygevoeg moet word",
   "entity.minecraft.villager.doctor": "Dokter",
-  "subtitles.entity.villager.doctor": "Dokter is besig om te werk"
+  "subtitles.entity.villager.doctor": "Dokter is besig om te werk",
+  "item.healthmod.syringe": "Syringe",
+  "block.healthmod.healthmod_block": "HealthMod Block"
 }
