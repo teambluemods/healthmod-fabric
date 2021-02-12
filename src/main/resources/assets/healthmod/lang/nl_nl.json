@@ -9,7 +9,7 @@
   "effect.healthmod.healthy": "Gezond",
   "effect.healthmod.wound_infection": "Wond Infectie",
   "entity.minecraft.villager.doctor": "Dokter",
-  "subtitles.entity.villager.doctor": "Dokter Werkt",
+  "subtitles.entity.villager.doctor": "Dokter werkt",
   "itemGroup.healthmod.all": "HealthMod",
   "text.healthmod.bandage.1": "Geeft je regeneratie voor 15 seconden.",
   "text.healthmod.bandage.2": "Kan maar 1 keer gebruikt worden.",
@@ -37,5 +37,7 @@
   "block.healthmod.bandage_box": "Doos met pleisters.",
   "item.healthmod.soap": "Zeepbar",
   "death.attack.wound_infection": "%1$s is gestorven door een wond infectie.",
-  "death.attack.wound_infection.player": "%1$s is gestorven door een wond infectie."
+  "death.attack.wound_infection.player": "%1$s is gestorven door een wond infectie.",
+  "item.healthmod.syringe": "Syringe",
+  "block.healthmod.healthmod_block": "HealthMod Block"
 }

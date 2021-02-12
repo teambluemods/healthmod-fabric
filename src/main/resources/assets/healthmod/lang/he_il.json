@@ -37,5 +37,7 @@
   "block.healthmod.bandage_box": "קופסת תחבושות",
   "item.healthmod.soap": "סבון",
   "death.attack.wound_infection": "%1$s מת מזיהום פצע",
-  "death.attack.wound_infection.player": "%1$s מת מזיהום פצע"
+  "death.attack.wound_infection.player": "%1$s מת מזיהום פצע",
+  "item.healthmod.syringe": "Syringe",
+  "block.healthmod.healthmod_block": "HealthMod Block"
 }

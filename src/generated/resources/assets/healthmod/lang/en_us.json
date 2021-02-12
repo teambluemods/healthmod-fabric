@@ -9,6 +9,7 @@
   "block.healthmod.bandage_box": "Box of Bandages",
   "block.healthmod.blood_test_machine": "Blood Test Machine",
   "block.healthmod.first_aid_kit": "First Aid Kit",
+  "block.healthmod.healthmod_block": "HealthMod Block",
   "effect.healthmod.wound_infection": "Wound Infection",
   "effect.healthmod.healthy": "Healthy",
   "entity.minecraft.villager.doctor": "Doctor",

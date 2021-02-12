@@ -37,5 +37,7 @@
   "block.healthmod.bandage_box": "繃帶盒",
   "item.healthmod.soap": "肥皂",
   "death.attack.wound_infection": "%1$s 因傷口感染而亡",
-  "death.attack.wound_infection.player": "%1$s 因傷口感染而亡"
+  "death.attack.wound_infection.player": "%1$s 因傷口感染而亡",
+  "item.healthmod.syringe": "Syringe",
+  "block.healthmod.healthmod_block": "HealthMod Block"
 }

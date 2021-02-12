@@ -37,5 +37,7 @@
   "text.autoconfig.healthmod.option.extraSplashTexts": "Ekstra Splash Bewoording",
   "text.autoconfig.healthmod.option.extraSplashTexts.@Tooltip": "As ekstra splash bewoording (bv. \"helth goes brrrr\") bygevoeg moet word",
   "entity.minecraft.villager.doctor": "Dokter",
-  "subtitles.entity.villager.doctor": "Dokter is besig om te werk"
+  "subtitles.entity.villager.doctor": "Dokter is besig om te werk",
+  "item.healthmod.syringe": "Syringe",
+  "block.healthmod.healthmod_block": "HealthMod Block"
 }
