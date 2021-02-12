@@ -23,13 +23,13 @@ a mod which adds health related things but for Fabric
 
 - [Minecraft 1.16.5](https://minecraft.net/)
 - [Fabric Loader 0.11.1](https://fabricmc.net/use/)
-- [Fabric API 0.29.4](https://www.curseforge.com/minecraft/mc-mods/fabric-api/)
-- [Fabric Language Kotlin 1.4.21](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin/)
+- [Fabric API 0.30.0](https://modrinth.com/mod/fabric-api/)
+- [Fabric Language Kotlin 1.4.30](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin/)
 
 ### Note
 
 You can use any higher version of these dependencies. 
-For example, if the mod is using [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api/) version `0.54.2`,
+For example, if the mod is using [Fabric API](https://modrinth.com/mod/fabric-api/) version `0.54.2`,
 but there is a newer version (`0.54.3`), you can use both, and the mod will (hopefully) still work.
 
 ## Support
@@ -117,7 +117,7 @@ and are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa
 - [block/bandage_box_bottom.png](src/main/resources/assets/healthmod/textures/block/bandage_box_bottom.png)
 - [gui/first_aid_kit.png](src/main/resources/assets/healthmod/textures/gui/first_aid_kit.png)
 - [gui/bandage_box.png](src/main/resources/assets/healthmod/textures/gui/bandage_box.png)
-- [icon.png](src/main/resources/assets/healthmod/icon.png) / Image resized from 1000x1000 to 512x512
+- [icon.png](src/main/resources/assets/healthmod/textures/icon.png) / Image resized from 1000x1000 to 512x512
 
 ### Translations
 
